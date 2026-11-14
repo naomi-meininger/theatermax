@@ -67,7 +67,7 @@ All of this lives in `data/previews.js`. **Write descriptions and consensus line
 
 ## View from my seat
 
-Show pages link to [A View From My Seat](https://aviewfrommyseat.com/) for the show's theater: a button under the seat map, plus a "View from this section" link on each offer. Their policy says their user photos may only be used to promote A View From My Seat, so TheaterMax **links** to their pages and never copies or embeds the photos. Theater names live in `data/shows.js` (`TM_THEATERS`). Update them when shows move.
+Show pages link to [A View From My Seat](https://aviewfrommyseat.com/) for the show's theater: a button under the seat map, plus a link on each offer row. Every theater names its sections differently (the Lyric's mezzanine is the "Dress Circle", and the Ambassador splits its center into "LC" and "RC"), so `data/seatviews.js` maps TheaterMax's Orchestra / Mezzanine / Balcony to each theater's real center section, like "📷 View from Front Mezzanine C". Eight theaters are mapped so far (Gershwin, Richard Rodgers, Minskoff, Lyric, Neil Simon, Shubert, Ambassador and Walter Kerr). Any other theater's link says "Seat views at this theater" and opens its overview page. To add a theater, copy the section names from its `/sections/` page on A View From My Seat. Their policy says their user photos may only be used to promote A View From My Seat, so TheaterMax **links** to their pages and never copies or embeds the photos. Theater names live in `data/shows.js` (`TM_THEATERS`). Update them when shows move.
 
 ## Run it locally
 

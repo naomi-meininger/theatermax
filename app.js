@@ -105,8 +105,19 @@
 
   // A View From My Seat: real audience photos by theater & section. We link out to their pages
   // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
-  const seatViewUrl = (theater) =>
-    "https://aviewfrommyseat.com/venue/" + encodeURIComponent(theater).replace(/%20/g, "+") + "/sections/";
+  const AVFMS = "https://aviewfrommyseat.com/venue/";
+  const plus = (t) => encodeURIComponent(t).replace(/%20/g, "+");
+  const seatViewUrl = (theater) => AVFMS + plus(theater) + "/sections/";
+  const SEATVIEWS = window.TM_SEATVIEWS || {};
+  // Link for one of our sections (orch / mezz / balc). Goes to the real A View From My Seat
+  // section page when we've mapped that theater; otherwise to the theater overview, labeled as such.
+  function sectionView(theater, secId) {
+    const map = SEATVIEWS[theater];
+    const name = map && map[secId];
+    return name
+      ? { url: AVFMS + plus(theater) + "/" + plus(name) + "/", label: `📷 View from ${name}`, exact: true }
+      : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
+  }
   const PALETTES = [
     ["#1b1b1b", "#c9a227"], ["#123d2a", "#7fd36b"], ["#7a2e0e", "#f2a33a"], ["#3a1f14", "#d98f3e"],
     ["#111111", "#e23b3b"], ["#1d2d6b", "#e6b54a"], ["#0e0e0e", "#d6d6d6"], ["#5c0b1f", "#ff4f6d"],
@@ -692,7 +703,7 @@
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
           <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
-            ${o.sec && show.theater ? `<a class="seatview" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">📷 View from this section</a>` : ""}</div>
+            ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
             <div class="breakdown">${o.live === "seatgeek" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
