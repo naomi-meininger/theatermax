@@ -111,11 +111,12 @@
   const SEATVIEWS = window.TM_SEATVIEWS || {};
   // Link for one of our sections (orch / mezz / balc). Goes to the real A View From My Seat
   // section page when we've mapped that theater; otherwise to the theater overview, labeled as such.
+  // Level page, e.g. /venue/Shubert+Theatre/level/2/Mezzanine/ (photos from the whole level).
   function sectionView(theater, secId) {
     const map = SEATVIEWS[theater];
-    const name = map && map[secId];
-    return name
-      ? { url: AVFMS + plus(theater) + "/" + plus(name) + "/", label: `📷 View from ${name}`, exact: true }
+    const lvl = map && map[secId];
+    return lvl
+      ? { url: `${AVFMS}${plus(theater)}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
       : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
   }
   const PALETTES = [
@@ -183,7 +184,7 @@
   const state = {
     dateIdx: null, perfIdx: 0, section: "all", qty: 2,
     fees: true, hideMember: false, sort: "total",
-    homeQuery: "", homeSort: "price",
+    homeQuery: "", homeSort: "price", group: "all",
     f: { scene: "all", type: "all", status: "all" },
   };
 
@@ -264,6 +265,25 @@
     return dt.perfs;
   }
 
+  // ---------- verified discount codes (data/codes.js) ----------
+  const CODES = window.TM_CODES || {};
+  const validCodes = (show) => (CODES[show.slug] || []).filter((c) => { const e = parseDay(c.expires); return e && e.date >= TODAY; });
+
+  // ---------- seller groups (tabs on the show page) ----------
+  const GROUPS = [
+    ["all", "All"], ["official", "Official sellers"], ["codes", "Discount codes"], ["apps", "Discount apps"],
+    ["resale", "Resale"], ["sameday", "Same-day & lottery"], ["members", "Memberships"],
+  ];
+  function groupOf(o) {
+    if (o.code) return "codes";
+    if (o.chance || o.inPerson) return "sameday";
+    if (o.member) return "members";
+    if (o.seller === "SeatGeek") return "resale";
+    if (o.seller === "TodayTix" || o.seller === "Theatr") return "apps";
+    if (o.tag === "official") return "official";
+    return "resale";
+  }
+
   // ---------- offers (sample generator) ----------
   const cache = new Map();
   function buildOffers(show, perf) {
@@ -283,14 +303,13 @@
       offers.push({ seller: show.official, kind: "Official seller", sec, row: row(sec), price: p, fee: officialFee(p), url: OFFICIAL_URL[show.official], tag: "official" });
     });
 
-    // Promo codes that work on the official seller (BroadwayBox / Playbill Offers)
-    if (d < 0.75) {
-      ["mezz", "balc", d < 0.5 ? "orch" : null].filter(Boolean).forEach((id) => {
-        const sec = SECTIONS.find((s) => s.id === id);
-        const p = Math.round(faces[id] * (1 - (0.3 + r() * 0.15)));
-        offers.push({ seller: show.official + " + promo code", kind: "Discount code", sec, row: row(sec), price: p, fee: officialFee(p), url: "https://www.broadwaybox.com", note: "Code from BroadwayBox / Playbill Offers", tag: "official" });
-      });
-    }
+    // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
+    validCodes(show).forEach((c) => {
+      const fee = c.feesIncl ? 0 : officialFee(c.from);
+      offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: null, row: null, price: c.from, fee, feeEstimated: !c.feesIncl,
+        url: c.url, code: c, tag: "official", verified: true,
+        note: [c.to ? `${money0(c.from)}–${money0(c.to)}` : null, c.regular ? `regularly ${c.regular}` : null, `valid through ${fmtRunDate(parseDay(c.expires))}`, c.details || null].filter(Boolean).join(" · ") });
+    });
 
     // TodayTix
     SECTIONS.filter(() => r() > 0.35).forEach((sec) => {
@@ -319,11 +338,11 @@
       offers.push({ seller: "TDF", kind: "Membership", sec, row: row(sec), price: 49, fee: 0, url: "https://www.tdf.org", note: "TDF membership required (students, teachers, artists…)", member: true });
     }
 
-    // Theatr — members only
-    if (d < 0.75 && r() > 0.3) {
-      const sec = SECTIONS[1 + Math.floor(r() * 2)];
-      const p = Math.round(faces[sec.id] * (0.45 + r() * 0.1));
-      offers.push({ seller: "Theatr", kind: "Membership app", sec, row: row(sec), price: p, fee: 5, url: "https://www.theatr.com", note: "Theatr membership required", member: true });
+    // Theatr — free iPhone app where fans resell last-minute tickets at or below face value
+    if (near <= 3 && r() > 0.35) {
+      const sec = SECTIONS[Math.floor(r() * 3)];
+      const p = Math.round(faces[sec.id] * (0.6 + r() * 0.4)); // never above face value
+      offers.push({ seller: "Theatr", kind: "Fan resale · face value or less", sec, row: row(sec), price: p, fee: 0, url: "https://apps.apple.com/us/app/theatr-app/id1580002886", note: "Last-minute tickets resold by fans · iPhone app" });
     }
 
     // Lottery & rush — cheap, but not guaranteed
@@ -352,7 +371,7 @@
           note: `Face value ${money0(tm.min)}–${money0(tm.max)} · fees estimated (~18%)` });
       }
     }
-    result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance) o.sample = true; });
+    result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
     cache.set(ck, offers);
     return offers;
@@ -522,6 +541,7 @@
             <div class="badges">
               ${statusBadge(s, false)}
               ${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}
+              ${validCodes(s).length ? `<span class="badge green">Code ${esc(validCodes(s)[0].code)}</span>` : ""}
               ${s.critics ? `<span class="badge ${s.critics.score >= 70 ? "green" : "gold"}">Critics ${s.critics.score}%</span>` : ""}
               ${s.lottery ? `<span class="badge gold">Lottery ${money0(s.lottery.price)}</span>` : ""}
               ${s.rush ? `<span class="badge green">Rush ${money0(s.rush.price)}</span>` : ""}
@@ -672,10 +692,13 @@
 
     // offers
     const all = buildOffers(show, perf);
-    let offers = all.filter((o) =>
+    const preGroup = all.filter((o) =>
       (state.section === "all" || !o.sec || o.sec.id === state.section) &&
       !(state.hideMember && o.member) &&
       !(o.max && state.qty > o.max));
+    const groupCounts = preGroup.reduce((m, o) => ((m[o.group] = (m[o.group] || 0) + 1), m), { all: preGroup.length });
+    if (state.group !== "all" && !groupCounts[state.group]) state.group = "all";
+    let offers = preGroup.filter((o) => state.group === "all" || o.group === state.group);
     const key = state.fees ? "total" : "price";
     if (state.sort === "total") offers.sort((a, b) => a[key] - b[key]);
     if (state.sort === "section") offers.sort((a, b) => (a.sec ? SECTIONS.indexOf(a.sec) : 9) - (b.sec ? SECTIONS.indexOf(b.sec) : 9) || a[key] - b[key]);
@@ -697,16 +720,18 @@
               ${o.chance ? `<span class="badge gold">Not guaranteed</span>` : ""}
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
+              ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
               ${o.live ? `<span class="badge live">● Live price</span>` : o.sample && hasLive(show) ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
+            ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button></div>` : ""}
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
-          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
+          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : o.code ? `<b>Select seats</b>Discounted sections` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
             ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
-            <div class="breakdown">${o.live === "seatgeek" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save)} vs. box office</div>` : ""}
             ${state.qty > 1 ? `<div class="breakdown">${state.qty} tickets: ${money(shown * state.qty)}</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
@@ -771,7 +796,11 @@
             <h3>Seat map${show.theater ? " · " + esc(show.theater) : ""}</h3>
             ${seatMap(all, show)}
             <div class="legend">Greener = cheaper. Tap a section to filter.</div>
-            ${show.theater ? `<a class="btn ghost seatview-btn" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">📷 See real seat views ↗</a>
+            ${show.theater && SEATVIEWS[show.theater] ? `<div class="level-links">${
+                [...new Map(SECTIONS.map((sec) => [sectionView(show.theater, sec.id).url, { sec, v: sectionView(show.theater, sec.id) }])).values()]
+                  .map(({ sec, v }) => `<a class="btn ghost" href="${esc(v.url)}" target="_blank" rel="noopener" title="Audience photos from the whole ${esc(v.name)}">📷 ${esc(v.name)}${v.name !== sec.name ? ` <span class="lvl-note">(${sec.name.toLowerCase()})</span>` : ""}</a>`).join("")
+              }</div>` : ""}
+            ${show.theater ? `<a class="${SEATVIEWS[show.theater] ? "all-views" : "btn ghost seatview-btn"}" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">${SEATVIEWS[show.theater] ? "All sections at " + esc(show.theater) + " ↗" : "📷 See real seat views ↗"}</a>
             <div class="legend">Audience photos from every section on A View From My Seat.</div>` : ""}
           </div>
           <div class="panel alert-box">
@@ -798,6 +827,10 @@
           ${hasLive(show)
             ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${new Date(PRICES.updatedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}. Rows marked <span class="badge sample">Sample</span> are estimates.</p>`
             : `<p class="sample-note">Prices on this page are sample data for now. Live prices appear once the SeatGeek and Ticketmaster connections are switched on.</p>`}
+          <div class="group-tabs" role="tablist" aria-label="Seller type">
+            ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
+          </div>
+          ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>
@@ -878,7 +911,7 @@
     if (h.startsWith("show-")) {
       nav = { all: "home", broadway: "broadway", off: "off" }[state.f.scene]; // keep the tab you came from lit
       const slug = h.slice(5);
-      if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; currentSlug = slug; }
+      if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; state.group = "all"; currentSlug = slug; }
       app.innerHTML = viewShow(slug);
       document.title = (SHOWS.find((s) => s.slug === slug)?.title || "Show") + " tickets — TheaterMax";
     } else if (h === "off-broadway" || h === "broadway") {
@@ -924,6 +957,15 @@
       closePreview(); if (!link) e.preventDefault();
       return;
     }
+    const cp = e.target.closest("[data-copy]");
+    if (cp) {
+      e.preventDefault();
+      const done = () => { cp.textContent = "Copied!"; setTimeout(() => (cp.textContent = "Copy"), 1500); };
+      try { navigator.clipboard.writeText(cp.dataset.copy).then(done, () => { cp.textContent = cp.dataset.copy; }); } catch { cp.textContent = cp.dataset.copy; }
+      return;
+    }
+    const gt = e.target.closest("[data-group]");
+    if (gt) { state.group = gt.dataset.group; rerenderShow(); return; }
     const t = e.target.closest("[data-date],[data-perf],[data-section],[data-qty],[data-sec],#clearAlert");
     if (!t) return;
     if (t.id === "clearAlert") {

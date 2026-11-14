@@ -349,3 +349,21 @@ body.modal-open { overflow: hidden; }
 .badge.sample { background: var(--paper-2); color: var(--muted); font-weight: 600; }
 .live-note { font-size: 13px; color: var(--green); font-weight: 500; margin: -4px 0 8px; }
 .sample-note { font-size: 13px; color: #8a5a00; background: #f8ecc9; padding: 8px 12px; border-radius: 8px; margin: -4px 0 10px; }
+
+.level-links { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.level-links .btn { text-align: left; font-size: 14px; padding: 8px 12px; }
+.level-links .lvl-note { font-weight: 500; opacity: .7; }
+.all-views { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--red); text-decoration: none; }
+.all-views:hover { text-decoration: underline; }
+
+/* ---------- codes & seller tabs ---------- */
+.code-box { display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 2px; padding: 5px 6px 5px 10px; border: 1.5px dashed var(--green); border-radius: 10px; background: #f0f8f3; }
+.code-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); }
+.code-box code { font: 700 16px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+.copy-btn { border: 0; background: var(--green); color: #fff; font-weight: 700; font-size: 12px; padding: 5px 10px; border-radius: 7px; cursor: pointer; }
+.copy-btn:hover { filter: brightness(1.1); }
+.group-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.group-tabs .pill .n { font-size: 12px; font-weight: 700; color: var(--muted); }
+.group-tabs .pill.active .n { color: #cfc6b6; }
+.code-hint { font-size: 13px; color: var(--ink-2); background: var(--paper-2); padding: 8px 12px; border-radius: 8px; margin: 0 0 10px; }
+.code-hint a { font-weight: 700; color: var(--red); }

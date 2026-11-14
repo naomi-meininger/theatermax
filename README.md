@@ -51,6 +51,14 @@ You can add just one of the two keys; the other source is skipped. Keys never ap
 
 **Safety nets:** an event only counts as a match when its title matches and, if we know the theater, it's at that theater, so touring productions and "Annie Lennox" don't sneak in. If a source fails (network down, bad key, rate limit), it stops right away, keeps the previous prices, and logs a warning in the Actions run. Past performances are dropped automatically. Test it locally with `SEATGEEK_CLIENT_ID=... node scripts/update-prices.mjs`.
 
+## Discount codes
+
+`data/codes.js` lists **verified** codes only, each copied from its offer page (Playbill's, so far) with its expiry date. A show with a code gets a "✓ Verified code" row showing the actual code and a **Copy** button, plus a "Code SIXPB" badge on its card. Expired codes hide themselves. Shows without a verified code say so and link to Playbill Discounts and BroadwayBox, rather than showing a made-up discount. To add a code, find it on <https://playbill.com/discount> or BroadwayBox and add an entry with `code`, `expires`, `from` and `url`.
+
+## Seller tabs on show pages
+
+Above the offers: **All · Official sellers · Discount codes · Discount apps (TodayTix, Theatr) · Resale (SeatGeek) · Same-day & lottery (TKTS, lottery, rush) · Memberships (TDF)**, each with a count. Tabs with no offers are hidden.
+
 ## Show previews & critics
 
 Every show card has a **Preview** button, and show pages have one too. It opens a short description, the lowest listed price, the audience-review count, and, where available, a **critics summary**. The summary shows the average score, how many reviews were positive, mixed or negative, a one-line consensus, and a link to the full review roundup (for example, BroadwayWorld's).
@@ -94,6 +102,8 @@ data/live-shows.js  AUTO-GENERATED daily: current Broadway shows from Broadway.c
 data/shows.js     extras: theaters, plays list, sample lottery & rush
 data/previews.js  show descriptions (our own words) + types + critic roundup summaries
 data/schedule.js  previews / opening / closing dates that drive the "When" filter
+data/codes.js     verified discount codes (with expiry dates)
+data/seatviews.js A View From My Seat level pages for each mapped theater
 data/live-prices.js  AUTO-GENERATED every 6h: real prices per performance
 scripts/update-shows.mjs              the show-list scraper
 scripts/update-prices.mjs             the SeatGeek + Ticketmaster price fetcher

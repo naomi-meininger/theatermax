@@ -87,19 +87,23 @@ window.TM_SOURCES = [
   {
     id: "theatr",
     name: "Theatr",
-    subtitle: "Membership app",
-    links: [],
-    what: "A membership app with discounted tickets, early access and member-only events for Broadway and Off-Broadway.",
+    subtitle: "Fan-to-fan resale app (iPhone)",
+    links: [
+      { label: "App Store", url: "https://apps.apple.com/us/app/theatr-app/id1580002886" },
+      { label: "theatr-app.com", url: "https://theatr-app.com/faq" },
+    ],
+    what: "A free iPhone app where New York theatergoers resell tickets they can't use. Every ticket is priced at or below what the seller paid, which makes it great for last-minute seats.",
     how: [
-      "Create an account in the app.",
-      "Browse current listings and buy directly.",
-      "Go to member nights or talkbacks for extra perks.",
+      "Download Theatr from the App Store (iPhone only).",
+      "Browse last-minute listings, or set a price alert for a show.",
+      "Buy in the app. The seller then transfers the tickets to you.",
     ],
     tips: [
-      "Great for Off-Broadway, new works and nonprofit theaters.",
-      "Offers rotate weekly — check often.",
+      "Check the seller's proof of purchase and that the date, time and price match before you buy.",
+      "Theatr holds your payment until after curtain, so you can dispute it if the tickets don't work.",
+      "Have tickets you can't use? Selling is free.",
     ],
-    discount: "40–60%", sameDay: true, online: true, bestFor: "New & indie theater",
+    discount: "Face value or less", sameDay: true, online: true, bestFor: "Last-minute fan resale",
   },
   {
     id: "todaytix",

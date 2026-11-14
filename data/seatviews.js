@@ -1,20 +1,23 @@
-// "View from this section" links → A View From My Seat section pages.
-// Every theater names its sections differently, so each one is mapped by hand from the theater's
-// own section list on aviewfrommyseat.com (checked Nov 13, 2026). We link to the CENTER section
-// of each level, which usually has the most photos.
+// "View from my seat" links → A View From My Seat LEVEL pages, e.g.
+//   https://aviewfrommyseat.com/venue/Shubert+Theatre/level/2/Mezzanine/
+// A level page shows audience photos from the whole level (left, center and right sections).
 //
-//   orch / mezz / balc = TheaterMax's Orchestra / Mezzanine / Balcony rows
+// Each theater numbers and names its levels differently, so every theater is mapped by hand:
+// the level number is the level's position in the theater's "Jump to:" list on its
+// /venue/<Theater+Name>/sections/ page (Orchestra = 1, and so on; boxes count as levels).
+// Checked on aviewfrommyseat.com, Nov 13, 2026.
 //
-// Theaters not listed here link to the theater's overview page instead (labeled honestly).
-// To add one: open https://aviewfrommyseat.com/venue/<Theater+Name>/sections/ and copy the names.
+//   orch / mezz / balc = TheaterMax's Orchestra / Mezzanine / Balcony rows → [level number, level name]
+//
+// Theaters not listed here link to the theater's overview page (labeled honestly).
 
 window.TM_SEATVIEWS = {
-  "Gershwin Theatre":        { orch: "Orchestra C", mezz: "Front Mezzanine C", balc: "Rear Mezzanine C" },
-  "Richard Rodgers Theatre": { orch: "Orchestra C", mezz: "Front Mezzanine C", balc: "Rear Mezzanine C" },
-  "Minskoff Theatre":        { orch: "Orchestra C", mezz: "Mezzanine",         balc: "Mezzanine" },          // one upper level
-  "Lyric Theatre":           { orch: "Orchestra L", mezz: "Dress Circle C",    balc: "Balcony C" },          // no center orchestra aisle
-  "Neil Simon Theatre":      { orch: "Orchestra C", mezz: "Front Mezzanine C", balc: "Mezzanine C" },        // rear level is called "Mezzanine"
-  "Shubert Theatre":         { orch: "Orchestra C", mezz: "Mezzanine C",       balc: "Balcony C" },
-  "Ambassador Theatre":      { orch: "Orchestra C", mezz: "Front Mezzanine RC", balc: "Rear Mezzanine RC" }, // split center: LC / RC
-  "Walter Kerr Theatre":     { orch: "Orchestra C", mezz: "Mezzanine C",       balc: "Balcony L" },          // balcony has L / R only
+  "Gershwin Theatre":        { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Richard Rodgers Theatre": { orch: [1, "Orchestra"], mezz: [4, "Front Mezzanine"], balc: [5, "Upper Mezzanine"] }, // 2–3 are box levels
+  "Minskoff Theatre":        { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },       // one upper level
+  "Lyric Theatre":           { orch: [1, "Orchestra"], mezz: [2, "Dress Circle"],    balc: [3, "Balcony"] },
+  "Neil Simon Theatre":      { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Mezzanine"] },       // rear level is called "Mezzanine"
+  "Shubert Theatre":         { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
+  "Ambassador Theatre":      { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Walter Kerr Theatre":     { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
 };
