@@ -1,32 +1,84 @@
-// SAMPLE DATA — prices, lottery/rush details and availability are made up for the prototype.
-// Replace with real data (affiliate feeds, partner APIs, or your own updates) before launch.
+// Extra details layered on top of the live show list (data/live-shows.js).
+// Keys are Broadway.com slugs (the part after /shows/ in the show's URL).
 //
-// demand: 0..1 — how close to selling out (affects base prices and whether TKTS/TDF carry it)
-// official: which official seller the show uses
+// ⚠️ lottery / rush entries are SAMPLE data for the prototype — real policies change often.
+// Check https://bwayrush.com/ and update these by hand (or build a second scraper later).
 
-window.TM_SHOWS = [
-  { slug: "hamilton", title: "Hamilton", theater: "Richard Rodgers Theatre", type: "Musical", runtime: "2h 45m", basePrice: 189, demand: 0.92, official: "Ticketmaster", colors: ["#1b1b1b", "#c9a227"],
-    lottery: { price: 10, where: "Hamilton app", when: "Opens 2 days before" }, rush: null },
-  { slug: "wicked", title: "Wicked", theater: "Gershwin Theatre", type: "Musical", runtime: "2h 45m", basePrice: 159, demand: 0.85, official: "Ticketmaster", colors: ["#123d2a", "#7fd36b"],
-    lottery: { price: 59, where: "Broadway Direct", when: "Opens 2 days before" }, rush: { price: 59, where: "Box office", when: "10 AM day of" } },
-  { slug: "the-lion-king", title: "The Lion King", theater: "Minskoff Theatre", type: "Musical", runtime: "2h 30m", basePrice: 149, demand: 0.8, official: "Ticketmaster", colors: ["#7a2e0e", "#f2a33a"],
-    lottery: { price: 45, where: "Lucky Seat", when: "Opens 2 days before" }, rush: null },
-  { slug: "hadestown", title: "Hadestown", theater: "Walter Kerr Theatre", type: "Musical", runtime: "2h 30m", basePrice: 129, demand: 0.6, official: "Telecharge", colors: ["#3a1f14", "#d98f3e"],
-    lottery: { price: 49, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 49, where: "TodayTix", when: "10 AM day of" } },
-  { slug: "chicago", title: "Chicago", theater: "Ambassador Theatre", type: "Musical", runtime: "2h 30m", basePrice: 99, demand: 0.4, official: "Telecharge", colors: ["#111111", "#e23b3b"],
-    lottery: null, rush: { price: 49, where: "Box office", when: "Box office opening" } },
-  { slug: "aladdin", title: "Aladdin", theater: "New Amsterdam Theatre", type: "Musical", runtime: "2h 30m", basePrice: 119, demand: 0.55, official: "Ticketmaster", colors: ["#1d2d6b", "#e6b54a"],
-    lottery: { price: 35, where: "Broadway Direct", when: "Opens 2 days before" }, rush: null },
-  { slug: "mj", title: "MJ", theater: "Neil Simon Theatre", type: "Musical", runtime: "2h 30m", basePrice: 119, demand: 0.5, official: "Ticketmaster", colors: ["#0e0e0e", "#d6d6d6"],
-    lottery: { price: 39, where: "Broadway Direct", when: "Opens 2 days before" }, rush: { price: 39, where: "TodayTix", when: "9 AM day of" } },
-  { slug: "moulin-rouge", title: "Moulin Rouge!", theater: "Al Hirschfeld Theatre", type: "Musical", runtime: "2h 35m", basePrice: 139, demand: 0.58, official: "Telecharge", colors: ["#5c0b1f", "#ff4f6d"],
-    lottery: { price: 39, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
-  { slug: "the-great-gatsby", title: "The Great Gatsby", theater: "Broadway Theatre", type: "Musical", runtime: "2h 30m", basePrice: 109, demand: 0.35, official: "Telecharge", colors: ["#0d2a3a", "#d4b26a"],
-    lottery: { price: 45, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
-  { slug: "death-becomes-her", title: "Death Becomes Her", theater: "Lunt-Fontanne Theatre", type: "Musical", runtime: "2h 25m", basePrice: 139, demand: 0.7, official: "Ticketmaster", colors: ["#1a0f2e", "#b48cff"],
-    lottery: { price: 45, where: "Broadway Direct", when: "Opens 2 days before" }, rush: { price: 45, where: "Box office", when: "10 AM day of" } },
-  { slug: "maybe-happy-ending", title: "Maybe Happy Ending", theater: "Belasco Theatre", type: "Musical", runtime: "1h 45m", basePrice: 119, demand: 0.65, official: "Telecharge", colors: ["#0f3b3a", "#9ee6d4"],
-    lottery: { price: 40, where: "TodayTix", when: "Opens 1 day before" }, rush: { price: 40, where: "TodayTix", when: "10 AM day of" } },
-  { slug: "oh-mary", title: "Oh, Mary!", theater: "Lyceum Theatre", type: "Play", runtime: "1h 20m", basePrice: 129, demand: 0.75, official: "Telecharge", colors: ["#2b0f0f", "#f0e6d2"],
-    lottery: { price: 45, where: "TodayTix", when: "Opens 1 day before" }, rush: null },
+window.TM_EXTRAS = {
+  "hamilton-broadway":  { lottery: { price: 10, where: "Hamilton app", when: "Opens 2 days before" } },
+  "wicked":             { lottery: { price: 59, where: "Broadway Direct", when: "Opens 2 days before" }, rush: { price: 59, where: "Box office", when: "10 AM day of" } },
+  "the-lion-king":      { lottery: { price: 45, where: "Lucky Seat", when: "Opens 2 days before" } },
+  "hadestown":          { lottery: { price: 49, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 49, where: "TodayTix", when: "10 AM day of" } },
+  "chicago":            { rush: { price: 49, where: "Box office", when: "Box office opening" } },
+  "aladdin-broadway":   { lottery: { price: 35, where: "Broadway Direct", when: "Opens 2 days before" } },
+  "mj":                 { lottery: { price: 39, where: "Broadway Direct", when: "Opens 2 days before" }, rush: { price: 39, where: "TodayTix", when: "9 AM day of" } },
+  "the-great-gatsby":   { lottery: { price: 45, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
+  "maybe-happy-ending": { lottery: { price: 40, where: "TodayTix", when: "Opens 1 day before" }, rush: { price: 40, where: "TodayTix", when: "10 AM day of" } },
+  "oh-mary":            { lottery: { price: 45, where: "TodayTix", when: "Opens 1 day before" } },
+  "six":                { lottery: { price: 45, where: "Lucky Seat", when: "Opens 1 day before" }, rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
+  "the-outsiders":      { lottery: { price: 45, where: "Lucky Seat", when: "Opens 1 day before" } },
+  "juliet":             { lottery: { price: 45, where: "TodayTix", when: "Opens 1 day before" }, rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
+  "book-mormon":        { lottery: { price: 39, where: "Lucky Seat", when: "Opens 2 days before" } },
+  "operation-mincemeat":   { lottery: { price: 40, where: "TodayTix", when: "Opens 1 day before" } },
+  "the-rocky-horror-show": { rush: { price: 45, where: "TodayTix", when: "10 AM day of" } },
+};
+
+// Shows Broadway.com files under "Plays". Everything else is labeled as a musical/other.
+window.TM_PLAYS = [
+  "harry-potter-and-cursed-child-broadway", "stranger-things-the-first-shadow", "other-desert-cities",
+  "oh-mary", "paranormal-activity", "a-few-good-men", "much-ado-about-nothing", "inter-alia",
+  "school-girls-or-african-mean-girls-play", "the-imaginary-invalid", "downstate",
 ];
+
+// Which theater each show plays in (Broadway.com slug → theater name).
+// Source: Wikipedia "Broadway theatre" current-productions table, checked Nov 13, 2026.
+// Used for display and for "View from my seat" links. Update when shows move or close.
+window.TM_THEATERS = {
+  // long-running / open-ended
+  "chicago": "Ambassador Theatre",
+  "maybe-happy-ending": "Belasco Theatre",
+  "the-outsiders": "Bernard B. Jacobs Theatre",
+  "the-great-gatsby": "Broadway Theatre",
+  "just-in-time": "Circle in the Square Theatre",
+  "book-mormon": "Eugene O'Neill Theatre",
+  "wicked": "Gershwin Theatre",
+  "operation-mincemeat": "John Golden Theatre",
+  "oh-mary": "Lyceum Theatre",
+  "harry-potter-and-cursed-child-broadway": "Lyric Theatre",
+  "the-lion-king": "Minskoff Theatre",
+  "mj": "Neil Simon Theatre",
+  "hamilton-broadway": "Richard Rodgers Theatre",
+  "hadestown": "Walter Kerr Theatre",
+  "aladdin-broadway": "New Amsterdam Theatre",
+  "six": "Lena Horne Theatre",
+  "juliet": "Stephen Sondheim Theatre",
+  "stranger-things-the-first-shadow": "Marquis Theatre",
+  "buena-vista-social-club": "Gerald Schoenfeld Theatre",
+  "the-lost-boys-a-new-musical": "Palace Theatre",
+  "schmigadoon": "Nederlander Theatre",
+  "the-rocky-horror-show": "Studio 54",
+  "two-strangers-carry-a-cake-across-new-york": "Longacre Theatre",
+  // current limited runs / recent openings
+  "now-you-see-me-live": "Al Hirschfeld Theatre",
+  "paranormal-activity": "August Wilson Theatre",
+  "downstate": "Booth Theatre",
+  "its-a-wonderful-life": "Broadhurst Theatre",
+  "here-there-are-blueberries": "Ethel Barrymore Theatre",
+  "the-fantasticks": "Hayes Theater",
+  "other-desert-cities": "Hudson Theatre",
+  "860": "Imperial Theatre",
+  "wanted": "James Earl Jones Theatre",
+  "blue-man-group-a-new-holiday-surprise": "Lunt-Fontanne Theatre",
+  "inter-alia": "Music Box Theatre",
+  "school-girls-or-african-mean-girls-play": "Samuel J. Friedman Theatre",
+  "galileo": "Shubert Theatre",
+  "the-imaginary-invalid": "Todd Haimes Theatre",
+  "a-few-good-men": "Vivian Beaumont Theater",
+  "much-ado-about-nothing": "Winter Garden Theatre",
+  // announced, future
+  "dolly": "St. James Theatre",
+  "purple-rain": "Majestic Theatre",
+  "paddington": "Al Hirschfeld Theatre",
+  "evita": "Winter Garden Theatre",
+  "the-amish-project": "Broadhurst Theatre",
+};

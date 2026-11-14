@@ -239,3 +239,9 @@ td .big { font-family: var(--display); font-size: 20px; font-weight: 700; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
 .two-col ul { margin: 0; padding-left: 18px; }
 @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+.updated { font-size: 13px; color: var(--green); margin: 18px 0 0; font-weight: 500; }
+.updated.stale { color: #8a5a00; background: #f8ecc9; display: inline-block; padding: 6px 12px; border-radius: 8px; }
+.show-card.soon .poster { filter: saturate(.4); }
+.seatview { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: var(--red); text-decoration: none; }
+.seatview:hover { text-decoration: underline; }
+.seatview-btn { display: block; text-align: center; margin-top: 12px; }

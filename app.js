@@ -6,7 +6,55 @@
 (function () {
   "use strict";
 
-  const SHOWS = window.TM_SHOWS || [];
+  const LIVE = window.TM_LIVE || null;
+  const EXTRAS = window.TM_EXTRAS || {};
+  const PLAYS = new Set(window.TM_PLAYS || []);
+  const THEATERS = window.TM_THEATERS || {};
+
+  // A View From My Seat: real audience photos by theater & section. We link out to their pages
+  // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
+  const seatViewUrl = (theater) =>
+    "https://aviewfrommyseat.com/venue/" + encodeURIComponent(theater).replace(/%20/g, "+") + "/sections/";
+  const PALETTES = [
+    ["#1b1b1b", "#c9a227"], ["#123d2a", "#7fd36b"], ["#7a2e0e", "#f2a33a"], ["#3a1f14", "#d98f3e"],
+    ["#111111", "#e23b3b"], ["#1d2d6b", "#e6b54a"], ["#0e0e0e", "#d6d6d6"], ["#5c0b1f", "#ff4f6d"],
+    ["#0d2a3a", "#d4b26a"], ["#1a0f2e", "#b48cff"], ["#0f3b3a", "#9ee6d4"], ["#2b0f0f", "#f0e6d2"],
+  ];
+
+  // Build the show list from Broadway.com's live list (data/live-shows.js) + our extras.
+  // Seat-level pricing is still sample data generated in buildOffers().
+  const SHOWS = (LIVE ? LIVE.shows : []).map((l, i, arr) => {
+    const x = EXTRAS[l.slug] || {};
+    const h = hash(l.slug);
+    const popularity = l.ratingCount ? Math.min(1, l.ratingCount / 1000) : 0.3;
+    return {
+      slug: l.slug, title: l.title, bdcUrl: l.url, bdcFrom: l.fromPrice, ratingCount: l.ratingCount,
+      onSale: l.fromPrice !== null,
+      theater: x.theater || THEATERS[l.slug] || null,
+      type: x.type || (PLAYS.has(l.slug) ? "Play" : null),
+      // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
+      basePrice: (l.fromPrice || 80) * 1.8,
+      demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
+      official: x.official || (h % 2 ? "Telecharge" : "Ticketmaster"),
+      colors: PALETTES[h % PALETTES.length],
+      lottery: x.lottery || null, rush: x.rush || null,
+    };
+  });
+
+  // "Last updated" note. Stale = the daily scrape failed, or the list is over ~36 hours old.
+  function freshness() {
+    if (!LIVE) return { stale: true, text: "Live show list unavailable." };
+    const fmt = (iso) => new Date(iso).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+    const ageH = (Date.now() - new Date(LIVE.updatedAt)) / 36e5;
+    const stale = LIVE.status === "stale" || ageH > 36;
+    return {
+      stale,
+      when: fmt(LIVE.updatedAt),
+      text: stale
+        ? `Couldn't refresh from Broadway.com${LIVE.lastAttemptAt ? " on " + fmt(LIVE.lastAttemptAt) : ""}. Showing the list last updated ${fmt(LIVE.updatedAt)}.`
+        : `Show list from Broadway.com · last updated ${fmt(LIVE.updatedAt)}`,
+    };
+  }
   const SOURCES = window.TM_SOURCES || [];
   const DAYS_AHEAD = 14;
 
@@ -198,11 +246,12 @@
   // ---------- views ----------
   function viewHome() {
     let maxSave = 0;
-    SHOWS.forEach((s) => {
+    SHOWS.filter((s) => s.onSale).forEach((s) => {
       const lo = lowestForShow(s).best, off = officialLowest(s);
       if (lo && off) maxSave = Math.max(maxSave, 1 - lo.total / off.total);
     });
-    const lotteryCount = SHOWS.filter((s) => s.lottery || s.rush).length;
+    const fresh = freshness();
+    const onSale = SHOWS.filter((s) => s.onSale).length;
 
     return `
       <section class="hero">
@@ -218,11 +267,12 @@
           </select>
         </div>
         <div class="stats">
-          <div class="stat"><strong>${SHOWS.length}</strong><span>shows tracked</span></div>
+          <div class="stat"><strong>${SHOWS.length}</strong><span>shows on Broadway now</span></div>
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
           <div class="stat"><strong>${Math.round(maxSave * 100)}%</strong><span>top saving vs. box office</span></div>
-          <div class="stat"><strong>${lotteryCount}</strong><span>shows with lottery or rush</span></div>
+          <div class="stat"><strong>${onSale}</strong><span>with tickets on sale</span></div>
         </div>
+        <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
       <div class="section-head"><h2>Now playing</h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>`;
@@ -230,18 +280,29 @@
 
   function renderGrid() {
     const q = state.homeQuery.trim().toLowerCase();
-    let list = SHOWS.map((s) => ({ s, ...lowestForShow(s) }))
-      .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || s.theater.toLowerCase().includes(q));
-    if (state.homeSort === "price") list.sort((a, b) => a.best.total - b.best.total);
+    let list = SHOWS.map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
+      .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || (s.theater || "").toLowerCase().includes(q));
+    const tot = (x) => (x.best ? x.best.total : Infinity);
+    if (state.homeSort === "price") list.sort((a, b) => tot(a) - tot(b));
     if (state.homeSort === "az") list.sort((a, b) => a.s.title.localeCompare(b.s.title));
     if (state.homeSort === "lottery") list = list.filter(({ s }) => s.lottery || s.rush).sort((a, b) => Math.min(a.s.lottery?.price ?? 999, a.s.rush?.price ?? 999) - Math.min(b.s.lottery?.price ?? 999, b.s.rush?.price ?? 999));
 
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
-    $("#grid").innerHTML = list.length ? list.map(({ s, best, bestDate }) => `
+    $("#grid").innerHTML = list.length ? list.map(({ s, best, bestDate }) => !s.onSale ? `
+      <a class="show-card soon" href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">
+        <div class="poster" style="${posterStyle(s)}">
+          <div class="p-title">${esc(s.title)}</div>
+          <div class="p-theater">${esc(s.theater || "Broadway")}</div>
+        </div>
+        <div class="body">
+          <div class="price-line"><span class="from">Tickets not on sale yet</span></div>
+          <div class="badges"><span class="badge">Coming soon</span>${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}</div>
+        </div>
+      </a>` : `
       <a class="show-card" href="#show-${s.slug}">
         <div class="poster" style="${posterStyle(s)}">
           <div class="p-title">${esc(s.title)}</div>
-          <div class="p-theater">${esc(s.theater)}</div>
+          <div class="p-theater">${esc(s.theater || "Broadway")}</div>
         </div>
         <div class="body">
           <div class="price-line">
@@ -249,7 +310,7 @@
             <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>
           </div>
           <div class="badges">
-            <span class="badge">${esc(s.type)}</span>
+            ${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}
             ${s.lottery ? `<span class="badge gold">Lottery ${money0(s.lottery.price)}</span>` : ""}
             ${s.rush ? `<span class="badge green">Rush ${money0(s.rush.price)}</span>` : ""}
             ${s.demand > 0.85 ? `<span class="badge red">Selling fast</span>` : ""}
@@ -274,7 +335,7 @@
       { id: "balc", d: "M25,240 Q200,302 375,240 L375,280 Q200,350 25,280 Z", ty: 291 },
     ];
     return `
-      <svg viewBox="0 0 400 340" role="img" aria-label="Seat map of ${esc(show.theater)} with lowest price per section">
+      <svg viewBox="0 0 400 340" role="img" aria-label="Seat map${show.theater ? " of " + esc(show.theater) : ""} with lowest price per section">
         <rect x="120" y="20" width="160" height="38" rx="6" fill="#16130f"/>
         <text x="200" y="45" text-anchor="middle" fill="#f6f1e7" font-size="13" font-weight="700" letter-spacing="3">STAGE</text>
         ${arcs.map((a) => {
@@ -292,6 +353,7 @@
   function viewShow(slug) {
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
+    if (!show.onSale) return `<a class="back" href="#home">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
 
     if (state.dateIdx === null || !DATES[state.dateIdx].perfs.length) {
       state.dateIdx = DATES.findIndex((d) => d.perfs.length);
@@ -339,7 +401,8 @@
             <div class="kind">${esc(o.kind)}</div>
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
-          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : `<b>Seat assigned</b>Any section`}</div>
+          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : `<b>Seat assigned</b>Any section`}
+            ${o.sec && show.theater ? `<a class="seatview" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">📷 View from this section</a>` : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
             <div class="breakdown">${state.fees ? `${money(o.price)} + ${money(o.fee)} fees` : "before fees"} · each</div>
@@ -357,7 +420,8 @@
       <section class="detail-hero" style="${posterStyle(show)}">
         <div>
           <h1>${esc(show.title)}</h1>
-          <div class="meta">${esc(show.theater)} · ${esc(show.type)} · ${esc(show.runtime)} · Sold by ${esc(show.official)}</div>
+          <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}${show.ratingCount ? ` · ${show.ratingCount.toLocaleString()} Broadway.com reviews` : ""}</div>
+          <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness().when)}</span></div>
         </div>
         <div class="cheapest"><span>Lowest in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
@@ -397,9 +461,11 @@
             </div>
           </div>
           <div class="panel seatmap">
-            <h3>Seat map · ${esc(show.theater)}</h3>
+            <h3>Seat map${show.theater ? " · " + esc(show.theater) : ""}</h3>
             ${seatMap(all, show)}
             <div class="legend">Greener = cheaper. Tap a section to filter.</div>
+            ${show.theater ? `<a class="btn ghost seatview-btn" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">📷 See real seat views ↗</a>
+            <div class="legend">Audience photos from every section on A View From My Seat.</div>` : ""}
           </div>
           <div class="panel alert-box">
             <h3>Price alert</h3>
@@ -437,6 +503,7 @@
         <p class="eyebrow">Same-day steals</p>
         <h1>Lottery &amp; <em>Rush</em></h1>
         <p class="lede">${esc(lot.what)} Every show's policy in one table, cheapest first.</p>
+        <p class="updated stale">⚠ Sample lottery &amp; rush details. Policies change often, so confirm on <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a>.</p>
       </section>
       <div class="table-wrap">
         <table>
@@ -444,7 +511,7 @@
           <tbody>
             ${rows.map((s) => `
               <tr>
-                <td class="show-name"><a href="#show-${s.slug}">${esc(s.title)}</a><div class="muted" style="font-size:13px">${esc(s.theater)}</div></td>
+                <td class="show-name"><a href="#show-${s.slug}">${esc(s.title)}</a>${s.theater ? `<div class="muted" style="font-size:13px">${esc(s.theater)}</div>` : ""}</td>
                 <td>${s.lottery ? `<span class="big">${money0(s.lottery.price)}</span><div style="font-size:13px">${esc(s.lottery.where)} · ${esc(s.lottery.when)}</div>` : `<span class="muted">—</span>`}</td>
                 <td>${s.rush ? `<span class="big">${money0(s.rush.price)}</span><div style="font-size:13px">${esc(s.rush.where)} · ${esc(s.rush.when)}</div>` : `<span class="muted">—</span>`}</td>
               </tr>`).join("")}
