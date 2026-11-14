@@ -38,6 +38,10 @@ All of this lives in `data/previews.js`. **Write descriptions and consensus line
 
 `data/schedule.js` holds each show's first preview, opening night and closing date, taken from Wikipedia's Broadway theater table and Broadway.com's Off-Broadway guide. The status is worked out from today's date, so shows move from Upcoming to In previews to Now playing on their own, and disappear after their final performance. If a show has no dates, the site estimates its status and labels it "Status estimated" in the preview. Add dates there as shows are announced.
 
+- **Closing soon**: within 30 days of the final performance, a show gets a "⏳ Closing soon · Nov 22" ribbon on its card, which turns red as "Final week" in the last 7 days. It also gets a banner on its show page and in the preview, plus a "Closing soon" option in the When filter. The price calendar marks dates after the final show as "Closed".
+- **Opening night**: within 7 days of opening, a show gets a "🎉 Opens Wed 18!" ribbon, a confetti banner on its show page and in the preview (a dark "Opening night tonight!" version on the day itself), a 🎉 on the opening date in the calendar, and an "Opening this week" filter option.
+- Shows that haven't started yet only list real performance dates. If none fall in the next 14 days, the page says when the show opens.
+
 ## View from my seat
 
 Show pages link to [A View From My Seat](https://aviewfrommyseat.com/) for the show's theater: a button under the seat map, plus a "View from this section" link on each offer. Their policy says their user photos may only be used to promote A View From My Seat, so TheaterMax **links** to their pages and never copies or embeds the photos. Theater names live in `data/shows.js` (`TM_THEATERS`). Update them when shows move.

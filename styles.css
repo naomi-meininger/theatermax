@@ -310,3 +310,36 @@ body.modal-open { overflow: hidden; }
 .pv-status { position: relative; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; font-size: 13px; }
 .pv-status span:not(.badge) { opacity: .9; }
 @media (max-width: 600px) { .filter-label { width: 100%; } }
+
+/* ---------- closing soon ---------- */
+.ribbon {
+  position: absolute; top: 12px; left: 12px; z-index: 1; background: #fff4d6; color: #7a4b00;
+  font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.ribbon.urgent { background: var(--red); color: #fff; }
+.closing-note { background: #fff4d6; color: #6b4300; border: 1px solid #f0d89a; border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 500; margin-bottom: 16px; }
+.closing-note.urgent { background: #fde8e6; color: var(--red-dark); border-color: #f3b9b3; }
+.closing-note.big { font-size: 16px; padding: 14px 18px; margin: -6px 0 20px; }
+.closing-note a { color: inherit; font-weight: 700; margin-left: 6px; }
+
+/* ---------- opening night ---------- */
+.ribbon.opening { background: linear-gradient(90deg, #ffd34d, #ff8fb1); color: #3d1430; }
+.opening-note {
+  position: relative; overflow: hidden; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; font-weight: 500;
+  color: #3d1430; background: linear-gradient(110deg, #fff1b8 0%, #ffd6e4 55%, #e3dcff 100%); border: 1px solid #f3c6d6;
+}
+.opening-note.big { font-size: 16px; padding: 18px 20px; margin: -6px 0 20px; }
+.opening-note.big b { font-family: var(--display); font-size: 22px; }
+.opening-note.tonight { background: linear-gradient(110deg, #1b1033, #5a1a4f 60%, #b8231b); color: #fff3d6; border-color: transparent; }
+.on-text { position: relative; z-index: 1; }
+.confetti { position: absolute; inset: 0; pointer-events: none; }
+.confetti i {
+  position: absolute; top: -10px; width: 7px; height: 11px; border-radius: 2px; opacity: .85;
+  left: calc(var(--i) * 7.3% + 2%);
+  background: hsl(calc(var(--i) * 47), 85%, 60%);
+  animation: fall calc(2.6s + var(--i) * .13s) linear calc(var(--i) * -.37s) infinite;
+}
+@keyframes fall { to { transform: translateY(150px) rotate(540deg); } }
+@media (prefers-reduced-motion: reduce) { .confetti i { animation: none; top: calc(var(--i) * 6%); } }
+.date-chip.opening-day { box-shadow: inset 0 0 0 2px #ff8fb1; }
+.date-chip.opening-day .dow::after { content: " 🎉"; }

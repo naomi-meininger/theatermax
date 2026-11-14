@@ -49,11 +49,56 @@
     else status = "upcoming";
     return { status, guessed: false, opening, closing, previews };
   }
+  // ---- closing soon ----
+  const CLOSING_SOON_DAYS = 30;
+  function daysLeft(s) {
+    if (!s.closing || s.closing.precision !== "day" || s.status === "closed") return null;
+    return Math.round((s.closing.date - TODAY) / 864e5);
+  }
+  const isClosingSoon = (s) => { const d = daysLeft(s); return d !== null && d <= CLOSING_SOON_DAYS; };
+  function closingNote(s) { // { short, long, urgent } or null
+    const d = daysLeft(s);
+    if (d === null || d > CLOSING_SOON_DAYS) return null;
+    const day = s.closing.date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    if (d === 0) return { short: "Final show today", long: `Last chance: today (${day}) is the final performance.`, urgent: true };
+    if (d === 1) return { short: "Closes tomorrow", long: `Last chance: the final performance is tomorrow, ${day}.`, urgent: true };
+    if (d <= 7) return { short: `Final week · closes ${fmtRunDate(s.closing)}`, long: `Final week: ${esc(s.title)} closes ${day}. Only ${d} days left.`, urgent: true };
+    return { short: `Closing soon · ${fmtRunDate(s.closing)}`, long: `Closing soon: the final performance is ${day}, ${d} days from now.`, urgent: false };
+  }
+  // ---- opening night within a week ----
+  const OPENING_SOON_DAYS = 7;
+  function daysToOpening(s) {
+    if (!s.opening || s.opening.precision !== "day") return null;
+    const d = Math.round((s.opening.date - TODAY) / 864e5);
+    return d >= 0 && d <= OPENING_SOON_DAYS ? d : null;
+  }
+  const isOpeningSoon = (s) => daysToOpening(s) !== null;
+  function openingNote(s) { // { short, long, tonight } or null
+    const d = daysToOpening(s);
+    if (d === null) return null;
+    const day = s.opening.date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    const wk = s.opening.date.toLocaleDateString("en-US", { weekday: "short" });
+    if (d === 0) return { short: "Opening night tonight!", long: `It's opening night! ${esc(s.title)} officially opens tonight. Break a leg!`, tonight: true };
+    if (d === 1) return { short: "Opens tomorrow!", long: `Opening night is tomorrow, ${day}! Catch one of the last previews or be there for the big night.` };
+    return { short: `Opens ${wk} ${s.opening.date.getDate()}!`, long: `Opening night is ${day}, just ${d} days away! Previews are a great way to see it early, often for less.` };
+  }
+  const confetti = () => `<span class="confetti" aria-hidden="true">${Array.from({ length: 14 }, (_, i) => `<i style="--i:${i}"></i>`).join("")}</span>`;
+
+  // Is there a performance on this date? (not before first preview, not after closing)
+  function performsOn(s, date) {
+    if (s.closing && s.closing.precision === "day" && date > s.closing.date) return false;
+    const start = s.previews && s.previews.precision === "day" ? s.previews.date
+      : s.opening && s.opening.precision === "day" ? s.opening.date : null;
+    if (start && (s.status === "upcoming" || s.status === "previews") && date < start) return false;
+    if (s.status === "upcoming" && !start && s.opening) return false; // opens in a later month/year
+    return true;
+  }
+
   const STATUS_LABEL = { playing: "Now playing", previews: "In previews", upcoming: "Upcoming", closed: "Closed" };
   function statusBadge(s, long) {
     const soon = s.closing && s.closing.precision === "day" && (s.closing.date - TODAY) / 864e5 <= 45;
-    if (s.status === "playing") return soon ? `<span class="badge red">Closes ${fmtRunDate(s.closing)}</span>` : (long ? `<span class="badge green">Now playing</span>` : "");
-    if (s.status === "previews") return `<span class="badge st-previews">In previews${s.opening ? " · opens " + fmtRunDate(s.opening) : ""}</span>`;
+    if (s.status === "playing") return soon && long ? `<span class="badge red">Closes ${fmtRunDate(s.closing)}</span>` : (long ? `<span class="badge green">Now playing</span>` : soon && !isClosingSoon(s) ? `<span class="badge red">Closes ${fmtRunDate(s.closing)}</span>` : "");
+    if (s.status === "previews") return `<span class="badge st-previews">In previews${s.opening && (long || !isOpeningSoon(s)) ? " · opens " + fmtRunDate(s.opening) : ""}</span>`;
     if (s.status === "upcoming") return `<span class="badge st-upcoming">${s.opening ? "Opens " + fmtRunDate(s.opening) : "Upcoming"}</span>`;
     return `<span class="badge">Closed</span>`;
   }
@@ -271,6 +316,7 @@
     return best;
   }
   function lowestForDate(show, dateObj, opts) {
+    if (!performsOn(show, dateObj.date)) return null;
     let best = null;
     dateObj.perfs.forEach((p) => {
       const b = lowest(buildOffers(show, p), opts);
@@ -288,7 +334,7 @@
   }
   function officialLowest(show) {
     let best = null;
-    DATES.forEach((dt) => dt.perfs.forEach((p) => {
+    DATES.filter((dt) => performsOn(show, dt.date)).forEach((dt) => dt.perfs.forEach((p) => {
       buildOffers(show, p).forEach((o) => { if (o.kind === "Official seller" && (!best || o.total < best.total)) best = o; });
     }));
     return best;
@@ -304,14 +350,16 @@
   const FILTERS = {
     scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"]],
     type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Special", "Specials"], ["Other", "Other"]],
-    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"]],
+    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "🎉 Opening this week"], ["closing", "⏳ Closing soon"]],
   };
   const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway" };
   function passes(s, f, skip) {
     if (s.status === "closed") return false;
     if (skip !== "scene" && f.scene !== "all" && (f.scene === "off") !== (s.scene === "off")) return false;
     if (skip !== "type" && f.type !== "all" && typeOf(s) !== f.type) return false;
-    if (skip !== "status" && f.status !== "all" && s.status !== f.status) return false;
+    if (skip !== "status" && f.status === "closing" && !isClosingSoon(s)) return false;
+    if (skip !== "status" && f.status === "opening" && !isOpeningSoon(s)) return false;
+    if (skip !== "status" && f.status !== "all" && f.status !== "closing" && f.status !== "opening" && s.status !== f.status) return false;
     return true;
   }
   function filtersHtml() {
@@ -378,17 +426,19 @@
     const q = state.homeQuery.trim().toLowerCase();
     let list = SHOWS.filter((s) => passes(s, state.f)).map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
       .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || (s.theater || "").toLowerCase().includes(q));
-    const tot = (x) => (x.best ? x.best.total : Infinity);
+    const tot = (x) => (x.best ? x.best.total : x.s.onSale ? 1e6 + x.s.bdcFrom : Infinity);
     const openKey = (x) => (x.s.status === "playing" ? Infinity : x.s.opening ? x.s.opening.date.getTime() : 9e15);
     if (state.homeSort === "price") list.sort((a, b) => tot(a) - tot(b));
     if (state.homeSort === "opening") list.sort((a, b) => openKey(a) - openKey(b) || tot(a) - tot(b));
+    if (state.f.status === "closing" && state.homeSort !== "az") list.sort((a, b) => daysLeft(a.s) - daysLeft(b.s));
+    if (state.f.status === "opening" && state.homeSort !== "az") list.sort((a, b) => daysToOpening(a.s) - daysToOpening(b.s));
     if (state.homeSort === "az") list.sort((a, b) => a.s.title.localeCompare(b.s.title));
     if (state.homeSort === "lottery") list = list.filter(({ s }) => s.lottery || s.rush).sort((a, b) => Math.min(a.s.lottery?.price ?? 999, a.s.rush?.price ?? 999) - Math.min(b.s.lottery?.price ?? 999, b.s.rush?.price ?? 999));
 
     $("#filters").innerHTML = filtersHtml();
     const f = state.f;
     const typeWord = f.type === "all" ? "Shows" : f.type === "Other" ? "Other shows" : FILTERS.type.find((x) => x[0] === f.type)[1];
-    const whenWord = { all: "", playing: " now playing", previews: " in previews", upcoming: " coming soon" }[f.status];
+    const whenWord = { all: "", playing: " now playing", previews: " in previews", upcoming: " coming soon", closing: " closing soon", opening: " opening this week" }[f.status];
     const whereWord = { all: "", broadway: " on Broadway", off: " off-Broadway" }[f.scene];
     $("#grid-title").textContent = typeWord + whenWord + whereWord;
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
@@ -397,16 +447,21 @@
 
   function cardHtml({ s, best, bestDate }) {
     const href = s.onSale ? `#show-${s.slug}` : s.bdcUrl;
+    best = best || null;
     const ext = s.onSale ? "" : ` target="_blank" rel="noopener"`;
     return `
       <article class="show-card ${s.onSale ? "" : "soon"}">
         <a class="card-link" href="${esc(href)}"${ext}>
           <div class="poster" style="${posterStyle(s)}">
+            ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
+              : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>` : ""}
             <div class="p-title">${esc(s.title)}</div>
             <div class="p-theater">${esc(s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway"))}</div>
           </div>
           <div class="body">
-            <div class="price-line">${s.onSale
+            <div class="price-line">${s.onSale && !best
+              ? `<span class="from">from <strong>${money0(s.bdcFrom)}</strong> on Broadway.com</span>`
+              : s.onSale
               ? `<span class="from">from <strong>${money0(best.total)}</strong> all-in</span>
                  <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>`
               : `<span class="from">Tickets not on sale yet</span>`}</div>
@@ -442,6 +497,8 @@
           <div class="pv-status">${statusBadge(s, true)}${s.status === "playing" && s.opening && s.opening.precision === "day" ? `<span>Opened ${fmtRunDate(s.opening)}</span>` : ""}${s.closing && s.status !== "closed" ? `<span>Final show ${fmtRunDate(s.closing)}</span>` : s.status === "playing" && !s.guessed ? `<span>Open-ended run</span>` : ""}${s.guessed ? `<span title="We don't have this show's dates yet, so the status is estimated from its listing.">Status estimated</span>` : ""}</div>
         </div>
         <div class="modal-body">
+          ${closingNote(s) ? `<div class="closing-note ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).long}</div>` : ""}
+          ${openingNote(s) ? `<div class="opening-note">${confetti()}<span class="on-text">🎉 ${openingNote(s).long}</span></div>` : ""}
           ${s.blurb
             ? `<p class="pv-blurb">${esc(s.blurb)}</p>`
             : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it on Broadway.com ↗</a></p>`}
@@ -526,8 +583,25 @@
     const backHref = SCENE_HASH[state.f.scene] || "#home";
     if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
 
-    if (state.dateIdx === null || !DATES[state.dateIdx].perfs.length) {
-      state.dateIdx = DATES.findIndex((d) => d.perfs.length);
+    const playable = (d) => d.perfs.length && performsOn(show, d.date);
+    const note = closingNote(show);
+    const on = openingNote(show);
+    const banner = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
+      : on ? `<div class="opening-note big ${on.tonight ? "tonight" : ""}">${confetti()}<span class="on-text"><b>🎉 ${on.tonight ? "Opening night tonight!" : "Opening night is almost here!"}</b><br>${on.long}</span></div>` : "";
+    if (!DATES.some(playable)) {
+      // Only state dates we actually have: a real first-preview date, otherwise the opening date.
+      const first = show.previews && show.previews.precision === "day" && !show.previews.assumed ? { label: "first performance", d: show.previews }
+        : show.opening ? { label: "opening night", d: show.opening } : null;
+      return `
+        <a class="back" href="${backHref}">← ${{ all: "All shows", broadway: "Broadway", off: "Off-Broadway" }[state.f.scene]}</a>
+        <section class="detail-hero" style="${posterStyle(show)}"><div><h1>${esc(show.title)}</h1>
+          <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}</div></div>
+          <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button></section>
+        <div class="empty">No performances in the next ${DAYS_AHEAD} days${first ? ` — ${first.label} is ${fmtRunDate(first.d)}` : ""}.
+          Tickets are on sale now from <b>${money(show.bdcFrom)}</b>. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See dates on Broadway.com ↗</a></div>`;
+    }
+    if (state.dateIdx === null || !playable(DATES[state.dateIdx])) {
+      state.dateIdx = DATES.findIndex(playable);
       state.perfIdx = 0;
     }
     const dateObj = DATES[state.dateIdx];
@@ -597,14 +671,19 @@
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
         <div class="cheapest"><span>Lowest in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
+      ${banner}
 
-      <section class="panel">
+      <section class="panel" id="dates">
         <h3>Pick a date</h3>
         <div class="date-strip">
           ${DATES.map((dt, i) => {
             const lo = lows[i];
-            if (!dt.perfs.length) return `<button class="date-chip dark" disabled><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">Dark</div></button>`;
-            const cls = ["date-chip", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
+            if (!dt.perfs.length || !performsOn(show, dt.date)) {
+              const why = !dt.perfs.length ? "Dark" : show.closing && dt.date > show.closing.date ? "Closed" : "—";
+              return `<button class="date-chip dark" disabled title="${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
+            }
+            const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
+            const cls = ["date-chip", isOpening ? "opening-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
             return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"><div class="dow">${i === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
           }).join("")}
         </div>
@@ -771,6 +850,7 @@
       if (location.hash === "#home" || location.hash === "") { e.preventDefault(); route(); }
       return;
     }
+    if (e.target.closest("[data-date-first]")) { e.preventDefault(); $("#dates")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     const pv = e.target.closest("[data-preview]");
     if (pv) { e.preventDefault(); openPreview(pv.dataset.preview); return; }
     if (e.target.closest("[data-close]")) {
