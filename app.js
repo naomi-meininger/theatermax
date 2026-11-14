@@ -11,6 +11,8 @@
   const PLAYS = new Set(window.TM_PLAYS || []);
   const THEATERS = window.TM_THEATERS || {};
   const PREVIEWS = window.TM_PREVIEWS || {};
+  const RUSH = window.TM_RUSH || null; // weekly from bwayrush.com (data/rush.js)
+  const cheapest = (deals, type) => deals.filter((d) => d.type === type && d.price != null).sort((a, b) => a.price - b.price)[0] || null;
   const RUN_DATES = window.TM_SCHEDULE || {};
 
   // ---- run status: "playing" | "previews" | "upcoming" | "closed" ----
@@ -20,6 +22,8 @@
     const [y, m, d] = String(str).split("-").map(Number);
     return { date: new Date(y, (m || 1) - 1, d || 1), precision: d ? "day" : m ? "month" : "year" };
   }
+  // "Tue, Nov 17"
+  const fmtDay = (d) => d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
   function fmtRunDate(p) {
     if (!p) return "";
     const sameYear = p.date.getFullYear() === TODAY.getFullYear();
@@ -77,11 +81,45 @@
     const d = daysToOpening(s);
     if (d === null) return null;
     const day = s.opening.date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
-    const wk = s.opening.date.toLocaleDateString("en-US", { weekday: "short" });
+    const wk = fmtDay(s.opening.date);
     if (d === 0) return { short: "Opening night tonight!", long: `It's opening night! ${esc(s.title)} officially opens tonight. Break a leg!`, tonight: true };
     if (d === 1) return { short: "Opens tomorrow!", long: `Opening night is tomorrow, ${day}! Catch one of the last previews or be there for the big night.` };
-    return { short: `Opens ${wk} ${s.opening.date.getDate()}!`, long: `Opening night is ${day}, just ${d} days away! Previews are a great way to see it early, often for less.` };
+    return { short: `Opens ${wk}!`, long: `Opening night is ${day}, just ${d} days away! Previews are a great way to see it early, often for less.` };
   }
+  // ---- first preview within a week (only real, announced first-preview dates) ----
+  function daysToPreview(s) {
+    if (!s.previews || s.previews.assumed || s.previews.precision !== "day") return null;
+    const d = Math.round((s.previews.date - TODAY) / 864e5);
+    return d >= 0 && d <= 7 ? d : null;
+  }
+  function previewNote(s) {
+    const d = daysToPreview(s);
+    if (d === null) return null;
+    return { short: d === 0 ? "First preview tonight!" : `First preview ${fmtDay(s.previews.date)}!`,
+      long: d === 0 ? `Tonight is the very first preview of ${esc(s.title)}!` : `The first preview is ${fmtDay(s.previews.date)}, ${d === 1 ? "tomorrow" : `in ${d} days`}. Be in the first audience ever to see it.` };
+  }
+  // Short run-date notes for anything happening within a month: first preview, opening, closing.
+  function runNotes(s) {
+    const out = [], within = (dt) => { const d = Math.round((dt - TODAY) / 864e5); return d >= 0 && d <= 31; };
+    if (s.previews && !s.previews.assumed && s.previews.precision === "day" && within(s.previews.date)) out.push(`🎭 First preview ${fmtDay(s.previews.date)}`);
+    if (s.opening && s.opening.precision === "day" && within(s.opening.date)) out.push(`🎉 Opens ${fmtDay(s.opening.date)}`);
+    if (s.closing && s.closing.precision === "day" && within(s.closing.date)) out.push(`⏳ Closes ${fmtDay(s.closing.date)}`);
+    return out;
+  }
+  // "This week" banner: first previews, opening nights and final performances in the next 7 days.
+  function thisWeekBanner(filter = () => true) {
+    const items = [];
+    SHOWS.filter((s) => s.status !== "closed" && filter(s)).forEach((s) => {
+      if (daysToPreview(s) !== null) items.push({ d: s.previews.date, html: `🎭 <b>First preview</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.previews.date)}` });
+      if (daysToOpening(s) !== null) items.push({ d: s.opening.date, html: `🎉 <b>Opening night</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.opening.date)}` });
+      const left = daysLeft(s);
+      if (left !== null && left <= 7) items.push({ d: s.closing.date, html: `⏳ <b>Final performance</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.closing.date)}` });
+    });
+    if (!items.length) return "";
+    items.sort((a, b) => a.d - b.d);
+    return `<section class="week-banner" aria-label="This week">${confetti()}<div class="wb-inner"><span class="wb-title">This week</span><ul>${items.map((i) => `<li>${i.html}</li>`).join("")}</ul></div></section>`;
+  }
+
   const confetti = () => `<span class="confetti" aria-hidden="true">${Array.from({ length: 14 }, (_, i) => `<i style="--i:${i}"></i>`).join("")}</span>`;
 
   // Is there a performance on this date? (not before first preview, not after closing)
@@ -127,19 +165,26 @@
 
   // Build the show list from Broadway.com's live list (data/live-shows.js) + our extras.
   // Seat-level pricing is still sample data generated in buildOffers().
-  const SHOWS = (LIVE ? LIVE.shows : []).map((l, i, arr) => {
+  const EXTRA_SHOWS = (window.TM_EXTRA_SHOWS || []).map((x) => ({ ...x, url: x.tickets, fromPrice: null, ratingCount: null, manual: true }));
+  const PROGRAMS = window.TM_PROGRAMS || [];
+  // Program deals (LincTix, Hiptix, Access Club…) attached to the shows they currently cover.
+  const programDeals = (slug) => PROGRAMS.filter((p) => (p.slugs || []).includes(slug)).flatMap((p) => p.deals.map((d) => ({
+    label: `${d.price} ${d.name}`, url: p.url, type: /student/i.test(d.name) ? "student" : "young", platform: p.company,
+    price: /^\$[\d.]+$/.test(d.price) ? parseFloat(d.price.slice(1)) : null, program: true })));
+  const SHOWS = [...(LIVE ? LIVE.shows : []), ...EXTRA_SHOWS].map((l, i, arr) => {
     const x = EXTRAS[l.slug] || {};
     const h = hash(l.slug);
     const popularity = l.ratingCount ? Math.min(1, l.ratingCount / 1000) : 0.3;
     return {
       slug: l.slug, title: l.title, bdcUrl: l.url, bdcFrom: l.fromPrice, ratingCount: l.ratingCount,
       onSale: l.fromPrice !== null,
-      theater: x.theater || THEATERS[l.slug] || null,
-      type: x.type || (PREVIEWS[l.slug] || {}).type || (PLAYS.has(l.slug) ? "Play" : null),
-      blurb: (PREVIEWS[l.slug] || {}).blurb || null,
+      theater: x.theater || THEATERS[l.slug] || l.theater || null,
+      type: x.type || (PREVIEWS[l.slug] || {}).type || l.type || (PLAYS.has(l.slug) ? "Play" : null),
+      blurb: (PREVIEWS[l.slug] || {}).blurb || l.blurb || null,
       critics: (PREVIEWS[l.slug] || {}).critics || null,
       reddit: (PREVIEWS[l.slug] || {}).reddit || null,
       scene: l.scene || "broadway",
+      // (manual shows like City Center sell tickets on their own site)
       ...runInfo(l.slug, l.fromPrice !== null, l.ratingCount, l.scene || "broadway"),
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
       basePrice: (l.fromPrice || 80) * 1.8,
@@ -147,7 +192,12 @@
       // If Ticketmaster's API returns this show, Ticketmaster is its official seller.
       official: x.official || (Object.values((window.TM_PRICES && window.TM_PRICES.shows && window.TM_PRICES.shows[l.slug]) || {}).some((p) => p.ticketmaster) ? "Ticketmaster" : (h % 2 ? "Telecharge" : "Ticketmaster")),
       colors: PALETTES[h % PALETTES.length],
-      lottery: x.lottery || null, rush: x.rush || null,
+      // Real deals from bwayrush when we have them; the old sample values only if that file is missing.
+      deals: [...(RUSH ? ((RUSH.shows[l.slug] || {}).deals || []) : []),
+        ...programDeals(l.slug).filter((d) => !((RUSH && RUSH.shows[l.slug]) || { deals: [] }).deals.some((x) => x.label.toLowerCase().includes(d.label.split(" ").slice(1).join(" ").toLowerCase())))],
+      tickets: l.tickets || null, manual: !!l.manual,
+      lottery: RUSH ? cheapest((RUSH.shows[l.slug] || {}).deals || [], "lottery") : x.lottery || null,
+      rush: RUSH ? cheapest((RUSH.shows[l.slug] || {}).deals || [], "rush") : x.rush || null,
     };
   });
 
@@ -350,10 +400,14 @@
 
     // Lottery & rush — cheap, but not guaranteed
     if (show.lottery && near <= 2) {
-      offers.push({ seller: show.lottery.where + " lottery", kind: "Digital lottery", sec: null, row: null, price: show.lottery.price, fee: 0, url: "https://bwayrush.com/", note: show.lottery.when + " · max 2 tickets · not guaranteed", chance: true, max: 2 });
+      const d = show.lottery;
+      offers.push({ seller: `${d.platform || "Digital"} lottery`, kind: `${d.channel || "Digital"} lottery`, sec: null, row: null, price: d.price, fee: 0, url: d.url || "https://bwayrush.com/",
+        note: "Usually enter 1–2 days before · not guaranteed · via bwayrush.com", chance: true, max: 2, verified: !!RUSH });
     }
     if (show.rush && near === 0) {
-      offers.push({ seller: show.rush.where + " rush", kind: "Rush", sec: null, row: null, price: show.rush.price, fee: 0, url: "https://bwayrush.com/", note: show.rush.when + " · max 2 tickets · while they last", chance: true, max: 2 });
+      const d = show.rush;
+      offers.push({ seller: `${d.channel || ""} rush`.trim().replace(/^./, (c) => c.toUpperCase()), kind: d.platform ? `Rush · ${d.platform}` : "Rush", sec: null, row: null, price: d.price, fee: 0, url: d.url || "https://bwayrush.com/",
+        note: (d.channel === "In-person" ? "Box office opening, usually 10 AM (12 PM Sun)" : d.channel === "Mobile" ? "In the TodayTix app" : "Online") + " · while they last · via bwayrush.com", chance: true, max: 2, verified: !!RUSH });
     }
 
     // ---- real prices for this performance replace that seller's sample rows ----
@@ -458,11 +512,7 @@
   function viewHome() {
     const sc = state.f.scene, off = sc === "off";
     const LIST = SHOWS.filter((s) => passes(s, { scene: sc, type: "all", status: "all" }));
-    let maxSave = 0;
-    LIST.filter((s) => s.onSale).forEach((s) => {
-      const lo = lowestForShow(s).best, offc = officialLowest(s);
-      if (lo && offc) maxSave = Math.max(maxSave, 1 - lo.total / offc.total);
-    });
+    const withLot = LIST.filter((s) => s.lottery || s.rush).length;
     const fresh = freshness(sc === "all" ? null : sc);
     const playing = LIST.filter((s) => s.status === "playing").length;
     const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : "on & off Broadway";
@@ -489,10 +539,11 @@
           <div class="stat"><strong>${LIST.length}</strong><span>shows ${where}</span></div>
           <div class="stat"><strong>${playing}</strong><span>playing now</span></div>
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
-          <div class="stat"><strong>${Math.round(maxSave * 100)}%</strong><span>top saving vs. box office</span></div>
+          <div class="stat"><strong>${withLot}</strong><span>with lottery or rush this week</span></div>
         </div>
         <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
+      ${thisWeekBanner((s) => sc === "all" || (sc === "off") === (s.scene === "off"))}
       <div class="filters" id="filters"></div>
       <div class="section-head"><h2 id="grid-title"></h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>`;
@@ -500,9 +551,9 @@
 
   function renderGrid() {
     const q = state.homeQuery.trim().toLowerCase();
-    let list = SHOWS.filter((s) => passes(s, state.f)).map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
+    let list = SHOWS.filter((s) => passes(s, state.f)).map((s) => ({ s, real: realFrom(s) }))
       .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || (s.theater || "").toLowerCase().includes(q));
-    const tot = (x) => (x.best ? x.best.total : x.s.onSale ? 1e6 + x.s.bdcFrom : Infinity);
+    const tot = (x) => (x.s.onSale && x.real ? x.real.v : Infinity);
     const openKey = (x) => (x.s.status === "playing" ? Infinity : x.s.opening ? x.s.opening.date.getTime() : 9e15);
     if (state.homeSort === "price") list.sort((a, b) => tot(a) - tot(b));
     if (state.homeSort === "opening") list.sort((a, b) => openKey(a) - openKey(b) || tot(a) - tot(b));
@@ -523,25 +574,36 @@
     grid.innerHTML = list.length ? list.map((x, i) => cardHtml(x, i)).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
   }
 
-  function cardHtml({ s, best, bestDate }, i = 0) {
+  // The lowest REAL price we know: Broadway.com's listed price, a live API price, or a verified code.
+  function realFrom(s) {
+    const c = [];
+    if (s.bdcFrom != null) c.push({ v: s.bdcFrom, src: "Broadway.com" });
+    validCodes(s).forEach((k) => c.push({ v: k.from, src: `code ${k.code}` }));
+    const live = PRICES.shows && PRICES.shows[s.slug];
+    if (live) Object.values(live).forEach((p) => { if (p.seatgeek) c.push({ v: p.seatgeek.low, src: "SeatGeek" }); if (p.ticketmaster) c.push({ v: p.ticketmaster.min, src: "Ticketmaster" }); });
+    return c.sort((a, b) => a.v - b.v)[0] || null;
+  }
+
+  function cardHtml({ s }, i = 0) {
     const href = s.onSale ? `#show-${s.slug}` : s.bdcUrl;
-    best = best || null;
     const ext = s.onSale ? "" : ` target="_blank" rel="noopener"`;
     return `
       <article class="show-card ${s.onSale ? "" : "soon"}" style="--i:${Math.min(i, 12)}">
         <a class="card-link" href="${esc(href)}"${ext}>
           <div class="poster" style="${posterStyle(s)}">
             ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
-              : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>` : ""}
+              : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>`
+              : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>` : ""}
             <div class="p-title">${esc(s.title)}</div>
             <div class="p-theater">${esc(s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway"))}</div>
           </div>
           <div class="body">
-            <div class="price-line">${s.onSale && !best
-              ? `<span class="from">from <strong>${money0(s.bdcFrom)}</strong> on Broadway.com</span>`
-              : s.onSale
-              ? `<span class="from">from <strong>${money0(best.total)}</strong> all-in</span>
-                 <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>`
+            <div class="price-line">${false
+              ? ""
+              : s.onSale && realFrom(s)
+              ? `<span class="from">from <strong>${money0(realFrom(s).v)}</strong></span>
+                 <span class="muted" style="font-size:12px">${esc(realFrom(s).src)}</span>`
+              : s.tickets ? `<span class="from">Tickets on ${esc(new URL(s.tickets).hostname.replace(/^www\./, ""))}</span>`
               : `<span class="from">Tickets not on sale yet</span>`}</div>
             <div class="badges">
               ${statusBadge(s, false)}
@@ -556,7 +618,7 @@
         </a>
         <div class="card-actions">
           <button class="preview-btn" data-preview="${esc(s.slug)}">Preview</button>
-          <a href="${esc(href)}"${ext}>${s.onSale ? "Compare prices →" : "Broadway.com ↗"}</a>
+          <a href="${esc(href)}"${ext}>${s.onSale ? "Compare prices →" : s.tickets ? "Get tickets ↗" : "Broadway.com ↗"}</a>
         </div>
       </article>`;
   }
@@ -578,12 +640,13 @@
         <div class="modal-body">
           ${closingNote(s) ? `<div class="closing-note ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).long}</div>` : ""}
           ${openingNote(s) ? `<div class="opening-note">${confetti()}<span class="on-text">🎉 ${openingNote(s).long}</span></div>` : ""}
+          ${previewNote(s) ? `<div class="opening-note preview-note">${confetti()}<span class="on-text">🎭 ${previewNote(s).long}</span></div>` : ""}
           ${s.blurb
             ? `<p class="pv-blurb">${esc(s.blurb)}</p>`
-            : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it on Broadway.com ↗</a></p>`}
+            : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it ${s.tickets ? "on the venue's site" : "on Broadway.com"} ↗</a></p>`}
 
           <div class="pv-facts">
-            <div><span>Lowest listed price</span><strong>${s.bdcFrom != null ? money(s.bdcFrom) : "Not on sale"}</strong><em>Broadway.com</em></div>
+            <div><span>Lowest listed price</span><strong>${s.bdcFrom != null ? money(s.bdcFrom) : s.tickets ? "See site" : "Not on sale"}</strong><em>${s.tickets ? "venue box office" : "Broadway.com"}</em></div>
             <div><span>Audience reviews</span><strong>${s.ratingCount ? s.ratingCount.toLocaleString() : "—"}</strong><em>on Broadway.com</em></div>
             <div><span>Critics</span><strong>${c ? c.score + "%" : "—"}</strong><em>${c ? "avg. rating" : "no roundup yet"}</em></div>
           </div>
@@ -607,7 +670,7 @@
           </div>
         </div>
         <div class="modal-foot">
-          ${s.onSale ? `<a class="btn" href="#show-${esc(s.slug)}" data-close>Compare prices</a>` : `<a class="btn" href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Get notified on Broadway.com ↗</a>`}
+          ${s.onSale ? `<a class="btn" href="#show-${esc(s.slug)}" data-close>Compare prices</a>` : `<a class="btn" href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">${s.tickets ? "Get tickets ↗" : "Get notified on Broadway.com ↗"}</a>`}
           <button class="btn ghost" data-close>Close</button>
         </div>
       </div>`;
@@ -667,12 +730,13 @@
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
     const backHref = SCENE_HASH[state.f.scene] || "#home";
-    if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
+    if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`;
 
     const playable = (d) => perfsFor(show, d).length && performsOn(show, d.date);
     const note = closingNote(show);
     const on = openingNote(show);
     const banner = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
+      : previewNote(show) ? `<div class="opening-note preview-note big">${confetti()}<span class="on-text"><b>🎭 First preview coming up!</b><br>${previewNote(show).long}</span></div>`
       : on ? `<div class="opening-note big ${on.tonight ? "tonight" : ""}">${confetti()}<span class="on-text"><b>🎉 ${on.tonight ? "Opening night tonight!" : "Opening night is almost here!"}</b><br>${on.long}</span></div>` : "";
     if (!DATES.some(playable)) {
       // Only state dates we actually have: a real first-preview date, otherwise the opening date.
@@ -762,7 +826,7 @@
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
-        <div class="cheapest"><span>Lowest in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
+        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
       ${banner}
 
@@ -776,8 +840,9 @@
               return `<button class="date-chip dark" disabled title="${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
             }
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
-            const cls = ["date-chip", isOpening ? "opening-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
-            return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"><div class="dow">${i === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
+            const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
+            const cls = ["date-chip", isOpening ? "opening-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
+            return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : ""}<div class="dow">${i === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
           }).join("")}
         </div>
         <div class="time-row">
@@ -849,30 +914,91 @@
       </div>`;
   }
 
+  function programsSection(scene) {
+    const ARTS = [["theater", "Theater"], ["opera", "Opera"], ["ballet", "Ballet"]];
+    const list = PROGRAMS.filter((p) => scene === "all" || (scene === "off") === (p.scene === "off"));
+    if (!list.length) return "";
+    const srcs = window.TM_PROGRAMS_SOURCES || [];
+    return `
+      <div class="section-head"><h2>Student &amp; young-audience programs</h2><span class="muted">${list.length} companies</span></div>
+      <p class="muted" style="margin-top:-6px">Cheap seats you sign up for once, usually free. Ages and prices from ${srcs.map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(", ")}. Confirm on each company's site.</p>
+      ${ARTS.map(([art, label]) => {
+        const g = list.filter((p) => p.art === art);
+        if (!g.length) return "";
+        return `<h3 class="art-head">${label}</h3><div class="program-grid">${g.map((p) => `
+          <article class="program">
+            <a class="program-co" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.company)} ↗</a>
+            ${p.where ? `<div class="muted" style="font-size:12px">${esc(p.where)}</div>` : ""}
+            ${(p.slugs || []).length ? `<div class="program-shows">Now: ${(p.slugs || []).map((sl) => SHOWS.find((x) => x.slug === sl)).filter((x) => x && x.status !== "closed").map((x) => `<a href="#show-${x.slug}">${esc(x.title)}</a>`).join(", ") || "—"}</div>` : ""}
+            <ul>${p.deals.map((d) => `<li><b>${esc(d.price)}</b> <span class="pname">${esc(d.name)}</span> <span class="badge">${esc(d.who)}</span><div class="muted" style="font-size:12px">${esc(d.how)}</div></li>`).join("")}</ul>
+          </article>`).join("")}</div>`;
+      }).join("")}`;
+  }
+
   function viewLottery() {
-    const rows = SHOWS.filter((s) => s.lottery || s.rush)
-      .sort((a, b) => Math.min(a.lottery?.price ?? 999, a.rush?.price ?? 999) - Math.min(b.lottery?.price ?? 999, b.rush?.price ?? 999));
-    const lot = SOURCES.find((s) => s.id === "lottery");
+    const lot = SOURCES.find((x) => x.id === "lottery");
+    const scene = state.lotScene || "all";
+    const inScene = (s) => scene === "all" || (scene === "off") === (s.scene === "off");
+    const current = SHOWS.filter((s) => s.status !== "closed");
+    const fmt = (iso) => (iso ? fmtNY(iso) : "never");
+    const stale = RUSH && (RUSH.status === "stale" || (Date.now() - new Date(RUSH.updatedAt)) / 864e5 > 9);
+
+    const dealLink = (d) => `<a class="deal" href="${esc(d.url || "https://bwayrush.com/")}" target="_blank" rel="noopener">
+        <b>${d.price != null ? money(d.price).replace(/\.00$/, "") : esc(d.label.split(" ")[0])}</b>
+        <span>${esc([d.channel, d.platform].filter(Boolean).join(" · ") || d.label.replace(/^\S+\s*/, ""))}</span></a>`;
+    const otherLabel = (d) => ({ student: "Student", young: d.label.replace(/^\S+\s*/, "").replace(/\+fee\s*/, "") || "Young audience", sro: "Standing room", special: d.label.replace(/^\S+\s*/, "") || "Special" }[d.type]);
+    const cell = (deals) => deals.length ? deals.sort((a, b) => (a.price ?? 999) - (b.price ?? 999)).map(dealLink).join("") : `<span class="muted">—</span>`;
+    const min = (s) => Math.min(...s.deals.filter((d) => d.price != null && (d.type === "lottery" || d.type === "rush")).map((d) => d.price), 999);
+
+    const withData = current.filter((s) => s.deals.length && inScene(s)).sort((a, b) => min(a) - min(b) || a.title.localeCompare(b.title));
+    const noData = current.filter((s) => !s.deals.length);
+    const notesHtml = (s) => { const n = runNotes(s); return n.length ? `<div class="run-notes">${n.map((x) => `<span>${esc(x)}</span>`).join("")}</div>` : ""; };
+    const sceneTag = (s) => `<span class="badge">${s.scene === "off" ? "Off-Broadway" : "Broadway"}</span>`;
+
+    const noDataGroup = (key, label) => {
+      const list = noData.filter((s) => (key === "off") === (s.scene === "off")).sort((a, b) => a.title.localeCompare(b.title));
+      if (!list.length || !(scene === "all" || scene === key)) return "";
+      return `<div class="nodata-group"><h3>${label} <span class="muted">${list.length}</span></h3><ul class="nodata-list">${list.map((s) => `
+        <li><a href="${s.onSale ? `#show-${s.slug}` : esc(s.bdcUrl)}"${s.onSale ? "" : ' target="_blank" rel="noopener"'}>${esc(s.title)}</a>
+          <span class="muted">${[s.type, s.status === "upcoming" ? "Upcoming" : s.status === "previews" ? "In previews" : null].filter(Boolean).join(" · ")}</span>
+          ${notesHtml(s)}</li>`).join("")}</ul></div>`;
+    };
+
     return `
       <section class="hero">
         <p class="eyebrow">Same-day steals</p>
         <h1>Lottery &amp; <em>Rush</em></h1>
-        <p class="lede">${esc(lot.what)} Every show's policy in one table, cheapest first.</p>
-        <p class="updated stale">⚠ Sample lottery &amp; rush details. Policies change often, so confirm on <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a>.</p>
+        <p class="lede">${esc(lot.what)} Every show from Broadway.com (Broadway and Off-Broadway), cheapest first.</p>
+        ${RUSH ? `<p class="updated ${stale ? "stale" : ""}">${stale ? "⚠ Couldn't refresh this week. Showing" : "● Deals from"} <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a> · week of ${esc(RUSH.weekOf || "?")} · updated ${esc(fmt(RUSH.updatedAt))} · refreshed every Monday</p>`
+          : `<p class="updated stale">⚠ Lottery &amp; rush data hasn't been loaded yet. Check <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a>.</p>`}
       </section>
+      ${thisWeekBanner(inScene)}
+      <div class="chip-row" style="margin:6px 0 14px" role="group" aria-label="Where">
+        ${[["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"]].map(([k, l]) => `<button class="pill ${scene === k ? "active" : ""}" data-lotscene="${k}">${l}</button>`).join("")}
+      </div>
+      <div class="section-head"><h2>Lottery, rush &amp; more</h2><span class="muted">${withData.length} show${withData.length === 1 ? "" : "s"}</span></div>
       <div class="table-wrap">
-        <table>
-          <thead><tr><th>Show</th><th>Digital lottery</th><th>Rush</th></tr></thead>
+        <table class="lot-table">
+          <thead><tr><th>Show</th><th>Digital lottery</th><th>Rush</th><th>Student &amp; other</th></tr></thead>
           <tbody>
-            ${rows.map((s) => `
+            ${withData.map((s) => `
               <tr>
-                <td class="show-name"><a href="#show-${s.slug}">${esc(s.title)}</a>${s.theater ? `<div class="muted" style="font-size:13px">${esc(s.theater)}</div>` : ""}</td>
-                <td>${s.lottery ? `<span class="big">${money0(s.lottery.price)}</span><div style="font-size:13px">${esc(s.lottery.where)} · ${esc(s.lottery.when)}</div>` : `<span class="muted">—</span>`}</td>
-                <td>${s.rush ? `<span class="big">${money0(s.rush.price)}</span><div style="font-size:13px">${esc(s.rush.where)} · ${esc(s.rush.when)}</div>` : `<span class="muted">—</span>`}</td>
+                <td class="show-name"><a href="#show-${s.slug}">${esc(s.title)}</a>
+                  <div class="muted" style="font-size:13px">${[s.theater, s.scene === "off" ? "Off-Broadway" : null].filter(Boolean).map(esc).join(" · ")}</div>${notesHtml(s)}</td>
+                <td>${cell(s.deals.filter((d) => d.type === "lottery"))}</td>
+                <td>${cell(s.deals.filter((d) => d.type === "rush"))}</td>
+                <td>${s.deals.filter((d) => !["lottery", "rush"].includes(d.type)).sort((a, b) => (a.price ?? 999) - (b.price ?? 999)).map((d) => `<a class="deal" href="${esc(d.url || "https://bwayrush.com/")}" target="_blank" rel="noopener"><b>${esc(d.label.split(" ")[0] === "50%" || /%/.test(d.label) ? d.label.match(/\d+% off/)[0] : d.price != null ? money(d.price).replace(/\.00$/, "") : d.label)}</b><span>${esc(otherLabel(d))}</span></a>`).join("") || `<span class="muted">—</span>`}</td>
               </tr>`).join("")}
           </tbody>
         </table>
       </div>
+
+      ${programsSection(scene)}
+
+      <div class="section-head"><h2>No lottery or rush info available</h2><span class="muted">${noData.filter(inScene).length} show${noData.filter(inScene).length === 1 ? "" : "s"}</span></div>
+      <p class="muted" style="margin-top:-6px">bwayrush.com doesn't list same-day deals for these yet. New shows often add them closer to opening.</p>
+      <div class="nodata">${noDataGroup("broadway", "Broadway")}${noDataGroup("off", "Off-Broadway")}</div>
+
       <div class="two-col">
         <div class="panel"><h3>How to enter</h3><ul>${lot.how.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>
         <div class="panel"><h3>Tips</h3><ul>${lot.tips.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
@@ -976,6 +1102,8 @@
       try { navigator.clipboard.writeText(cp.dataset.copy).then(done, () => { cp.textContent = cp.dataset.copy; }); } catch { cp.textContent = cp.dataset.copy; }
       return;
     }
+    const ls = e.target.closest("[data-lotscene]");
+    if (ls) { state.lotScene = ls.dataset.lotscene; const y = window.scrollY; $("#app").innerHTML = viewLottery(); window.scrollTo(0, y); return; }
     const gt = e.target.closest("[data-group]");
     if (gt) { state.group = gt.dataset.group; rerenderShow(); return; }
     const t = e.target.closest("[data-date],[data-perf],[data-section],[data-qty],[data-sec],#clearAlert");

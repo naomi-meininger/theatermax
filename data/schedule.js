@@ -73,4 +73,10 @@ window.TM_SCHEDULE = {
   "play-goes-wrong-beginning-february-11-2019": { nowOpen: true },
   "jamie-allans-amaze":                     { nowOpen: true },
   "perfect-crime":                          { nowOpen: true },
+
+  // ---- New York City Center (Off-Broadway) ----
+  "citycenter-in-the-heights":           { opening: "2026-10-28", closing: "2026-11-15" },
+  "citycenter-charlie-brown":            { opening: "2027" },
+  "citycenter-hallelujah-baby":          { opening: "2027" },
+  "citycenter-kiss-of-the-spider-woman": { opening: "2027" },
 };

@@ -2,7 +2,7 @@
 
 **Want the best ticket deals but find yourself scanning multiple websites?** TheaterMax brings every ticket website and app into one place, so you can compare prices, dates and seat locations for theater shows.
 
-> ⚠️ **Prototype.** The **show list and "from" prices are real**, pulled from Broadway.com once a day. **Live prices** from SeatGeek and Ticketmaster switch on once you add API keys (see below). Everything else on a show page (prices by section from other sellers) and the **lottery & rush details** are sample data, labeled as such.
+> ⚠️ **Prototype.** Real data: the **show list and "from" prices** (Broadway.com, daily), **lottery, rush and student deals** (bwayrush.com, weekly), **verified discount codes** (Playbill), **young-audience programs** (Playbill and Field Trip NYC), and **live prices** from SeatGeek and Ticketmaster once you add API keys. The section-by-section offers on a show page are still sample data and are labeled "Sample".
 
 ## What it does
 
@@ -50,6 +50,19 @@ On shows with live data, the date picker uses the **real performance times**, an
 You can add just one of the two keys; the other source is skipped. Keys never appear in the code or on the site.
 
 **Safety nets:** an event only counts as a match when its title matches and, if we know the theater, it's at that theater, so touring productions and "Annie Lennox" don't sneak in. If a source fails (network down, bad key, rate limit), it stops right away, keeps the previous prices, and logs a warning in the Actions run. Past performances are dropped automatically. Test it locally with `SEATGEEK_CLIENT_ID=... node scripts/update-prices.mjs`.
+
+## Lottery & Rush page (weekly from bwayrush.com)
+
+`scripts/update-rush.mjs` runs every Monday (`.github/workflows/update-rush.yml`). It reads bwayrush.com and saves each show's lottery, rush, student, young-audience and military deals to `data/rush.js`, keeping only the price, type, platform and link, with credit to bwayrush. Telecharge lotteries run on SocialToaster, so those links are labeled "Telecharge". If bwayrush can't be reached, last week's data stays and the page says so.
+
+The page lists **every** show from Broadway.com plus the extra shows below:
+- A table of shows with deals (lottery · rush · student & other), cheapest first, with All / Broadway / Off-Broadway chips
+- **Student & young-audience programs** (`data/programs.js`), grouped Theater / Opera / Ballet: LincTix, MTC35, Hiptix, Second Stage 30 Under 30, MCC, City Center Access Club, Atlantic, Classic Stage, Playwrights Horizons, Signature, TFANA, PAC NYC, Vineyard, Irish Rep, the Met Opera's Under 40 Fridays and NYC Ballet's $30 for 30. A program's deals also show on the shows it covers.
+- **No lottery or rush info available**, grouped Broadway / Off-Broadway, with first-preview, opening and closing dates when they're within a month
+
+## Extra shows
+
+`data/extra-shows.js` adds shows that aren't on Broadway.com, like New York City Center's *In the Heights* and the 2027 Encores! season (counted as Off-Broadway musicals). They link to the venue's own ticket page.
 
 ## Discount codes
 
@@ -105,12 +118,17 @@ data/shows.js     extras: theaters, plays list, sample lottery & rush
 data/previews.js  show descriptions (our own words) + types + critic roundup summaries
 data/schedule.js  previews / opening / closing dates that drive the "When" filter
 data/codes.js     verified discount codes (with expiry dates)
+data/rush.js      AUTO-GENERATED weekly: lottery / rush / student deals from bwayrush.com
+data/programs.js  student & young-audience programs (theater, opera, ballet)
+data/extra-shows.js  shows not on Broadway.com (e.g. New York City Center)
 data/seatviews.js A View From My Seat level pages for each mapped theater
 data/live-prices.js  AUTO-GENERATED every 6h: real prices per performance
 scripts/update-shows.mjs              the show-list scraper
 scripts/update-prices.mjs             the SeatGeek + Ticketmaster price fetcher
 .github/workflows/update-shows.yml    runs the scraper daily
 .github/workflows/update-prices.yml   runs the price fetcher every 6 hours
+scripts/update-rush.mjs               the bwayrush lottery & rush scraper
+.github/workflows/update-rush.yml     runs it every Monday
 data/sources.js   the ticket sources, from the discount guide
 ```
 

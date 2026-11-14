@@ -1,0 +1,37 @@
+name: Update lottery & rush
+
+# Every Monday, refresh rush / lottery / student / SRO deals from bwayrush.com.
+on:
+  schedule:
+    - cron: "23 10 * * 1"   # Mondays ≈5:23 AM New York
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-updates
+  cancel-in-progress: false
+
+jobs:
+  rush:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch this week's deals
+        run: node scripts/update-rush.mjs
+      - name: Commit if deals changed
+        run: |
+          if git diff --quiet -- data/rush.js; then echo "No changes."; exit 0; fi
+          if [ "$(git diff -U0 -- data/rush.js | grep '^[+-] ' | grep -v -E 'updatedAt|lastAttemptAt' | wc -l)" = "0" ]; then
+            echo "Only timestamps changed — skipping commit."; exit 0
+          fi
+          git config user.name "theatermax-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rush.js
+          git commit -m "Update lottery & rush ($(date -u +%Y-%m-%d))"
+          git pull --rebase --autostash origin main
+          git push

@@ -410,3 +410,57 @@ main { view-transition-name: page; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after, ::view-transition-old(page), ::view-transition-new(page) { animation: none !important; transition: none !important; }
 }
+
+/* ---------- lottery page ---------- */
+.lot-table td { vertical-align: top; }
+.deal { display: flex; align-items: baseline; gap: 8px; text-decoration: none; padding: 3px 0; }
+.deal b { font-family: var(--display); font-size: 19px; min-width: 52px; }
+.deal span { font-size: 13px; color: var(--ink-2); }
+.deal:hover span { color: var(--red); text-decoration: underline; }
+.run-notes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.run-notes span { font-size: 12px; font-weight: 700; background: #fff4d6; color: #6b4300; padding: 2px 8px; border-radius: 999px; }
+.nodata { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 8px; }
+.nodata-group { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.nodata-group h3 { margin: 0 0 10px; font-family: var(--display); font-size: 22px; }
+.nodata-list { list-style: none; margin: 0; padding: 0; }
+.nodata-list li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.nodata-list li:last-child { border-bottom: 0; }
+.nodata-list a { font-weight: 700; text-decoration: none; margin-right: 6px; }
+.nodata-list a:hover { color: var(--red); }
+.nodata-list .muted { font-size: 13px; }
+
+/* ---------- this-week banner & first preview ---------- */
+.week-banner { position: relative; overflow: hidden; border-radius: var(--radius); margin: 4px 0 18px; padding: 14px 18px;
+  background: linear-gradient(110deg, #1b1033, #3d1a4f 55%, #8f1a14); color: #fff3d6; }
+.wb-inner { position: relative; z-index: 1; display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.wb-title { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -.01em; }
+.week-banner ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; }
+.week-banner a { color: #ffd34d; font-weight: 700; text-decoration: none; }
+.week-banner a:hover { text-decoration: underline; }
+.ribbon.preview { background: linear-gradient(90deg, #b9f3e4, #c9d8ff); color: #102a43; }
+.opening-note.preview-note { background: linear-gradient(110deg, #d8fff3 0%, #dfe6ff 60%, #f1e2ff 100%); border-color: #c4d6f5; color: #102a43; }
+
+/* ---------- programs ---------- */
+.art-head { font-family: var(--display); font-size: 20px; margin: 18px 0 10px; }
+.program-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.program { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.program-co { font-weight: 700; font-size: 16px; text-decoration: none; color: var(--ink); }
+.program-co:hover { color: var(--red); }
+.program-shows { font-size: 12px; margin-top: 4px; }
+.program-shows a { color: var(--red); font-weight: 700; text-decoration: none; }
+.program ul { list-style: none; padding: 0; margin: 10px 0 0; }
+.program li { padding: 6px 0; border-top: 1px solid var(--line); }
+.program li b { font-family: var(--display); font-size: 18px; margin-right: 4px; }
+.program .pname { font-weight: 700; margin-right: 4px; }
+
+/* final performance in the date picker */
+.date-chip.final-day { position: relative; border: 2px solid var(--red); background: #fde8e6; padding-top: 14px; }
+.date-chip.final-day .dow::after { content: " ⏳"; }
+.date-chip.final-day .final-tag {
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  background: var(--red); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 999px;
+}
+.date-chip.final-day.active { background: var(--red); border-color: var(--red); }
+.date-chip.final-day.active .final-tag { background: var(--ink); }
+.date-strip { padding-top: 10px; }

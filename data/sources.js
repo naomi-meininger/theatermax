@@ -48,8 +48,10 @@ window.TM_SOURCES = [
   {
     id: "lottery",
     name: "Lottery & Rush",
-    subtitle: "Lucky Seat / TodayTix / in-person rush",
+    subtitle: "Telecharge / Broadway Direct / Lucky Seat / TodayTix / in-person",
     links: [
+      { label: "Telecharge rush & lottery", url: "https://rush.telecharge.com/" },
+      { label: "Broadway Direct lottery", url: "https://lottery.broadwaydirect.com/" },
       { label: "Lucky Seat", url: "https://www.luckyseat.com" },
       { label: "TodayTix", url: "https://www.todaytix.com" },
       { label: "All policies (bwayrush)", url: "https://bwayrush.com/" },
