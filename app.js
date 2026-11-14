@@ -154,7 +154,7 @@
   // "Last updated" note. Stale = the daily scrape failed, or the list is over ~36 hours old.
   function freshness(scene) {
     if (!LIVE) return { stale: true, text: "Live show list unavailable." };
-    const fmt = (iso) => new Date(iso).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+    const fmt = fmtNY;
     const cat = scene && LIVE.categories && LIVE.categories[scene === "off" ? "off" : "broadway"];
     const info = cat && cat.updatedAt ? cat : LIVE;
     const ageH = (Date.now() - new Date(info.updatedAt)) / 36e5;
@@ -194,6 +194,8 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const money = (n) => "$" + (Math.round(n * 100) / 100).toFixed(n % 1 === 0 ? 0 : 2);
   const money0 = (n) => "$" + Math.round(n);
+  // Timestamps in New York time with the zone label, e.g. "Nov 13, 10:58 PM EST" (EDT in summer).
+  const fmtNY = (iso) => new Date(iso).toLocaleString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" });
 
   function hash(str) {
     let h = 2166136261;
@@ -835,7 +837,7 @@
             </select>
           </div>
           ${hasLive(show)
-            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${new Date(PRICES.updatedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}. Rows marked <span class="badge sample">Sample</span> are estimates.</p>`
+            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${fmtNY(PRICES.updatedAt)}. Rows marked <span class="badge sample">Sample</span> are estimates.</p>`
             : `<p class="sample-note">Prices on this page are sample data for now. Live prices appear once the SeatGeek and Ticketmaster connections are switched on.</p>`}
           <div class="group-tabs" role="tablist" aria-label="Seller type">
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
