@@ -491,3 +491,13 @@ main { view-transition-name: page; }
 .report-status.ok { color: #1e7a3c; font-weight: 600; } .report-status.err { color: #b3261e; font-weight: 600; }
 .report-fine { font-size: 12px; margin: 0; }
 .report .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.cal-source { font-size: 12px; margin: -4px 0 8px; }
+.understudy-line { font-size: 13px; margin: -2px 0 10px; }
+
+/* pager under the show grid */
+.pager { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 22px 0 8px; }
+.pager .pg { font: inherit; font-weight: 600; min-width: 40px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; }
+.pager .pg.active { background: var(--ink); color: var(--paper, #fff); }
+.pager .pg:disabled { opacity: .35; cursor: default; }
+.pager .pg:not(:disabled):not(.active):hover { background: rgba(0,0,0,.06); }

@@ -25,20 +25,24 @@ jobs:
       - name: Scrape current Broadway & Off-Broadway shows
         run: node scripts/update-shows.mjs
 
-      - name: Commit if the list changed
+      - name: Fetch each show's real performance calendar (dates & curtain times)
+        run: node scripts/update-schedules.mjs
+
+      - name: Commit if anything changed
         run: |
-          if git diff --quiet -- data/live-shows.js; then
+          FILES="data/live-shows.js data/schedules.js"
+          if git diff --quiet -- $FILES && [ -z "$(git status --porcelain -- $FILES)" ]; then
             echo "No changes."
             exit 0
           fi
           # Ignore changes that are only timestamps
-          if [ "$(git diff -U0 -- data/live-shows.js | grep '^[+-] ' | grep -v -E 'updatedAt|lastAttemptAt' | wc -l)" = "0" ]; then
-            echo "Only the timestamp changed — skipping commit."
+          if [ -z "$(git status --porcelain --untracked-files=all -- $FILES | grep '^??')" ] && [ "$(git diff -U0 -- $FILES | grep '^[+-] ' | grep -v -E 'updatedAt|lastAttemptAt' | wc -l)" = "0" ]; then
+            echo "Only timestamps changed — skipping commit."
             exit 0
           fi
           git config user.name "theatermax-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live-shows.js
-          git commit -m "Update Broadway show list ($(date -u +%Y-%m-%d))"
+          git add $FILES
+          git commit -m "Update Broadway show list & calendars ($(date -u +%Y-%m-%d))"
           git pull --rebase --autostash origin main
           git push

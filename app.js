@@ -21,6 +21,10 @@
     const member = t.memberAvailable ? `TDF member tickets${t.memberPrice ? " " + esc(t.memberPrice) : ""}` : "TDF page (no member tickets right now)";
     return a(TKTS, "TKTS Live" + tkts) + " · " + a(t.url, member);
   }
+  // understudies.org show pages (confirmed paths); otherwise jump to its top search result.
+  const UNDERSTUDIES = { "wicked": "wicked-nyc", "the-lion-king": "the-lion-king-nyc", "aladdin-broadway": "aladdin" };
+  const understudyUrl = (s) => UNDERSTUDIES[s.slug] ? "https://understudies.org/show/" + UNDERSTUDIES[s.slug]
+    : "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky site:understudies.org/show " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const SHOWSCORE = window.TM_SHOWSCORE || {};
   // Show-Score page for a show: a confirmed URL, or DuckDuckGo's "jump to first result" on show-score.com.
   const showScoreUrl = (s) => SHOWSCORE[s.slug]
@@ -47,7 +51,10 @@
     return p.date.toLocaleDateString("en-US", sameYear ? { month: "short", day: "numeric" } : { month: "short", day: "numeric", year: "numeric" });
   }
   function runInfo(slug, onSale, ratingCount, scene) {
-    const sc = RUN_DATES[slug];
+    // Dates entered by hand win; otherwise Broadway.com's "Show Dates" (daily), then TDF's (weekly).
+    const auto = (window.TM_SCHEDULES && window.TM_SCHEDULES.runs || {})[slug]
+      || (() => { const t = ((window.TM_TDF || {}).shows || {})[slug]; return t && (t.opening || t.previews) ? { previews: t.previews, opening: t.opening, closing: t.closing } : null; })();
+    const sc = RUN_DATES[slug] || (auto && Object.fromEntries(Object.entries(auto).filter(([, v]) => v)));
     if (!sc) {
       // Best guess when we have no dates (shown as "estimated" in the preview):
       // not on sale → upcoming. Off-Broadway listings with tickets are almost always current runs.
@@ -127,11 +134,20 @@
     }
     return out;
   }
+  // "First preview Nov 16 · Opening Nov 30 · Closing Dec 30" for a show's page.
+  function runLine(s) {
+    const part = [];
+    if (s.previews && !s.previews.assumed && !(s.opening && +s.previews.date === +s.opening.date)) part.push(`${s.previews.date <= TODAY ? "Previews began" : "First preview"} ${fmtRunDate(s.previews)}`);
+    if (s.opening) part.push(`${s.status === "playing" || s.opening.date <= TODAY ? "Opened" : "Opening"} ${fmtRunDate(s.opening)}`);
+    if (s.closing) part.push(`${s.status === "closed" ? "Closed" : "Closing"} ${fmtRunDate(s.closing)}`);
+    else if (s.status === "playing" && !s.guessed) part.push("Open-ended run");
+    return part.join(" · ");
+  }
   // ---- big anniversaries (every 5 years since opening night) ----
   // "Turns 30 on Sat, Nov 14" for the 30 days before; "Celebrating 30 years" for the year after.
   function anniversaryNote(s) {
     if (!s.opening || s.opening.precision !== "day" || s.status !== "playing") return null;
-    const o = s.opening.date, label = s.scene === "off" ? "" : " on Broadway";
+    const o = s.opening.date, label = sceneKey(s) === "broadway" ? " on Broadway" : "";
     let years = TODAY.getFullYear() - o.getFullYear();
     let next = new Date(TODAY.getFullYear(), o.getMonth(), o.getDate());
     if (next < TODAY) { next = new Date(TODAY.getFullYear() + 1, o.getMonth(), o.getDate()); years += 1; }
@@ -335,6 +351,8 @@
     return out;
   }
   const DATES = getDates();
+  const CALENDARS = (window.TM_SCHEDULES && window.TM_SCHEDULES.shows) || {};
+  const hasCalendar = (show) => !!CALENDARS[show.slug];
 
   // ---------- live prices (data/live-prices.js, from SeatGeek + Ticketmaster) ----------
   const PRICES = window.TM_PRICES || { sources: {}, shows: {} };
@@ -355,6 +373,15 @@
         const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
         return { time, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${time}`, live: live[key] };
       }).sort((a, b) => toMinutes(a.time) - toMinutes(b.time));
+    }
+    // Real calendar from Broadway.com (daily): exact dates & curtain times, holiday weeks included.
+    const cal = CALENDARS[show.slug], k = dayKey(dt.date);
+    if (cal && k >= cal.from && k <= cal.to) {
+      return (cal.days[k] || []).map(({ t, from }) => {
+        const mins = toMinutes(t), dow = dt.date.getDay();
+        const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
+        return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, special: keyDateLabel(show, dt.date) };
+      });
     }
     // Opening night / first preview / final show always happens, even on a usually-dark day.
     const special = keyDateLabel(show, dt.date);
@@ -509,15 +536,19 @@
   // ---------- views ----------
   // ---------- filters ----------
   const typeOf = (s) => s.type || "Other";
+  // Where a show sits: Broadway, Off-Broadway, or opera & ballet (Lincoln Center etc.).
+  const sceneKey = (s) => (s.scene === "arts" ? "arts" : s.scene === "off" ? "off" : "broadway");
+  const SCENE_LABEL = { broadway: "Broadway", off: "Off-Broadway", arts: "Opera & ballet" };
+  const sceneLabel = (s) => SCENE_LABEL[sceneKey(s)];
   const FILTERS = {
-    scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"]],
-    type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Special", "Specials"], ["Other", "Other"]],
+    scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"], ["arts", "Opera & ballet"]],
+    type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Opera", "Opera"], ["Ballet", "Ballet & dance"], ["Special", "Specials"], ["Other", "Other"]],
     status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "🎉 Opening this week"], ["closing", "⏳ Closing soon"]],
   };
-  const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway" };
+  const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway", arts: "#opera-ballet" };
   function passes(s, f, skip) {
     if (s.status === "closed") return false;
-    if (skip !== "scene" && f.scene !== "all" && (f.scene === "off") !== (s.scene === "off")) return false;
+    if (skip !== "scene" && f.scene !== "all" && f.scene !== sceneKey(s)) return false;
     if (skip !== "type" && f.type !== "all" && typeOf(s) !== f.type) return false;
     if (skip !== "status" && f.status === "closing" && !isClosingSoon(s)) return false;
     if (skip !== "status" && f.status === "opening" && !isOpeningSoon(s)) return false;
@@ -547,11 +578,15 @@
     const withLot = LIST.filter((s) => s.lottery || s.rush).length;
     const fresh = freshness(sc === "all" ? null : sc);
     const playing = LIST.filter((s) => s.status === "playing").length;
-    const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : "on & off Broadway";
+    const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : sc === "arts" ? "in opera & ballet" : "on & off Broadway";
 
     return `
       <section class="hero">
-        ${off ? `
+        ${sc === "arts" ? `
+        <p class="eyebrow">Lincoln Center & beyond</p>
+        <h1>Opera &amp; <em>Ballet</em></h1>
+        <p class="lede">The Met Opera and New York City Ballet, with their run dates and the cheap-seat programs (under-40 nights, $30 for 30, TDF). These companies perform in rotating repertory, so each show links to the company's own calendar.</p>` :
+        off ? `
         <p class="eyebrow">Smaller stages · bigger bargains</p>
         <h1>Off-<em>Broadway</em></h1>
         <p class="lede">Off-Broadway theaters seat 499 people or fewer, so you're closer to the stage and tickets usually cost less. Every show below gets the same price comparison as Broadway.</p>` : `
@@ -575,10 +610,11 @@
         </div>
         <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
-      ${thisWeekBanner((s) => sc === "all" || (sc === "off") === (s.scene === "off"))}
+      ${thisWeekBanner((s) => sc === "all" || sceneKey(s) === sc)}
       <div class="filters" id="filters"></div>
       <div class="section-head"><h2 id="grid-title"></h2><span class="muted" id="count"></span></div>
-      <div class="grid" id="grid"></div>`;
+      <div class="grid" id="grid"></div>
+      <nav class="pager" id="pager" aria-label="Pages"></nav>`;
   }
 
   function renderGrid() {
@@ -598,12 +634,24 @@
     const f = state.f;
     const typeWord = f.type === "all" ? "Shows" : f.type === "Other" ? "Other shows" : FILTERS.type.find((x) => x[0] === f.type)[1];
     const whenWord = { all: "", playing: " now playing", previews: " in previews", upcoming: " coming soon", closing: " closing soon", opening: " opening this week" }[f.status];
-    const whereWord = { all: "", broadway: " on Broadway", off: " off-Broadway" }[f.scene];
+    const whereWord = { all: "", broadway: " on Broadway", off: " off-Broadway", arts: " · opera & ballet" }[f.scene];
     $("#grid-title").textContent = typeWord + whenWord + whereWord;
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
     const grid = $("#grid");
     grid.classList.remove("grid-in"); void grid.offsetWidth; grid.classList.add("grid-in"); // replay the fade
-    grid.innerHTML = list.length ? list.map((x, i) => cardHtml(x, i)).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
+    // 20 shows per page. Any change of filters / sort / search goes back to page 1.
+    const sig = JSON.stringify([state.f, state.homeSort, q]);
+    if (sig !== state.gridSig) { state.gridSig = sig; state.page = 1; }
+    const PER = 20, pages = Math.max(1, Math.ceil(list.length / PER));
+    state.page = Math.min(Math.max(1, state.page || 1), pages);
+    const shown = list.slice((state.page - 1) * PER, state.page * PER);
+    if (list.length > PER) $("#count").textContent = `${(state.page - 1) * PER + 1}–${(state.page - 1) * PER + shown.length} of ${list.length} shows`;
+    const pager = $("#pager");
+    if (pager) pager.innerHTML = pages > 1 ? `
+      <button class="pg" data-page="${state.page - 1}" ${state.page === 1 ? "disabled" : ""} aria-label="Previous page">← Prev</button>
+      ${Array.from({ length: pages }, (_, i) => `<button class="pg ${i + 1 === state.page ? "active" : ""}" data-page="${i + 1}" ${i + 1 === state.page ? 'aria-current="page"' : ""}>${i + 1}</button>`).join("")}
+      <button class="pg" data-page="${state.page + 1}" ${state.page === pages ? "disabled" : ""} aria-label="Next page">Next →</button>` : "";
+    grid.innerHTML = list.length ? shown.map((x, i) => cardHtml(x, i)).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
   }
 
   // The lowest REAL price we know: Broadway.com's listed price, a live API price, or a verified code.
@@ -628,7 +676,7 @@
               : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>`
               : anniversaryNote(s) ? `<div class="ribbon anniv">🎂 ${anniversaryNote(s).short}</div>` : ""}
             <div class="p-title">${esc(s.title)}</div>
-            <div class="p-theater">${esc(s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway"))}</div>
+            <div class="p-theater">${esc(s.theater || sceneLabel(s))}</div>
           </div>
           <div class="body">
             <div class="price-line">${false
@@ -667,7 +715,7 @@
         <div class="modal-head" style="${posterStyle(s)}">
           <button class="modal-x" data-close aria-label="Close preview">×</button>
           <h2 id="pv-title">${esc(s.title)}</h2>
-          <div class="meta">${[s.type, s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway")].filter(Boolean).map(esc).join(" · ")}</div>
+          <div class="meta">${[s.type, s.theater || sceneLabel(s)].filter(Boolean).map(esc).join(" · ")}</div>
           <div class="pv-status">${statusBadge(s, true)}${s.status === "playing" && s.opening && s.opening.precision === "day" ? `<span>Opened ${fmtRunDate(s.opening)}</span>` : ""}${s.closing && s.status !== "closed" ? `<span>Final show ${fmtRunDate(s.closing)}</span>` : s.status === "playing" && !s.guessed ? `<span>Open-ended run</span>` : ""}${s.guessed ? `<span title="We don't have this show's dates yet, so the status is estimated from its listing.">Status estimated</span>` : ""}</div>
         </div>
         <div class="modal-body">
@@ -794,6 +842,7 @@
       return `
         <a class="back" href="${backHref}">← ${{ all: "All shows", broadway: "Broadway", off: "Off-Broadway" }[state.f.scene]}</a>
         <section class="detail-hero" style="${posterStyle(show)}"><div><h1>${esc(show.title)}</h1>
+          ${runLine(show) ? `<div class="meta run-line">${runLine(show)}</div>` : ""}
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}</div></div>
           <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button></section>
         <div class="empty">No performances in the next ${DAYS_AHEAD} days${first ? ` — ${first.label} is ${fmtRunDate(first.d)}` : ""}.
@@ -871,6 +920,7 @@
       <section class="detail-hero" style="${posterStyle(show)}">
         <div>
           <h1>${esc(show.title)}</h1>
+          ${runLine(show) ? `<div class="meta run-line">${runLine(show)}</div>` : ""}
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}${show.ratingCount ? ` · ${show.ratingCount.toLocaleString()} Broadway.com reviews` : ""}</div>
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
@@ -881,6 +931,7 @@
 
       <section class="panel" id="dates">
         <h3>Pick a date</h3>
+        <p class="muted cal-source">${hasLive(show) ? "Dates and curtain times from live ticket listings." : hasCalendar(show) ? `Real dates and curtain times from <a href="${esc(CALENDARS[show.slug].source)}" target="_blank" rel="noopener">Broadway.com's calendar ↗</a>, updated daily, holiday weeks included.` : "Typical weekly schedule. Holiday weeks and special performances can differ, so confirm the time with the seller."}</p>
         <div class="date-strip">
           ${DATES.map((dt, i) => {
             if (show.closing && show.closing.precision === "day" && dt.date > show.closing.date) return ""; // closed: hide later dates
@@ -943,7 +994,7 @@
 
         <section>
           <div class="offers-head">
-            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>
@@ -977,7 +1028,7 @@
 
   function programsSection(scene) {
     const ARTS = [["theater", "Theater"], ["opera", "Opera"], ["ballet", "Ballet"]];
-    const list = PROGRAMS.filter((p) => scene === "all" || (scene === "off") === (p.scene === "off"));
+    const list = PROGRAMS.filter((p) => scene === "all" || sceneKey(p) === scene);
     if (!list.length) return "";
     const srcs = window.TM_PROGRAMS_SOURCES || [];
     return `
@@ -999,7 +1050,7 @@
   function viewLottery() {
     const lot = SOURCES.find((x) => x.id === "lottery");
     const scene = state.lotScene || "all";
-    const inScene = (s) => scene === "all" || (scene === "off") === (s.scene === "off");
+    const inScene = (s) => scene === "all" || sceneKey(s) === scene;
     const current = SHOWS.filter((s) => s.status !== "closed");
     const fmt = (iso) => (iso ? fmtNY(iso) : "never");
     const stale = RUSH && (RUSH.status === "stale" || (Date.now() - new Date(RUSH.updatedAt)) / 864e5 > 9);
@@ -1014,10 +1065,10 @@
     const withData = current.filter((s) => s.deals.length && inScene(s)).sort((a, b) => min(a) - min(b) || a.title.localeCompare(b.title));
     const noData = current.filter((s) => !s.deals.length);
     const notesHtml = (s) => { const n = runNotes(s); return n.length ? `<div class="run-notes">${n.map((x) => `<span>${esc(x)}</span>`).join("")}</div>` : ""; };
-    const sceneTag = (s) => `<span class="badge">${s.scene === "off" ? "Off-Broadway" : "Broadway"}</span>`;
+    const sceneTag = (s) => `<span class="badge">${sceneLabel(s)}</span>`;
 
     const noDataGroup = (key, label) => {
-      const list = noData.filter((s) => (key === "off") === (s.scene === "off")).sort((a, b) => a.title.localeCompare(b.title));
+      const list = noData.filter((s) => sceneKey(s) === key).sort((a, b) => a.title.localeCompare(b.title));
       if (!list.length || !(scene === "all" || scene === key)) return "";
       return `<div class="nodata-group"><h3>${label} <span class="muted">${list.length}</span></h3><ul class="nodata-list">${list.map((s) => `
         <li><a href="${s.onSale ? `#show-${s.slug}` : esc(s.bdcUrl)}"${s.onSale ? "" : ' target="_blank" rel="noopener"'}>${esc(s.title)}</a>
@@ -1035,7 +1086,7 @@
       </section>
       ${thisWeekBanner(inScene)}
       <div class="chip-row" style="margin:6px 0 14px" role="group" aria-label="Where">
-        ${[["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"]].map(([k, l]) => `<button class="pill ${scene === k ? "active" : ""}" data-lotscene="${k}">${l}</button>`).join("")}
+        ${[["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"], ["arts", "Opera & ballet"]].map(([k, l]) => `<button class="pill ${scene === k ? "active" : ""}" data-lotscene="${k}">${l}</button>`).join("")}
       </div>
       <div class="section-head"><h2>Lottery, rush &amp; more</h2><span class="muted">${withData.length} show${withData.length === 1 ? "" : "s"}</span></div>
       <div class="table-wrap">
@@ -1045,7 +1096,7 @@
             ${withData.map((s) => `
               <tr>
                 <td class="show-name"><a href="#show-${s.slug}">${esc(s.title)}</a>
-                  <div class="muted" style="font-size:13px">${[s.theater, s.scene === "off" ? "Off-Broadway" : null].filter(Boolean).map(esc).join(" · ")}</div>${notesHtml(s)}</td>
+                  <div class="muted" style="font-size:13px">${[s.theater, sceneKey(s) !== "broadway" ? sceneLabel(s) : null].filter(Boolean).map(esc).join(" · ")}</div>${notesHtml(s)}</td>
                 <td>${cell(s.deals.filter((d) => d.type === "lottery"))}</td>
                 <td>${cell(s.deals.filter((d) => d.type === "rush"))}</td>
                 <td>${s.deals.filter((d) => !["lottery", "rush"].includes(d.type)).sort((a, b) => (a.price ?? 999) - (b.price ?? 999)).map((d) => `<a class="deal" href="${esc(d.url || "https://bwayrush.com/")}" target="_blank" rel="noopener"><b>${esc(d.label.split(" ")[0] === "50%" || /%/.test(d.label) ? d.label.match(/\d+% off/)[0] : d.price != null ? money(d.price).replace(/\.00$/, "") : d.label)}</b><span>${esc(otherLabel(d))}</span></a>`).join("") || `<span class="muted">—</span>`}</td>
@@ -1058,7 +1109,7 @@
 
       <div class="section-head"><h2>No lottery or rush info available</h2><span class="muted">${noData.filter(inScene).length} show${noData.filter(inScene).length === 1 ? "" : "s"}</span></div>
       <p class="muted" style="margin-top:-6px">bwayrush.com doesn't list same-day deals for these yet. New shows often add them closer to opening.</p>
-      <div class="nodata">${noDataGroup("broadway", "Broadway")}${noDataGroup("off", "Off-Broadway")}</div>
+      <div class="nodata">${noDataGroup("broadway", "Broadway")}${noDataGroup("off", "Off-Broadway")}${noDataGroup("arts", "Opera & ballet")}</div>
 
       <div class="two-col">
         <div class="panel"><h3>How to enter</h3><ul>${lot.how.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>
@@ -1104,18 +1155,18 @@
   let currentSlug = null;
   function route() {
     const h = (location.hash || "#home").slice(1);
-    if (h === "home" || h === "broadway" || h === "off-broadway") state.f.scene = h === "broadway" ? "broadway" : h === "off-broadway" ? "off" : "all";
+    if (h === "home" || h === "broadway" || h === "off-broadway" || h === "opera-ballet") state.f.scene = h === "broadway" ? "broadway" : h === "off-broadway" ? "off" : h === "opera-ballet" ? "arts" : "all";
     const app = $("#app");
     let nav = "home";
     if (h.startsWith("show-")) {
-      nav = { all: "home", broadway: "broadway", off: "off" }[state.f.scene]; // keep the tab you came from lit
+      nav = { all: "home", broadway: "broadway", off: "off", arts: "arts" }[state.f.scene]; // keep the tab you came from lit
       const slug = h.slice(5);
       if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; state.group = "all"; currentSlug = slug; }
       app.innerHTML = viewShow(slug);
       document.title = (SHOWS.find((s) => s.slug === slug)?.title || "Show") + " tickets — TheaterMax";
-    } else if (h === "off-broadway" || h === "broadway") {
-      nav = h === "broadway" ? "broadway" : "off"; app.innerHTML = viewHome(); renderGrid();
-      document.title = (h === "broadway" ? "Broadway" : "Off-Broadway") + " — TheaterMax";
+    } else if (h === "off-broadway" || h === "broadway" || h === "opera-ballet") {
+      nav = h === "broadway" ? "broadway" : h === "opera-ballet" ? "arts" : "off"; app.innerHTML = viewHome(); renderGrid();
+      document.title = (h === "broadway" ? "Broadway" : h === "opera-ballet" ? "Opera & Ballet" : "Off-Broadway") + " — TheaterMax";
     } else if (h === "lottery") {
       nav = "lottery"; app.innerHTML = viewLottery(); document.title = "Lottery & Rush — TheaterMax";
     } else if (h === "guide") {
@@ -1124,7 +1175,7 @@
       app.innerHTML = viewHome(); renderGrid(); document.title = "TheaterMax — Compare theater ticket prices";
     }
     // Match on href, so the highlight works even if a cached older index.html is on screen.
-    const NAV_HREF = { home: "#home", broadway: "#broadway", off: "#off-broadway", lottery: "#lottery", guide: "#guide" };
+    const NAV_HREF = { home: "#home", broadway: "#broadway", off: "#off-broadway", arts: "#opera-ballet", lottery: "#lottery", guide: "#guide" };
     document.querySelectorAll(".nav a").forEach((a) => {
       const on = a.getAttribute("href") === NAV_HREF[nav];
       a.classList.toggle("active", on);
@@ -1251,4 +1302,12 @@
       } finally { btn.disabled = false; }
     });
   })();
+
+  // Pager under the show grid
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".pg[data-page]");
+    if (!b || b.disabled) return;
+    state.page = +b.dataset.page; renderGrid();
+    const t = document.getElementById("grid-title"); if (t) t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
 })();

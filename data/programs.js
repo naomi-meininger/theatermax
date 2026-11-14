@@ -75,14 +75,14 @@ window.TM_PROGRAMS = [
     deals: [ { name: "GreenSeats", price: "$25", who: "Under 40", how: "Sign up on Irish Rep's website" } ] },
 
   // ---- Opera ----
-  { art: "opera", company: "Metropolitan Opera", scene: "off", url: "https://www.metopera.org/",
-    where: "Lincoln Center",
+  { art: "opera", company: "Metropolitan Opera", scene: "arts", url: "https://www.metopera.org/",
+    where: "Lincoln Center", slugs: ["met-la-boheme", "met-medea", "met-tosca", "met-jenufa", "met-samson-et-dalila", "met-maria-stuarda", "met-magic-flute", "met-fanciulla", "met-silent-night", "met-aida"],
     deals: [ { name: "Under 40 Fridays", price: "$50+", who: "Under 40", how: "Select Friday performances" },
              { name: "TDF membership", price: "Varies", who: "TDF members", how: "The Met is in TDF's Show Finder; member seats come and go, so check the listing.", url: "https://www.tdf.org/shows/15566/the-metropolitan-opera/" } ] },
 
   // ---- Ballet ----
-  { art: "ballet", company: "New York City Ballet", scene: "off", url: "https://www.nycballet.com/",
-    where: "David H. Koch Theater, Lincoln Center",
+  { art: "ballet", company: "New York City Ballet", scene: "arts", url: "https://www.nycballet.com/",
+    where: "David H. Koch Theater, Lincoln Center", slugs: ["nycb-nutcracker", "nycb-winter-2027", "nycb-spring-2027"],
     deals: [ { name: "$30 for 30", price: "$30", who: "Ages 30 and under", how: "Sign up on NYCB's website" },
              { name: "TDF membership", price: "Varies", who: "TDF members", how: "NYCB seasons are listed in TDF's Show Finder; member seats come and go, so check each season's listing.", url: "https://www.tdf.org/membership" } ] },
 ];
