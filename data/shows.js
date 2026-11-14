@@ -63,6 +63,7 @@ window.TM_THEATERS = {
   "paranormal-activity": "August Wilson Theatre",
   "downstate": "Booth Theatre",
   "its-a-wonderful-life": "Broadhurst Theatre",
+  "warriors": "Lunt-Fontanne Theatre",
   "here-there-are-blueberries": "Ethel Barrymore Theatre",
   "the-fantasticks": "Hayes Theater",
   "other-desert-cities": "Hudson Theatre",

@@ -28,6 +28,8 @@ const SKIP_SLUGS = new Set(["tickets", "broadway", "off-broadway", "musical", "p
 const GENERIC_TEXT = /^(learn more|buy tickets|tickets|more info|see details|view)$/i;
 
 const decode = (s) => s
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
   .replace(/&amp;/g, "&").replace(/&#0?39;|&apos;|&rsquo;|&#8217;/g, "'").replace(/&quot;/g, '"')
   .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").replace(/&eacute;/g, "é")
   .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n));
@@ -144,6 +146,10 @@ async function main() {
       if (prevShows.length && added.length) console.log(`[${cat.scene}] new:`, added.join(", "));
       if (prevShows.length && gone.length) console.log(`[${cat.scene}] gone:`, gone.join(", "));
       out.categories[cat.scene] = { source: cat.url, status: "ok", updatedAt: now, lastAttemptAt: now, count: shows.length };
+      // firstSeen: the day a show first showed up on Broadway.com's list (feeds "Recently announced").
+      // Shows already listed before we started tracking keep firstSeen: null.
+      const today = now.slice(0, 10), prevBySlug = Object.fromEntries(prevShows.map((p) => [p.slug, p]));
+      for (const sh of shows) sh.firstSeen = prevBySlug[sh.slug] ? (prevBySlug[sh.slug].firstSeen ?? null) : (prevShows.length ? today : null);
       out.shows.push(...shows);
     } catch (e) {
       // Network error or unparseable page: keep the previous day's list for this category.

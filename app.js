@@ -143,6 +143,41 @@
     else if (s.status === "playing" && !s.guessed) part.push("Open-ended run");
     return part.join(" · ");
   }
+  // ---- long-running: open 5+ years ----
+  const isLongRunning = (s) => s.status === "playing" && !!s.opening && s.opening.precision === "day"
+    && (TODAY - s.opening.date) / (365.25 * 864e5) >= 5;
+  const yearsRunning = (s) => Math.floor((TODAY - s.opening.date) / (365.25 * 864e5));
+
+  // ---- recently announced: news in the last 45 days (data/announced.js), or first seen on
+  //      Broadway.com's list in the last 30 days (daily scraper). Returns the date or null.
+  const ANNOUNCED = window.TM_ANNOUNCED || {};
+  function announcedOn(s) {
+    if (s.status === "closed" || s.status === "playing") return null;
+    const a = ANNOUNCED[s.slug], days = (iso) => (TODAY - new Date(iso + "T00:00:00")) / 864e5;
+    if (a && days(a.announced) <= 45) return { date: a.announced, note: a.note, source: a.source };
+    if (s.firstSeen && days(s.firstSeen) <= 30) return { date: s.firstSeen, note: null, source: null, listed: true };
+    return null;
+  }
+
+  // "📣 Recently announced" strip on the home / Broadway / Off-Broadway pages.
+  function announcedStrip(inScene) {
+    const list = SHOWS.filter((s) => inScene(s) && announcedOn(s))
+      .sort((a, b) => announcedOn(b).date.localeCompare(announcedOn(a).date)).slice(0, 8);
+    if (!list.length) return "";
+    const fmtA = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    return `<section class="announced" aria-labelledby="ann-h">
+      <div class="announced-head"><h2 id="ann-h">📣 Recently announced</h2><button class="linkish" data-quickstatus="new">See all →</button></div>
+      <div class="announced-row">${list.map((s) => {
+        const a = announcedOn(s);
+        const when = s.previews && !s.previews.assumed ? `Previews ${fmtRunDate(s.previews)}` : s.opening ? `Opens ${fmtRunDate(s.opening)}` : "Dates TBA";
+        return `<a class="ann-card" href="#show-${s.slug}">
+          <span class="ann-when">${a.listed ? "New listing" : "Announced"} ${fmtA(a.date)}</span>
+          <strong>${esc(s.title)}</strong>
+          <span class="muted">${esc([s.theater, sceneLabel(s)].filter(Boolean).join(" · "))}</span>
+          <span class="ann-run">${when}</span></a>`;
+      }).join("")}</div></section>`;
+  }
+
   // ---- big anniversaries (every 5 years since opening night) ----
   // "Turns 30 on Sat, Nov 14" for the 30 days before; "Celebrating 30 years" for the year after.
   function anniversaryNote(s) {
@@ -231,7 +266,9 @@
   const programDeals = (slug) => PROGRAMS.filter((p) => (p.slugs || []).includes(slug)).flatMap((p) => p.deals.map((d) => ({
     label: `${d.price} ${d.name}`, url: p.url, type: /student/i.test(d.name) ? "student" : "young", platform: p.company,
     price: /^\$[\d.]+$/.test(d.price) ? parseFloat(d.price.slice(1)) : null, program: true })));
-  const SHOWS = [...(LIVE ? LIVE.shows : []), ...EXTRA_SHOWS].map((l, i, arr) => {
+  // Undo any HTML entities left in scraped titles (e.g. "It&#x27;s" → "It's").
+  const unent = (t) => typeof t === "string" ? t.replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16))).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'") : t;
+  const SHOWS = [...(LIVE ? LIVE.shows : []), ...EXTRA_SHOWS].map((l) => ({ ...l, title: unent(l.title) })).map((l, i, arr) => {
     const x = EXTRAS[l.slug] || {};
     const h = hash(l.slug);
     const popularity = l.ratingCount ? Math.min(1, l.ratingCount / 1000) : 0.3;
@@ -244,6 +281,7 @@
       critics: (PREVIEWS[l.slug] || {}).critics || null,
       reddit: (PREVIEWS[l.slug] || {}).reddit || null,
       scene: l.scene || "broadway",
+      firstSeen: l.firstSeen || null,
       // (manual shows like City Center sell tickets on their own site)
       ...runInfo(l.slug, l.fromPrice !== null, l.ratingCount, l.scene || "broadway"),
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
@@ -289,7 +327,13 @@
   // Box seats: only for theaters that have boxes (mapped in data/seatviews.js). Often a partial
   // view, so usually priced between orchestra and mezzanine.
   const BOX_SECTION = { id: "box", name: "Box", mult: 0.72, rows: "ABCD" };
-  const sectionsFor = (show) => (show && show.theater && (window.TM_SEATVIEWS || {})[show.theater] && window.TM_SEATVIEWS[show.theater].box ? [...SECTIONS, BOX_SECTION] : SECTIONS);
+  const sectionsFor = (show) => {
+    const map = show && show.theater && (window.TM_SEATVIEWS || {})[show.theater];
+    if (!map) return SECTIONS;
+    // Two-level theaters (no separate balcony): drop the Balcony section.
+    const twoLevel = map.balc && map.mezz && map.balc[0] === map.mezz[0];
+    return [...SECTIONS.filter((x) => !(twoLevel && x.id === "balc")), ...(map.box ? [BOX_SECTION] : [])];
+  };
 
   const OFFICIAL_URL = {
     Telecharge: "https://www.telecharge.com",
@@ -570,7 +614,7 @@
   const FILTERS = {
     scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"], ["arts", "Opera & ballet"]],
     type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Opera", "Opera"], ["Ballet", "Ballet & dance"], ["Special", "Specials"], ["Other", "Other"]],
-    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "🎉 Opening this week"], ["closing", "⏳ Closing soon"]],
+    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "🎉 Opening this week"], ["closing", "⏳ Closing soon"], ["new", "📣 Recently announced"], ["longrun", "🏆 Long-running (5+ yrs)"], ["anniv", "🎂 Anniversary year"]],
   };
   const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway", arts: "#opera-ballet" };
   function passes(s, f, skip) {
@@ -579,7 +623,10 @@
     if (skip !== "type" && f.type !== "all" && typeOf(s) !== f.type) return false;
     if (skip !== "status" && f.status === "closing" && !isClosingSoon(s)) return false;
     if (skip !== "status" && f.status === "opening" && !isOpeningSoon(s)) return false;
-    if (skip !== "status" && f.status !== "all" && f.status !== "closing" && f.status !== "opening" && s.status !== f.status) return false;
+    if (skip !== "status" && f.status === "new" && !announcedOn(s)) return false;
+    if (skip !== "status" && f.status === "longrun" && !isLongRunning(s)) return false;
+    if (skip !== "status" && f.status === "anniv" && !anniversaryNote(s)) return false;
+    if (skip !== "status" && f.status !== "all" && !["closing", "opening", "new", "longrun", "anniv"].includes(f.status) && s.status !== f.status) return false;
     return true;
   }
   function filtersHtml() {
@@ -638,6 +685,7 @@
         <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
       ${thisWeekBanner((s) => sc === "all" || sceneKey(s) === sc)}
+      ${announcedStrip((s) => sc === "all" || sceneKey(s) === sc)}
       <div class="filters" id="filters"></div>
       <div class="section-head"><h2 id="grid-title"></h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>
@@ -837,7 +885,7 @@
       <svg viewBox="0 0 400 340" role="img" aria-label="Seat map${show.theater ? " of " + esc(show.theater) : ""} with lowest price per section">
         <rect x="120" y="20" width="160" height="38" rx="6" fill="#16130f"/>
         <text x="200" y="45" text-anchor="middle" fill="#f6f1e7" font-size="13" font-weight="700" letter-spacing="3">STAGE</text>
-        ${arcs.map((a) => {
+        ${arcs.filter((a) => SECS.some((s) => s.id === a.id)).map((a) => {
           const sec = SECS.find((s) => s.id === a.id); const o = lo[a.id];
           const sel = state.section === a.id; const dim = state.section !== "all" && !sel;
           return `<g class="sec" data-sec="${a.id}" tabindex="0" role="button" aria-label="${sec.name}${o ? ", from " + money0(o.total) : ""}" opacity="${dim ? 0.35 : 1}">
@@ -1353,5 +1401,13 @@
     if (!b || b.disabled) return;
     state.page = +b.dataset.page; renderGrid();
     const t = document.getElementById("grid-title"); if (t) t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+
+  // "See all →" on the Recently announced strip: set the status filter.
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-quickstatus]");
+    if (!b) return;
+    state.f.status = b.dataset.quickstatus; renderGrid();
+    const t = document.getElementById("filters"); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 })();

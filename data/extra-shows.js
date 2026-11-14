@@ -45,4 +45,7 @@ window.TM_EXTRA_SHOWS = [
     blurb: "Mixed repertory and full-length ballets, including Balanchine's Jewels for its 60th anniversary." },
   { slug: "nycb-spring-2027", title: "New York City Ballet: Spring Season", scene: "arts", type: "Ballet", theater: "David H. Koch Theater", tickets: "https://www.nycballet.com/",
     blurb: "The company's spring repertory season, with world premieres and Alexei Ratmansky's Romeo & Juliet among the season's highlights." },
+  // ---- Announced, not yet on sale anywhere ----
+  { slug: "trading-places", title: "Trading Places", scene: "broadway", type: "Musical", theater: null, tickets: null,
+    blurb: "A musical take on the 1983 Eddie Murphy and Dan Aykroyd comedy, directed by Kenny Leon. Broadway-bound after its 2022 Atlanta premiere and 2026 New York workshops; theater and dates not yet announced." },
 ];
