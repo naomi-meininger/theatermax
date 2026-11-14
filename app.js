@@ -11,6 +11,21 @@
   const PLAYS = new Set(window.TM_PLAYS || []);
   const THEATERS = window.TM_THEATERS || {};
   const PREVIEWS = window.TM_PREVIEWS || {};
+  const TDF = (window.TM_TDF && window.TM_TDF.shows) || {};
+  // TKTS + TDF links for a show, using what TDF's own show page says (weekly) when we have it.
+  function tdfLinks(show) {
+    const t = TDF[show.slug], a = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`;
+    const TKTS = "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/";
+    if (!t) return a(TKTS, "TKTS Live (same-day booth)") + " · " + a("https://www.tdf.org/on-stage/show-finder/", "TDF member tickets");
+    const tkts = t.tkts && t.tkts !== "N/a" ? ` (TDF says: ${esc(t.tkts.toLowerCase())} listed)` : "";
+    const member = t.memberAvailable ? `TDF member tickets${t.memberPrice ? " " + esc(t.memberPrice) : ""}` : "TDF page (no member tickets right now)";
+    return a(TKTS, "TKTS Live" + tkts) + " · " + a(t.url, member);
+  }
+  const SHOWSCORE = window.TM_SHOWSCORE || {};
+  // Show-Score page for a show: a confirmed URL, or DuckDuckGo's "jump to first result" on show-score.com.
+  const showScoreUrl = (s) => SHOWSCORE[s.slug]
+    ? "https://www.show-score.com" + SHOWSCORE[s.slug]
+    : "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky site:show-score.com " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const RUSH = window.TM_RUSH || null; // weekly from bwayrush.com (data/rush.js)
   const cheapest = (deals, type) => deals.filter((d) => d.type === type && d.price != null).sort((a, b) => a.price - b.price)[0] || null;
   const RUN_DATES = window.TM_SCHEDULE || {};
@@ -104,6 +119,12 @@
     if (s.previews && !s.previews.assumed && s.previews.precision === "day" && within(s.previews.date)) out.push(`🎭 First preview ${fmtDay(s.previews.date)}`);
     if (s.opening && s.opening.precision === "day" && within(s.opening.date)) out.push(`🎉 Opens ${fmtDay(s.opening.date)}`);
     if (s.closing && s.closing.precision === "day" && within(s.closing.date)) out.push(`⏳ Closes ${fmtDay(s.closing.date)}`);
+    // Not started yet and more than a month out: still say so, with the dates we know.
+    if (!out.length && s.status === "upcoming") {
+      const start = s.previews && !s.previews.assumed ? s.previews : s.opening;
+      const limited = s.closing && start && +start.date === +(s.opening && s.opening.date) ? `–${fmtRunDate(s.closing)}` : "";
+      out.push(start ? `🗓 Upcoming · ${s.previews && !s.previews.assumed && s.opening && s.previews.date < s.opening.date ? "previews from" : "plays"} ${fmtRunDate(start)}${limited}` : "🗓 Upcoming · dates TBA");
+    }
     return out;
   }
   // "This week" banner: first previews, opening nights and final performances in the next 7 days.
@@ -647,6 +668,7 @@
 
           <div class="pv-links">
             ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
+            <a href="${esc(showScoreUrl(s))}" target="_blank" rel="noopener">⭐ Audience scores on Show-Score ↗</a>
             ${(s.reddit || []).map((t) => `<a class="reddit-thread" href="${esc(t.url)}" target="_blank" rel="noopener">💬 r/Broadway: “${esc(t.title)}” ↗</a>`).join("")}
             <a href="https://www.reddit.com/r/Broadway/search/?q=${encodeURIComponent('"' + s.title.replace(/[:(].*$/, "").trim() + '"')}&restrict_sr=1&sort=relevance" target="_blank" rel="noopener">${s.reddit && s.reddit.length ? "More on r/Broadway ↗" : "What theatergoers say on r/Broadway ↗"}</a>
             ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">📷 Seat views at ${esc(s.theater)} ↗</a>` : ""}
@@ -902,7 +924,7 @@
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
           </div>
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
-          <p class="also-check">Also check: <a href="https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/" target="_blank" rel="noopener">TKTS Live (same-day booth) ↗</a> · <a href="https://www.tdf.org/on-stage/show-finder/" target="_blank" rel="noopener">TDF member tickets ↗</a> · <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a></p>
+          <p class="also-check">Also check: ${tdfLinks(show)} · <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>

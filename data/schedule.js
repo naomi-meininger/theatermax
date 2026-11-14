@@ -60,7 +60,7 @@ window.TM_SCHEDULE = {
   // ---- Broadway: upcoming ----
   "dolly":                                  { opening: "2027-01-19" },
   "the-amish-project":                      { opening: "2027-02" },
-  "purple-rain":                            { opening: "2027-04-12" },
+  "purple-rain":                            { previews: "2027-03-12", opening: "2027-04-12" },
   "paddington":                             { opening: "2027-04" },
   "evita":                                  { opening: "2027" },
 
