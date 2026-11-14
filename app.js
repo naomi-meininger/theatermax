@@ -596,6 +596,7 @@
 
           <div class="pv-links">
             ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
+            <a href="https://www.reddit.com/r/Broadway/search/?q=${encodeURIComponent('"' + s.title.replace(/[:(].*$/, "").trim() + '"')}&restrict_sr=1&sort=relevance" target="_blank" rel="noopener">What theatergoers say on r/Broadway ↗</a>
             ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">📷 Seat views at ${esc(s.theater)} ↗</a>` : ""}
           </div>
         </div>
