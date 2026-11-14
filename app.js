@@ -377,26 +377,8 @@
       offers.push({ seller: "SeatGeek", kind: "Verified resale", sec, row: row(sec), price: p, fee: Math.round(p * 0.22 * 100) / 100, url: "https://www.seatgeek.com" });
     });
 
-    // TKTS — same/next day, only shows that aren't selling out
-    if (near <= 1 && d < 0.7) {
-      [SECTIONS[0], SECTIONS[1]].forEach((sec) => {
-        const p = Math.round(faces[sec.id] * (1 - (0.2 + r() * 0.3)));
-        offers.push({ seller: "TKTS booth", kind: "Same-day booth", sec, row: row(sec), price: p, fee: 7, url: "https://www.tdf.org/nyc/7/TKTS-Discount-Booths", note: "In person only — Times Square or Lincoln Center", inPerson: true });
-      });
-    }
-
-    // TDF — members only, shows that aren't selling out
-    if (d < 0.6) {
-      const sec = SECTIONS[Math.floor(r() * 2)];
-      offers.push({ seller: "TDF", kind: "Membership", sec, row: row(sec), price: 49, fee: 0, url: "https://www.tdf.org", note: "TDF membership required (students, teachers, artists…)", member: true });
-    }
-
-    // Theatr — free iPhone app where fans resell last-minute tickets at or below face value
-    if (near <= 3 && r() > 0.35) {
-      const sec = SECTIONS[Math.floor(r() * 3)];
-      const p = Math.round(faces[sec.id] * (0.6 + r() * 0.4)); // never above face value
-      offers.push({ seller: "Theatr", kind: "Fan resale · face value or less", sec, row: row(sec), price: p, fee: 0, url: "https://apps.apple.com/us/app/theatr-app/id1580002886", note: "Last-minute tickets resold by fans · iPhone app" });
-    }
+    // (No TKTS / TDF / Theatr rows: their availability isn't public per show, so we link to them
+    //  in "Also check" instead of inventing prices.)
 
     // Lottery & rush — cheap, but not guaranteed
     if (show.lottery && near <= 2) {
@@ -797,7 +779,7 @@
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.live ? `<span class="badge live">● Live price</span>` : o.sample && hasLive(show) ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
+              ${o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button></div>` : ""}
@@ -834,6 +816,7 @@
         <h3>Pick a date</h3>
         <div class="date-strip">
           ${DATES.map((dt, i) => {
+            if (show.closing && show.closing.precision === "day" && dt.date > show.closing.date) return ""; // closed: hide later dates
             const lo = lows[i];
             if (!perfsFor(show, dt).length || !performsOn(show, dt.date)) {
               const why = !perfsFor(show, dt).length ? (hasLive(show) && inLiveWindow(dt.date) ? "—" : "Dark") : show.closing && dt.date > show.closing.date ? "Closed" : "—";
@@ -866,7 +849,6 @@
             </div>
             <div class="filter-group">
               <label class="toggle"><input type="checkbox" id="fees" ${state.fees ? "checked" : ""}/> Show prices with fees</label>
-              <label class="toggle"><input type="checkbox" id="member" ${state.hideMember ? "checked" : ""}/> Hide membership-only deals</label>
             </div>
           </div>
           <div class="panel seatmap">
@@ -908,6 +890,7 @@
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
           </div>
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
+          <p class="also-check">Also check: <a href="https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/" target="_blank" rel="noopener">TKTS Live (same-day booth) ↗</a> · <a href="https://www.tdf.org/on-stage/show-finder/" target="_blank" rel="noopener">TDF member tickets ↗</a> · <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>
