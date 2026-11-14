@@ -76,7 +76,9 @@ window.TM_SCHEDULE = {
 
   // ---- New York City Center (Off-Broadway) ----
   "citycenter-in-the-heights":           { opening: "2026-10-28", closing: "2026-11-15" },
-  "citycenter-charlie-brown":            { opening: "2027" },
-  "citycenter-hallelujah-baby":          { opening: "2027" },
-  "citycenter-kiss-of-the-spider-woman": { opening: "2027" },
+  // Encores! runs are short; the first performance is the opening.
+  "citycenter-charlie-brown":            { previews: "2027-02-03", opening: "2027-02-03", closing: "2027-02-14" },
+  "citycenter-let-em-eat-cake":          { previews: "2027-03-17", opening: "2027-03-17", closing: "2027-03-28" },
+  "citycenter-kiss-of-the-spider-woman": { previews: "2027-04-28", opening: "2027-04-28", closing: "2027-05-09" },
+  "the-sound-of-music":                  { previews: "2027-03-23", opening: "2027-04-15", closing: "2027-07-18" },
 };

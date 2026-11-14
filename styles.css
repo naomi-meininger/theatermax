@@ -434,7 +434,8 @@ main { view-transition-name: page; }
   background: linear-gradient(110deg, #1b1033, #3d1a4f 55%, #8f1a14); color: #fff3d6; }
 .wb-inner { position: relative; z-index: 1; display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
 .wb-title { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -.01em; }
-.week-banner ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; }
+.week-banner ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.week-banner li { line-height: 1.4; }
 .week-banner a { color: #ffd34d; font-weight: 700; text-decoration: none; }
 .week-banner a:hover { text-decoration: underline; }
 .ribbon.preview { background: linear-gradient(90deg, #b9f3e4, #c9d8ff); color: #102a43; }

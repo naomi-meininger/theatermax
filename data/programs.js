@@ -41,7 +41,7 @@ window.TM_PROGRAMS = [
       { name: "Student rush", price: "$25", who: "Students", how: "Box office, 2 hours before curtain; 1 per ID" },
     ] },
   { art: "theater", company: "New York City Center", scene: "off", url: "https://www.nycitycenter.org/",
-    where: "131 W. 55th St.", slugs: ["citycenter-in-the-heights", "citycenter-charlie-brown", "citycenter-hallelujah-baby", "citycenter-kiss-of-the-spider-woman"],
+    where: "131 W. 55th St.", slugs: ["citycenter-in-the-heights", "citycenter-charlie-brown", "citycenter-let-em-eat-cake", "citycenter-kiss-of-the-spider-woman"],
     deals: [
       { name: "Access Club", price: "$28", who: "Ages 40 and under", how: "Free sign-up; fees included; availability varies by show" },
       { name: "Student rush", price: "$23", who: "Students", how: "Box office on the day, with student ID; max 2" },
@@ -77,10 +77,12 @@ window.TM_PROGRAMS = [
   // ---- Opera ----
   { art: "opera", company: "Metropolitan Opera", scene: "off", url: "https://www.metopera.org/",
     where: "Lincoln Center",
-    deals: [ { name: "Under 40 Fridays", price: "$50+", who: "Under 40", how: "Select Friday performances" } ] },
+    deals: [ { name: "Under 40 Fridays", price: "$50+", who: "Under 40", how: "Select Friday performances" },
+             { name: "TDF membership", price: "Varies", who: "TDF members", how: "The Met is in TDF's Show Finder; member seats come and go, so check the listing.", url: "https://www.tdf.org/shows/15566/the-metropolitan-opera/" } ] },
 
   // ---- Ballet ----
   { art: "ballet", company: "New York City Ballet", scene: "off", url: "https://www.nycballet.com/",
     where: "David H. Koch Theater, Lincoln Center",
-    deals: [ { name: "$30 for 30", price: "$30", who: "Ages 30 and under", how: "Sign up on NYCB's website" } ] },
+    deals: [ { name: "$30 for 30", price: "$30", who: "Ages 30 and under", how: "Sign up on NYCB's website" },
+             { name: "TDF membership", price: "Varies", who: "TDF members", how: "NYCB seasons are listed in TDF's Show Finder; member seats come and go, so check each season's listing.", url: "https://www.tdf.org/membership" } ] },
 ];

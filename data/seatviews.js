@@ -20,4 +20,17 @@ window.TM_SEATVIEWS = {
   "Shubert Theatre":         { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
   "Ambassador Theatre":      { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
   "Walter Kerr Theatre":     { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
+  // venue: the name A View From My Seat uses, when it differs from the official one.
+  "Samuel J. Friedman Theatre": { orch: [1, "Orchestra"], mezz: [3, "Mezzanine"],       balc: [3, "Mezzanine"] },
+  "Belasco Theatre":         { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
+  "Bernard B. Jacobs Theatre": { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],     balc: [2, "Mezzanine"] },
+  "Broadway Theatre":        { venue: "Broadway Theatre - 53rd Street", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Lyceum Theatre":          { venue: "Lyceum Theatre, Broadway", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
+  "New Amsterdam Theatre":   { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [3, "Balcony"] },
+  "Eugene O'Neill Theatre":  { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },       // two levels
+  "John Golden Theatre":     { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Lena Horne Theatre":      { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Stephen Sondheim Theatre": { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],      balc: [2, "Mezzanine"] },       // two levels
+  "Marquis Theatre":         { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },       // two levels
+  "Gerald Schoenfeld Theatre": { orch: [1, "Orchestra"], mezz: [3, "Mezzanine"],     balc: [3, "Mezzanine"] },       // level 2 = boxes
 };

@@ -145,8 +145,9 @@
   // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
   const AVFMS = "https://aviewfrommyseat.com/venue/";
   const plus = (t) => encodeURIComponent(t).replace(/%20/g, "+");
-  const seatViewUrl = (theater) => AVFMS + plus(theater) + "/sections/";
   const SEATVIEWS = window.TM_SEATVIEWS || {};
+  const avfmsName = (theater) => (SEATVIEWS[theater] && SEATVIEWS[theater].venue) || theater;
+  const seatViewUrl = (theater) => AVFMS + plus(avfmsName(theater)) + "/sections/";
   // Link for one of our sections (orch / mezz / balc). Goes to the real A View From My Seat
   // section page when we've mapped that theater; otherwise to the theater overview, labeled as such.
   // Level page, e.g. /venue/Shubert+Theatre/level/2/Mezzanine/ (photos from the whole level).
@@ -154,7 +155,7 @@
     const map = SEATVIEWS[theater];
     const lvl = map && map[secId];
     return lvl
-      ? { url: `${AVFMS}${plus(theater)}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
+      ? { url: `${AVFMS}${plus(avfmsName(theater))}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
       : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
   }
   const PALETTES = [
@@ -384,12 +385,12 @@
     if (show.lottery && near <= 2) {
       const d = show.lottery;
       offers.push({ seller: `${d.platform || "Digital"} lottery`, kind: `${d.channel || "Digital"} lottery`, sec: null, row: null, price: d.price, fee: 0, url: d.url || "https://bwayrush.com/",
-        note: "Usually enter 1–2 days before · not guaranteed · via bwayrush.com", chance: true, max: 2, verified: !!RUSH });
+        note: `Enter on ${d.platform && d.platform !== "Show website" ? d.platform : "the show's site"}, usually 1–2 days before · winners drawn at random`, chance: true, max: 2 });
     }
     if (show.rush && near === 0) {
       const d = show.rush;
       offers.push({ seller: `${d.channel || ""} rush`.trim().replace(/^./, (c) => c.toUpperCase()), kind: d.platform ? `Rush · ${d.platform}` : "Rush", sec: null, row: null, price: d.price, fee: 0, url: d.url || "https://bwayrush.com/",
-        note: (d.channel === "In-person" ? "Box office opening, usually 10 AM (12 PM Sun)" : d.channel === "Mobile" ? "In the TodayTix app" : "Online") + " · while they last · via bwayrush.com", chance: true, max: 2, verified: !!RUSH });
+        note: (d.channel === "In-person" ? "Buy at the box office when it opens, usually 10 AM (12 PM Sun)" : d.channel === "Mobile" ? "Buy in the TodayTix app on the day" : `Buy online${d.platform && d.platform !== "Show website" ? " on " + d.platform : ""} on the day`) + " · first come, first served", chance: true, max: 2 });
     }
 
     // ---- real prices for this performance replace that seller's sample rows ----
@@ -775,7 +776,7 @@
           <div>
             <div class="seller">${esc(o.seller)}
               ${isBest ? `<span class="badge red">Best deal</span>` : ""}
-              ${o.chance ? `<span class="badge gold">Not guaranteed</span>` : ""}
+              ${o.chance ? `<span class="badge gold">${/lottery/i.test(o.kind) ? "Lottery · not guaranteed" : "Rush · while they last"}</span>` : ""}
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
@@ -897,6 +898,17 @@
       </div>`;
   }
 
+  // Split a program's shows into what's playing now vs. coming later.
+  function programShows(p) {
+    const shows = (p.slugs || []).map((sl) => SHOWS.find((x) => x.slug === sl)).filter((x) => x && x.status !== "closed");
+    if (!shows.length) return "";
+    const link = (x) => `<a href="#show-${x.slug}">${esc(x.title)}</a>`;
+    const now = shows.filter((x) => x.status === "playing" || x.status === "previews");
+    const later = shows.filter((x) => x.status === "upcoming");
+    return `${now.length ? `<div class="program-shows">Now: ${now.map((x) => link(x) + (x.status === "previews" ? ' <span class="muted">(in previews)</span>' : "")).join(", ")}</div>` : ""}`
+      + `${later.length ? `<div class="program-shows">Coming up: ${later.map((x) => link(x) + ((x.previews && !x.previews.assumed) || x.opening ? ` <span class="muted">(${x.previews && !x.previews.assumed && x.opening && x.previews.date < x.opening.date ? "previews " + fmtRunDate(x.previews) : (x.closing ? "plays " : "opens ") + fmtRunDate(x.opening) + (x.closing ? "–" + fmtRunDate(x.closing) : "")})</span>` : "")).join(", ")}</div>` : ""}`;
+  }
+
   function programsSection(scene) {
     const ARTS = [["theater", "Theater"], ["opera", "Opera"], ["ballet", "Ballet"]];
     const list = PROGRAMS.filter((p) => scene === "all" || (scene === "off") === (p.scene === "off"));
@@ -912,8 +924,8 @@
           <article class="program">
             <a class="program-co" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.company)} ↗</a>
             ${p.where ? `<div class="muted" style="font-size:12px">${esc(p.where)}</div>` : ""}
-            ${(p.slugs || []).length ? `<div class="program-shows">Now: ${(p.slugs || []).map((sl) => SHOWS.find((x) => x.slug === sl)).filter((x) => x && x.status !== "closed").map((x) => `<a href="#show-${x.slug}">${esc(x.title)}</a>`).join(", ") || "—"}</div>` : ""}
-            <ul>${p.deals.map((d) => `<li><b>${esc(d.price)}</b> <span class="pname">${esc(d.name)}</span> <span class="badge">${esc(d.who)}</span><div class="muted" style="font-size:12px">${esc(d.how)}</div></li>`).join("")}</ul>
+            ${programShows(p)}
+            <ul>${p.deals.map((d) => `<li><b>${esc(d.price)}</b> <span class="pname">${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.name)} ↗</a>` : esc(d.name)}</span> <span class="badge">${esc(d.who)}</span><div class="muted" style="font-size:12px">${esc(d.how)}</div></li>`).join("")}</ul>
           </article>`).join("")}</div>`;
       }).join("")}`;
   }
