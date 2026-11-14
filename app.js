@@ -344,10 +344,12 @@
   };
   const TIME_MULT = { mat: 0.9, eve: 0.97, peak: 1.15 };
 
-  function getDates() {
+  function getDates(start) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
+    const from = start && start > today ? start : today, skip = Math.round((from - today) / 864e5);
     const out = [];
-    for (let i = 0; i < DAYS_AHEAD; i++) {
+    for (let j = 0; j < DAYS_AHEAD; j++) {
+      const i = skip + j;
       const d = new Date(today); d.setDate(today.getDate() + i);
       const perfs = SCHEDULE[d.getDay()].map(([time, kind]) => ({
         time, kind, mult: TIME_MULT[kind], dayOffset: i,
@@ -358,6 +360,23 @@
     return out;
   }
   const DATES = getDates();
+  window.__TM_DATES_ALL = DATES;
+  // A show that hasn't started yet but already sells tickets: compare prices for its first
+  // two weeks of performances instead of the next two weeks (when it isn't playing).
+  const DATES_CACHE = {};
+  function datesFor(show) {
+    if (DATES_CACHE[show.slug]) return DATES_CACHE[show.slug];
+    let out = DATES;
+    const playsSoon = DATES.some((dt) => performsOn(show, dt.date) && perfsFor(show, dt).length);
+    if (!playsSoon && show.onSale) {
+      const cal = CALENDARS[show.slug];
+      const day = (p) => p && p.precision === "day" && !p.assumed ? p.date : null;
+      const first = cal ? new Date(cal.from + "T00:00:00") : day(show.previews) || day(show.opening);
+      if (first && first > TODAY) out = getDates(first);
+    }
+    return (DATES_CACHE[show.slug] = out);
+  }
+  const datesShifted = (show) => datesFor(show) !== DATES;
   const CALENDARS = (window.TM_SCHEDULES && window.TM_SCHEDULES.shows) || {};
   const hasCalendar = (show) => !!CALENDARS[show.slug];
 
@@ -388,7 +407,8 @@
         const mins = toMinutes(t), dow = dt.date.getDay();
         const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
         return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, special: keyDateLabel(show, dt.date) };
-      });
+      }).concat(!(cal.days[k] || []).length && keyDateLabel(show, dt.date)
+        ? [{ time: "7:00 PM", kind: "eve", mult: TIME_MULT.eve, dayOffset: dt.offset, key: k + " 7:00 PM", special: keyDateLabel(show, dt.date), approx: true }] : []);
     }
     // Opening night / first preview / final show always happens, even on a usually-dark day.
     const special = keyDateLabel(show, dt.date);
@@ -522,7 +542,7 @@
   }
   function lowestForShow(show) {
     let best = null, bestDate = null;
-    DATES.forEach((dt) => {
+    datesFor(show).forEach((dt) => {
       const b = lowestForDate(show, dt, { noMember: true });
       if (b && (!best || b.total < best.total)) { best = b; bestDate = dt; }
     });
@@ -530,7 +550,7 @@
   }
   function officialLowest(show) {
     let best = null;
-    DATES.filter((dt) => performsOn(show, dt.date)).forEach((dt) => perfsFor(show, dt).forEach((p) => {
+    datesFor(show).filter((dt) => performsOn(show, dt.date)).forEach((dt) => perfsFor(show, dt).forEach((p) => {
       buildOffers(show, p).forEach((o) => { if (o.kind === "Official seller" && (!best || o.total < best.total)) best = o; });
     }));
     return best;
@@ -831,8 +851,11 @@
   }
 
   function viewShow(slug) {
+    let DATES = window.__TM_DATES_ALL;
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
+    DATES = datesFor(show);
+    const windowWord = datesShifted(show) ? "in its first 2 weeks of performances" : `in the next ${DAYS_AHEAD} days`;
     const backHref = SCENE_HASH[state.f.scene] || "#home";
     if (!show.onSale) {
       const run = [];
@@ -946,7 +969,7 @@
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
-        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
+        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} ${windowWord}${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
       ${banner}
 
@@ -964,7 +987,7 @@
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
             const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
             const cls = ["date-chip", isOpening ? "opening-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
-            return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : ""}<div class="dow">${i === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
+            return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
           }).join("")}
         </div>
         <div class="time-row">
