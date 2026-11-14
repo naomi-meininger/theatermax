@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261114-0215" />
+  <link rel="stylesheet" href="styles.css?v=20261114-0230" />
 </head>
 <body>
   <div class="demo-banner" role="note">
@@ -34,22 +34,42 @@
 
   <footer class="site-footer">
     <p><strong>TheaterMax</strong> — every seller, one search.</p>
+    <details class="report" id="report">
+      <summary>🐞 See a mistake or bug? <span>Tell us. It goes straight to the TheaterMax inbox.</span></summary>
+      <form id="report-form" novalidate>
+        <div class="report-row">
+          <label>What kind?
+            <select name="kind"><option>Wrong info (price, date, code…)</option><option>Bug (something broken)</option><option>Missing show or deal</option><option>Suggestion</option></select>
+          </label>
+          <label>Your email <span class="muted">(optional, if you'd like a reply)</span>
+            <input type="email" name="email" autocomplete="email" placeholder="you@example.com">
+          </label>
+        </div>
+        <label>What did you notice?
+          <textarea name="message" rows="4" required maxlength="3000" placeholder="e.g. The Fantasticks shows Monday as dark, but opening night is Monday."></textarea>
+        </label>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="report-actions"><button class="btn" type="submit">Send report</button><span class="report-status" role="status" aria-live="polite"></span></div>
+        <p class="muted report-fine">We'll also send the page you're on so we can find the problem. Nothing else is collected.</p>
+      </form>
+    </details>
     <p class="muted">Show list and lowest prices from Broadway.com, refreshed daily. Seat-level offers are sample data. Always check the official seller before buying. Discount guide adapted from <em>Naomi's Guide to Discount Broadway</em>.</p>
   </footer>
 
-  <script src="data/sources.js?v=20261114-0215"></script>
-  <script src="data/live-shows.js?v=20261114-0215"></script>
-  <script src="data/shows.js?v=20261114-0215"></script>
-  <script src="data/tdf.js?v=20261114-0215"></script>
-  <script src="data/showscore.js?v=20261114-0215"></script>
-  <script src="data/previews.js?v=20261114-0215"></script>
-  <script src="data/live-prices.js?v=20261114-0215"></script>
-  <script src="data/seatviews.js?v=20261114-0215"></script>
-  <script src="data/codes.js?v=20261114-0215"></script>
-  <script src="data/rush.js?v=20261114-0215"></script>
-  <script src="data/extra-shows.js?v=20261114-0215"></script>
-  <script src="data/programs.js?v=20261114-0215"></script>
-  <script src="data/schedule.js?v=20261114-0215"></script>
-  <script src="app.js?v=20261114-0215"></script>
+  <script src="data/config.js?v=20261114-0230"></script>
+  <script src="data/sources.js?v=20261114-0230"></script>
+  <script src="data/live-shows.js?v=20261114-0230"></script>
+  <script src="data/shows.js?v=20261114-0230"></script>
+  <script src="data/tdf.js?v=20261114-0230"></script>
+  <script src="data/showscore.js?v=20261114-0230"></script>
+  <script src="data/previews.js?v=20261114-0230"></script>
+  <script src="data/live-prices.js?v=20261114-0230"></script>
+  <script src="data/seatviews.js?v=20261114-0230"></script>
+  <script src="data/codes.js?v=20261114-0230"></script>
+  <script src="data/rush.js?v=20261114-0230"></script>
+  <script src="data/extra-shows.js?v=20261114-0230"></script>
+  <script src="data/programs.js?v=20261114-0230"></script>
+  <script src="data/schedule.js?v=20261114-0230"></script>
+  <script src="app.js?v=20261114-0230"></script>
 </body>
 </html>

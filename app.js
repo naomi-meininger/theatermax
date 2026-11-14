@@ -1220,4 +1220,35 @@
   }
   window.addEventListener("hashchange", navigate);
   route();
+
+  // ---------- "See a mistake or bug?" form → email via FormSubmit (data/config.js) ----------
+  (function setupReport() {
+    const form = document.getElementById("report-form");
+    if (!form) return;
+    const status = form.querySelector(".report-status"), btn = form.querySelector("button[type=submit]");
+    const say = (msg, cls) => { status.textContent = msg; status.className = "report-status " + (cls || ""); };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      if (fd.get("_honey")) return;                              // bots fill hidden fields
+      const message = String(fd.get("message") || "").trim();
+      if (message.length < 5) { say("Please tell us what you noticed.", "err"); form.message.focus(); return; }
+      const to = ((window.TM_CONFIG || {}).REPORT_TO || "").trim();
+      if (!to) { say("Reporting isn't switched on yet. Please try again soon.", "err"); return; }
+      const body = { _subject: `TheaterMax report: ${fd.get("kind")}`, _template: "table", _captcha: "false",
+        kind: fd.get("kind"), message, page: location.href, browser: navigator.userAgent, sent: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }) + " ET" };
+      const email = String(fd.get("email") || "").trim();
+      if (email) body.email = email;                              // FormSubmit uses this as reply-to
+      btn.disabled = true; say("Sending…");
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/" + encodeURIComponent(to), {
+          method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || String(out.success) === "false") throw new Error(out.message || res.status);
+        form.reset(); say("Thanks! Your report was sent.", "ok");
+      } catch (err) {
+        say("Couldn't send right now. Please try again in a minute.", "err");
+      } finally { btn.disabled = false; }
+    });
+  })();
 })();
