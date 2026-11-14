@@ -7,6 +7,8 @@
 //   type:     "Musical" | "Play" | "Special"
 //   blurb:    1–2 sentence description in our own words
 //   critics:  { score, positive, mixed, negative, consensus, source, url, date }
+//   reddit:   [{ title, url }] — hand-picked r/Broadway threads (shown as "Featured discussions").
+//             Titles are just labels for the link; don't paste post text here.
 
 window.TM_PREVIEWS = {
   "wanted": {
@@ -54,7 +56,7 @@ window.TM_PREVIEWS = {
   "annie": { type: "Musical", blurb: "The Depression-era orphan, her dog Sandy, and billionaire Oliver Warbucks. Home of “Tomorrow.”" },
   "10-things-i-hate-about-you": { type: "Musical", blurb: "A musical based on the 1999 teen comedy, itself a high-school spin on The Taming of the Shrew." },
   "warriors": { type: "Musical", blurb: "A musical based on the 1979 cult film about a New York gang fighting its way home across the city, from Lin-Manuel Miranda and Eisa Davis's concept album." },
-  "galileo": { type: "Musical", blurb: "A new musical about the astronomer Galileo and his clash with the Church, starring Raúl Esparza." },
+  "galileo": { type: "Musical", reddit: [{ title: "Galileo thoughts", url: "https://www.reddit.com/r/Broadway/comments/1cna302/galileo_thoughts/" }], blurb: "A new musical about the astronomer Galileo and his clash with the Church, starring Raúl Esparza." },
 
   // ---- Plays ----
   "harry-potter-and-cursed-child-broadway": { type: "Play", blurb: "Nineteen years after the books end, Harry's son Albus befriends Draco Malfoy's son and they meddle with time. Famous for its stage magic." },

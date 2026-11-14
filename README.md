@@ -63,6 +63,8 @@ Above the offers: **All · Official sellers · Discount codes · Discount apps (
 
 Every show card has a **Preview** button, and show pages have one too. It opens a short description, the lowest listed price, the audience-review count, and, where available, a **critics summary**. The summary shows the average score, how many reviews were positive, mixed or negative, a one-line consensus, and a link to the full review roundup (for example, BroadwayWorld's).
 
+Each preview also links to **r/Broadway**: a search for the show, plus any hand-picked threads listed under `reddit: [{ title, url }]` (shown as "💬 r/Broadway: …"). These are links only; no Reddit text is copied onto the site.
+
 All of this lives in `data/previews.js`. **Write descriptions and consensus lines in your own words.** Don't paste text from Broadway.com, reviews or other sites: that's their copyrighted writing. Link to it instead. To add critics for another show, find its BroadwayWorld "Review Roundup" article, count the verdicts, note the average score, and add a `critics` entry.
 
 ## Run dates (Now playing / In previews / Upcoming)

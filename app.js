@@ -138,6 +138,7 @@
       type: x.type || (PREVIEWS[l.slug] || {}).type || (PLAYS.has(l.slug) ? "Play" : null),
       blurb: (PREVIEWS[l.slug] || {}).blurb || null,
       critics: (PREVIEWS[l.slug] || {}).critics || null,
+      reddit: (PREVIEWS[l.slug] || {}).reddit || null,
       scene: l.scene || "broadway",
       ...runInfo(l.slug, l.fromPrice !== null, l.ratingCount, l.scene || "broadway"),
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
@@ -596,7 +597,8 @@
 
           <div class="pv-links">
             ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
-            <a href="https://www.reddit.com/r/Broadway/search/?q=${encodeURIComponent('"' + s.title.replace(/[:(].*$/, "").trim() + '"')}&restrict_sr=1&sort=relevance" target="_blank" rel="noopener">What theatergoers say on r/Broadway ↗</a>
+            ${(s.reddit || []).map((t) => `<a class="reddit-thread" href="${esc(t.url)}" target="_blank" rel="noopener">💬 r/Broadway: “${esc(t.title)}” ↗</a>`).join("")}
+            <a href="https://www.reddit.com/r/Broadway/search/?q=${encodeURIComponent('"' + s.title.replace(/[:(].*$/, "").trim() + '"')}&restrict_sr=1&sort=relevance" target="_blank" rel="noopener">${s.reddit && s.reddit.length ? "More on r/Broadway ↗" : "What theatergoers say on r/Broadway ↗"}</a>
             ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">📷 Seat views at ${esc(s.theater)} ↗</a>` : ""}
           </div>
         </div>
