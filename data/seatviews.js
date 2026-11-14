@@ -33,4 +33,8 @@ window.TM_SEATVIEWS = {
   "Stephen Sondheim Theatre": { box: "Left Box", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],      balc: [2, "Mezzanine"] },       // two levels
   "Marquis Theatre":         { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },       // two levels
   "Gerald Schoenfeld Theatre": { box: "Box B", orch: [1, "Orchestra"], mezz: [3, "Mezzanine"],     balc: [3, "Mezzanine"] },       // level 2 = boxes
+  "Al Hirschfeld Theatre":   { orch: [2, "Orchestra"], mezz: [3, "Mezzanine"],       balc: [3, "Mezzanine"] },       // level 1 = Moulin Rouge "Can Can" tables
+  "August Wilson Theatre":   { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },
+  "Booth Theatre":           { box: "Right Boxes", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [2, "Mezzanine"] },
+  "Broadhurst Theatre":      { box: "Right Boxes", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [2, "Mezzanine"] },
 };
