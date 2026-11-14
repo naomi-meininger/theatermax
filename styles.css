@@ -266,9 +266,8 @@ body.modal-open { overflow: hidden; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(22, 19, 15, .6); }
 .modal {
   position: relative; background: var(--card); border-radius: 18px; width: min(560px, 100%); max-height: calc(100vh - 32px);
-  overflow: auto; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); animation: pop .18s ease-out;
+  overflow: auto; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5);
 }
-@keyframes pop { from { transform: translateY(8px) scale(.98); opacity: 0; } }
 .modal-head { padding: 26px 24px 20px; position: relative; overflow: hidden; }
 .modal-head::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 14px); }
 .modal-head h2 { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: 1; margin: 0 40px 8px 0; position: relative; letter-spacing: -.02em; }
@@ -367,3 +366,47 @@ body.modal-open { overflow: hidden; }
 .group-tabs .pill.active .n { color: #cfc6b6; }
 .code-hint { font-size: 13px; color: var(--ink-2); background: var(--paper-2); padding: 8px 12px; border-radius: 8px; margin: 0 0 10px; }
 .code-hint a { font-weight: 700; color: var(--red); }
+
+/* ---------- transitions ---------- */
+:root { --ease-out: cubic-bezier(.22, .9, .32, 1); }
+main { view-transition-name: page; }
+
+/* Page changes (browsers with View Transitions) */
+::view-transition-old(page) { animation: page-out .18s ease-in both; }
+::view-transition-new(page) { animation: page-in .42s var(--ease-out) both; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; } /* header & footer stay put */
+@keyframes page-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes page-in  { from { opacity: 0; transform: translateY(12px); } }
+
+/* Fallback for other browsers */
+#app { transition: opacity .16s ease, transform .16s ease; }
+#app.page-leave { opacity: 0; transform: translateY(-6px); }
+#app.page-enter { animation: page-in .42s var(--ease-out) both; }
+
+/* Cards float in one after another */
+.grid-in .show-card { animation: card-in .5s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 35ms); }
+@keyframes card-in { from { opacity: 0; transform: translateY(14px) scale(.985); } }
+.show-card { transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.show-card:hover { transform: translateY(-4px); }
+
+/* Offer rows ease in */
+.offer { animation: row-in .35s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 25ms); }
+@keyframes row-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* Preview window: fade + scale in and out */
+#modal-root .modal-backdrop { animation: fade-in .22s ease both; }
+#modal-root .modal { animation: modal-in .32s var(--ease-out) both; }
+#modal-root.closing .modal-backdrop { animation: fade-out .18s ease both; }
+#modal-root.closing .modal { animation: modal-out .18s ease-in both; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes modal-in { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+@keyframes modal-out { to { opacity: 0; transform: translateY(8px) scale(.98); } }
+
+/* Softer hover/press feedback on buttons, pills and links */
+.btn, .pill, .preview-btn, .date-chip, .nav a, .copy-btn { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .15s ease, box-shadow .2s ease; }
+.btn:active, .pill:active, .preview-btn:active, .date-chip:active, .copy-btn:active { transform: scale(.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after, ::view-transition-old(page), ::view-transition-new(page) { animation: none !important; transition: none !important; }
+}

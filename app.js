@@ -516,15 +516,17 @@
     const whereWord = { all: "", broadway: " on Broadway", off: " off-Broadway" }[f.scene];
     $("#grid-title").textContent = typeWord + whenWord + whereWord;
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
-    $("#grid").innerHTML = list.length ? list.map(cardHtml).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
+    const grid = $("#grid");
+    grid.classList.remove("grid-in"); void grid.offsetWidth; grid.classList.add("grid-in"); // replay the fade
+    grid.innerHTML = list.length ? list.map((x, i) => cardHtml(x, i)).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
   }
 
-  function cardHtml({ s, best, bestDate }) {
+  function cardHtml({ s, best, bestDate }, i = 0) {
     const href = s.onSale ? `#show-${s.slug}` : s.bdcUrl;
     best = best || null;
     const ext = s.onSale ? "" : ` target="_blank" rel="noopener"`;
     return `
-      <article class="show-card ${s.onSale ? "" : "soon"}">
+      <article class="show-card ${s.onSale ? "" : "soon"}" style="--i:${Math.min(i, 12)}">
         <a class="card-link" href="${esc(href)}"${ext}>
           <div class="poster" style="${posterStyle(s)}">
             ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
@@ -618,9 +620,14 @@
     $(".modal-x", root).focus();
   }
   function closePreview() {
-    const root = $("#modal-root"); if (root.hidden) return;
-    root.hidden = true; root.innerHTML = ""; document.body.classList.remove("modal-open");
-    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+    const root = $("#modal-root"); if (root.hidden || root.classList.contains("closing")) return;
+    const finish = () => {
+      root.classList.remove("closing"); root.hidden = true; root.innerHTML = ""; document.body.classList.remove("modal-open");
+      if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+    };
+    if (reduceMotion()) return finish();
+    root.classList.add("closing");
+    setTimeout(finish, 180);
   }
 
   function seatMap(offers, show) {
@@ -716,7 +723,7 @@
       const save = off && o !== off ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
       return `
-        <article class="offer ${isBest ? "best" : ""}">
+        <article class="offer ${isBest ? "best" : ""}" style="--i:${Math.min(offers.indexOf(o), 10)}">
           <div>
             <div class="seller">${esc(o.seller)}
               ${isBest ? `<span class="badge red">Best deal</span>` : ""}
@@ -1002,6 +1009,24 @@
     store.set("tm-alerts", a); rerenderShow();
   });
 
-  window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
+  // ---- page transitions: fade + slight lift between pages ----
+  const reduceMotion = () => { try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { return false; } };
+  let navToken = 0;
+  function navigate() {
+    const go = () => { route(); window.scrollTo(0, 0); };
+    if (reduceMotion()) return go();
+    if (document.startViewTransition) { document.startViewTransition(go); return; } // Chrome, Edge, Safari 18+
+    // Fallback: fade the page out, swap, fade it back in.
+    const app = $("#app"), token = ++navToken;
+    app.classList.add("page-leave");
+    setTimeout(() => {
+      if (token !== navToken) return;
+      go();
+      app.classList.remove("page-leave");
+      app.classList.add("page-enter");
+      setTimeout(() => app.classList.remove("page-enter"), 450);
+    }, 160);
+  }
+  window.addEventListener("hashchange", navigate);
   route();
 })();
