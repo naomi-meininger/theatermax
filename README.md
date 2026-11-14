@@ -2,7 +2,7 @@
 
 **Want the best ticket deals but find yourself scanning multiple websites?** TheaterMax brings every ticket website and app into one place, so you can compare prices, dates and seat locations for theater shows.
 
-> ⚠️ **Prototype.** The **show list and "from" prices are real**, pulled from Broadway.com once a day. **Seat-by-seat offers** (each seller's price per section) and **lottery & rush details** are still sample data.
+> ⚠️ **Prototype.** The **show list and "from" prices are real**, pulled from Broadway.com once a day. **Live prices** from SeatGeek and Ticketmaster switch on once you add API keys (see below). Everything else on a show page (prices by section from other sellers) and the **lottery & rush details** are sample data, labeled as such.
 
 ## What it does
 
@@ -27,6 +27,29 @@
 - **If Broadway.com changes its page layout** and the scraper finds fewer than 20 shows, it also keeps the old list, so the site never goes blank.
 - **Run it yourself:** `node scripts/update-shows.mjs` (needs Node 18+, no installs).
 - Check Broadway.com's terms of use before launching anything commercial. The bot identifies itself and only makes one request a day.
+
+## Live prices (SeatGeek + Ticketmaster)
+
+`scripts/update-prices.mjs` runs every 6 hours (`.github/workflows/update-prices.yml`). For each show on sale, it finds the matching performances in the next 14 days and saves real prices to `data/live-prices.js`:
+
+| Source | What you get (free tier) | Shown on the site as |
+|---|---|---|
+| SeatGeek | cheapest seat per performance, **fees included**, plus highest price and number of listings | "● Live price · SeatGeek · Cheapest available seat" |
+| Ticketmaster | face-value price range per performance (**before fees**; the site adds an estimated ~18%) | "● Live price · Ticketmaster · Face-value tickets" |
+
+On shows with live data, the date picker uses the **real performance times**, and the remaining estimated rows get a "Sample" tag. Shows without live data keep the sample prices and say so.
+
+**To turn it on (about 10 minutes):**
+1. **SeatGeek:** sign in at <https://seatgeek.com/account/develop>, create an app, and copy its **Client ID**.
+2. **Ticketmaster:** sign up at <https://developer.ticketmaster.com/>, open *My Apps*, and copy the **Consumer Key**.
+3. In this repo, go to **Settings → Secrets and variables → Actions → New repository secret** and add:
+   - `SEATGEEK_CLIENT_ID`: your SeatGeek Client ID
+   - `TICKETMASTER_API_KEY`: your Ticketmaster Consumer Key
+4. Go to **Actions → Update live prices → Run workflow**. A couple of minutes later, show pages show "● Live price" rows.
+
+You can add just one of the two keys; the other source is skipped. Keys never appear in the code or on the site.
+
+**Safety nets:** an event only counts as a match when its title matches and, if we know the theater, it's at that theater, so touring productions and "Annie Lennox" don't sneak in. If a source fails (network down, bad key, rate limit), it stops right away, keeps the previous prices, and logs a warning in the Actions run. Past performances are dropped automatically. Test it locally with `SEATGEEK_CLIENT_ID=... node scripts/update-prices.mjs`.
 
 ## Show previews & critics
 
@@ -71,8 +94,11 @@ data/live-shows.js  AUTO-GENERATED daily: current Broadway shows from Broadway.c
 data/shows.js     extras: theaters, plays list, sample lottery & rush
 data/previews.js  show descriptions (our own words) + types + critic roundup summaries
 data/schedule.js  previews / opening / closing dates that drive the "When" filter
-scripts/update-shows.mjs              the scraper
+data/live-prices.js  AUTO-GENERATED every 6h: real prices per performance
+scripts/update-shows.mjs              the show-list scraper
+scripts/update-prices.mjs             the SeatGeek + Ticketmaster price fetcher
 .github/workflows/update-shows.yml    runs the scraper daily
+.github/workflows/update-prices.yml   runs the price fetcher every 6 hours
 data/sources.js   the ticket sources, from the discount guide
 ```
 

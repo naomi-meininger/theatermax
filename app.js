@@ -131,7 +131,8 @@
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
-      official: x.official || (h % 2 ? "Telecharge" : "Ticketmaster"),
+      // If Ticketmaster's API returns this show, Ticketmaster is its official seller.
+      official: x.official || (Object.values((window.TM_PRICES && window.TM_PRICES.shows && window.TM_PRICES.shows[l.slug]) || {}).some((p) => p.ticketmaster) ? "Ticketmaster" : (h % 2 ? "Telecharge" : "Ticketmaster")),
       colors: PALETTES[h % PALETTES.length],
       lottery: x.lottery || null, rush: x.rush || null,
     };
@@ -229,6 +230,29 @@
   }
   const DATES = getDates();
 
+  // ---------- live prices (data/live-prices.js, from SeatGeek + Ticketmaster) ----------
+  const PRICES = window.TM_PRICES || { sources: {}, shows: {} };
+  const LIVE_SOURCES = Object.entries(PRICES.sources || {}).filter(([, v]) => v.status === "ok" || v.status === "stale").map(([k]) => k);
+  const hasLive = (show) => !!(PRICES.shows && PRICES.shows[show.slug] && Object.keys(PRICES.shows[show.slug]).length);
+  const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const toMinutes = (t) => { const [hm, ap] = t.split(" "); let [h, m] = hm.split(":").map(Number); if (ap === "PM" && h !== 12) h += 12; if (ap === "AM" && h === 12) h = 0; return h * 60 + m; };
+  const inLiveWindow = (d) => PRICES.window && dayKey(d) >= PRICES.window.from && dayKey(d) <= PRICES.window.to;
+
+  // Performances for one show on one day: the REAL schedule when we have live data for it,
+  // otherwise the typical Broadway week (sample).
+  function perfsFor(show, dt) {
+    const live = PRICES.shows && PRICES.shows[show.slug];
+    if (live && inLiveWindow(dt.date)) {
+      const k = dayKey(dt.date);
+      return Object.keys(live).filter((key) => key.startsWith(k + " ")).map((key) => {
+        const time = key.slice(11), mins = toMinutes(time), dow = dt.date.getDay();
+        const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
+        return { time, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${time}`, live: live[key] };
+      }).sort((a, b) => toMinutes(a.time) - toMinutes(b.time));
+    }
+    return dt.perfs;
+  }
+
   // ---------- offers (sample generator) ----------
   const cache = new Map();
   function buildOffers(show, perf) {
@@ -299,7 +323,26 @@
       offers.push({ seller: show.rush.where + " rush", kind: "Rush", sec: null, row: null, price: show.rush.price, fee: 0, url: "https://bwayrush.com/", note: show.rush.when + " · max 2 tickets · while they last", chance: true, max: 2 });
     }
 
-    offers.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; });
+    // ---- real prices for this performance replace that seller's sample rows ----
+    const live = perf.live || (PRICES.shows && PRICES.shows[show.slug] && PRICES.shows[show.slug][perf.key]);
+    let result = offers.slice(); // copy: we refill `offers` below, so it must not alias `result`
+    if (live) {
+      if (live.seatgeek) {
+        result = result.filter((o) => o.seller !== "SeatGeek");
+        const sg = live.seatgeek;
+        result.push({ seller: "SeatGeek", kind: "Cheapest available seat", sec: null, row: null, price: sg.low, fee: 0, url: sg.url, live: "seatgeek",
+          note: [sg.listings ? `${sg.listings} listings` : null, sg.high ? `up to ${money0(sg.high)}` : null, "price includes fees"].filter(Boolean).join(" · ") });
+      }
+      if (live.ticketmaster) {
+        const tm = live.ticketmaster;
+        if (show.official === "Ticketmaster") result = result.filter((o) => !(o.tag === "official" && o.seller.startsWith("Ticketmaster")));
+        const fee = Math.round(tm.min * 0.18 * 100) / 100; // TM shows face value; fees are added at checkout
+        result.push({ seller: "Ticketmaster", kind: "Face-value tickets", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", tag: "official",
+          note: `Face value ${money0(tm.min)}–${money0(tm.max)} · fees estimated (~18%)` });
+      }
+    }
+    result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance) o.sample = true; });
+    offers.length = 0; offers.push(...result);
     cache.set(ck, offers);
     return offers;
   }
@@ -318,7 +361,7 @@
   function lowestForDate(show, dateObj, opts) {
     if (!performsOn(show, dateObj.date)) return null;
     let best = null;
-    dateObj.perfs.forEach((p) => {
+    perfsFor(show, dateObj).forEach((p) => {
       const b = lowest(buildOffers(show, p), opts);
       if (b && (!best || b.total < best.total)) best = b;
     });
@@ -334,7 +377,7 @@
   }
   function officialLowest(show) {
     let best = null;
-    DATES.filter((dt) => performsOn(show, dt.date)).forEach((dt) => dt.perfs.forEach((p) => {
+    DATES.filter((dt) => performsOn(show, dt.date)).forEach((dt) => perfsFor(show, dt).forEach((p) => {
       buildOffers(show, p).forEach((o) => { if (o.kind === "Official seller" && (!best || o.total < best.total)) best = o; });
     }));
     return best;
@@ -583,7 +626,7 @@
     const backHref = SCENE_HASH[state.f.scene] || "#home";
     if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
 
-    const playable = (d) => d.perfs.length && performsOn(show, d.date);
+    const playable = (d) => perfsFor(show, d).length && performsOn(show, d.date);
     const note = closingNote(show);
     const on = openingNote(show);
     const banner = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
@@ -605,13 +648,14 @@
       state.perfIdx = 0;
     }
     const dateObj = DATES[state.dateIdx];
-    if (state.perfIdx >= dateObj.perfs.length) state.perfIdx = 0;
-    const perf = dateObj.perfs[state.perfIdx];
+    const dayPerfs = perfsFor(show, dateObj);
+    if (state.perfIdx >= dayPerfs.length) state.perfIdx = 0;
+    const perf = dayPerfs[state.perfIdx];
     const alerts = store.get("tm-alerts", {});
     const target = alerts[slug];
 
     // date strip
-    const lows = DATES.map((dt) => (dt.perfs.length ? lowestForDate(show, dt, { noMember: state.hideMember, section: state.section }) : null));
+    const lows = DATES.map((dt) => (perfsFor(show, dt).length ? lowestForDate(show, dt, { noMember: state.hideMember, section: state.section }) : null));
     const cheapestVal = Math.min(...lows.filter(Boolean).map((o) => o.total));
     const overall = { total: cheapestVal };
 
@@ -642,15 +686,16 @@
               ${o.chance ? `<span class="badge gold">Not guaranteed</span>` : ""}
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
+              ${o.live ? `<span class="badge live">● Live price</span>` : o.sample && hasLive(show) ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
-          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : `<b>Seat assigned</b>Any section`}
+          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
             ${o.sec && show.theater ? `<a class="seatview" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">📷 View from this section</a>` : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
-            <div class="breakdown">${state.fees ? `${money(o.price)} + ${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.live === "seatgeek" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save)} vs. box office</div>` : ""}
             ${state.qty > 1 ? `<div class="breakdown">${state.qty} tickets: ${money(shown * state.qty)}</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
@@ -678,8 +723,8 @@
         <div class="date-strip">
           ${DATES.map((dt, i) => {
             const lo = lows[i];
-            if (!dt.perfs.length || !performsOn(show, dt.date)) {
-              const why = !dt.perfs.length ? "Dark" : show.closing && dt.date > show.closing.date ? "Closed" : "—";
+            if (!perfsFor(show, dt).length || !performsOn(show, dt.date)) {
+              const why = !perfsFor(show, dt).length ? (hasLive(show) && inLiveWindow(dt.date) ? "—" : "Dark") : show.closing && dt.date > show.closing.date ? "Closed" : "—";
               return `<button class="date-chip dark" disabled title="${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
             }
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
@@ -688,7 +733,7 @@
           }).join("")}
         </div>
         <div class="time-row">
-          ${dateObj.perfs.map((p, i) => `<button class="pill ${i === state.perfIdx ? "active" : ""}" data-perf="${i}">${p.time}${p.kind === "mat" ? " · Matinee" : ""}</button>`).join("")}
+          ${dayPerfs.map((p, i) => `<button class="pill ${i === state.perfIdx ? "active" : ""}" data-perf="${i}">${p.time}${p.kind === "mat" ? " · Matinee" : ""}</button>`).join("")}
         </div>
       </section>
 
@@ -739,6 +784,9 @@
               <option value="official" ${state.sort === "official" ? "selected" : ""}>Official first</option>
             </select>
           </div>
+          ${hasLive(show)
+            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${new Date(PRICES.updatedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}. Rows marked <span class="badge sample">Sample</span> are estimates.</p>`
+            : `<p class="sample-note">Prices on this page are sample data for now. Live prices appear once the SeatGeek and Ticketmaster connections are switched on.</p>`}
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>

@@ -343,3 +343,9 @@ body.modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .confetti i { animation: none; top: calc(var(--i) * 6%); } }
 .date-chip.opening-day { box-shadow: inset 0 0 0 2px #ff8fb1; }
 .date-chip.opening-day .dow::after { content: " 🎉"; }
+
+/* ---------- live prices ---------- */
+.badge.live { background: #d5ecdd; color: var(--green); }
+.badge.sample { background: var(--paper-2); color: var(--muted); font-weight: 600; }
+.live-note { font-size: 13px; color: var(--green); font-weight: 500; margin: -4px 0 8px; }
+.sample-note { font-size: 13px; color: #8a5a00; background: #f8ecc9; padding: 8px 12px; border-radius: 8px; margin: -4px 0 10px; }

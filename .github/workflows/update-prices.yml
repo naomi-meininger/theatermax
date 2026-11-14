@@ -1,0 +1,45 @@
+name: Update live prices
+
+# Pulls real prices from SeatGeek and Ticketmaster every 6 hours.
+# Needs repository secrets SEATGEEK_CLIENT_ID and/or TICKETMASTER_API_KEY
+# (Settings → Secrets and variables → Actions). Without them it does nothing.
+on:
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-updates
+  cancel-in-progress: false
+
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch prices
+        env:
+          SEATGEEK_CLIENT_ID: ${{ secrets.SEATGEEK_CLIENT_ID }}
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+        run: node scripts/update-prices.mjs
+
+      - name: Commit if prices changed
+        run: |
+          if git diff --quiet -- data/live-prices.js; then echo "No changes."; exit 0; fi
+          if [ "$(git diff -U0 -- data/live-prices.js | grep '^[+-] ' | grep -v -E 'updatedAt|lastAttemptAt|"from"|"to"' | wc -l)" = "0" ]; then
+            echo "Only timestamps changed — skipping commit."; exit 0
+          fi
+          git config user.name "theatermax-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live-prices.js
+          git commit -m "Update live prices ($(date -u +'%Y-%m-%d %H:%M') UTC)"
+          git pull --rebase --autostash origin main
+          git push
