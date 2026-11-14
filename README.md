@@ -6,7 +6,8 @@
 
 ## What it does
 
-- **Compare**: search shows and see the lowest all-in price over the next 14 days.
+- **Broadway** and **Off-Broadway** tabs: search shows and see the lowest all-in price over the next 14 days.
+- **Preview**: a short description, the review count, and a critics summary built from review roundups.
 - **Show page**: pick a date and time, then compare every source side by side: the official seller, promo codes, TodayTix, SeatGeek, TKTS, TDF, Theatr, lottery and rush. It includes:
   - prices with or without fees, and the total for your ticket count
   - a seat map shaded by price (tap a section to filter)
@@ -18,13 +19,19 @@
 
 ## Live show list (daily scraper)
 
-`scripts/update-shows.mjs` reads Broadway.com's listing of all Broadway shows and writes `data/live-shows.js`, which contains each show's title, link, lowest "from" price and review count. It doesn't copy show descriptions or images.
+`scripts/update-shows.mjs` reads Broadway.com's **Broadway** and **Off-Broadway** listings and writes `data/live-shows.js`. That file contains each show's title, link, lowest "from" price, review count, and whether it's Broadway or Off-Broadway. It doesn't copy show descriptions or images. Each list falls back to its own last good copy, so if one listing fails, the other still updates.
 
 - **Schedule:** `.github/workflows/update-shows.yml` runs it every day at about 5 AM New York time. It commits only when the list actually changes. To run it by hand, go to **Actions → Update show list → Run workflow**.
 - **If Broadway.com is unreachable**, the script tries 3 times, keeps the previous day's list and marks it `stale`. The site then shows a yellow note: *"Couldn't refresh… Showing the list last updated …"*. A normal day shows a green *"last updated …"* line instead.
 - **If Broadway.com changes its page layout** and the scraper finds fewer than 20 shows, it also keeps the old list, so the site never goes blank.
 - **Run it yourself:** `node scripts/update-shows.mjs` (needs Node 18+, no installs).
 - Check Broadway.com's terms of use before launching anything commercial. The bot identifies itself and only makes one request a day.
+
+## Show previews & critics
+
+Every show card has a **Preview** button, and show pages have one too. It opens a short description, the lowest listed price, the audience-review count, and, where available, a **critics summary**. The summary shows the average score, how many reviews were positive, mixed or negative, a one-line consensus, and a link to the full review roundup (for example, BroadwayWorld's).
+
+All of this lives in `data/previews.js`. **Write descriptions and consensus lines in your own words.** Don't paste text from Broadway.com, reviews or other sites: that's their copyrighted writing. Link to it instead. To add critics for another show, find its BroadwayWorld "Review Roundup" article, count the verdicts, note the average score, and add a `critics` entry.
 
 ## View from my seat
 
@@ -53,6 +60,7 @@ styles.css        all styling
 app.js            routing, views and the sample price generator
 data/live-shows.js  AUTO-GENERATED daily: current Broadway shows from Broadway.com
 data/shows.js     extras: theaters, plays list, sample lottery & rush
+data/previews.js  show descriptions (our own words) + critic roundup summaries
 scripts/update-shows.mjs              the scraper
 .github/workflows/update-shows.yml    runs the scraper daily
 data/sources.js   the ticket sources, from the discount guide

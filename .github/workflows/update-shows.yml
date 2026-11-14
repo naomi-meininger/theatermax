@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Scrape current Broadway shows
+      - name: Scrape current Broadway & Off-Broadway shows
         run: node scripts/update-shows.mjs
 
       - name: Commit if the list changed

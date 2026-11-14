@@ -10,6 +10,7 @@
   const EXTRAS = window.TM_EXTRAS || {};
   const PLAYS = new Set(window.TM_PLAYS || []);
   const THEATERS = window.TM_THEATERS || {};
+  const PREVIEWS = window.TM_PREVIEWS || {};
 
   // A View From My Seat: real audience photos by theater & section. We link out to their pages
   // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
@@ -31,7 +32,10 @@
       slug: l.slug, title: l.title, bdcUrl: l.url, bdcFrom: l.fromPrice, ratingCount: l.ratingCount,
       onSale: l.fromPrice !== null,
       theater: x.theater || THEATERS[l.slug] || null,
-      type: x.type || (PLAYS.has(l.slug) ? "Play" : null),
+      type: x.type || (PREVIEWS[l.slug] || {}).type || (PLAYS.has(l.slug) ? "Play" : null),
+      blurb: (PREVIEWS[l.slug] || {}).blurb || null,
+      critics: (PREVIEWS[l.slug] || {}).critics || null,
+      scene: l.scene || "broadway",
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
@@ -42,17 +46,20 @@
   });
 
   // "Last updated" note. Stale = the daily scrape failed, or the list is over ~36 hours old.
-  function freshness() {
+  function freshness(scene) {
     if (!LIVE) return { stale: true, text: "Live show list unavailable." };
     const fmt = (iso) => new Date(iso).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
-    const ageH = (Date.now() - new Date(LIVE.updatedAt)) / 36e5;
-    const stale = LIVE.status === "stale" || ageH > 36;
+    const cat = scene && LIVE.categories && LIVE.categories[scene === "off" ? "off" : "broadway"];
+    const info = cat && cat.updatedAt ? cat : LIVE;
+    const ageH = (Date.now() - new Date(info.updatedAt)) / 36e5;
+    const stale = info.status === "stale" || ageH > 36;
+    const src = { updatedAt: info.updatedAt, lastAttemptAt: info.lastAttemptAt };
     return {
       stale,
-      when: fmt(LIVE.updatedAt),
+      when: fmt(src.updatedAt),
       text: stale
-        ? `Couldn't refresh from Broadway.com${LIVE.lastAttemptAt ? " on " + fmt(LIVE.lastAttemptAt) : ""}. Showing the list last updated ${fmt(LIVE.updatedAt)}.`
-        : `Show list from Broadway.com · last updated ${fmt(LIVE.updatedAt)}`,
+        ? `Couldn't refresh from Broadway.com${src.lastAttemptAt ? " on " + fmt(src.lastAttemptAt) : ""}. Showing the list last updated ${fmt(src.updatedAt)}.`
+        : `Show list from Broadway.com · last updated ${fmt(src.updatedAt)}`,
     };
   }
   const SOURCES = window.TM_SOURCES || [];
@@ -72,7 +79,7 @@
   const state = {
     dateIdx: null, perfIdx: 0, section: "all", qty: 2,
     fees: true, hideMember: false, sort: "total",
-    homeQuery: "", homeSort: "price",
+    homeQuery: "", homeSort: "price", scene: "broadway",
   };
 
   // ---------- helpers ----------
@@ -244,20 +251,28 @@
   const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
 
   // ---------- views ----------
+  const inScene = (s) => (state.scene === "off" ? s.scene === "off" : s.scene !== "off");
+
   function viewHome() {
+    const off = state.scene === "off";
+    const LIST = SHOWS.filter(inScene);
     let maxSave = 0;
-    SHOWS.filter((s) => s.onSale).forEach((s) => {
+    LIST.filter((s) => s.onSale).forEach((s) => {
       const lo = lowestForShow(s).best, off = officialLowest(s);
       if (lo && off) maxSave = Math.max(maxSave, 1 - lo.total / off.total);
     });
-    const fresh = freshness();
-    const onSale = SHOWS.filter((s) => s.onSale).length;
+    const fresh = freshness(state.scene);
+    const onSale = LIST.filter((s) => s.onSale).length;
 
     return `
       <section class="hero">
+        ${off ? `
+        <p class="eyebrow">Smaller stages · bigger bargains</p>
+        <h1>Off-<em>Broadway</em></h1>
+        <p class="lede">Off-Broadway theaters seat 499 people or fewer, so you're closer to the stage and tickets usually cost less. Every show below gets the same price comparison as Broadway.</p>` : `
         <p class="eyebrow">Every seller · one search</p>
         <h1>Stop tab-hopping. <em>Get the best seat price.</em></h1>
-        <p class="lede">TheaterMax compares official sellers, discount codes, apps, resale, TKTS, memberships, lotteries and rush, so you see every price, date and seat in one place, with fees included.</p>
+        <p class="lede">TheaterMax compares official sellers, discount codes, apps, resale, TKTS, memberships, lotteries and rush, so you see every price, date and seat in one place, with fees included.</p>`}
         <div class="search-bar" role="search">
           <input id="q" type="search" placeholder="Search a show or theater…" value="${esc(state.homeQuery)}" aria-label="Search shows" />
           <select id="homeSort" aria-label="Sort shows">
@@ -267,20 +282,20 @@
           </select>
         </div>
         <div class="stats">
-          <div class="stat"><strong>${SHOWS.length}</strong><span>shows on Broadway now</span></div>
+          <div class="stat"><strong>${LIST.length}</strong><span>shows ${off ? "off-Broadway" : "on Broadway"} now</span></div>
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
           <div class="stat"><strong>${Math.round(maxSave * 100)}%</strong><span>top saving vs. box office</span></div>
           <div class="stat"><strong>${onSale}</strong><span>with tickets on sale</span></div>
         </div>
         <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
-      <div class="section-head"><h2>Now playing</h2><span class="muted" id="count"></span></div>
+      <div class="section-head"><h2>${off ? "Now playing off-Broadway" : "Now playing on Broadway"}</h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>`;
   }
 
   function renderGrid() {
     const q = state.homeQuery.trim().toLowerCase();
-    let list = SHOWS.map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
+    let list = SHOWS.filter(inScene).map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
       .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || (s.theater || "").toLowerCase().includes(q));
     const tot = (x) => (x.best ? x.best.total : Infinity);
     if (state.homeSort === "price") list.sort((a, b) => tot(a) - tot(b));
@@ -288,35 +303,100 @@
     if (state.homeSort === "lottery") list = list.filter(({ s }) => s.lottery || s.rush).sort((a, b) => Math.min(a.s.lottery?.price ?? 999, a.s.rush?.price ?? 999) - Math.min(b.s.lottery?.price ?? 999, b.s.rush?.price ?? 999));
 
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
-    $("#grid").innerHTML = list.length ? list.map(({ s, best, bestDate }) => !s.onSale ? `
-      <a class="show-card soon" href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">
-        <div class="poster" style="${posterStyle(s)}">
-          <div class="p-title">${esc(s.title)}</div>
-          <div class="p-theater">${esc(s.theater || "Broadway")}</div>
-        </div>
-        <div class="body">
-          <div class="price-line"><span class="from">Tickets not on sale yet</span></div>
-          <div class="badges"><span class="badge">Coming soon</span>${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}</div>
-        </div>
-      </a>` : `
-      <a class="show-card" href="#show-${s.slug}">
-        <div class="poster" style="${posterStyle(s)}">
-          <div class="p-title">${esc(s.title)}</div>
-          <div class="p-theater">${esc(s.theater || "Broadway")}</div>
-        </div>
-        <div class="body">
-          <div class="price-line">
-            <span class="from">from <strong>${money0(best.total)}</strong> all-in</span>
-            <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>
+    $("#grid").innerHTML = list.length ? list.map(cardHtml).join("") : `<div class="empty">No shows match “${esc(state.homeQuery)}”.</div>`;
+  }
+
+  function cardHtml({ s, best, bestDate }) {
+    const href = s.onSale ? `#show-${s.slug}` : s.bdcUrl;
+    const ext = s.onSale ? "" : ` target="_blank" rel="noopener"`;
+    return `
+      <article class="show-card ${s.onSale ? "" : "soon"}">
+        <a class="card-link" href="${esc(href)}"${ext}>
+          <div class="poster" style="${posterStyle(s)}">
+            <div class="p-title">${esc(s.title)}</div>
+            <div class="p-theater">${esc(s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway"))}</div>
           </div>
-          <div class="badges">
-            ${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}
-            ${s.lottery ? `<span class="badge gold">Lottery ${money0(s.lottery.price)}</span>` : ""}
-            ${s.rush ? `<span class="badge green">Rush ${money0(s.rush.price)}</span>` : ""}
-            ${s.demand > 0.85 ? `<span class="badge red">Selling fast</span>` : ""}
+          <div class="body">
+            <div class="price-line">${s.onSale
+              ? `<span class="from">from <strong>${money0(best.total)}</strong> all-in</span>
+                 <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>`
+              : `<span class="from">Tickets not on sale yet</span>`}</div>
+            <div class="badges">
+              ${s.onSale ? "" : `<span class="badge">Coming soon</span>`}
+              ${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}
+              ${s.critics ? `<span class="badge ${s.critics.score >= 70 ? "green" : "gold"}">Critics ${s.critics.score}%</span>` : ""}
+              ${s.lottery ? `<span class="badge gold">Lottery ${money0(s.lottery.price)}</span>` : ""}
+              ${s.rush ? `<span class="badge green">Rush ${money0(s.rush.price)}</span>` : ""}
+              ${s.onSale && s.demand > 0.85 ? `<span class="badge red">Selling fast</span>` : ""}
+            </div>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="preview-btn" data-preview="${esc(s.slug)}">Preview</button>
+          <a href="${esc(href)}"${ext}>${s.onSale ? "Compare prices →" : "Broadway.com ↗"}</a>
+        </div>
+      </article>`;
+  }
+
+  // ---------- preview modal ----------
+  function previewHtml(s) {
+    const c = s.critics;
+    const total = c ? c.positive + c.mixed + c.negative : 0;
+    const pct = (n) => (total ? (n / total) * 100 : 0);
+    return `
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pv-title">
+        <div class="modal-head" style="${posterStyle(s)}">
+          <button class="modal-x" data-close aria-label="Close preview">×</button>
+          <h2 id="pv-title">${esc(s.title)}</h2>
+          <div class="meta">${[s.type, s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway")].filter(Boolean).map(esc).join(" · ")}</div>
+        </div>
+        <div class="modal-body">
+          ${s.blurb
+            ? `<p class="pv-blurb">${esc(s.blurb)}</p>`
+            : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it on Broadway.com ↗</a></p>`}
+
+          <div class="pv-facts">
+            <div><span>Lowest listed price</span><strong>${s.bdcFrom != null ? money(s.bdcFrom) : "Not on sale"}</strong><em>Broadway.com</em></div>
+            <div><span>Audience reviews</span><strong>${s.ratingCount ? s.ratingCount.toLocaleString() : "—"}</strong><em>on Broadway.com</em></div>
+            <div><span>Critics</span><strong>${c ? c.score + "%" : "—"}</strong><em>${c ? "avg. rating" : "no roundup yet"}</em></div>
+          </div>
+
+          ${c ? `
+          <section class="pv-critics">
+            <h3>What critics said</h3>
+            <div class="verdict-bar" role="img" aria-label="${c.positive} positive, ${c.mixed} mixed, ${c.negative} negative reviews">
+              <span class="pos" style="width:${pct(c.positive)}%"></span><span class="mix" style="width:${pct(c.mixed)}%"></span><span class="neg" style="width:${pct(c.negative)}%"></span>
+            </div>
+            <div class="verdict-legend"><span><i class="pos"></i>${c.positive} positive</span><span><i class="mix"></i>${c.mixed} mixed</span><span><i class="neg"></i>${c.negative} negative</span></div>
+            <p>${esc(c.consensus)}</p>
+            <a href="${esc(c.url)}" target="_blank" rel="noopener">Read all ${total} reviews in the ${esc(c.source)} ↗</a>
+          </section>` : ""}
+
+          <div class="pv-links">
+            ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
+            ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">📷 Seat views at ${esc(s.theater)} ↗</a>` : ""}
           </div>
         </div>
-      </a>`).join("") : `<div class="empty">No shows match “${esc(state.homeQuery)}”.</div>`;
+        <div class="modal-foot">
+          ${s.onSale ? `<a class="btn" href="#show-${esc(s.slug)}" data-close>Compare prices</a>` : `<a class="btn" href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Get notified on Broadway.com ↗</a>`}
+          <button class="btn ghost" data-close>Close</button>
+        </div>
+      </div>`;
+  }
+  let lastFocus = null;
+  function openPreview(slug) {
+    const s = SHOWS.find((x) => x.slug === slug); if (!s) return;
+    lastFocus = document.activeElement;
+    const root = $("#modal-root");
+    root.innerHTML = previewHtml(s); root.hidden = false;
+    document.body.classList.add("modal-open");
+    $(".modal-x", root).focus();
+  }
+  function closePreview() {
+    const root = $("#modal-root"); if (root.hidden) return;
+    root.hidden = true; root.innerHTML = ""; document.body.classList.remove("modal-open");
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
   }
 
   function seatMap(offers, show) {
@@ -353,7 +433,8 @@
   function viewShow(slug) {
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
-    if (!show.onSale) return `<a class="back" href="#home">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
+    const backHref = show.scene === "off" ? "#off-broadway" : "#home";
+    if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
 
     if (state.dateIdx === null || !DATES[state.dateIdx].perfs.length) {
       state.dateIdx = DATES.findIndex((d) => d.perfs.length);
@@ -416,13 +497,14 @@
     const matches = target ? lows.filter((o) => o && o.total <= target).length : 0;
 
     return `
-      <a class="back" href="#home">← All shows</a>
+      <a class="back" href="${backHref}">← ${show.scene === "off" ? "Off-Broadway" : "All shows"}</a>
       <section class="detail-hero" style="${posterStyle(show)}">
         <div>
           <h1>${esc(show.title)}</h1>
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}${show.ratingCount ? ` · ${show.ratingCount.toLocaleString()} Broadway.com reviews` : ""}</div>
-          <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness().when)}</span></div>
+          <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
+        <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
         <div class="cheapest"><span>Lowest in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
 
@@ -562,6 +644,7 @@
   let currentSlug = null;
   function route() {
     const h = (location.hash || "#home").slice(1);
+    state.scene = h === "off-broadway" ? "off" : "broadway";
     const app = $("#app");
     let nav = "home";
     if (h.startsWith("show-")) {
@@ -569,6 +652,8 @@
       if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; currentSlug = slug; }
       app.innerHTML = viewShow(slug);
       document.title = (SHOWS.find((s) => s.slug === slug)?.title || "Show") + " tickets — TheaterMax";
+    } else if (h === "off-broadway") {
+      nav = "off"; app.innerHTML = viewHome(); renderGrid(); document.title = "Off-Broadway — TheaterMax";
     } else if (h === "lottery") {
       nav = "lottery"; app.innerHTML = viewLottery(); document.title = "Lottery & Rush — TheaterMax";
     } else if (h === "guide") {
@@ -584,6 +669,13 @@
   }
 
   document.addEventListener("click", (e) => {
+    const pv = e.target.closest("[data-preview]");
+    if (pv) { e.preventDefault(); openPreview(pv.dataset.preview); return; }
+    if (e.target.closest("[data-close]")) {
+      const link = e.target.closest("a[data-close]");
+      closePreview(); if (!link) e.preventDefault();
+      return;
+    }
     const t = e.target.closest("[data-date],[data-perf],[data-section],[data-qty],[data-sec],#clearAlert");
     if (!t) return;
     if (t.id === "clearAlert") {
@@ -596,6 +688,7 @@
     rerenderShow();
   });
   document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePreview();
     if ((e.key === "Enter" || e.key === " ") && e.target.matches(".sec")) { e.preventDefault(); e.target.dispatchEvent(new MouseEvent("click", { bubbles: true })); }
   });
   document.addEventListener("change", (e) => {
