@@ -67,12 +67,12 @@ window.TM_SCHEDULE = {
   // ---- Off-Broadway ---- (nowOpen: listed as "Now Open" in Broadway.com's Off-Broadway guide)
   "midnight":                               { opening: "2026-10-15", closing: "2026-11-08" },
   "the-heart":                              { opening: "2026-10-29", closing: "2026-12-06" },
-  "gazillion-bubble-show":                  { nowOpen: true, closing: "2027-01-18" },
+  "gazillion-bubble-show":                  { opening: "2007-02-15", nowOpen: true, closing: "2027-01-18" },
   "masquerade":                             { nowOpen: true },
   "little-shop-horrors":                    { nowOpen: true },
   "play-goes-wrong-beginning-february-11-2019": { nowOpen: true },
   "jamie-allans-amaze":                     { nowOpen: true },
-  "perfect-crime":                          { nowOpen: true },
+  "perfect-crime":                          { opening: "1987-04-18", nowOpen: true },
 
   // ---- New York City Center (Off-Broadway) ----
   "citycenter-in-the-heights":           { opening: "2026-10-28", closing: "2026-11-15" },

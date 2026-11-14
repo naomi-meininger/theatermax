@@ -469,3 +469,8 @@ main { view-transition-name: page; }
 .also-check { font-size: 13px; margin: 0 0 10px; color: var(--ink-2); }
 .also-check a { color: var(--red); font-weight: 700; text-decoration: none; }
 .also-check a:hover { text-decoration: underline; }
+
+/* big anniversaries */
+.ribbon.anniv { background: linear-gradient(90deg, #b8860b, #e0b13a); color: #1d1300; }
+.opening-note.anniv-note { background: linear-gradient(120deg, #2a1d02, #6b4c0b 60%, #a87d1f); color: #fff; }
+.opening-note.anniv-note b, .opening-note.anniv-note .on-text { color: #fff; }

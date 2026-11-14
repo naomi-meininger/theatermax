@@ -127,6 +127,23 @@
     }
     return out;
   }
+  // ---- big anniversaries (every 5 years since opening night) ----
+  // "Turns 30 on Sat, Nov 14" for the 30 days before; "Celebrating 30 years" for the year after.
+  function anniversaryNote(s) {
+    if (!s.opening || s.opening.precision !== "day" || s.status !== "playing") return null;
+    const o = s.opening.date, label = s.scene === "off" ? "" : " on Broadway";
+    let years = TODAY.getFullYear() - o.getFullYear();
+    let next = new Date(TODAY.getFullYear(), o.getMonth(), o.getDate());
+    if (next < TODAY) { next = new Date(TODAY.getFullYear() + 1, o.getMonth(), o.getDate()); years += 1; }
+    const daysTo = Math.round((next - TODAY) / 864e5), done = years - 1;   // `years` = the one coming up
+    if (years >= 5 && years % 5 === 0 && daysTo <= 30) {
+      const today = daysTo === 0;
+      return { years, date: next, soon: true, today, short: today ? `${years} years today!` : `Turns ${years} ${fmtDay(next)}`,
+        long: today ? `Happy ${years}th anniversary! Opened${label} ${fmtRunDate(s.opening)}.` : `Celebrates ${years} years${label} on ${fmtDay(next)} (opened ${fmtRunDate(s.opening)}).` };
+    }
+    if (done >= 5 && done % 5 === 0) return { years: done, short: `Celebrating ${done} years`, long: `Celebrating ${done} years${label}: opened ${fmtRunDate(s.opening)}.` };
+    return null;
+  }
   // "This week" banner: first previews, opening nights and final performances in the next 7 days.
   function thisWeekBanner(filter = () => true) {
     const items = [];
@@ -134,6 +151,8 @@
       if (daysToPreview(s) !== null) items.push({ d: s.previews.date, html: `🎭 <b>First preview</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.previews.date)}` });
       if (daysToOpening(s) !== null) items.push({ d: s.opening.date, html: `🎉 <b>Opening night</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.opening.date)}` });
       const left = daysLeft(s);
+      const ann = anniversaryNote(s);
+      if (ann && ann.soon && ann.date - TODAY <= 7 * 864e5) items.push({ d: ann.date, html: `🎂 <b>${ann.years} years</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${ann.today ? "today!" : fmtDay(ann.date)}` });
       if (left !== null && left <= 7) items.push({ d: s.closing.date, html: `⏳ <b>Final performance</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.closing.date)}` });
     });
     if (!items.length) return "";
@@ -597,7 +616,8 @@
           <div class="poster" style="${posterStyle(s)}">
             ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
               : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>`
-              : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>` : ""}
+              : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>`
+              : anniversaryNote(s) ? `<div class="ribbon anniv">🎂 ${anniversaryNote(s).short}</div>` : ""}
             <div class="p-title">${esc(s.title)}</div>
             <div class="p-theater">${esc(s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway"))}</div>
           </div>
@@ -645,6 +665,7 @@
           ${closingNote(s) ? `<div class="closing-note ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).long}</div>` : ""}
           ${openingNote(s) ? `<div class="opening-note">${confetti()}<span class="on-text">🎉 ${openingNote(s).long}</span></div>` : ""}
           ${previewNote(s) ? `<div class="opening-note preview-note">${confetti()}<span class="on-text">🎭 ${previewNote(s).long}</span></div>` : ""}
+          ${anniversaryNote(s) ? `<div class="opening-note anniv-note">${confetti()}<span class="on-text">🎂 ${anniversaryNote(s).long}</span></div>` : ""}
           ${s.blurb
             ? `<p class="pv-blurb">${esc(s.blurb)}</p>`
             : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it ${s.tickets ? "on the venue's site" : "on Broadway.com"} ↗</a></p>`}
@@ -751,9 +772,12 @@
     const playable = (d) => perfsFor(show, d).length && performsOn(show, d.date);
     const note = closingNote(show);
     const on = openingNote(show);
-    const banner = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
+    const ann = anniversaryNote(show);
+    const annBanner = ann ? `<div class="opening-note anniv-note big">${confetti()}<span class="on-text"><b>🎂 ${ann.soon ? (ann.today ? ann.short : "Big anniversary coming up!") : ann.short + "!"}</b><br>${ann.long}</span></div>` : "";
+    const banner0 = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
       : previewNote(show) ? `<div class="opening-note preview-note big">${confetti()}<span class="on-text"><b>🎭 First preview coming up!</b><br>${previewNote(show).long}</span></div>`
       : on ? `<div class="opening-note big ${on.tonight ? "tonight" : ""}">${confetti()}<span class="on-text"><b>🎉 ${on.tonight ? "Opening night tonight!" : "Opening night is almost here!"}</b><br>${on.long}</span></div>` : "";
+    const banner = banner0 + annBanner;
     if (!DATES.some(playable)) {
       // Only state dates we actually have: a real first-preview date, otherwise the opening date.
       const first = show.previews && show.previews.precision === "day" && !show.previews.assumed ? { label: "first performance", d: show.previews }
