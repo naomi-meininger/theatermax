@@ -209,6 +209,9 @@
   // Level page, e.g. /venue/Shubert+Theatre/level/2/Mezzanine/ (photos from the whole level).
   function sectionView(theater, secId) {
     const map = SEATVIEWS[theater];
+    if (secId === "box") return map && map.box
+      ? { url: `${AVFMS}${plus(avfmsName(theater))}/${plus(map.box)}/`, label: "📷 Views from the boxes", name: "Box", exact: true }
+      : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
     const lvl = map && map[secId];
     return lvl
       ? { url: `${AVFMS}${plus(avfmsName(theater))}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
@@ -283,6 +286,10 @@
     { id: "mezz", name: "Mezzanine", mult: 0.78, rows: "ABCDEFGHJKL" },
     { id: "balc", name: "Balcony", mult: 0.55, rows: "ABCDEFGH" },
   ];
+  // Box seats: only for theaters that have boxes (mapped in data/seatviews.js). Often a partial
+  // view, so usually priced between orchestra and mezzanine.
+  const BOX_SECTION = { id: "box", name: "Box", mult: 0.72, rows: "ABCD" };
+  const sectionsFor = (show) => (show && show.theater && (window.TM_SEATVIEWS || {})[show.theater] && window.TM_SEATVIEWS[show.theater].box ? [...SECTIONS, BOX_SECTION] : SECTIONS);
 
   const OFFICIAL_URL = {
     Telecharge: "https://www.telecharge.com",
@@ -428,7 +435,7 @@
     const officialFee = (p) => show.official === "Telecharge" ? 14.5 : Math.round(p * 0.18 * 100) / 100;
     const faces = {};
 
-    SECTIONS.forEach((sec) => {
+    sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
       offers.push({ seller: show.official, kind: "Official seller", sec, row: row(sec), price: p, fee: officialFee(p), url: OFFICIAL_URL[show.official], tag: "official" });
     });
@@ -442,13 +449,13 @@
     });
 
     // TodayTix
-    SECTIONS.filter(() => r() > 0.35).forEach((sec) => {
+    sectionsFor(show).filter(() => r() > 0.35).forEach((sec) => {
       const p = Math.round(faces[sec.id] * (0.8 + d * 0.18 + r() * 0.08));
       offers.push({ seller: "TodayTix", kind: "Discount app", sec, row: row(sec), price: p, fee: 12, url: "https://www.todaytix.com" });
     });
 
     // SeatGeek (official + verified resale)
-    SECTIONS.forEach((sec) => {
+    sectionsFor(show).forEach((sec) => {
       const lastMinute = near < 2 ? -0.12 : 0;
       const p = Math.round(faces[sec.id] * (0.78 + d * 0.5 + lastMinute + r() * 0.15));
       offers.push({ seller: "SeatGeek", kind: "Verified resale", sec, row: row(sec), price: p, fee: Math.round(p * 0.22 * 100) / 100, url: "https://www.seatgeek.com" });
@@ -780,7 +787,8 @@
 
   function seatMap(offers, show) {
     const lo = {};
-    SECTIONS.forEach((s) => { lo[s.id] = lowest(offers, { section: s.id, noMember: state.hideMember }); });
+    const SECS = sectionsFor(show);
+    SECS.forEach((s) => { lo[s.id] = lowest(offers, { section: s.id, noMember: state.hideMember }); });
     const vals = Object.values(lo).filter(Boolean).map((o) => o.total);
     const min = Math.min(...vals), max = Math.max(...vals);
     const shade = (v) => {
@@ -793,12 +801,24 @@
       { id: "mezz", d: "M40,180 Q200,235 360,180 L360,225 Q200,285 40,225 Z", ty: 238 },
       { id: "balc", d: "M25,240 Q200,302 375,240 L375,280 Q200,350 25,280 Z", ty: 291 },
     ];
+    // Boxes sit along the side walls, near the stage.
+    const boxG = SECS.some((x) => x.id === "box") ? (() => {
+      const o = lo.box, sel = state.section === "box", dim = state.section !== "all" && !sel;
+      const fill = o ? shade(o.total) : "#ddd", stroke = sel ? "#16130f" : "#fffdf8", sw = sel ? 3 : 2;
+      return `<g class="sec" data-sec="box" tabindex="0" role="button" aria-label="Box${o ? ", from " + money0(o.total) : ""}" opacity="${dim ? 0.35 : 1}">
+        <rect x="8" y="66" width="44" height="58" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>
+        <rect x="348" y="66" width="44" height="58" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>
+        <text x="30" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#16130f">BOX</text>
+        <text x="30" y="106" text-anchor="middle" font-size="10" fill="#16130f">${o ? money0(o.total) : "—"}</text>
+        <text x="370" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#16130f">BOX</text>
+        <text x="370" y="106" text-anchor="middle" font-size="10" fill="#16130f">${o ? money0(o.total) : "—"}</text></g>`;
+    })() : "";
     return `
       <svg viewBox="0 0 400 340" role="img" aria-label="Seat map${show.theater ? " of " + esc(show.theater) : ""} with lowest price per section">
         <rect x="120" y="20" width="160" height="38" rx="6" fill="#16130f"/>
         <text x="200" y="45" text-anchor="middle" fill="#f6f1e7" font-size="13" font-weight="700" letter-spacing="3">STAGE</text>
         ${arcs.map((a) => {
-          const sec = SECTIONS.find((s) => s.id === a.id); const o = lo[a.id];
+          const sec = SECS.find((s) => s.id === a.id); const o = lo[a.id];
           const sel = state.section === a.id; const dim = state.section !== "all" && !sel;
           return `<g class="sec" data-sec="${a.id}" tabindex="0" role="button" aria-label="${sec.name}${o ? ", from " + money0(o.total) : ""}" opacity="${dim ? 0.35 : 1}">
             <path d="${a.d}" fill="${o ? shade(o.total) : "#ddd"}" stroke="${sel ? "#16130f" : "#fffdf8"}" stroke-width="${sel ? 3 : 2}"/>
@@ -806,6 +826,7 @@
             <text x="200" y="${a.ty + 10}" text-anchor="middle" font-size="13" fill="#16130f">${o ? "from " + money0(o.total) : "—"}</text>
           </g>`;
         }).join("")}
+        ${boxG}
       </svg>`;
   }
 
@@ -875,7 +896,7 @@
     let offers = preGroup.filter((o) => state.group === "all" || o.group === state.group);
     const key = state.fees ? "total" : "price";
     if (state.sort === "total") offers.sort((a, b) => a[key] - b[key]);
-    if (state.sort === "section") offers.sort((a, b) => (a.sec ? SECTIONS.indexOf(a.sec) : 9) - (b.sec ? SECTIONS.indexOf(b.sec) : 9) || a[key] - b[key]);
+    if (state.sort === "section") offers.sort((a, b) => (a.sec ? sectionsFor(show).indexOf(a.sec) : 9) - (b.sec ? sectionsFor(show).indexOf(b.sec) : 9) || a[key] - b[key]);
     if (state.sort === "official") offers.sort((a, b) => (b.tag === "official") - (a.tag === "official") || a[key] - b[key]);
     const bestDeal = lowest(offers, { noMember: false });
     const officialBySec = {};
@@ -925,7 +946,7 @@
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
-        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + SECTIONS.find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
+        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} in the next ${DAYS_AHEAD} days${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
       </section>
       ${banner}
 
@@ -962,7 +983,7 @@
             <div class="filter-group">
               <label class="lbl">Section</label>
               <div class="chip-row">
-                ${[{ id: "all", name: "All" }, ...SECTIONS].map((s) => `<button class="pill ${state.section === s.id ? "active" : ""}" data-section="${s.id}">${s.name}</button>`).join("")}
+                ${[{ id: "all", name: "All" }, ...sectionsFor(show)].map((s) => `<button class="pill ${state.section === s.id ? "active" : ""}" data-section="${s.id}">${s.name}</button>`).join("")}
               </div>
             </div>
             <div class="filter-group">
@@ -974,7 +995,7 @@
             ${seatMap(all, show)}
             <div class="legend">Greener = cheaper. Tap a section to filter.</div>
             ${show.theater && SEATVIEWS[show.theater] ? `<div class="level-links">${
-                [...new Map(SECTIONS.map((sec) => [sectionView(show.theater, sec.id).url, { sec, v: sectionView(show.theater, sec.id) }])).values()]
+                [...new Map(sectionsFor(show).map((sec) => [sectionView(show.theater, sec.id).url, { sec, v: sectionView(show.theater, sec.id) }])).values()]
                   .map(({ sec, v }) => `<a class="btn ghost" href="${esc(v.url)}" target="_blank" rel="noopener" title="Audience photos from the whole ${esc(v.name)}">📷 ${esc(v.name)}${v.name !== sec.name ? ` <span class="lvl-note">(${sec.name.toLowerCase()})</span>` : ""}</a>`).join("")
               }</div>` : ""}
             ${show.theater ? `<a class="${SEATVIEWS[show.theater] ? "all-views" : "btn ghost seatview-btn"}" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">${SEATVIEWS[show.theater] ? "All sections at " + esc(show.theater) + " ↗" : "📷 See real seat views ↗"}</a>
