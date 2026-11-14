@@ -294,3 +294,19 @@ body.modal-open { overflow: hidden; }
 .pv-links { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; }
 .modal-foot { display: flex; gap: 10px; padding: 16px 24px 22px; }
 @media (max-width: 520px) { .pv-facts { grid-template-columns: 1fr 1fr; } .modal-head h2 { font-size: 28px; } }
+
+/* ---------- filters ---------- */
+.filters { display: flex; flex-direction: column; gap: 10px; margin: 26px 0 4px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.filter-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.filter-label { width: 52px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.filter-row .pill { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.filter-row .pill .n { font-size: 12px; font-weight: 700; color: var(--muted); }
+.filter-row .pill.active .n { color: #cfc6b6; }
+.filter-row .pill.empty-pill { opacity: .45; }
+.clear-filters { align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--red); text-decoration: none; }
+.clear-filters:hover { text-decoration: underline; }
+.badge.st-previews { background: #e4dcf7; color: #4b2f8f; }
+.badge.st-upcoming { background: #dbe8f6; color: #1f4f86; }
+.pv-status { position: relative; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; font-size: 13px; }
+.pv-status span:not(.badge) { opacity: .9; }
+@media (max-width: 600px) { .filter-label { width: 100%; } }

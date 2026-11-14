@@ -11,6 +11,52 @@
   const PLAYS = new Set(window.TM_PLAYS || []);
   const THEATERS = window.TM_THEATERS || {};
   const PREVIEWS = window.TM_PREVIEWS || {};
+  const RUN_DATES = window.TM_SCHEDULE || {};
+
+  // ---- run status: "playing" | "previews" | "upcoming" | "closed" ----
+  const TODAY = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
+  function parseDay(str) { // "YYYY", "YYYY-MM" or "YYYY-MM-DD" → { date, precision }
+    if (!str) return null;
+    const [y, m, d] = String(str).split("-").map(Number);
+    return { date: new Date(y, (m || 1) - 1, d || 1), precision: d ? "day" : m ? "month" : "year" };
+  }
+  function fmtRunDate(p) {
+    if (!p) return "";
+    const sameYear = p.date.getFullYear() === TODAY.getFullYear();
+    if (p.precision === "year") return String(p.date.getFullYear());
+    if (p.precision === "month") return p.date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    return p.date.toLocaleDateString("en-US", sameYear ? { month: "short", day: "numeric" } : { month: "short", day: "numeric", year: "numeric" });
+  }
+  function runInfo(slug, onSale, ratingCount, scene) {
+    const sc = RUN_DATES[slug];
+    if (!sc) {
+      // Best guess when we have no dates (shown as "estimated" in the preview):
+      // not on sale → upcoming. Off-Broadway listings with tickets are almost always current runs.
+      // Broadway shows often go on sale months ahead, so there we also need 10+ audience reviews.
+      const status = !onSale ? "upcoming" : scene === "off" || (ratingCount || 0) >= 10 ? "playing" : "upcoming";
+      return { status, guessed: true, opening: null, closing: null };
+    }
+    const opening = parseDay(sc.opening), closing = parseDay(sc.closing);
+    let previews = parseDay(sc.previews);
+    if (!previews && opening && opening.precision === "day") {
+      previews = { date: new Date(opening.date.getTime() - 28 * 864e5), precision: "day", assumed: true };
+    }
+    let status;
+    if (closing && closing.precision === "day" && closing.date < TODAY) status = "closed";
+    else if (sc.nowOpen || (opening && opening.date <= TODAY && opening.precision === "day")) status = "playing";
+    else if (opening && opening.precision !== "day" && opening.date <= TODAY) status = "playing";
+    else if (previews && previews.date <= TODAY) status = "previews";
+    else status = "upcoming";
+    return { status, guessed: false, opening, closing, previews };
+  }
+  const STATUS_LABEL = { playing: "Now playing", previews: "In previews", upcoming: "Upcoming", closed: "Closed" };
+  function statusBadge(s, long) {
+    const soon = s.closing && s.closing.precision === "day" && (s.closing.date - TODAY) / 864e5 <= 45;
+    if (s.status === "playing") return soon ? `<span class="badge red">Closes ${fmtRunDate(s.closing)}</span>` : (long ? `<span class="badge green">Now playing</span>` : "");
+    if (s.status === "previews") return `<span class="badge st-previews">In previews${s.opening ? " · opens " + fmtRunDate(s.opening) : ""}</span>`;
+    if (s.status === "upcoming") return `<span class="badge st-upcoming">${s.opening ? "Opens " + fmtRunDate(s.opening) : "Upcoming"}</span>`;
+    return `<span class="badge">Closed</span>`;
+  }
 
   // A View From My Seat: real audience photos by theater & section. We link out to their pages
   // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
@@ -36,6 +82,7 @@
       blurb: (PREVIEWS[l.slug] || {}).blurb || null,
       critics: (PREVIEWS[l.slug] || {}).critics || null,
       scene: l.scene || "broadway",
+      ...runInfo(l.slug, l.fromPrice !== null, l.ratingCount, l.scene || "broadway"),
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
@@ -79,7 +126,8 @@
   const state = {
     dateIdx: null, perfIdx: 0, section: "all", qty: 2,
     fees: true, hideMember: false, sort: "total",
-    homeQuery: "", homeSort: "price", scene: "broadway",
+    homeQuery: "", homeSort: "price",
+    f: { scene: "all", type: "all", status: "all" },
   };
 
   // ---------- helpers ----------
@@ -251,18 +299,49 @@
   const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
 
   // ---------- views ----------
-  const inScene = (s) => (state.scene === "off" ? s.scene === "off" : s.scene !== "off");
+  // ---------- filters ----------
+  const typeOf = (s) => s.type || "Other";
+  const FILTERS = {
+    scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"]],
+    type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Special", "Specials"], ["Other", "Other"]],
+    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"]],
+  };
+  const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway" };
+  function passes(s, f, skip) {
+    if (s.status === "closed") return false;
+    if (skip !== "scene" && f.scene !== "all" && (f.scene === "off") !== (s.scene === "off")) return false;
+    if (skip !== "type" && f.type !== "all" && typeOf(s) !== f.type) return false;
+    if (skip !== "status" && f.status !== "all" && s.status !== f.status) return false;
+    return true;
+  }
+  function filtersHtml() {
+    const row = (key, label) => `
+      <div class="filter-row" role="group" aria-label="${label}">
+        <span class="filter-label">${label}</span>
+        ${FILTERS[key].map(([val, text]) => {
+          const n = SHOWS.filter((s) => passes(s, { ...state.f, [key]: val }, null)).length;
+          if (val === "Other" && !n) return "";
+          const active = state.f[key] === val;
+          const attrs = key === "scene" ? `href="${SCENE_HASH[val]}"` : `href="#" data-filter="${key}:${val}"`;
+          return `<a class="pill ${active ? "active" : ""} ${n ? "" : "empty-pill"}" ${attrs} aria-pressed="${active}">${text} <span class="n">${n}</span></a>`;
+        }).join("")}
+      </div>`;
+    return row("scene", "Where") + row("type", "Type") + row("status", "When") +
+      (state.f.type !== "all" || state.f.status !== "all" || state.f.scene !== "all"
+        ? `<a href="#home" class="clear-filters" data-clear>Clear filters</a>` : "");
+  }
 
   function viewHome() {
-    const off = state.scene === "off";
-    const LIST = SHOWS.filter(inScene);
+    const sc = state.f.scene, off = sc === "off";
+    const LIST = SHOWS.filter((s) => passes(s, { scene: sc, type: "all", status: "all" }));
     let maxSave = 0;
     LIST.filter((s) => s.onSale).forEach((s) => {
-      const lo = lowestForShow(s).best, off = officialLowest(s);
-      if (lo && off) maxSave = Math.max(maxSave, 1 - lo.total / off.total);
+      const lo = lowestForShow(s).best, offc = officialLowest(s);
+      if (lo && offc) maxSave = Math.max(maxSave, 1 - lo.total / offc.total);
     });
-    const fresh = freshness(state.scene);
-    const onSale = LIST.filter((s) => s.onSale).length;
+    const fresh = freshness(sc === "all" ? null : sc);
+    const playing = LIST.filter((s) => s.status === "playing").length;
+    const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : "on & off Broadway";
 
     return `
       <section class="hero">
@@ -277,33 +356,43 @@
           <input id="q" type="search" placeholder="Search a show or theater…" value="${esc(state.homeQuery)}" aria-label="Search shows" />
           <select id="homeSort" aria-label="Sort shows">
             <option value="price" ${state.homeSort === "price" ? "selected" : ""}>Lowest price</option>
+            <option value="opening" ${state.homeSort === "opening" ? "selected" : ""}>Opening soonest</option>
             <option value="az" ${state.homeSort === "az" ? "selected" : ""}>A–Z</option>
             <option value="lottery" ${state.homeSort === "lottery" ? "selected" : ""}>Has lottery / rush</option>
           </select>
         </div>
         <div class="stats">
-          <div class="stat"><strong>${LIST.length}</strong><span>shows ${off ? "off-Broadway" : "on Broadway"} now</span></div>
+          <div class="stat"><strong>${LIST.length}</strong><span>shows ${where}</span></div>
+          <div class="stat"><strong>${playing}</strong><span>playing now</span></div>
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
           <div class="stat"><strong>${Math.round(maxSave * 100)}%</strong><span>top saving vs. box office</span></div>
-          <div class="stat"><strong>${onSale}</strong><span>with tickets on sale</span></div>
         </div>
         <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
       </section>
-      <div class="section-head"><h2>${off ? "Now playing off-Broadway" : "Now playing on Broadway"}</h2><span class="muted" id="count"></span></div>
+      <div class="filters" id="filters"></div>
+      <div class="section-head"><h2 id="grid-title"></h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>`;
   }
 
   function renderGrid() {
     const q = state.homeQuery.trim().toLowerCase();
-    let list = SHOWS.filter(inScene).map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
+    let list = SHOWS.filter((s) => passes(s, state.f)).map((s) => ({ s, ...(s.onSale ? lowestForShow(s) : { best: null, bestDate: null }) }))
       .filter(({ s }) => !q || s.title.toLowerCase().includes(q) || (s.theater || "").toLowerCase().includes(q));
     const tot = (x) => (x.best ? x.best.total : Infinity);
+    const openKey = (x) => (x.s.status === "playing" ? Infinity : x.s.opening ? x.s.opening.date.getTime() : 9e15);
     if (state.homeSort === "price") list.sort((a, b) => tot(a) - tot(b));
+    if (state.homeSort === "opening") list.sort((a, b) => openKey(a) - openKey(b) || tot(a) - tot(b));
     if (state.homeSort === "az") list.sort((a, b) => a.s.title.localeCompare(b.s.title));
     if (state.homeSort === "lottery") list = list.filter(({ s }) => s.lottery || s.rush).sort((a, b) => Math.min(a.s.lottery?.price ?? 999, a.s.rush?.price ?? 999) - Math.min(b.s.lottery?.price ?? 999, b.s.rush?.price ?? 999));
 
+    $("#filters").innerHTML = filtersHtml();
+    const f = state.f;
+    const typeWord = f.type === "all" ? "Shows" : f.type === "Other" ? "Other shows" : FILTERS.type.find((x) => x[0] === f.type)[1];
+    const whenWord = { all: "", playing: " now playing", previews: " in previews", upcoming: " coming soon" }[f.status];
+    const whereWord = { all: "", broadway: " on Broadway", off: " off-Broadway" }[f.scene];
+    $("#grid-title").textContent = typeWord + whenWord + whereWord;
     $("#count").textContent = `${list.length} show${list.length === 1 ? "" : "s"}`;
-    $("#grid").innerHTML = list.length ? list.map(cardHtml).join("") : `<div class="empty">No shows match “${esc(state.homeQuery)}”.</div>`;
+    $("#grid").innerHTML = list.length ? list.map(cardHtml).join("") : `<div class="empty">No shows match${state.homeQuery ? ` “${esc(state.homeQuery)}” with` : ""} these filters. <a href="#home" data-clear>Clear filters</a></div>`;
   }
 
   function cardHtml({ s, best, bestDate }) {
@@ -322,7 +411,7 @@
                  <span class="muted" style="font-size:13px">${fmtDow(bestDate.date)} ${bestDate.date.getDate()}</span>`
               : `<span class="from">Tickets not on sale yet</span>`}</div>
             <div class="badges">
-              ${s.onSale ? "" : `<span class="badge">Coming soon</span>`}
+              ${statusBadge(s, false)}
               ${s.type ? `<span class="badge">${esc(s.type)}</span>` : ""}
               ${s.critics ? `<span class="badge ${s.critics.score >= 70 ? "green" : "gold"}">Critics ${s.critics.score}%</span>` : ""}
               ${s.lottery ? `<span class="badge gold">Lottery ${money0(s.lottery.price)}</span>` : ""}
@@ -350,6 +439,7 @@
           <button class="modal-x" data-close aria-label="Close preview">×</button>
           <h2 id="pv-title">${esc(s.title)}</h2>
           <div class="meta">${[s.type, s.theater || (s.scene === "off" ? "Off-Broadway" : "Broadway")].filter(Boolean).map(esc).join(" · ")}</div>
+          <div class="pv-status">${statusBadge(s, true)}${s.status === "playing" && s.opening && s.opening.precision === "day" ? `<span>Opened ${fmtRunDate(s.opening)}</span>` : ""}${s.closing && s.status !== "closed" ? `<span>Final show ${fmtRunDate(s.closing)}</span>` : s.status === "playing" && !s.guessed ? `<span>Open-ended run</span>` : ""}${s.guessed ? `<span title="We don't have this show's dates yet, so the status is estimated from its listing.">Status estimated</span>` : ""}</div>
         </div>
         <div class="modal-body">
           ${s.blurb
@@ -433,7 +523,7 @@
   function viewShow(slug) {
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
-    const backHref = show.scene === "off" ? "#off-broadway" : "#home";
+    const backHref = SCENE_HASH[state.f.scene] || "#home";
     if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> doesn't have tickets on sale yet. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See it on Broadway.com ↗</a></div>`;
 
     if (state.dateIdx === null || !DATES[state.dateIdx].perfs.length) {
@@ -497,7 +587,7 @@
     const matches = target ? lows.filter((o) => o && o.total <= target).length : 0;
 
     return `
-      <a class="back" href="${backHref}">← ${show.scene === "off" ? "Off-Broadway" : "All shows"}</a>
+      <a class="back" href="${backHref}">← ${{ all: "All shows", broadway: "Broadway", off: "Off-Broadway" }[state.f.scene]}</a>
       <section class="detail-hero" style="${posterStyle(show)}">
         <div>
           <h1>${esc(show.title)}</h1>
@@ -644,7 +734,7 @@
   let currentSlug = null;
   function route() {
     const h = (location.hash || "#home").slice(1);
-    state.scene = h === "off-broadway" ? "off" : "broadway";
+    if (h === "home" || h === "broadway" || h === "off-broadway") state.f.scene = h === "broadway" ? "broadway" : h === "off-broadway" ? "off" : "all";
     const app = $("#app");
     let nav = "home";
     if (h.startsWith("show-")) {
@@ -652,8 +742,9 @@
       if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; currentSlug = slug; }
       app.innerHTML = viewShow(slug);
       document.title = (SHOWS.find((s) => s.slug === slug)?.title || "Show") + " tickets — TheaterMax";
-    } else if (h === "off-broadway") {
-      nav = "off"; app.innerHTML = viewHome(); renderGrid(); document.title = "Off-Broadway — TheaterMax";
+    } else if (h === "off-broadway" || h === "broadway") {
+      nav = h === "broadway" ? "broadway" : "off"; app.innerHTML = viewHome(); renderGrid();
+      document.title = (h === "broadway" ? "Broadway" : "Off-Broadway") + " — TheaterMax";
     } else if (h === "lottery") {
       nav = "lottery"; app.innerHTML = viewLottery(); document.title = "Lottery & Rush — TheaterMax";
     } else if (h === "guide") {
@@ -669,6 +760,17 @@
   }
 
   document.addEventListener("click", (e) => {
+    const fl = e.target.closest("[data-filter]");
+    if (fl) {
+      e.preventDefault();
+      const [k, v] = fl.dataset.filter.split(":"); state.f[k] = v; renderGrid(); return;
+    }
+    const clr = e.target.closest("[data-clear]");
+    if (clr) {
+      state.f.type = "all"; state.f.status = "all"; state.homeQuery = "";
+      if (location.hash === "#home" || location.hash === "") { e.preventDefault(); route(); }
+      return;
+    }
     const pv = e.target.closest("[data-preview]");
     if (pv) { e.preventDefault(); openPreview(pv.dataset.preview); return; }
     if (e.target.closest("[data-close]")) {

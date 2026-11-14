@@ -6,7 +6,8 @@
 
 ## What it does
 
-- **Broadway** and **Off-Broadway** tabs: search shows and see the lowest all-in price over the next 14 days.
+- **All shows / Broadway / Off-Broadway** tabs: search shows and see the lowest all-in price over the next 14 days.
+- **Filters**: Where (Broadway / Off-Broadway), Type (Musicals / Plays / Specials) and When (Now playing / In previews / Upcoming), each with live counts. Cards show "In previews · opens …", "Opens …" or "Closes …" badges, and shows that have closed drop off automatically.
 - **Preview**: a short description, the review count, and a critics summary built from review roundups.
 - **Show page**: pick a date and time, then compare every source side by side: the official seller, promo codes, TodayTix, SeatGeek, TKTS, TDF, Theatr, lottery and rush. It includes:
   - prices with or without fees, and the total for your ticket count
@@ -32,6 +33,10 @@
 Every show card has a **Preview** button, and show pages have one too. It opens a short description, the lowest listed price, the audience-review count, and, where available, a **critics summary**. The summary shows the average score, how many reviews were positive, mixed or negative, a one-line consensus, and a link to the full review roundup (for example, BroadwayWorld's).
 
 All of this lives in `data/previews.js`. **Write descriptions and consensus lines in your own words.** Don't paste text from Broadway.com, reviews or other sites: that's their copyrighted writing. Link to it instead. To add critics for another show, find its BroadwayWorld "Review Roundup" article, count the verdicts, note the average score, and add a `critics` entry.
+
+## Run dates (Now playing / In previews / Upcoming)
+
+`data/schedule.js` holds each show's first preview, opening night and closing date, taken from Wikipedia's Broadway theater table and Broadway.com's Off-Broadway guide. The status is worked out from today's date, so shows move from Upcoming to In previews to Now playing on their own, and disappear after their final performance. If a show has no dates, the site estimates its status and labels it "Status estimated" in the preview. Add dates there as shows are announced.
 
 ## View from my seat
 
@@ -60,7 +65,8 @@ styles.css        all styling
 app.js            routing, views and the sample price generator
 data/live-shows.js  AUTO-GENERATED daily: current Broadway shows from Broadway.com
 data/shows.js     extras: theaters, plays list, sample lottery & rush
-data/previews.js  show descriptions (our own words) + critic roundup summaries
+data/previews.js  show descriptions (our own words) + types + critic roundup summaries
+data/schedule.js  previews / opening / closing dates that drive the "When" filter
 scripts/update-shows.mjs              the scraper
 .github/workflows/update-shows.yml    runs the scraper daily
 data/sources.js   the ticket sources, from the discount guide
