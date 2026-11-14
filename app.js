@@ -713,7 +713,18 @@
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
     const backHref = SCENE_HASH[state.f.scene] || "#home";
-    if (!show.onSale) return `<a class="back" href="${backHref}">← All shows</a><div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`;
+    if (!show.onSale) {
+      const run = [];
+      if (show.previews && !show.previews.assumed && show.opening && show.previews.date < show.opening.date) run.push(`First preview ${fmtRunDate(show.previews)}`);
+      if (show.opening) run.push(`${show.status === "playing" ? "Opened" : show.previews && show.opening && +show.previews.date === +show.opening.date ? "Plays" : "Opens"} ${fmtRunDate(show.opening)}`);
+      if (show.closing) run.push(`${show.status === "closed" ? "Closed" : "Final performance"} ${fmtRunDate(show.closing)}`);
+      const pv = PREVIEWS[show.slug] || {}, blurb = show.blurb || pv.blurb;
+      return `<a class="back" href="${backHref}">← All shows</a><div class="detail-head"><h1>${esc(show.title)}</h1>
+        <div class="muted">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ")}</div>
+        <div style="margin:8px 0">${statusBadge(show, true)}</div>
+        ${run.length ? `<p><b>${run.join(" · ")}</b></p>` : ""}${blurb ? `<p>${esc(blurb)}</p>` : ""}</div>
+        <div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`;
+    }
 
     const playable = (d) => perfsFor(show, d).length && performsOn(show, d.date);
     const note = closingNote(show);
