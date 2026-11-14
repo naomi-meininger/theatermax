@@ -356,7 +356,16 @@
         return { time, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${time}`, live: live[key] };
       }).sort((a, b) => toMinutes(a.time) - toMinutes(b.time));
     }
-    return dt.perfs;
+    // Opening night / first preview / final show always happens, even on a usually-dark day.
+    const special = keyDateLabel(show, dt.date);
+    if (special && !dt.perfs.length) {
+      return [{ time: "7:00 PM", kind: "eve", mult: TIME_MULT.eve, dayOffset: dt.offset, key: dt.date.toISOString().slice(0, 10) + " 7:00 PM", special, approx: true }];
+    }
+    return special ? dt.perfs.map((p) => ({ ...p, special })) : dt.perfs;
+  }
+  function keyDateLabel(show, date) {
+    const same = (p) => p && p.precision === "day" && !p.assumed && dayKey(p.date) === dayKey(date);
+    return same(show.opening) ? "Opening night" : same(show.previews) ? "First preview" : same(show.closing) ? "Final show" : null;
   }
 
   // ---------- verified discount codes (data/codes.js) ----------
@@ -887,7 +896,7 @@
           }).join("")}
         </div>
         <div class="time-row">
-          ${dayPerfs.map((p, i) => `<button class="pill ${i === state.perfIdx ? "active" : ""}" data-perf="${i}">${p.time}${p.kind === "mat" ? " · Matinee" : ""}</button>`).join("")}
+          ${dayPerfs.map((p, i) => `<button class="pill ${i === state.perfIdx ? "active" : ""}" data-perf="${i}">${p.time}${p.approx ? "*" : ""}${p.kind === "mat" ? " · Matinee" : ""}${p.special ? ` · ${p.special}` : ""}</button>`).join("")}
         </div>
       </section>
 
@@ -934,7 +943,7 @@
 
         <section>
           <div class="offers-head">
-            <h2>${fmtLong(dateObj.date)} · ${perf.time}</h2>
+            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>
