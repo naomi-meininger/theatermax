@@ -817,6 +817,7 @@
     const app = $("#app");
     let nav = "home";
     if (h.startsWith("show-")) {
+      nav = { all: "home", broadway: "broadway", off: "off" }[state.f.scene]; // keep the tab you came from lit
       const slug = h.slice(5);
       if (slug !== currentSlug) { state.dateIdx = null; state.perfIdx = 0; state.section = "all"; currentSlug = slug; }
       app.innerHTML = viewShow(slug);
@@ -831,7 +832,13 @@
     } else {
       app.innerHTML = viewHome(); renderGrid(); document.title = "TheaterMax — Compare theater ticket prices";
     }
-    document.querySelectorAll("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === nav));
+    // Match on href, so the highlight works even if a cached older index.html is on screen.
+    const NAV_HREF = { home: "#home", broadway: "#broadway", off: "#off-broadway", lottery: "#lottery", guide: "#guide" };
+    document.querySelectorAll(".nav a").forEach((a) => {
+      const on = a.getAttribute("href") === NAV_HREF[nav];
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
   }
   function rerenderShow() {
     const y = window.scrollY; $("#app").innerHTML = viewShow(currentSlug); window.scrollTo(0, y);
