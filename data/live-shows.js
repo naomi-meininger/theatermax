@@ -2,26 +2,50 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-14T05:01:02.431Z",
-  "lastAttemptAt": "2026-11-14T05:01:02.431Z",
+  "updatedAt": "2026-11-14T16:38:05.303Z",
+  "lastAttemptAt": "2026-11-14T16:38:05.303Z",
   "count": 92,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-14T05:01:02.431Z",
-      "lastAttemptAt": "2026-11-14T05:01:02.431Z",
+      "updatedAt": "2026-11-14T16:38:05.303Z",
+      "lastAttemptAt": "2026-11-14T16:38:05.303Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-14T05:01:02.431Z",
-      "lastAttemptAt": "2026-11-14T05:01:02.431Z",
+      "updatedAt": "2026-11-14T16:38:05.303Z",
+      "lastAttemptAt": "2026-11-14T16:38:05.303Z",
       "count": 25
     }
   },
   "shows": [
+    {
+      "slug": "masquerade",
+      "title": "Masquerade from $276.11",
+      "url": "https://www.broadway.com/shows/masquerade/",
+      "fromPrice": 276.11,
+      "ratingCount": null,
+      "scene": "broadway"
+    },
+    {
+      "slug": "wicked",
+      "title": "Wicked",
+      "url": "https://www.broadway.com/shows/wicked/",
+      "fromPrice": 97.28,
+      "ratingCount": 808,
+      "scene": "broadway"
+    },
+    {
+      "slug": "juliet",
+      "title": "& Juliet",
+      "url": "https://www.broadway.com/shows/juliet/",
+      "fromPrice": 61.36,
+      "ratingCount": 818,
+      "scene": "broadway"
+    },
     {
       "slug": "the-great-gatsby",
       "title": "The Great Gatsby",
@@ -35,31 +59,7 @@ window.TM_LIVE = {
       "title": "Operation Mincemeat: A New Musical",
       "url": "https://www.broadway.com/shows/operation-mincemeat/",
       "fromPrice": 65.37,
-      "ratingCount": 683,
-      "scene": "broadway"
-    },
-    {
-      "slug": "juliet",
-      "title": "& Juliet",
-      "url": "https://www.broadway.com/shows/juliet/",
-      "fromPrice": 61.36,
-      "ratingCount": 818,
-      "scene": "broadway"
-    },
-    {
-      "slug": "wicked",
-      "title": "Wicked",
-      "url": "https://www.broadway.com/shows/wicked/",
-      "fromPrice": 97.28,
-      "ratingCount": 808,
-      "scene": "broadway"
-    },
-    {
-      "slug": "masquerade",
-      "title": "Masquerade from $276.11",
-      "url": "https://www.broadway.com/shows/masquerade/",
-      "fromPrice": 276.11,
-      "ratingCount": null,
+      "ratingCount": 685,
       "scene": "broadway"
     },
     {
@@ -67,7 +67,7 @@ window.TM_LIVE = {
       "title": "Maybe Happy Ending",
       "url": "https://www.broadway.com/shows/maybe-happy-ending/",
       "fromPrice": 61.03,
-      "ratingCount": 603,
+      "ratingCount": 604,
       "scene": "broadway"
     },
     {
@@ -75,7 +75,7 @@ window.TM_LIVE = {
       "title": "The Lion King",
       "url": "https://www.broadway.com/shows/the-lion-king/",
       "fromPrice": 111.36,
-      "ratingCount": 669,
+      "ratingCount": 670,
       "scene": "broadway"
     },
     {
@@ -99,7 +99,7 @@ window.TM_LIVE = {
       "title": "Galileo",
       "url": "https://www.broadway.com/shows/galileo/",
       "fromPrice": 54.52,
-      "ratingCount": null,
+      "ratingCount": 3,
       "scene": "broadway"
     },
     {
@@ -107,7 +107,7 @@ window.TM_LIVE = {
       "title": "The Rocky Horror Show",
       "url": "https://www.broadway.com/shows/the-rocky-horror-show/",
       "fromPrice": 62.54,
-      "ratingCount": 245,
+      "ratingCount": 246,
       "scene": "broadway"
     },
     {
@@ -147,7 +147,7 @@ window.TM_LIVE = {
       "title": "Buena Vista Social Club",
       "url": "https://www.broadway.com/shows/buena-vista-social-club/",
       "fromPrice": 64.29,
-      "ratingCount": 1180,
+      "ratingCount": 1181,
       "scene": "broadway"
     },
     {
@@ -155,7 +155,7 @@ window.TM_LIVE = {
       "title": "Wanted",
       "url": "https://www.broadway.com/shows/wanted/",
       "fromPrice": 65.37,
-      "ratingCount": 43,
+      "ratingCount": 45,
       "scene": "broadway"
     },
     {
@@ -187,7 +187,7 @@ window.TM_LIVE = {
       "title": "Hamilton",
       "url": "https://www.broadway.com/shows/hamilton-broadway/",
       "fromPrice": 126.72,
-      "ratingCount": 725,
+      "ratingCount": 726,
       "scene": "broadway"
     },
     {
@@ -211,7 +211,7 @@ window.TM_LIVE = {
       "title": "Just In Time",
       "url": "https://www.broadway.com/shows/just-in-time/",
       "fromPrice": 75.14,
-      "ratingCount": 1081,
+      "ratingCount": 1083,
       "scene": "broadway"
     },
     {
@@ -235,7 +235,7 @@ window.TM_LIVE = {
       "title": "Other Desert Cities",
       "url": "https://www.broadway.com/shows/other-desert-cities/",
       "fromPrice": 248.36,
-      "ratingCount": 67,
+      "ratingCount": 71,
       "scene": "broadway"
     },
     {
@@ -251,7 +251,7 @@ window.TM_LIVE = {
       "title": "860",
       "url": "https://www.broadway.com/shows/860/",
       "fromPrice": 91.41,
-      "ratingCount": 134,
+      "ratingCount": 136,
       "scene": "broadway"
     },
     {
@@ -267,15 +267,15 @@ window.TM_LIVE = {
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
       "fromPrice": 107.69,
-      "ratingCount": 5,
+      "ratingCount": 7,
       "scene": "broadway"
     },
     {
       "slug": "a-few-good-men",
       "title": "A Few Good Men",
       "url": "https://www.broadway.com/shows/a-few-good-men/",
-      "fromPrice": 137.36,
-      "ratingCount": 17,
+      "fromPrice": 152.32,
+      "ratingCount": 21,
       "scene": "broadway"
     },
     {
@@ -283,7 +283,7 @@ window.TM_LIVE = {
       "title": "It&#x27;s a Wonderful Life: A Live Radio Play",
       "url": "https://www.broadway.com/shows/its-a-wonderful-life/",
       "fromPrice": 64.29,
-      "ratingCount": null,
+      "ratingCount": 4,
       "scene": "broadway"
     },
     {
@@ -314,7 +314,7 @@ window.TM_LIVE = {
       "slug": "two-strangers-carry-a-cake-across-new-york",
       "title": "Two Strangers (Carry a Cake Across New York)",
       "url": "https://www.broadway.com/shows/two-strangers-carry-a-cake-across-new-york/",
-      "fromPrice": 75.14,
+      "fromPrice": 74.92,
       "ratingCount": 320,
       "scene": "broadway"
     },
@@ -323,7 +323,7 @@ window.TM_LIVE = {
       "title": "Here There Are Blueberries",
       "url": "https://www.broadway.com/shows/here-there-are-blueberries/",
       "fromPrice": 54.52,
-      "ratingCount": 4,
+      "ratingCount": 6,
       "scene": "broadway"
     },
     {
@@ -331,7 +331,7 @@ window.TM_LIVE = {
       "title": "Inter Alia",
       "url": "https://www.broadway.com/shows/inter-alia/",
       "fromPrice": 74.92,
-      "ratingCount": null,
+      "ratingCount": 3,
       "scene": "broadway"
     },
     {
@@ -394,7 +394,7 @@ window.TM_LIVE = {
       "slug": "downstate",
       "title": "Downstate",
       "url": "https://www.broadway.com/shows/downstate/",
-      "fromPrice": 56.69,
+      "fromPrice": 77.31,
       "ratingCount": 4,
       "scene": "broadway"
     },
@@ -402,8 +402,8 @@ window.TM_LIVE = {
       "slug": "school-girls-or-african-mean-girls-play",
       "title": "School Girls; Or, The African Mean Girls Play",
       "url": "https://www.broadway.com/shows/school-girls-or-african-mean-girls-play/",
-      "fromPrice": 220.61,
-      "ratingCount": 8,
+      "fromPrice": 303.86,
+      "ratingCount": 9,
       "scene": "broadway"
     },
     {
@@ -411,7 +411,7 @@ window.TM_LIVE = {
       "title": "The Imaginary Invalid",
       "url": "https://www.broadway.com/shows/the-imaginary-invalid/",
       "fromPrice": 66.08,
-      "ratingCount": 6,
+      "ratingCount": 7,
       "scene": "broadway"
     },
     {
@@ -559,11 +559,11 @@ window.TM_LIVE = {
       "scene": "broadway"
     },
     {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 8,
+      "slug": "masquerade",
+      "title": "Masquerade",
+      "url": "https://www.broadway.com/shows/masquerade/",
+      "fromPrice": 276.11,
+      "ratingCount": 121,
       "scene": "off"
     },
     {
@@ -575,11 +575,11 @@ window.TM_LIVE = {
       "scene": "off"
     },
     {
-      "slug": "masquerade",
-      "title": "Masquerade",
-      "url": "https://www.broadway.com/shows/masquerade/",
-      "fromPrice": 276.11,
-      "ratingCount": 121,
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 8,
       "scene": "off"
     },
     {
@@ -611,7 +611,7 @@ window.TM_LIVE = {
       "title": "Slam Frank",
       "url": "https://www.broadway.com/shows/slam-frank/",
       "fromPrice": 66.73,
-      "ratingCount": 9,
+      "ratingCount": 10,
       "scene": "off"
     },
     {
