@@ -200,7 +200,7 @@
   // A View From My Seat: real audience photos by theater & section. We link out to their pages
   // (their policy says photos may only promote A View From My Seat, so we don't copy/embed them).
   const AVFMS = "https://aviewfrommyseat.com/venue/";
-  const plus = (t) => encodeURIComponent(t).replace(/%20/g, "+");
+  const plus = (t) => encodeURIComponent(t).replace(/%20/g, "+").replace(/%2C/gi, ",");
   const SEATVIEWS = window.TM_SEATVIEWS || {};
   const avfmsName = (theater) => (SEATVIEWS[theater] && SEATVIEWS[theater].venue) || theater;
   const seatViewUrl = (theater) => AVFMS + plus(avfmsName(theater)) + "/sections/";

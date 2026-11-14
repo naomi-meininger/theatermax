@@ -37,4 +37,20 @@ window.TM_SEATVIEWS = {
   "August Wilson Theatre":   { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },
   "Booth Theatre":           { box: "Right Boxes", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [2, "Mezzanine"] },
   "Broadhurst Theatre":      { box: "Right Boxes", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [2, "Mezzanine"] },
+  "Ethel Barrymore Theatre": { venue: "Barrymore Theatre", box: "Box E", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Hayes Theater":           { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },
+  "Hudson Theatre":          { orch: [1, "Orchestra"], mezz: [2, "Dress Circle"],    balc: [3, "Balcony"] },
+  "Imperial Theatre":        { box: "Front Right Box", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "James Earl Jones Theatre": { box: "Mezzanine Box Left B", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
+  "Longacre Theatre":        { box: "Box B", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
+  "Lunt-Fontanne Theatre":   { venue: "Lunt-Fontanne theatre", box: "RBOXA", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Middle Mezzanine"] },
+  "Majestic Theatre":        { box: "Box C", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Music Box Theatre":       { box: "Left Box A", orch: [1, "Orchestra"], mezz: [3, "Mezzanine"], balc: [3, "Mezzanine"] },       // level 2 = boxes
+  "Nederlander Theatre":     { box: "Box E", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [2, "Mezzanine"] },
+  "Palace Theatre":          { venue: "Palace Theatre, Broadway", box: "Mezzanine Box R", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "St. James Theatre":       { box: "Mezzanine Box L", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
+  "Studio 54":               { orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
+  "Todd Haimes Theatre":     { box: "Right Box", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [2, "Front Mezzanine"] },  // one mezzanine (rows A–G)
+  "Vivian Beaumont Theater": { orch: [1, "Orchestra"], mezz: [2, "Loge"], balc: [2, "Loge"] },                                   // thrust stage; two levels
+  "Winter Garden Theatre":   { box: "Box C", orch: [1, "Orchestra"], mezz: [3, "Mezzanine"], balc: [3, "Mezzanine"] },         // level 2 = boxes
 };
