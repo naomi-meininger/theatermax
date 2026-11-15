@@ -109,8 +109,10 @@
     return { short: `Opens ${wk}!`, long: `Opening night is ${day}, just ${d} days away! Previews are a great way to see it early, often for less.` };
   }
   // ---- first preview within a week (only real, announced first-preview dates) ----
+  // No previews when the "first preview" is opening night itself (common for opera, ballet, Encores!).
+  const noPreviews = (s) => !!(s.previews && s.opening && s.opening.precision === "day" && dayKey(s.previews.date) === dayKey(s.opening.date));
   function daysToPreview(s) {
-    if (!s.previews || s.previews.assumed || s.previews.precision !== "day") return null;
+    if (!s.previews || s.previews.assumed || s.previews.precision !== "day" || noPreviews(s)) return null;
     const d = Math.round((s.previews.date - TODAY) / 864e5);
     return d >= 0 && d <= 7 ? d : null;
   }
@@ -123,7 +125,7 @@
   // Short run-date notes for anything happening within a month: first preview, opening, closing.
   function runNotes(s) {
     const out = [], within = (dt) => { const d = Math.round((dt - TODAY) / 864e5); return d >= 0 && d <= 31; };
-    if (s.previews && !s.previews.assumed && s.previews.precision === "day" && within(s.previews.date)) out.push(`🎭 First preview ${fmtDay(s.previews.date)}`);
+    if (s.previews && !s.previews.assumed && !noPreviews(s) && s.previews.precision === "day" && within(s.previews.date)) out.push(`🎭 First preview ${fmtDay(s.previews.date)}`);
     if (s.opening && s.opening.precision === "day" && within(s.opening.date)) out.push(`🎉 Opens ${fmtDay(s.opening.date)}`);
     if (s.closing && s.closing.precision === "day" && within(s.closing.date)) out.push(`⏳ Closes ${fmtDay(s.closing.date)}`);
     // Not started yet and more than a month out: still say so, with the dates we know.
