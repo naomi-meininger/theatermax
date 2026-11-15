@@ -513,3 +513,18 @@ main { view-transition-name: page; }
 .ann-card strong { font-size: 17px; line-height: 1.2; }
 .ann-when { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #b3261e; }
 .ann-run { font-size: 13px; font-weight: 600; }
+
+/* Cheapest by section */
+.by-section { margin: 0 0 16px; padding: 14px 16px; }
+.by-section h3 { margin: 0 0 8px; }
+.by-section h3 .muted { font-size: 12px; font-weight: 500; }
+.by-section table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.by-section th, .by-section td { padding: 8px 6px; border-top: 1px solid #e6dfd2; text-align: left; vertical-align: middle; }
+.by-section tr:first-child th, .by-section tr:first-child td { border-top: 0; }
+.by-section th { background: none; }
+.by-section th .linkish { font-weight: 800; }
+.by-section .bs-price { font-weight: 800; font-size: 16px; white-space: nowrap; }
+.by-section .bs-save { color: #1d7a3e; font-weight: 600; font-size: 13px; }
+.by-section code { font-size: 12px; background: #f3ede1; padding: 1px 5px; border-radius: 4px; }
+.by-section .bs-foot { margin: 8px 0 0; font-size: 13px; }
+@media (max-width: 600px) { .by-section .bs-save { display: none; } }

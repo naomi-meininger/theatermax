@@ -507,11 +507,22 @@
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
+    // With per-section prices (`sections` in data/codes.js) a code becomes one offer per section,
+    // so it lines up against every other seller in that section. Without them it stays one
+    // "section not listed" offer, and it's never counted as the cheapest in any one section.
     validCodes(show).forEach((c) => {
-      const fee = c.feesIncl ? 0 : officialFee(c.from);
-      offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: null, row: null, price: c.from, fee, feeEstimated: !c.feesIncl,
-        url: c.url, code: c, tag: "official", verified: true,
-        note: [c.to ? `${money0(c.from)}–${money0(c.to)}` : null, c.regular ? `regularly ${c.regular}` : null, `valid through ${fmtRunDate(parseDay(c.expires))}`, c.details || null].filter(Boolean).join(" · ") });
+      const secs = sectionsFor(show);
+      const valid = `valid through ${fmtRunDate(parseDay(c.expires))}`;
+      const perSec = (c.sections || []).map((x) => ({ ...x, sec: secs.find((y) => y.id === x.sec) })).filter((x) => x.sec);
+      if (perSec.length) {
+        perSec.forEach((x) => offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: x.sec, row: null, price: x.from,
+          fee: c.feesIncl ? 0 : officialFee(x.from), feeEstimated: !c.feesIncl, url: c.url, code: c, tag: "official", verified: true,
+          note: [x.to ? `${money0(x.from)}–${money0(x.to)}` : null, x.regular ? `regularly ${x.regular}` : null, valid, c.details || null].filter(Boolean).join(" · ") }));
+        return;
+      }
+      offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: null, row: null, price: c.from, fee: c.feesIncl ? 0 : officialFee(c.from), feeEstimated: !c.feesIncl,
+        url: c.url, code: c, tag: "official", verified: true, secUnknown: true,
+        note: [c.to ? `${money0(c.from)}–${money0(c.to)} across the house` : null, c.regular ? `regularly ${c.regular}` : null, valid, "the offer doesn't say which sections get which price", c.details || null].filter(Boolean).join(" · ") });
     });
 
     // TodayTix
@@ -995,7 +1006,7 @@
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button></div>` : ""}
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
-          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>Row ${o.row}` : o.code ? `<b>Select seats</b>Discounted sections` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
+          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
             ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
@@ -1104,9 +1115,33 @@
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
           <p class="also-check">Also check: ${tdfLinks(show)} · <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
+          ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>
       </div>`;
+  }
+
+  // "Cheapest by section": one row per section, so people compare where they'd actually sit.
+  function bySectionTable(show, offers) {
+    const key = state.fees ? "total" : "price";
+    const rows = sectionsFor(show).map((sec) => {
+      const inSec = offers.filter((o) => !o.chance && o.sec && o.sec.id === sec.id).sort((a, b) => a[key] - b[key]);
+      if (!inSec.length) return "";
+      const best = inSec[0], box = inSec.find((o) => o.kind === "Official seller");
+      const save = box && best !== box ? box[key] - best[key] : 0;
+      return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th>
+        <td class="bs-price">${money0(best[key])}</td>
+        <td>${esc(best.seller)}${best.code ? ` <code>${esc(best.code.code)}</code>` : ""}${best.sample ? ' <span class="badge sample">Sample</span>' : ""}</td>
+        <td class="bs-save">${save > 1 ? `save ${money0(save)}` : best.kind === "Official seller" ? "box office is cheapest" : ""}</td>
+        <td><a href="${esc(best.url)}" target="_blank" rel="noopener">View →</a></td></tr>`;
+    }).join("");
+    if (!rows) return "";
+    const loose = offers.filter((o) => o.secUnknown);
+    return `<div class="by-section panel">
+      <h3>Cheapest by section <span class="muted">${state.fees ? "with fees" : "before fees"} · each</span></h3>
+      <table><tbody>${rows}</tbody></table>
+      ${loose.length ? `<p class="muted bs-foot">${loose.map((o) => `<b>${esc(o.seller)} <code>${esc(o.code.code)}</code></b> (${o.code.to ? `${money0(o.code.from)}–${money0(o.code.to)}` : `from ${money0(o.code.from)}`})`).join(", ")} ${loose.length === 1 ? "isn't" : "aren't"} split by section because the offer doesn't say which seats get which price. Enter the code at checkout to see each section's price.</p>` : ""}
+    </div>`;
   }
 
   // Split a program's shows into what's playing now vs. coming later.

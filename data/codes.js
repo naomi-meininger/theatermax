@@ -9,6 +9,9 @@
 //   feesIncl   true if `from` already includes fees
 //   source     where the code comes from
 //   url        the offer page (also used to buy / see details)
+//   sections   optional per-section prices, when the offer lists them, e.g.
+//              [{ sec: "orch", from: 89, regular: "$109–$129" }, { sec: "mezz", from: 59, to: 79 }]
+//              (sec: orch | mezz | balc | box). With these the code is compared section by section.
 //
 // Only add codes you've seen on the offer page yourself — a wrong code fails at checkout.
 // Good places to look: https://playbill.com/discount and https://www.broadwaybox.com
