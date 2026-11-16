@@ -429,6 +429,7 @@
     // Off-Broadway houses without a mapped seating chart are almost all one level.
     if (!map) return show && show.scene === "off" ? SECTIONS.slice(0, 1) : SECTIONS;
     // Two-level theaters (no separate balcony): rear mezzanine instead of a balcony.
+    if (!map.mezz) return [SECTIONS[0], ...(map.box ? [BOX_SECTION] : [])];
     const twoLevel = map.balc && map.mezz && map.balc[0] === map.mezz[0];
     return [...(twoLevel ? [SECTIONS[0], SECTIONS[1], RMEZZ_SECTION] : SECTIONS), ...(map.box ? [BOX_SECTION] : [])];
   };

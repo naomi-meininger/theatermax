@@ -40,6 +40,8 @@ window.TM_SEATVIEWS = {
   "Ethel Barrymore Theatre": { venue: "Barrymore Theatre", box: "Box E", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
   "Hayes Theater":           { orch: [1, "Orchestra"], mezz: [2, "Mezzanine"],       balc: [2, "Mezzanine"] },
   "Hudson Theatre":          { orch: [1, "Orchestra"], mezz: [2, "Dress Circle"],    balc: [3, "Balcony"] },
+  // One level wrapped around a thrust stage; level 2 is show-specific floor/table seating.
+  "Circle in the Square Theatre": { orch: [1, "Orchestra"] },
   "Imperial Theatre":        { box: "Front Right Box", orch: [1, "Orchestra"], mezz: [2, "Front Mezzanine"], balc: [3, "Rear Mezzanine"] },
   "James Earl Jones Theatre": { box: "Mezzanine Box Left B", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
   "Longacre Theatre":        { box: "Box B", orch: [1, "Orchestra"], mezz: [2, "Mezzanine"], balc: [3, "Balcony"] },
