@@ -2,50 +2,41 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-15T17:14:52.423Z",
-  "lastAttemptAt": "2026-11-15T17:14:52.423Z",
+  "updatedAt": "2026-11-16T04:30:45.610Z",
+  "lastAttemptAt": "2026-11-16T04:30:45.610Z",
   "count": 92,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-15T17:14:52.423Z",
-      "lastAttemptAt": "2026-11-15T17:14:52.423Z",
+      "updatedAt": "2026-11-16T04:30:45.610Z",
+      "lastAttemptAt": "2026-11-16T04:30:45.610Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-15T17:14:52.423Z",
-      "lastAttemptAt": "2026-11-15T17:14:52.423Z",
+      "updatedAt": "2026-11-16T04:30:45.610Z",
+      "lastAttemptAt": "2026-11-16T04:30:45.610Z",
       "count": 25
     }
   },
   "shows": [
-    {
-      "slug": "the-great-gatsby",
-      "title": "The Great Gatsby",
-      "url": "https://www.broadway.com/shows/the-great-gatsby/",
-      "fromPrice": 64.29,
-      "ratingCount": 1047,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "wicked",
-      "title": "Wicked",
-      "url": "https://www.broadway.com/shows/wicked/",
-      "fromPrice": 97.28,
-      "ratingCount": 808,
-      "scene": "broadway",
-      "firstSeen": null
-    },
     {
       "slug": "juliet",
       "title": "& Juliet",
       "url": "https://www.broadway.com/shows/juliet/",
       "fromPrice": 61.36,
       "ratingCount": 818,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-great-gatsby",
+      "title": "The Great Gatsby",
+      "url": "https://www.broadway.com/shows/the-great-gatsby/",
+      "fromPrice": 64.29,
+      "ratingCount": 1047,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -64,6 +55,15 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/operation-mincemeat/",
       "fromPrice": 65.37,
       "ratingCount": 685,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "wicked",
+      "title": "Wicked",
+      "url": "https://www.broadway.com/shows/wicked/",
+      "fromPrice": 97.28,
+      "ratingCount": 808,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -296,7 +296,7 @@ window.TM_LIVE = {
       "slug": "much-ado-about-nothing",
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
-      "fromPrice": 126.72,
+      "fromPrice": 122.88,
       "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
@@ -626,29 +626,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 8,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "jamie-allans-amaze",
-      "title": "Amaze Magic",
-      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
-      "fromPrice": 65.36,
-      "ratingCount": 126,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "masquerade",
-      "title": "Masquerade",
-      "url": "https://www.broadway.com/shows/masquerade/",
-      "fromPrice": 276.11,
-      "ratingCount": 121,
+      "slug": "little-shop-horrors",
+      "title": "Little Shop of Horrors",
+      "url": "https://www.broadway.com/shows/little-shop-horrors/",
+      "fromPrice": 91.41,
+      "ratingCount": 243,
       "scene": "off",
       "firstSeen": null
     },
@@ -662,11 +644,29 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "little-shop-horrors",
-      "title": "Little Shop of Horrors",
-      "url": "https://www.broadway.com/shows/little-shop-horrors/",
-      "fromPrice": 58.28,
-      "ratingCount": 243,
+      "slug": "masquerade",
+      "title": "Masquerade",
+      "url": "https://www.broadway.com/shows/masquerade/",
+      "fromPrice": 276.11,
+      "ratingCount": 121,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "jamie-allans-amaze",
+      "title": "Amaze Magic",
+      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
+      "fromPrice": 65.36,
+      "ratingCount": 126,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 8,
       "scene": "off",
       "firstSeen": null
     },
@@ -674,7 +674,7 @@ window.TM_LIVE = {
       "slug": "midnight",
       "title": "Midnight",
       "url": "https://www.broadway.com/shows/midnight/",
-      "fromPrice": 65.37,
+      "fromPrice": 100.09,
       "ratingCount": 27,
       "scene": "off",
       "firstSeen": null
