@@ -394,7 +394,15 @@
   const ALL_SECTIONS = [SECTIONS[0], SECTIONS[1], RMEZZ_SECTION, SECTIONS[2], BOX_SECTION, STAGE_SECTION];
   const withFrontMezz = (list) => list.some((x) => x.id === "rmezz") ? list.map((x) => (x.id === "mezz" ? FMEZZ : x)) : list;
   // Shows with seating a ticket site doesn't list (reported by people who've been).
-  const SPECIAL_SEATING = { "slam-frank": ["orch", "stage"] };
+  // Seating a ticket site doesn't list separately (reported by people who've been).
+  // Each entry: section ids, plus optional per-show names and seat-view links.
+  const SPECIAL_SEATING = {
+    "slam-frank": ["orch", "stage"],
+    "just-in-time": ["orch", "stage"],
+  };
+  const SPECIAL_NAMES = {
+    "just-in-time": { stage: { name: "Table seating (onstage)", view: "https://aviewfrommyseat.com/venue/Circle+in+the+Square+Theatre/level/2/Just+In+Time+Table+Seating/" } },
+  };
   // Sections a show really sells: Broadway.com's per-performance "Pricing by Section" and
   // TodayTix's section prices, combined. Falls back to the theater's levels.
   const seenSections = (show) => {
@@ -410,7 +418,9 @@
     if (!show) return SECTIONS;
     if (SECTION_CACHE.has(show.slug)) return SECTION_CACHE.get(show.slug);
     const seen = seenSections(show);
-    const res = withFrontMezz(seen.size ? ALL_SECTIONS.filter((x) => seen.has(x.id)) : sectionsByTheater(show));
+    const named = SPECIAL_NAMES[show.slug] || {};
+    const res = withFrontMezz(seen.size ? ALL_SECTIONS.filter((x) => seen.has(x.id)) : sectionsByTheater(show))
+      .map((x) => (named[x.id] ? { ...x, name: named[x.id].name, view: named[x.id].view } : x));
     SECTION_CACHE.set(show.slug, res);
     return res;
   };
@@ -437,6 +447,12 @@
     if (!bits.length && !off) return "";
     return `<div class="meta know-line">${[...bits, off].filter(Boolean).join(" · ")}</div>`;
   }
+
+  // Critic score: Broadway Scorecard's official badge (their terms allow one show's badge per
+  // page, loaded live from their site, with the "CriticScore™ by Broadway Scorecard" credit).
+  const BSC_SLUGS = { "two-strangers-carry-a-cake-across-new-york": "two-strangers" };
+  const bscSlug = (s) => BSC_SLUGS[s.slug] || s.slug.replace(/-broadway$/, "");
+  const bscUrl = (s) => `https://broadwayscorecard.com/show/${bscSlug(s)}`;
 
   // Critics' review roundup (BroadwayWorld publishes one for most openings).
   const roundupUrl = (s) => "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(`site:broadwayworld.com "Review Roundup" ${s.title}`);
@@ -1026,7 +1042,12 @@
           <div class="pv-facts">
             <div><span>Lowest listed price</span><strong>${s.bdcFrom != null ? money(s.bdcFrom) : s.tickets ? "See site" : "Not on sale"}</strong><em>${s.tickets ? "venue box office" : "Broadway.com"}</em></div>
             <div><span>Audience reviews</span><strong>${s.ratingCount ? s.ratingCount.toLocaleString() : "—"}</strong><em>on Broadway.com</em></div>
-            <div><span>Critics</span>${c ? `<strong>${c.score}%</strong><em>avg. rating</em>` : s.opening && s.opening.date <= TODAY ? `<strong><a href="${esc(roundupUrl(s))}" target="_blank" rel="noopener">Reviews ↗</a></strong><em>review roundup</em>` : `<strong>—</strong><em>reviews after opening</em>`}</div>
+            <div><span>Critics</span>${c ? `<strong>${c.score}%</strong><em>avg. rating</em>` : s.opening && s.opening.date <= TODAY ? `
+              <span class="bsc">
+                <a href="${esc(bscUrl(s))}" target="_blank" rel="noopener"><img class="bsc-badge" src="https://broadwayscorecard.com/api/badge/${esc(bscSlug(s))}" alt="CriticScore for ${esc(s.title)}" onerror="this.closest('.bsc').classList.add('bsc-none')"></a>
+                <a class="bsc-attr" href="${esc(bscUrl(s))}" target="_blank" rel="noopener">CriticScore™ by Broadway Scorecard</a>
+              </span>
+              <em><a href="${esc(roundupUrl(s))}" target="_blank" rel="noopener">Review roundup ↗</a></em>` : `<strong>—</strong><em>reviews after opening</em>`}</div>
           </div>
 
           ${c ? `
@@ -1205,7 +1226,7 @@
     const offerHtml = offers.map((o) => {
       const shown = state.fees ? o.total : o.price;
       const off = o.sec && officialBySec[o.sec.id];
-      const save = off && o !== off ? off.total - o.total : 0;
+      const save = off && o !== off && !off.sample ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
       return `
         <article class="offer ${isBest ? "best" : ""}" style="--i:${Math.min(offers.indexOf(o), 10)}">
@@ -1223,7 +1244,7 @@
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
           <div class="seat">${o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
-            ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
+            ${o.sec && show.theater ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
@@ -1300,7 +1321,7 @@
             ${seatMap(all, show)}
             <div class="legend">Greener = cheaper. Tap a section to filter.</div>
             ${show.theater && SEATVIEWS[show.theater] ? `<div class="level-links">${
-                [...new Map(sectionsFor(show).map((sec) => [sectionView(show.theater, sec.id).url, { sec, v: sectionView(show.theater, sec.id) }])).values()]
+                [...new Map(sectionsFor(show).map((sec) => { const v = sec.view ? { url: sec.view, label: `📷 ${sec.name}`, name: sec.name, exact: true } : sectionView(show.theater, sec.id); return [v.url, { sec, v }]; })).values()]
                   .map(({ sec, v }) => `<a class="btn ghost" href="${esc(v.url)}" target="_blank" rel="noopener" title="Audience photos from the whole ${esc(v.name)}">📷 ${esc(v.name)}${v.name !== sec.name ? ` <span class="lvl-note">(${sec.name.toLowerCase()})</span>` : ""}</a>`).join("")
               }</div>` : ""}
             ${show.theater ? `<a class="${SEATVIEWS[show.theater] ? "all-views" : "btn ghost seatview-btn"}" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">${SEATVIEWS[show.theater] ? "All sections at " + esc(show.theater) + " ↗" : "📷 See real seat views ↗"}</a>
@@ -1356,7 +1377,7 @@
       const inSec = (real.length ? real : all).sort((a, b) => a[key] - b[key]);
       if (!inSec.length) return "";
       const best = inSec[0], box = inSec.find((o) => o.officialRow);
-      const save = box && best !== box ? box[key] - best[key] : 0;
+      const save = box && best !== box && !box.sample ? box[key] - best[key] : 0;
       return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th>
         <td class="bs-price">${money0(best[key] * state.qty)}${state.qty > 1 ? `<span class="bs-each">${money0(best[key])} each</span>` : ""}</td>
         <td>${esc(best.seller)}${best.code ? ` <code>${esc(best.code.code)}</code>` : ""}${best.sample ? ' <span class="badge sample">Sample</span>' : ""}</td>

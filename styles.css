@@ -548,3 +548,7 @@ main { view-transition-name: page; }
 .by-section .bs-each { display: block; font-size: 11px; font-weight: 500; opacity: .7; }
 .know-line { font-size: 13px; margin-top: 6px; }
 .know-line a { color: inherit; }
+.bsc { display: grid; gap: 2px; justify-items: start; }
+.bsc-badge { height: 28px; width: auto; display: block; }
+.bsc-attr { font-size: 11px; }
+.bsc.bsc-none { display: none; }
