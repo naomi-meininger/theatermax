@@ -39,6 +39,20 @@ export function parseOgImage(html) {
   return u && /^https:\/\//.test(u) && !/logo|default|placeholder|fallback/i.test(u) ? u : null;
 }
 
+/** Event page "Pricing by Section": "… 8:00pm Balcony $77.31 $109.61 …" → { balc: { lo, hi }, … } */
+export function parseSectionPrices(html) {
+  const t = text(html), i = t.search(/Pricing by Section/i);
+  if (i < 0) return null;
+  const seg = t.slice(i, i + 3000), out = {};
+  const id = (n) => /box|loge/i.test(n) ? "box" : /balc/i.test(n) ? "balc" : /mezz|dress|circle/i.test(n) ? "mezz" : /orch|stall|premium/i.test(n) ? "orch" : null;
+  for (const m of seg.matchAll(/(?:am|pm)\s+([A-Za-z][A-Za-z .&'-]{2,40}?)\s+\$([\d,]+\.\d{2})\s+\$([\d,]+\.\d{2})/gi)) {
+    const k = id(m[1]); if (!k) continue;
+    const lo = +m[2].replace(/,/g, ""), hi = +m[3].replace(/,/g, "");
+    if (!out[k] || lo < out[k].lo) out[k] = { lo, hi: Math.max(hi, out[k] ? out[k].hi : 0) };
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 export function parseRunDates(html) {
   const t = text(html), out = {};
   for (const [k, label] of [["previews", "Previews"], ["opening", "Opening"], ["closing", "Closing"]]) {
@@ -51,6 +65,12 @@ export function parseRunDates(html) {
 /** "Tue, Dec 15, 2026 7:00pm from $97.28" … → { "2026-12-15": [{ t: "7:00 PM", from: 97.28 }] } */
 export function parseSchedule(html) {
   const t = text(html), out = {};
+  // Each performance links to its event page: /shows/<slug>/event/<id>/<MM-DD-YYYY>/<HHMM>/
+  const events = {};
+  for (const m of html.matchAll(/\/shows\/[a-z0-9-]+\/event\/(\d+)\/(\d{2})-(\d{2})-(\d{4})\/(\d{2})(\d{2})\//g)) {
+    const h = +m[5], time = `${h % 12 || 12}:${m[6]} ${h < 12 ? "AM" : "PM"}`;
+    events[`${m[4]}-${m[2]}-${m[3]} ${time}`] = m[0];
+  }
   const re = /\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2}) ?(am|pm)(?: from \$([\d,]+(?:\.\d{2})?))?/gi;
   for (const m of t.matchAll(re)) {
     const day = `${m[4]}-${String(MONTHS[m[2]]).padStart(2, "0")}-${m[3].padStart(2, "0")}`;
@@ -59,6 +79,7 @@ export function parseSchedule(html) {
     if (list.some((p) => p.t === time)) continue;
     const perf = { t: time };
     if (m[8]) perf.from = +m[8].replace(/,/g, "");
+    const ev = events[`${day} ${time}`]; if (ev) perf.ev = ev;
     list.push(perf);
   }
   const mins = (s) => { const [hm, ap] = s.split(" "); let [h, mm] = hm.split(":").map(Number); if (ap === "PM" && h !== 12) h += 12; if (ap === "AM" && h === 12) h = 0; return h * 60 + mm; };
@@ -114,6 +135,27 @@ async function run() {
     }
     await sleep(PAUSE_MS);
   }
+  // Section prices from each performance's event page, next 14 days (Broadway.com's own
+  // "Pricing by Section" table). Capped so the daily run stays polite.
+  const horizon = new Date(Date.parse(today) + 14 * 864e5).toISOString().slice(0, 10);
+  let evFetched = 0;
+  for (const [slug, cal] of Object.entries(shows)) {
+    for (const [day, perfs] of Object.entries(cal.days || {})) {
+      if (day > horizon) continue;
+      for (const p of perfs) {
+        if (!p.ev || evFetched >= 1500) continue;
+        try {
+          const r = await fetch("https://www.broadway.com" + p.ev, { headers: { "user-agent": "TheaterMaxBot/1.0 (+https://github.com/naomi-meininger/theatermax)" } });
+          evFetched++;
+          const secs = r.ok ? parseSectionPrices(await r.text()) : null;
+          if (secs) p.secs = secs;
+        } catch {}
+        await sleep(350);
+      }
+    }
+  }
+  console.log(`Section prices: ${evFetched} event pages.`);
+
   // Images for our own extra shows (City Center, Met, NYCB…): from the show's own page when
   // its ticket link is specific to that show (not a link shared by several shows).
   const extra = readWindowVar(path.join(ROOT, "data", "extra-shows.js"), "TM_EXTRA_SHOWS") || [];

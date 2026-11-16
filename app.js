@@ -522,10 +522,10 @@
     // Real calendar from Broadway.com (daily): exact dates & curtain times, holiday weeks included.
     const cal = CALENDARS[show.slug], k = dayKey(dt.date);
     if (cal && k >= cal.from && k <= cal.to) {
-      return (cal.days[k] || []).map(({ t, from }) => {
+      return (cal.days[k] || []).map(({ t, from, secs, ev }) => {
         const mins = toMinutes(t), dow = dt.date.getDay();
         const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
-        return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, special: keyDateLabel(show, dt.date) };
+        return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, calSecs: secs || null, calEv: ev || null, special: keyDateLabel(show, dt.date) };
       }).concat(!(cal.days[k] || []).length && keyDateLabel(show, dt.date)
         ? [{ time: "7:00 PM", kind: "eve", mult: TIME_MULT.eve, dayOffset: dt.offset, key: k + " 7:00 PM", special: keyDateLabel(show, dt.date), approx: true }] : []);
     }
@@ -650,9 +650,13 @@
       }
     }
     // Broadway.com: its own lowest price for this exact performance, from its daily calendar (real).
-    if (perf.calFrom) {
-      result.push({ seller: "Broadway.com", kind: "Ticket site · cheapest seat", sec: null, row: null, price: perf.calFrom, fee: 0, live: "broadwaycom",
-        url: (show.bdcUrl || "https://www.broadway.com/").replace(/\/?$/, "/") + "schedule/",
+    const bdcEvent = perf.calEv ? "https://www.broadway.com" + perf.calEv : (show.bdcUrl || "https://www.broadway.com/").replace(/\/?$/, "/") + "schedule/";
+    const bdcSecs = perf.calSecs ? Object.entries(perf.calSecs).map(([id, v]) => [sectionsFor(show).find((x) => x.id === id), v]).filter(([sec]) => sec) : [];
+    if (bdcSecs.length) {
+      bdcSecs.forEach(([sec, v]) => result.push({ seller: "Broadway.com", kind: "Ticket site", sec, row: null, price: v.lo, fee: 0, live: "broadwaycom", url: bdcEvent,
+        note: `Broadway.com's ${sec.name.toLowerCase()} prices for this performance: ${money0(v.lo)}–${money0(v.hi)} (its "Pricing by Section", this morning)` }));
+    } else if (perf.calFrom) {
+      result.push({ seller: "Broadway.com", kind: "Ticket site · cheapest seat", sec: null, row: null, price: perf.calFrom, fee: 0, live: "broadwaycom", url: bdcEvent,
         note: "Broadway.com's lowest listed price for this performance, as of this morning · section shown at checkout" });
     }
     // TodayTix real prices replace the TodayTix sample rows: one row per section, fees included.
@@ -1260,7 +1264,10 @@
   function bySectionTable(show, offers) {
     const key = state.fees ? "total" : "price";
     const rows = sectionsFor(show).map((sec) => {
-      const inSec = offers.filter((o) => !o.chance && o.sec && o.sec.id === sec.id).sort((a, b) => a[key] - b[key]);
+      // Real prices first: when a section has any, sample estimates don't compete with them.
+      const all = offers.filter((o) => !o.chance && !o.estimate && o.sec && o.sec.id === sec.id);
+      const real = all.filter((o) => !o.sample);
+      const inSec = (real.length ? real : all).sort((a, b) => a[key] - b[key]);
       if (!inSec.length) return "";
       const best = inSec[0], box = inSec.find((o) => o.kind === "Official seller");
       const save = box && best !== box ? box[key] - best[key] : 0;
