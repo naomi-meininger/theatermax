@@ -1042,9 +1042,13 @@
         <div class="empty">No performances in the next ${DAYS_AHEAD} days${first ? ` — ${first.label} is ${fmtRunDate(first.d)}` : ""}.
           Tickets are on sale now from <b>${money(show.bdcFrom)}</b>. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See dates on Broadway.com ↗</a></div>`;
     }
+    // Default to the next performance that hasn't started yet (today's earlier shows are over).
+    const nowMin = (() => { const n = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" })); return n.getHours() * 60 + n.getMinutes(); })();
+    const notOver = (dt, p) => dt.offset !== 0 || toMinutes(p.time) > nowMin;
     if (state.dateIdx === null || !playable(DATES[state.dateIdx])) {
-      state.dateIdx = DATES.findIndex(playable);
-      state.perfIdx = 0;
+      state.dateIdx = DATES.findIndex((dt) => playable(dt) && perfsFor(show, dt).some((p) => notOver(dt, p)));
+      if (state.dateIdx < 0) state.dateIdx = DATES.findIndex(playable);
+      state.perfIdx = Math.max(0, perfsFor(show, DATES[state.dateIdx]).findIndex((p) => notOver(DATES[state.dateIdx], p)));
     }
     const dateObj = DATES[state.dateIdx];
     const dayPerfs = perfsFor(show, dateObj);
@@ -1203,6 +1207,10 @@
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
           </div>
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
+          ${(() => { const id = TT.ids && TT.ids[show.slug]; if (!id || !id.url) return "";
+            const inWin = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
+            if (ttFor(show, perf)) return "";
+            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `TodayTix had no 2 seats together for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
           <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) + " · " : `Not in the prices above (no data yet for this show): ${tdfLinks(show)} · `}<a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery, rush, TKTS and TDF shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
