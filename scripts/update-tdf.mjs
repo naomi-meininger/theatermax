@@ -154,6 +154,33 @@ async function run() {
     }
   }
 
+  // Shows the crawl didn't reach: TDF also answers /shows/0/<name-slug>/ by name, so try that
+  // once per missing show (the page's own title must still match ours).
+  const slugify = (t) => String(t).toLowerCase().replace(/\s*\((the met|encores!|nycb)\)\s*/g, " ").replace(/[’'`]/g, "").replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  let guessed = 0;
+  for (const o of ours) {
+    if (shows[o.slug] || guessed >= 160) continue;
+    const variants = [...new Set([slugify(o.title), slugify(o.title.replace(/^the\s+/i, ""))])];
+    for (const v of variants) {
+      const p = `/shows/0/${v}/`;
+      if (seen.has(p)) continue;
+      seen.add(p); guessed++;
+      let res;
+      try { res = await fetch(BASE + p, { headers: { "user-agent": "TheaterMaxBot/1.0 (+https://github.com/naomi-meininger/theatermax; weekly, link-back only)" } }); } catch { continue; }
+      await sleep(PAUSE_MS);
+      if (!res.ok) continue;
+      const f = parseShowPage(await res.text());
+      const hit = match(norm(f.title || ""));
+      const current = !f.closing || f.closing >= today;
+      if (hit && hit.slug === o.slug && current && (f.member || f.tkts || f.fullPrice || f.opening)) {
+        const finalPath = new URL(res.url).pathname;
+        shows[o.slug] = { url: BASE + finalPath, ...f }; ids[o.slug] = finalPath; break;
+      }
+    }
+  }
+  console.log(`Name lookups: ${guessed}.`);
+
   const found = Object.keys(shows).length;
   console.log(`Fetched ${fetched} pages (${failures} failed); matched ${found} of our shows.`);
   if (fetched === 0 || found === 0) {
