@@ -53,11 +53,23 @@ try {
       // 2) prices for the next 13 days, for parties of 1, 2 and 4 (seats together)
       const byQty = {};
       for (const q of QTYS) {
-      let r;
-      try { r = await call("compare_prices", { showId: id.id, location: "nyc", startDate: from, endDate: to, quantity: q }); }
-      catch (e) { if (/No performances/i.test(e.message)) continue; throw e; }
+      // compare_prices can run out of time and skip performances (performancesNotSearched),
+      // so ask a week at a time and re-ask for any dates it skipped.
+      const results = [];
+      const ask = async (a, b, depth = 0) => {
+        let r;
+        try { r = await call("compare_prices", { showId: id.id, location: "nyc", startDate: a, endDate: b, quantity: q }); }
+        catch (e) { if (/No performances/i.test(e.message)) return; throw e; }
+        results.push(...(r.results || []));
+        const missed = [...new Set((r.performancesNotSearched || []).map((x) => String(x.date || x).slice(0, 10)).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)))].sort();
+        if (missed.length && depth < 3) for (const d of missed) await ask(d, d, depth + 1);
+      };
+      const mid = iso(new Date(today.getTime() + 6 * 864e5)), mid2 = iso(new Date(today.getTime() + 7 * 864e5));
+      await ask(from, mid); await ask(mid2, to);
+      const seenPerf = new Set();
       const perfs = {};
-      for (const p of r.results || []) {
+      for (const p of results) {
+        const pk = p.date + p.time; if (seenPerf.has(pk)) continue; seenPerf.add(pk);
         if (!p.date || !p.time || p.cheapest == null) continue;
         const secs = {};
         for (const x of p.sections || []) { const k = secId(x.name); if (k && x.cheapest != null && (secs[k] == null || x.cheapest < secs[k])) secs[k] = x.cheapest; }
