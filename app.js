@@ -12,6 +12,13 @@
   const THEATERS = window.TM_THEATERS || {};
   const PREVIEWS = window.TM_PREVIEWS || {};
   const TDF = (window.TM_TDF && window.TM_TDF.shows) || {};
+  // TodayTix: real prices (fees included, 2 seats together) from TodayTix's official MCP server, daily.
+  const TT = window.TM_TODAYTIX || { shows: {} };
+  const ttFor = (show, perf) => { const t = TT.shows && TT.shows[show.slug]; return t && t.perfs && t.perfs[perf.key] ? { ...t.perfs[perf.key], showUrl: t.url } : null; };
+  const hasTT = (show) => !!(TT.shows && TT.shows[show.slug]);
+  // Show images: each show's own share image (og:image), hotlinked from its page.
+  const IMAGES = (window.TM_SCHEDULES && window.TM_SCHEDULES.images) || {};
+  const dollars = (str) => (String(str || "").match(/\d[\d,]*(?:\.\d+)?/g) || []).map((x) => +x.replace(/,/g, ""));
   // TKTS + TDF links for a show, using what TDF's own show page says (weekly) when we have it.
   function tdfLinks(show) {
     const t = TDF[show.slug], a = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`;
@@ -270,6 +277,30 @@
     price: /^\$[\d.]+$/.test(d.price) ? parseFloat(d.price.slice(1)) : null, program: true })));
   // Undo any HTML entities left in scraped titles (e.g. "It&#x27;s" → "It's").
   const unent = (t) => typeof t === "string" ? t.replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16))).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'") : t;
+  // Who sells a theater's tickets first-hand. Shubert houses → Telecharge; Nederlander → Broadway Direct;
+  // Jujamcyn (now ATG) → SeatGeek; ATG's Hudson & Lyric → ATG Tickets; Disney's New Amsterdam → Ticketmaster;
+  // nonprofits sell through their own box office.
+  const OFFICIAL_BY_THEATER = {
+    Telecharge: ["Ambassador", "Ethel Barrymore", "Belasco", "Booth", "Broadhurst", "Broadway Theatre", "John Golden", "Imperial", "Bernard B. Jacobs",
+      "Longacre", "Lyceum", "Majestic", "Music Box", "Gerald Schoenfeld", "Shubert Theatre", "Winter Garden", "James Earl Jones", "Circle in the Square",
+      "New World Stages", "Stage 42"],
+    "Broadway Direct": ["Lena Horne", "Gershwin", "Lunt-Fontanne", "Marquis", "Minskoff", "Nederlander Theatre", "Neil Simon", "Palace", "Richard Rodgers", "Stephen Sondheim"],
+    "SeatGeek (official)": ["Al Hirschfeld", "August Wilson", "Eugene O'Neill", "St. James", "Walter Kerr"],
+    "ATG Tickets": ["Hudson Theatre", "Lyric Theatre"],
+    Ticketmaster: ["New Amsterdam"],
+    Roundabout: ["American Airlines", "Studio 54", "Todd Haimes"],
+    "Lincoln Center Theater": ["Vivian Beaumont", "Mitzi E. Newhouse", "Claire Tow"],
+    "Manhattan Theatre Club": ["Samuel J. Friedman", "New York City Center Stage"],
+    "Second Stage": ["Hayes Theater", "Tony Kiser"],
+    "New York City Center": ["New York City Center"],
+    "The Met": ["Metropolitan Opera House"],
+    "NYC Ballet": ["David H. Koch"],
+  };
+  function officialFor(theater) {
+    if (!theater) return "Box office";
+    for (const [seller, list] of Object.entries(OFFICIAL_BY_THEATER)) if (list.some((n) => theater.startsWith(n))) return seller;
+    return "Box office";
+  }
   const SHOWS = [...(LIVE ? LIVE.shows : []), ...EXTRA_SHOWS].map((l) => ({ ...l, title: unent(l.title) })).map((l, i, arr) => {
     const x = EXTRAS[l.slug] || {};
     const h = hash(l.slug);
@@ -289,8 +320,8 @@
       // Sample-pricing inputs: box-office orchestra price roughly 1.8x the cheapest listed seat.
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
-      // If Ticketmaster's API returns this show, Ticketmaster is its official seller.
-      official: x.official || (Object.values((window.TM_PRICES && window.TM_PRICES.shows && window.TM_PRICES.shows[l.slug]) || {}).some((p) => p.ticketmaster) ? "Ticketmaster" : (h % 2 ? "Telecharge" : "Ticketmaster")),
+      // Official (primary) seller is set by who runs the theater — see OFFICIAL_BY_THEATER.
+      official: x.official || officialFor(x.theater || THEATERS[l.slug] || l.theater || null),
       colors: PALETTES[h % PALETTES.length],
       // Real deals from bwayrush when we have them; the old sample values only if that file is missing.
       deals: [...(RUSH ? ((RUSH.shows[l.slug] || {}).deals || []) : []),
@@ -339,7 +370,18 @@
 
   const OFFICIAL_URL = {
     Telecharge: "https://www.telecharge.com",
+    "Broadway Direct": "https://broadwaydirect.com",
+    "SeatGeek (official)": "https://seatgeek.com/broadway",
+    "ATG Tickets": "https://www.atgtickets.com/broadway/",
     Ticketmaster: "https://www.ticketmaster.com",
+    "Roundabout": "https://www.roundabouttheatre.org",
+    "Lincoln Center Theater": "https://www.lct.org",
+    "Manhattan Theatre Club": "https://www.manhattantheatreclub.com",
+    "Second Stage": "https://2st.com",
+    "New York City Center": "https://www.nycitycenter.org",
+    "The Met": "https://www.metopera.org/season/tickets/",
+    "NYC Ballet": "https://www.nycballet.com",
+    "Box office": "https://www.broadway.com",
   };
 
   const state = {
@@ -480,6 +522,7 @@
   function groupOf(o) {
     if (o.code) return "codes";
     if (o.chance || o.inPerson) return "sameday";
+    if (o.seller === "TDF") return "members";
     if (o.member) return "members";
     if (o.seller === "SeatGeek") return "resale";
     if (o.seller === "TodayTix" || o.seller === "Theatr") return "apps";
@@ -503,7 +546,7 @@
 
     sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
-      offers.push({ seller: show.official, kind: "Official seller", sec, row: row(sec), price: p, fee: officialFee(p), url: OFFICIAL_URL[show.official], tag: "official" });
+      offers.push({ seller: show.official === "Box office" ? "Box office (official)" : show.official, kind: "Official seller", sec, row: row(sec), price: p, fee: officialFee(p), url: show.official === "Box office" ? (show.tickets || "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky " + show.title + " official tickets")) : OFFICIAL_URL[show.official], tag: "official" });
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
@@ -567,9 +610,34 @@
         const tm = live.ticketmaster;
         if (show.official === "Ticketmaster") result = result.filter((o) => !(o.tag === "official" && o.seller.startsWith("Ticketmaster")));
         const fee = Math.round(tm.min * 0.18 * 100) / 100; // TM shows face value; fees are added at checkout
-        result.push({ seller: "Ticketmaster", kind: "Face-value tickets", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", tag: "official",
+        result.push({ seller: "Ticketmaster", kind: show.official === "Ticketmaster" ? "Face-value tickets" : "Ticketmaster listing", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", ...(show.official === "Ticketmaster" ? { tag: "official" } : {}),
           note: `Face value ${money0(tm.min)}–${money0(tm.max)} · fees estimated (~18%)` });
       }
+    }
+    // TodayTix real prices replace the TodayTix sample rows: one row per section, fees included.
+    const tt = ttFor(show, perf);
+    if (tt || hasTT(show)) result = result.filter((o) => o.seller !== "TodayTix");
+    if (tt) {
+      const secs = sectionsFor(show);
+      const rows = Object.entries(tt.secs || {}).map(([id, p]) => [secs.find((x) => x.id === id), p]).filter(([sec]) => sec);
+      const url = (sec) => (tt.best && tt.best.url && tt.best.sec === sec.id ? tt.best.url : tt.showUrl) || "https://www.todaytix.com/nyc";
+      (rows.length ? rows : [[null, tt.low]]).forEach(([sec, p]) => result.push({ seller: "TodayTix", kind: tt.deal ? "Discount app · sale on" : "Discount app",
+        sec, row: sec && tt.best && tt.best.sec === sec.id ? tt.best.row : null, price: p, fee: 0, url: sec ? url(sec) : tt.showUrl, live: "todaytix",
+        note: `Cheapest 2 seats together${sec ? " in this section" : ""} · fees included${tt.high ? ` · prices up to ${money0(tt.high)}` : ""}` }));
+    }
+    // TDF member tickets (TDF's show page, weekly): members only, a flat low price when offered.
+    const tdf = TDF[show.slug];
+    if (tdf && tdf.memberAvailable && dollars(tdf.memberPrice).length) {
+      const [lo] = dollars(tdf.memberPrice);
+      result.push({ seller: "TDF", kind: "Member tickets", sec: null, row: null, price: lo, fee: 0, url: tdf.url, member: true, live: "tdf",
+        note: `TDF lists member tickets at ${tdf.memberPrice} · membership required (students, teachers, artists, retirees and others qualify)` });
+    }
+    // TKTS (same-day booth): only shows TDF says are listed there, only for today's performances.
+    // TKTS doesn't publish prices ahead, so this is an estimate and never picked as "Best deal".
+    if (tdf && tdf.tkts && /frequently|sometimes|occasionally/i.test(tdf.tkts) && near === 0) {
+      const box = result.find((o) => o.kind === "Official seller" && o.sec && o.sec.id === "orch") || result.find((o) => o.kind === "Official seller");
+      if (box) result.push({ seller: "TKTS", kind: "Same-day booth · estimate", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 7, url: "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/", chance: true, estimate: true,
+        note: `TDF says this show is ${tdf.tkts.toLowerCase()} at TKTS · usually 20–50% off · today only, while it lasts · check TKTS Live for today's list` });
     }
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
@@ -758,7 +826,8 @@
     return `
       <article class="show-card ${s.onSale ? "" : "soon"}" style="--i:${Math.min(i, 12)}">
         <a class="card-link" href="${esc(href)}"${ext}>
-          <div class="poster" style="${posterStyle(s)}">
+          <div class="poster ${IMAGES[s.slug] ? "has-img" : ""}" style="${posterStyle(s)}">
+            ${IMAGES[s.slug] ? `<img class="poster-img" src="${esc(IMAGES[s.slug])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ""}
             ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
               : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>`
               : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>`
@@ -946,7 +1015,8 @@
         : show.opening ? { label: "opening night", d: show.opening } : null;
       return `
         <a class="back" href="${backHref}">← ${{ all: "All shows", broadway: "Broadway", off: "Off-Broadway" }[state.f.scene]}</a>
-        <section class="detail-hero" style="${posterStyle(show)}"><div><h1>${esc(show.title)}</h1>
+        <section class="detail-hero ${IMAGES[show.slug] ? "has-img" : ""}" style="${posterStyle(show)}">
+        ${IMAGES[show.slug] ? `<img class="hero-img" src="${esc(IMAGES[show.slug])}" alt="" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ""}<div><h1>${esc(show.title)}</h1>
           ${runLine(show) ? `<div class="meta run-line">${runLine(show)}</div>` : ""}
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}</div></div>
           <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button></section>
@@ -996,11 +1066,11 @@
           <div>
             <div class="seller">${esc(o.seller)}
               ${isBest ? `<span class="badge red">Best deal</span>` : ""}
-              ${o.chance ? `<span class="badge gold">${/lottery/i.test(o.kind) ? "Lottery · not guaranteed" : "Rush · while they last"}</span>` : ""}
+              ${o.chance ? `<span class="badge gold">${/lottery/i.test(o.kind) ? "Lottery · not guaranteed" : o.seller === "TKTS" ? "Estimate · same day" : "Rush · while they last"}</span>` : ""}
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
+              ${o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button></div>` : ""}
@@ -1010,7 +1080,7 @@
             ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
-            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save)} vs. box office</div>` : ""}
             ${state.qty > 1 ? `<div class="breakdown">${state.qty} tickets: ${money(shown * state.qty)}</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
@@ -1113,7 +1183,7 @@
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
           </div>
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
-          <p class="also-check">Also check: ${tdfLinks(show)} · <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a></p>
+          <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) + " · " : `Not in the prices above (no data yet for this show): ${tdfLinks(show)} · `}<a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery & rush shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
