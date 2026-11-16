@@ -34,6 +34,7 @@ const MAX_PAGES = 220, PAUSE_MS = 900;
 const KNOWN = {
   "school-girls-or-african-mean-girls-play": "/shows/23167/school-girls-or-the-african-mean-girls-play/",
   "the-sound-of-music": "/shows/23369/the-sound-of-music/",
+  "juliet": "/shows/19001/juliet/",
 };
 
 const decode = (s) => s.replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16))).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
@@ -161,7 +162,8 @@ async function run() {
   let guessed = 0;
   for (const o of ours) {
     if (shows[o.slug] || guessed >= 160) continue;
-    const variants = [...new Set([slugify(o.title), slugify(o.title.replace(/^the\s+/i, ""))])];
+    const variants = [...new Set([slugify(o.title), slugify(o.title.replace(/^the\s+/i, "")), slugify(o.title.replace(/&/g, " ")),
+      slugify(o.title.replace(/\s*[:(–-].*$/, ""))])].filter(Boolean);
     for (const v of variants) {
       const p = `/shows/0/${v}/`;
       if (seen.has(p)) continue;
