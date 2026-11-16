@@ -1126,10 +1126,20 @@
         <text x="370" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#16130f">BOX</text>
         <text x="370" y="106" text-anchor="middle" font-size="10" fill="#16130f">${o ? money0(o.total) : "—"}</text></g>`;
     })() : "";
+    // Stage / onstage table seating: a band right at the stage.
+    const stageSec = SECS.find((x) => x.id === "stage");
+    const stageG = stageSec ? (() => {
+      const o = lo.stage, sel = state.section === "stage", dim = state.section !== "all" && !sel;
+      return `<g class="sec" data-sec="stage" tabindex="0" role="button" aria-label="${esc(stageSec.name)}${o ? ", from " + money0(o.total) : ""}" opacity="${dim ? 0.35 : 1}">
+        <rect x="112" y="60" width="176" height="30" rx="8" fill="${o ? shade(o.total) : "#ddd"}" stroke="${sel ? "#16130f" : "#fffdf8"}" stroke-width="${sel ? 3 : 2}"/>
+        <text x="200" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#16130f">${esc(stageSec.name.toUpperCase())}</text>
+        <text x="200" y="85" text-anchor="middle" font-size="10" fill="#16130f">${o ? "from " + money0(o.total) : "—"}</text></g>`;
+    })() : "";
     return `
       <svg viewBox="0 0 400 340" role="img" aria-label="Seat map${show.theater ? " of " + esc(show.theater) : ""} with lowest price per section">
         <rect x="120" y="20" width="160" height="38" rx="6" fill="#16130f"/>
         <text x="200" y="45" text-anchor="middle" fill="#f6f1e7" font-size="13" font-weight="700" letter-spacing="3">STAGE</text>
+        ${stageG}
         ${arcs.filter((a) => SECS.some((s) => s.id === a.id)).map((a) => {
           const sec = SECS.find((s) => s.id === a.id); const o = lo[a.id];
           const sel = state.section === a.id; const dim = state.section !== "all" && !sel;
