@@ -754,7 +754,7 @@
     const withLot = LIST.filter((s) => s.lottery || s.rush).length;
     const fresh = freshness(sc === "all" ? null : sc);
     const playing = LIST.filter((s) => s.status === "playing").length;
-    const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : sc === "arts" ? "in opera & ballet" : "on & off Broadway";
+    const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : sc === "arts" ? "operas & ballets" : "on & off Broadway, opera & ballet";
 
     return `
       <section class="hero">
@@ -779,7 +779,7 @@
           </select>
         </div>
         <div class="stats">
-          <div class="stat"><strong>${LIST.length}</strong><span>shows ${where}</span></div>
+          <div class="stat"><strong>${LIST.length}</strong><span>${sc === "arts" ? where : "shows " + where}</span>${sc === "all" ? `<span class="stat-split">${["broadway", "off", "arts"].map((k) => `${LIST.filter((x) => sceneKey(x) === k).length} ${SCENE_LABEL[k]}`).join(" · ")}</span>` : ""}</div>
           <div class="stat"><strong>${playing}</strong><span>playing now</span></div>
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
           <div class="stat"><strong>${withLot}</strong><span>with lottery or rush this week</span></div>
