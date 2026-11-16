@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-16T23:26:43.633Z",
+ "checkedAt": "2026-11-16T23:41:47.402Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:06 PM",
+   "updated": "Monday, 16 November 2026 06:31 PM",
    "shows": [
     {
      "title": "Downstate",
@@ -53,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:06 PM",
+   "updated": "Monday, 16 November 2026 06:31 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -116,7 +116,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:06 PM",
+   "updated": "Monday, 16 November 2026 06:31 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
