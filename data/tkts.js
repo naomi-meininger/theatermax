@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-16T22:41:35.584Z",
+ "checkedAt": "2026-11-16T23:26:43.633Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Monday, 16 November 2026 05:35 PM",
+   "updated": "Monday, 16 November 2026 06:06 PM",
    "shows": [
     {
      "title": "Downstate",
@@ -53,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 05:35 PM",
+   "updated": "Monday, 16 November 2026 06:06 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -101,15 +101,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "pct": 30,
-     "lo": 53,
-     "hi": 67,
-     "time": "7:00 PM"
-    },
-    {
      "title": "The Play That Goes Wrong",
      "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
      "tdfId": "17222",
@@ -125,7 +116,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 05:35 PM",
+   "updated": "Monday, 16 November 2026 06:06 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
