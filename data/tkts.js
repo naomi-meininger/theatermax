@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-16T20:26:07.472Z",
+ "checkedAt": "2026-11-16T20:56:13.349Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Monday, 16 November 2026 02:38 PM",
+   "updated": "Monday, 16 November 2026 03:38 PM",
    "shows": [
     {
      "title": "Downstate",
@@ -53,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 02:38 PM",
+   "updated": "Monday, 16 November 2026 03:38 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -62,6 +62,15 @@ window.TM_TKTS = {
      "pct": 40,
      "lo": 51,
      "hi": 69,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "Amaze Magic",
+     "url": "https://www.tdf.org/shows/22653/amaze-magic",
+     "tdfId": "22653",
+     "pct": 50,
+     "lo": 53,
+     "hi": 102,
      "time": "7:00 PM"
     },
     {
@@ -125,7 +134,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 02:38 PM",
+   "updated": "Monday, 16 November 2026 03:38 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
