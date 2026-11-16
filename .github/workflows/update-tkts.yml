@@ -32,6 +32,7 @@ jobs:
           end=$(( $(date +%s) + 330*60 ))
           while [ "$(date +%s)" -lt "$end" ]; do
             node scripts/update-tkts.mjs || true
+            if [ -f data/tkts-debug.html ] && [ ! -f .debug-sent ]; then git add data/tkts-debug.html && git commit -m "TKTS debug sample" && git pull --rebase --autostash origin main && git push && touch .debug-sent; fi
             if ! git diff --quiet -- data/tkts.js && git diff -- data/tkts.js | grep -E '^[+-] ' | grep -vq checkedAt; then
               git add data/tkts.js
               git commit -m "TKTS boards $(TZ=America/New_York date '+%b %-d %-I:%M %p')" || true
