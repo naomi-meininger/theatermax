@@ -2,7 +2,7 @@
 window.TM_TDF = {
   "status": "ok",
   "source": "https://www.tdf.org/on-stage/show-finder/",
-  "updatedAt": "2026-11-16T05:00:26.770Z",
+  "updatedAt": "2026-11-16T05:05:30.082Z",
   "ids": {
     "860": "/shows/23349/860/",
     "lost-lear": "/shows/23651/lost-lear/",
@@ -30,7 +30,9 @@ window.TM_TDF = {
     "buena-vista-social-club": "/shows/19730/buena-vista-social-club/",
     "book-mormon": "/shows/8843/the-book-of-mormon/",
     "the-sound-of-music": "/shows/23369/the-sound-of-music/",
-    "singfeld-a-musical-about-nothing": "/shows/19478/singfeld--a-musical-about-nothing/"
+    "singfeld-a-musical-about-nothing": "/shows/19478/singfeld-a-musical-about-nothing/",
+    "juliet": "/shows/19001/juliet/",
+    "the-conversation": "/shows/23344/the-conversation/"
   },
   "shows": {
     "860": {
@@ -202,19 +204,6 @@ window.TM_TDF = {
       "tkts": "Occasionally",
       "fullPrice": "$65.00 - $245.00"
     },
-    "school-girls-or-african-mean-girls-play": {
-      "url": "https://www.tdf.org/shows/23167/school-girls-or-the-african-mean-girls-play/",
-      "title": "School Girls; Or, The African Mean Girls Play",
-      "venue": "Samuel J. Friedman Theatre",
-      "previews": "2026-09-08",
-      "opening": "2026-09-28",
-      "closing": "2026-11-15",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "Frequently",
-      "fullPrice": "$84.00 - $315.00"
-    },
     "oh-mary": {
       "url": "https://www.tdf.org/shows/21288/oh-mary/",
       "title": "Oh, Mary!",
@@ -371,8 +360,21 @@ window.TM_TDF = {
       "tkts": "N/a",
       "fullPrice": "$58.00 - $321.00"
     },
+    "juliet": {
+      "url": "https://www.tdf.org/shows/19001/juliet/",
+      "title": "& Juliet",
+      "venue": "Stephen Sondheim Theatre",
+      "previews": "2022-10-28",
+      "opening": "2022-11-17",
+      "closing": "2027-01-03",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "Frequently",
+      "fullPrice": "$69.00 - $345.00"
+    },
     "singfeld-a-musical-about-nothing": {
-      "url": "https://www.tdf.org/shows/19478/singfeld--a-musical-about-nothing/",
+      "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing/",
       "title": "Singfeld: A Musical About Nothing!",
       "venue": "The Theater Center",
       "previews": "2023-04-17",
@@ -383,6 +385,19 @@ window.TM_TDF = {
       "memberPrice": null,
       "tkts": "Occasionally",
       "fullPrice": "$58.75 - $77.25"
+    },
+    "the-conversation": {
+      "url": "https://www.tdf.org/shows/23344/the-conversation/",
+      "title": "The Conversation",
+      "venue": "Astor Place Theatre",
+      "previews": "2026-11-17",
+      "opening": "2026-12-07",
+      "closing": "2027-01-24",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$109.00 - $269.00"
     }
   }
 };
