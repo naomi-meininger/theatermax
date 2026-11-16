@@ -2,22 +2,22 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-16T05:14:18.938Z",
-  "lastAttemptAt": "2026-11-16T05:14:18.938Z",
-  "count": 89,
+  "updatedAt": "2026-11-16T15:55:37.184Z",
+  "lastAttemptAt": "2026-11-16T15:55:37.184Z",
+  "count": 88,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-16T05:14:18.938Z",
-      "lastAttemptAt": "2026-11-16T05:14:18.938Z",
-      "count": 66
+      "updatedAt": "2026-11-16T15:55:37.184Z",
+      "lastAttemptAt": "2026-11-16T15:55:37.184Z",
+      "count": 65
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-16T05:14:18.938Z",
-      "lastAttemptAt": "2026-11-16T05:14:18.938Z",
+      "updatedAt": "2026-11-16T15:55:37.184Z",
+      "lastAttemptAt": "2026-11-16T15:55:37.184Z",
       "count": 24
     }
   },
@@ -47,7 +47,7 @@ window.TM_LIVE = {
       "fromPrice": 276.11,
       "ratingCount": 121,
       "scene": "off",
-      "firstSeen": null
+      "firstSeen": "2026-11-16"
     },
     {
       "slug": "operation-mincemeat",
@@ -446,15 +446,6 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "school-girls-or-african-mean-girls-play",
-      "title": "School Girls; Or, The African Mean Girls Play",
-      "url": "https://www.broadway.com/shows/school-girls-or-african-mean-girls-play/",
-      "fromPrice": 317.74,
-      "ratingCount": 9,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
       "slug": "the-imaginary-invalid",
       "title": "The Imaginary Invalid",
       "url": "https://www.broadway.com/shows/the-imaginary-invalid/",
@@ -617,11 +608,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "play-goes-wrong-beginning-february-11-2019",
-      "title": "The Play That Goes Wrong",
-      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
-      "fromPrice": 101.18,
-      "ratingCount": 367,
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 8,
       "scene": "off",
       "firstSeen": null
     },
@@ -635,20 +626,20 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
+      "slug": "play-goes-wrong-beginning-february-11-2019",
+      "title": "The Play That Goes Wrong",
+      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
+      "fromPrice": 101.18,
+      "ratingCount": 367,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
       "slug": "little-shop-horrors",
       "title": "Little Shop of Horrors",
       "url": "https://www.broadway.com/shows/little-shop-horrors/",
       "fromPrice": 91.41,
       "ratingCount": 243,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 8,
       "scene": "off",
       "firstSeen": null
     },
