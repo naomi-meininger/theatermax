@@ -32,7 +32,7 @@ window.TM_SOURCES = [
       { label: "tdf.org", url: "https://www.tdf.org" },
       { label: "TKTS booths", url: "https://www.tdf.org/nyc/7/TKTS-Discount-Booths" },
     ],
-    what: "TDF membership gives eligible students, teachers and artists deeply discounted tickets. TKTS booths sell same-day or next-day seats at 20–50% off in Times Square, Lincoln Center and elsewhere.",
+    what: "TDF membership gives eligible students, teachers and artists deeply discounted tickets. TKTS booths sell same-day or next-day seats at 20–50% off in Times Square, Lincoln Center, and elsewhere.",
     how: [
       "For TDF, join online and buy through your member dashboard.",
       "For TKTS, check the official app for live listings, then buy at a booth.",
