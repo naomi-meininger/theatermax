@@ -58,7 +58,7 @@ export function parseShowInfo(html) {
   const t = text(html), info = {};
   const rt = t.match(/(?:Running Time|Run Time|Runtime)\s*:?\s*((?:\d+\s*(?:hours?|hrs?|h)\.?\s*(?:and\s*)?)?(?:\d+\s*(?:minutes?|mins?|m)\.?)?(?:[^.]{0,40}?(?:intermission|no intermission))?)/i);
   if (rt && /\d/.test(rt[1])) info.runtime = rt[1].replace(/\s+/g, " ").trim();
-  const ad = t.match(/(\d{2,4}\s+(?:West|East|W\.?|E\.?)\s+\d{1,3}(?:st|nd|rd|th)\s+(?:Street|St\.?))/i) || t.match(/(\d{2,4}\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s+(?:Avenue|Ave\.?|Street|St\.?|Place|Plaza))/);
+  const ad = t.match(/(\d{2,4}\s+(?:West|East|W\.?|E\.?)\s+\d{1,3}(?:st|nd|rd|th)\s+(?:Street|St\.?))/i) || t.match(/(\d{1,4}\s+(?:\d{1,2}(?:st|nd|rd|th)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:Avenue|Ave\.?|Street|St\.?|Place|Plaza))/);
   if (ad) info.address = ad[1].replace(/\s+/g, " ");
   const age = t.match(/(?:Age (?:Recommendation|Guidance|Restriction)s?|Recommended for ages?|Suitable for)\s*:?\s*([^.]{2,60}?)(?:\.|\s{2}|$)/i);
   if (age) info.age = age[1].trim();
