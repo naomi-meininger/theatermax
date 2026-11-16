@@ -2,7 +2,7 @@
 window.TM_TDF = {
   "status": "ok",
   "source": "https://www.tdf.org/on-stage/show-finder/",
-  "updatedAt": "2026-11-16T04:43:47.800Z",
+  "updatedAt": "2026-11-16T05:00:26.770Z",
   "ids": {
     "860": "/shows/23349/860/",
     "lost-lear": "/shows/23651/lost-lear/",
@@ -29,7 +29,8 @@ window.TM_TDF = {
     "chicago": "/shows/1581/chicago/",
     "buena-vista-social-club": "/shows/19730/buena-vista-social-club/",
     "book-mormon": "/shows/8843/the-book-of-mormon/",
-    "the-sound-of-music": "/shows/23369/the-sound-of-music/"
+    "the-sound-of-music": "/shows/23369/the-sound-of-music/",
+    "singfeld-a-musical-about-nothing": "/shows/19478/singfeld--a-musical-about-nothing/"
   },
   "shows": {
     "860": {
@@ -369,6 +370,19 @@ window.TM_TDF = {
       "memberPrice": null,
       "tkts": "N/a",
       "fullPrice": "$58.00 - $321.00"
+    },
+    "singfeld-a-musical-about-nothing": {
+      "url": "https://www.tdf.org/shows/19478/singfeld--a-musical-about-nothing/",
+      "title": "Singfeld: A Musical About Nothing!",
+      "venue": "The Theater Center",
+      "previews": "2023-04-17",
+      "opening": "2023-06-14",
+      "closing": null,
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "Occasionally",
+      "fullPrice": "$58.75 - $77.25"
     }
   }
 };
