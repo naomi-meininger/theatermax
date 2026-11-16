@@ -570,18 +570,21 @@
     // With per-section prices (`sections` in data/codes.js) a code becomes one offer per section,
     // so it lines up against every other seller in that section. Without them it stays one
     // "section not listed" offer, and it's never counted as the cheapest in any one section.
+    // The code is redeemed at the show's official seller (Playbill/BroadwayBox only publish it),
+    // so the row is that seller, and the View link goes there.
+    const codeSeller = show.official === "Box office" ? "Box office (official)" : show.official;
     validCodes(show).forEach((c) => {
       const secs = sectionsFor(show);
       const valid = `valid through ${fmtRunDate(parseDay(c.expires))}`;
       const perSec = (c.sections || []).map((x) => ({ ...x, sec: secs.find((y) => y.id === x.sec) })).filter((x) => x.sec);
       if (perSec.length) {
-        perSec.forEach((x) => offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: x.sec, row: null, price: x.from,
-          fee: c.feesIncl ? 0 : officialFee(x.from), feeEstimated: !c.feesIncl, url: c.url, code: c, tag: "official", verified: true,
+        perSec.forEach((x) => offers.push({ seller: codeSeller, kind: `Discount code from ${c.source}`, sec: x.sec, row: null, price: x.from,
+          fee: c.feesIncl ? 0 : officialFee(x.from), feeEstimated: !c.feesIncl, url: showLink(show.official, show), code: c, tag: "official", verified: true,
           note: [x.to ? `${money0(x.from)}–${money0(x.to)}` : null, x.regular ? `regularly ${x.regular}` : null, valid, c.details || null].filter(Boolean).join(" · ") }));
         return;
       }
-      offers.push({ seller: `${c.source} code`, kind: "Discount code", sec: null, row: null, price: c.from, fee: c.feesIncl ? 0 : officialFee(c.from), feeEstimated: !c.feesIncl,
-        url: c.url, code: c, tag: "official", verified: true, secUnknown: true,
+      offers.push({ seller: codeSeller, kind: `Discount code from ${c.source}`, sec: null, row: null, price: c.from, fee: c.feesIncl ? 0 : officialFee(c.from), feeEstimated: !c.feesIncl,
+        url: showLink(show.official, show), code: c, tag: "official", verified: true, secUnknown: true,
         note: [c.to ? `${money0(c.from)}–${money0(c.to)} across the house` : null, c.regular ? `regularly ${c.regular}` : null, valid, "the offer doesn't say which sections get which price", c.details || null].filter(Boolean).join(" · ") });
     });
 
@@ -1098,7 +1101,7 @@
               ${o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
-            ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button></div>` : ""}
+            ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
           <div class="seat">${o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
@@ -1243,7 +1246,7 @@
     return `<div class="by-section panel">
       <h3>Cheapest by section <span class="muted">${state.fees ? "with fees" : "before fees"} · each</span></h3>
       <table><tbody>${rows}</tbody></table>
-      ${loose.length ? `<p class="muted bs-foot">${loose.map((o) => `<b>${esc(o.seller)} <code>${esc(o.code.code)}</code></b> (${o.code.to ? `${money0(o.code.from)}–${money0(o.code.to)}` : `from ${money0(o.code.from)}`})`).join(", ")} ${loose.length === 1 ? "isn't" : "aren't"} split by section because the offer doesn't say which seats get which price. Enter the code at checkout to see each section's price.</p>` : ""}
+      ${loose.length ? `<p class="muted bs-foot">${loose.map((o) => `<b>${esc(o.code.source)} code <code>${esc(o.code.code)}</code></b> (${o.code.to ? `${money0(o.code.from)}–${money0(o.code.to)}` : `from ${money0(o.code.from)}`})`).join(", ")} ${loose.length === 1 ? "isn't" : "aren't"} split by section because the offer doesn't say which seats get which price. Enter the code at checkout to see each section's price.</p>` : ""}
     </div>`;
   }
 

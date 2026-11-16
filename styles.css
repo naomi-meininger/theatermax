@@ -542,3 +542,4 @@ main { view-transition-name: page; }
 @media (max-width: 600px) { .hero-poster { width: 72px; } }
 
 .stat .stat-split { display: block; font-size: 11px; opacity: .75; margin-top: 2px; }
+.code-src { font-size: 12px; margin-left: 6px; }
