@@ -276,7 +276,7 @@
     if (secId === "box") return map && map.box
       ? { url: `${AVFMS}${plus(avfmsName(theater))}/${plus(map.box)}/`, label: "📷 Views from the boxes", name: "Box", exact: true }
       : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
-    const lvl = map && map[secId];
+    const lvl = map && (secId === "rmezz" ? map.rmezz || map.balc : map[secId]);
     return lvl
       ? { url: `${AVFMS}${plus(avfmsName(theater))}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
       : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
@@ -383,7 +383,11 @@
   // view, so usually priced between orchestra and mezzanine.
   const BOX_SECTION = { id: "box", name: "Box", mult: 0.72, rows: "ABCD" };
   const STAGE_SECTION = { id: "stage", name: "Stage seating", mult: 1.1, rows: "ABC" };
-  const ALL_SECTIONS = [...SECTIONS, BOX_SECTION, STAGE_SECTION];
+  // Two-level theaters split the mezzanine into front and rear instead of having a balcony.
+  const RMEZZ_SECTION = { id: "rmezz", name: "Rear Mezzanine", mult: 0.6, rows: "FGHJKLMN" };
+  const FMEZZ = { ...SECTIONS[1], name: "Front Mezzanine", rows: "ABCDE" };
+  const ALL_SECTIONS = [SECTIONS[0], SECTIONS[1], RMEZZ_SECTION, SECTIONS[2], BOX_SECTION, STAGE_SECTION];
+  const withFrontMezz = (list) => list.some((x) => x.id === "rmezz") ? list.map((x) => (x.id === "mezz" ? FMEZZ : x)) : list;
   // Shows with seating a ticket site doesn't list (reported by people who've been).
   const SPECIAL_SEATING = { "slam-frank": ["orch", "stage"] };
   // Sections a show really sells: Broadway.com's per-performance "Pricing by Section" and
@@ -401,7 +405,7 @@
     if (!show) return SECTIONS;
     if (SECTION_CACHE.has(show.slug)) return SECTION_CACHE.get(show.slug);
     const seen = seenSections(show);
-    const res = seen.size ? ALL_SECTIONS.filter((x) => seen.has(x.id)) : sectionsByTheater(show);
+    const res = withFrontMezz(seen.size ? ALL_SECTIONS.filter((x) => seen.has(x.id)) : sectionsByTheater(show));
     SECTION_CACHE.set(show.slug, res);
     return res;
   };
@@ -409,10 +413,28 @@
     const map = show && show.theater && (window.TM_SEATVIEWS || {})[show.theater];
     // Off-Broadway houses without a mapped seating chart are almost all one level.
     if (!map) return show && show.scene === "off" ? SECTIONS.slice(0, 1) : SECTIONS;
-    // Two-level theaters (no separate balcony): drop the Balcony section.
+    // Two-level theaters (no separate balcony): rear mezzanine instead of a balcony.
     const twoLevel = map.balc && map.mezz && map.balc[0] === map.mezz[0];
-    return [...SECTIONS.filter((x) => !(twoLevel && x.id === "balc")), ...(map.box ? [BOX_SECTION] : [])];
+    return [...(twoLevel ? [SECTIONS[0], SECTIONS[1], RMEZZ_SECTION] : SECTIONS), ...(map.box ? [BOX_SECTION] : [])];
   };
+
+  // Know before you go: running time, address, age guidance and advisories (from the show's
+  // Broadway.com page, daily), plus the official seller's page for box office hours & accessibility.
+  function infoLine(show) {
+    const inf = ((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[show.slug] || {};
+    const bits = [
+      inf.runtime ? `⏱ ${esc(inf.runtime)}` : null,
+      inf.address ? `📍 <a href="https://www.google.com/maps/search/${encodeURIComponent((show.theater ? show.theater + ", " : "") + inf.address + ", New York, NY")}" target="_blank" rel="noopener">${esc(inf.address)}</a>` : null,
+      inf.age ? `👪 ${esc(inf.age)}` : null,
+      inf.advisories ? `⚠️ ${esc(inf.advisories.join(", "))}` : null,
+    ].filter(Boolean);
+    const off = show.official && show.official !== "Box office" ? `<a href="${esc(showLink(show.official, show))}" target="_blank" rel="noopener">Box office hours &amp; accessibility on ${esc(show.official)} ↗</a>` : null;
+    if (!bits.length && !off) return "";
+    return `<div class="meta know-line">${[...bits, off].filter(Boolean).join(" · ")}</div>`;
+  }
+
+  // Critics' review roundup (BroadwayWorld publishes one for most openings).
+  const roundupUrl = (s) => "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(`site:broadwayworld.com "Review Roundup" ${s.title}`);
 
   // Link straight to the show on each seller's site: a known show URL when we have one
   // (TodayTix ids from its official feed), otherwise DuckDuckGo's "jump to first result" on that site.
@@ -426,6 +448,9 @@
     const name = show.title.replace(/\s*\((The Met|Encores!|NYCB)\)\s*/g, " ").trim();
     if (seller === "Box office") return show.tickets || "https://www.google.com/search?btnI=1&q=" + encodeURIComponent("" + name + " official tickets");
     if (show.tickets && /^(The Met|NYC Ballet|New York City Center)$/.test(seller)) return show.tickets;
+    // Telecharge show pages: telecharge.com/<Title-With-Dashes>-Tickets
+    if (seller === "Telecharge") return "https://www.telecharge.com/" + name.replace(/:\s.*$/, "").replace(/[()’'".,!?:]/g, "").replace(/&/g, "and").trim().replace(/\s+/g, "-") + "-Tickets";
+    if (seller === "SeatGeek" || seller === "SeatGeek (official)") return "https://seatgeek.com/search?search=" + encodeURIComponent(name.replace(/:\s.*$/, ""));
     // Broadway Direct show pages use the same name slug as Broadway.com (broadwaydirect.com/show/wicked/).
     if (seller === "Broadway Direct" && show.bdcUrl && /broadway\.com\/shows\//.test(show.bdcUrl)) return "https://broadwaydirect.com/show/" + show.slug.replace(/-broadway$/, "") + "/";
     const site = SELLER_SITE[seller];
@@ -936,7 +961,7 @@
               : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>`
               : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>`
               : anniversaryNote(s) ? `<div class="ribbon anniv">🎂 ${anniversaryNote(s).short}</div>` : ""}
-            <div class="p-title">${esc(s.title)}</div>
+            <div class="p-title ${s.title.length > 30 ? "xlong" : s.title.length > 16 ? "long" : ""}">${esc(s.title)}</div>
             <div class="p-theater">${esc(s.theater || sceneLabel(s))}</div>
           </div>
           <div class="body">
@@ -991,7 +1016,7 @@
           <div class="pv-facts">
             <div><span>Lowest listed price</span><strong>${s.bdcFrom != null ? money(s.bdcFrom) : s.tickets ? "See site" : "Not on sale"}</strong><em>${s.tickets ? "venue box office" : "Broadway.com"}</em></div>
             <div><span>Audience reviews</span><strong>${s.ratingCount ? s.ratingCount.toLocaleString() : "—"}</strong><em>on Broadway.com</em></div>
-            <div><span>Critics</span><strong>${c ? c.score + "%" : "—"}</strong><em>${c ? "avg. rating" : "no roundup yet"}</em></div>
+            <div><span>Critics</span>${c ? `<strong>${c.score}%</strong><em>avg. rating</em>` : s.opening && s.opening.date <= TODAY ? `<strong><a href="${esc(roundupUrl(s))}" target="_blank" rel="noopener">Reviews ↗</a></strong><em>review roundup</em>` : `<strong>—</strong><em>reviews after opening</em>`}</div>
           </div>
 
           ${c ? `
@@ -1006,6 +1031,7 @@
           </section>` : ""}
 
           <div class="pv-links">
+            ${s.opening && s.opening.date <= TODAY ? `<a href="${esc(roundupUrl(s))}" target="_blank" rel="noopener">📰 Critics' review roundup on BroadwayWorld ↗</a>` : ""}
             ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
             <a href="${esc(showScoreUrl(s))}" target="_blank" rel="noopener">⭐ Audience scores on Show-Score ↗</a>
             ${(s.reddit || []).map((t) => `<a class="reddit-thread" href="${esc(t.url)}" target="_blank" rel="noopener">💬 r/Broadway: “${esc(t.title)}” ↗</a>`).join("")}
@@ -1054,6 +1080,7 @@
       { id: "orch", d: "M60,95 Q200,135 340,95 L340,165 Q200,215 60,165 Z", ty: 150 },
       { id: "mezz", d: "M40,180 Q200,235 360,180 L360,225 Q200,285 40,225 Z", ty: 238 },
       { id: "balc", d: "M25,240 Q200,302 375,240 L375,280 Q200,350 25,280 Z", ty: 291 },
+      { id: "rmezz", d: "M25,240 Q200,302 375,240 L375,280 Q200,350 25,280 Z", ty: 291 },
     ];
     // Boxes sit along the side walls, near the stage.
     const boxG = SECS.some((x) => x.id === "box") ? (() => {
@@ -1126,6 +1153,7 @@
         <section class="detail-hero" style="${posterStyle(show)}">
         <div>${IMAGES[show.slug] ? `<img class="hero-poster" src="${esc(IMAGES[show.slug])}" alt="${esc(show.title)} poster" referrerpolicy="no-referrer" onerror="this.remove()">` : ""}<h1>${esc(show.title)}</h1>
           ${runLine(show) ? `<div class="meta run-line">${runLine(show)}</div>` : ""}
+          ${infoLine(show)}
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}</div></div>
           <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button></section>
         <div class="empty">No performances in the next ${DAYS_AHEAD} days${first ? ` — ${first.label} is ${fmtRunDate(first.d)}` : ""}.
@@ -1189,7 +1217,7 @@
           <div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
-            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>
@@ -1205,6 +1233,7 @@
           ${IMAGES[show.slug] ? `<img class="hero-poster" src="${esc(IMAGES[show.slug])}" alt="${esc(show.title)} poster" referrerpolicy="no-referrer" onerror="this.remove()">` : ""}
           <h1>${esc(show.title)}</h1>
           ${runLine(show) ? `<div class="meta run-line">${runLine(show)}</div>` : ""}
+          ${infoLine(show)}
           <div class="meta">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ") || "Broadway"}${show.ratingCount ? ` · ${show.ratingCount.toLocaleString()} Broadway.com reviews` : ""}</div>
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>

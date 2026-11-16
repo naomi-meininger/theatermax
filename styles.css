@@ -530,12 +530,14 @@ main { view-transition-name: page; }
 @media (max-width: 600px) { .by-section .bs-save { display: none; } }
 
 /* Show images (each show's own poster, hotlinked from its page) */
-.poster-img { position: absolute; right: 12px; top: 12px; bottom: 12px; height: calc(100% - 24px); width: auto; aspect-ratio: 178 / 275;
+.poster-img { position: absolute; right: 12px; top: 12px; width: 31%; height: auto; max-height: calc(100% - 24px); aspect-ratio: 178 / 275;
   object-fit: cover; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.35); z-index: 1; }
-.poster.has-img .p-title, .poster.has-img .p-theater { padding-right: calc(50% + 14px); }
-.poster.has-img .p-title { font-size: 22px; hyphens: auto; overflow-wrap: break-word; }
+.poster.has-img .p-title, .poster.has-img .p-theater { padding-right: calc(33% + 10px); }
+.poster.has-img .p-title { font-size: 22px; hyphens: manual; overflow-wrap: normal; word-break: normal; }
+.poster.has-img .p-title.long { font-size: 18px; }
+.poster.has-img .p-title.xlong { font-size: 15px; }
 .poster.has-img { padding-top: 40px; }
-.poster.has-img .ribbon { max-width: 52%; font-size: 11px; }
+.poster.has-img .ribbon { max-width: 62%; font-size: 11px; }
 .poster .ribbon { z-index: 2; }
 .hero-poster { float: left; width: 96px; aspect-ratio: 178 / 275; object-fit: cover; border-radius: 6px; margin: 0 18px 6px 0;
   box-shadow: 0 6px 18px rgba(0,0,0,.35); position: relative; }
@@ -544,3 +546,5 @@ main { view-transition-name: page; }
 .stat .stat-split { display: block; font-size: 11px; opacity: .75; margin-top: 2px; }
 .code-src { font-size: 12px; margin-left: 6px; }
 .by-section .bs-each { display: block; font-size: 11px; font-weight: 500; opacity: .7; }
+.know-line { font-size: 13px; margin-top: 6px; }
+.know-line a { color: inherit; }
