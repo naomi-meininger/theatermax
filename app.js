@@ -26,7 +26,15 @@
 
   // TodayTix: real prices (fees included, 2 seats together) from TodayTix's official MCP server, daily.
   const TT = window.TM_TODAYTIX || { shows: {} };
-  const ttFor = (show, perf) => { const t = TT.shows && TT.shows[show.slug]; return t && t.perfs && t.perfs[perf.key] ? { ...t.perfs[perf.key], showUrl: t.url } : null; };
+  // TodayTix prices are fetched for parties of 1, 2 and 4 seats together. Use the party size
+  // chosen on the page (3 uses the 4-seat price; more than 4 has no TodayTix price).
+  const ttQty = () => (state.qty <= 2 ? state.qty : state.qty <= 4 ? 4 : null);
+  const ttFor = (show, perf) => {
+    const t = TT.shows && TT.shows[show.slug], q = ttQty();
+    if (!t || !q) return null;
+    const perfs = t.byQty ? t.byQty[q] : (q === 2 ? t.perfs : null);
+    return perfs && perfs[perf.key] ? { ...perfs[perf.key], showUrl: t.url, qty: q } : null;
+  };
   const hasTT = (show) => !!(TT.shows && TT.shows[show.slug]);
   // Show images: each show's own share image (og:image), hotlinked from its page.
   const IMAGES = Object.fromEntries(Object.entries((window.TM_SCHEDULES && window.TM_SCHEDULES.images) || {}).filter(([, u]) => !/\/fallback\//.test(u)));
@@ -590,7 +598,7 @@
   // ---------- offers (sample generator) ----------
   const cache = new Map();
   function buildOffers(show, perf) {
-    const ck = show.slug + "|" + perf.key;
+    const ck = show.slug + "|" + perf.key + "|" + ttQty();
     if (cache.has(ck)) return cache.get(ck);
     const r = rng(hash(ck));
     const d = show.demand;
@@ -698,7 +706,7 @@
       const url = (sec) => (tt.best && tt.best.url && tt.best.sec === sec.id ? tt.best.url : tt.showUrl) || "https://www.todaytix.com/nyc";
       (rows.length ? rows : [[null, tt.low]]).forEach(([sec, p]) => result.push({ seller: "TodayTix", kind: tt.deal ? "Discount app · sale on" : "Discount app",
         sec, row: sec && tt.best && tt.best.sec === sec.id ? tt.best.row : null, price: p, fee: 0, url: sec ? url(sec) : tt.showUrl, live: "todaytix",
-        note: `Cheapest 2 seats together${sec ? " in this section" : ""} · fees included${tt.high ? ` · prices up to ${money0(tt.high)}` : ""}` }));
+        note: `Cheapest ${tt.qty === 1 ? "single seat" : tt.qty + " seats together"}${sec ? " in this section" : ""}${state.qty === 3 ? " (TodayTix price for 4; 3 is usually the same or less)" : ""} · fees included${tt.high ? ` · prices up to ${money0(tt.high)}` : ""}` }));
     }
     // TDF member tickets: TDF's public pages give the member price range ($11–$60) but only members
     // can see which shows have tickets on a given night, so this is "if offered", never "Best deal".
@@ -1290,7 +1298,7 @@
           ${(() => { const id = TT.ids && TT.ids[show.slug]; if (!id || !id.url) return "";
             const inWin = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
             if (ttFor(show, perf)) return "";
-            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `TodayTix had no 2 seats together for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
+            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
           <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) + " · " : `Not in the prices above (no data yet for this show): ${tdfLinks(show)} · `}<a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
