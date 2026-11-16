@@ -1,0 +1,1324 @@
+{
+ "ranAt": "2026-11-16T04:13:29.962Z",
+ "steps": [
+  {
+   "step": "initialize",
+   "data": {
+    "protocolVersion": "2025-06-18",
+    "capabilities": {
+     "tools": {
+      "listChanged": true
+     }
+    },
+    "serverInfo": {
+     "name": "todaytix",
+     "title": "TodayTix",
+     "version": "1.0.0"
+    },
+    "instructions": "Help fans find live theatre and events on TodayTix and book them. Recommend shows from list_shows, and look up seats only for shows the fan is interested in rather than pricing every candidate. When the fan hasn't named a city, leave location out. If TodayTix can tell where the fan is, it uses the nearest city and names it on every result, so say which city you searched and offer to look elsewhere. If it cannot tell, the tool says so: only then ask which city the fan means. Tools that take a showId use the show's own market when no location is given."
+   }
+  },
+  {
+   "step": "tools",
+   "data": [
+    {
+     "name": "search_shows",
+     "title": "Search shows",
+     "description": "Search TodayTix shows by a name the fan gives, in one location. Returns show ids, names, starting prices and TodayTix links.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 50
+       },
+       "location": {
+        "description": "TodayTix location slug, e.g. \"nyc\" or \"london\", when the fan named one; otherwise the city nearest the fan is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       }
+      },
+      "required": [
+       "query"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "list_shows",
+     "title": "List shows",
+     "description": "List bookable TodayTix shows in one location, most viewed first, optionally in one category such as \"Musicals\". Returns names, starting prices and TodayTix links, plus categories, venues and ratings when the full catalogue is available.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "location": {
+        "description": "TodayTix location slug, e.g. \"nyc\" or \"london\", when the fan named one; otherwise the city nearest the fan is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "limit": {
+        "default": 20,
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+       },
+       "category": {
+        "description": "Category or subcategory, e.g. \"Musicals\", \"Plays\" or \"Off Broadway\".",
+        "type": "string",
+        "maxLength": 40
+       }
+      }
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "get_show_details",
+     "title": "Get show details",
+     "description": "Get details of one TodayTix show: description, runtime, age guidance, content advisories, venue, run dates, starting price, rating and TodayTix link.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       }
+      },
+      "required": [
+       "showId"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "find_similar_shows",
+     "title": "Find similar shows",
+     "description": "Find bookable TodayTix shows similar to one show, in the same location. Use when a fan wants alternatives.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       }
+      },
+      "required": [
+       "showId"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "get_collection",
+     "title": "Get collection",
+     "description": "Get a TodayTix editorial collection (for example \"nyt-critics-picks\") in one location, with its description and shows.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "slug": {
+        "type": "string",
+        "maxLength": 100,
+        "pattern": "^[a-z0-9-]+$",
+        "description": "Collection slug, lowercase with hyphens."
+       },
+       "location": {
+        "description": "TodayTix location slug, e.g. \"nyc\" or \"london\", when the fan named one; otherwise the city nearest the fan is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       }
+      },
+      "required": [
+       "slug"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "list_performances",
+     "title": "List performances",
+     "description": "List a TodayTix show's performances between two local dates (under 90 days apart), with whether seats remain for the party size. lowestSingleSeatPrice is the cheapest one ticket on sale, in major units of its currency. It may have no seat beside it, so it may not be what the party pays per ticket, and it is never a quote. For prices the party can book together, or to find seats to book, call find_seats instead.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "startDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "endDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9,
+        "description": "Number of tickets the fan wants together."
+       }
+      },
+      "required": [
+       "showId",
+       "startDate",
+       "endDate",
+       "quantity"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "get_seat_prices",
+     "title": "Get seat prices",
+     "description": "Get unrestricted-view seat prices by section and row for one performance and party size, each tier with a link to a block of seats for the party on the TodayTix seating plan. Prices are per ticket in major units of the stated currency, fees included. recommend_seats is only needed for a specific row or price.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "date": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "time": {
+        "type": "string",
+        "pattern": "^([01]\\d|2[0-3])[0-5]\\d$",
+        "description": "Local start time as HHMM, e.g. \"1930\", from list_performances."
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9,
+        "description": "Number of tickets the fan wants together."
+       },
+       "occurrenceId": {
+        "description": "Performance id from list_performances; saves a lookup when given.",
+        "type": "string",
+        "pattern": "^\\d+$"
+       }
+      },
+      "required": [
+       "showId",
+       "date",
+       "time",
+       "quantity"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "find_seats",
+     "title": "Find seats",
+     "description": "Find seats together for the party across a show's performances between two local dates (under 14 days apart), in one call. Each performance comes with its cheapest seats together and, when a budget is given, the best seats within it, each with a link to them on the TodayTix seating plan. Prefer this over chaining list_performances, get_seat_prices and recommend_seats. Optionally keep only \"weekends\", \"weekdays\" or one day name, or one section. If time runs out first, performancesNotSearched lists the performances it did not search; search those dates again.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "startDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "endDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9,
+        "description": "Number of tickets the fan wants together."
+       },
+       "dayFilter": {
+        "type": "string",
+        "enum": [
+         "weekends",
+         "weekdays",
+         "monday",
+         "tuesday",
+         "wednesday",
+         "thursday",
+         "friday",
+         "saturday",
+         "sunday"
+        ]
+       },
+       "maxPricePerTicket": {
+        "description": "Most the fan will pay per ticket, in the show's currency.",
+        "type": "number",
+        "exclusiveMinimum": 0
+       },
+       "section": {
+        "description": "Keep to one section, by its code or name.",
+        "type": "string",
+        "maxLength": 40
+       }
+      },
+      "required": [
+       "showId",
+       "startDate",
+       "endDate",
+       "quantity"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "compare_prices",
+     "title": "Compare prices",
+     "description": "Compare the cheapest, median and highest seat prices across a show's performances between two local dates (under 14 days apart), each with its cheapest seats and a link to them on the TodayTix seating plan. Optionally keep only \"weekends\", \"weekdays\" or one day name. If time runs out first, performancesNotSearched lists the performances it did not compare; compare those dates again.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "startDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "endDate": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9,
+        "description": "Number of tickets the fan wants together."
+       },
+       "dayFilter": {
+        "type": "string",
+        "enum": [
+         "weekends",
+         "weekdays",
+         "monday",
+         "tuesday",
+         "wednesday",
+         "thursday",
+         "friday",
+         "saturday",
+         "sunday"
+        ]
+       }
+      },
+      "required": [
+       "showId",
+       "startDate",
+       "endDate",
+       "quantity"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "recommend_seats",
+     "title": "Recommend seats",
+     "description": "Pick seats sold together for the party in a row at a price from get_seat_prices, in the section when given, and return a link to them on the TodayTix seating plan.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+       "showId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "TodayTix show id, as returned by search_shows or list_shows."
+       },
+       "location": {
+        "description": "TodayTix location slug when the fan named one; otherwise the show's own market is used.",
+        "type": "string",
+        "enum": [
+         "boston",
+         "nyc",
+         "london",
+         "chicago",
+         "sf-bay-area",
+         "los-angeles",
+         "washington-dc",
+         "sydney",
+         "melbourne",
+         "brisbane",
+         "perth",
+         "adelaide",
+         "madrid"
+        ]
+       },
+       "date": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Local date at the venue, YYYY-MM-DD."
+       },
+       "time": {
+        "type": "string",
+        "pattern": "^([01]\\d|2[0-3])[0-5]\\d$",
+        "description": "Local start time as HHMM, e.g. \"1930\", from list_performances."
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9,
+        "description": "Number of tickets the fan wants together."
+       },
+       "occurrenceId": {
+        "description": "Performance id from list_performances; saves a lookup when given.",
+        "type": "string",
+        "pattern": "^\\d+$"
+       },
+       "row": {
+        "type": "string",
+        "maxLength": 20,
+        "description": "Row from get_seat_prices, or \"None\"."
+       },
+       "section": {
+        "description": "Section name from get_seat_prices, when the row is in more than one section.",
+        "type": "string",
+        "maxLength": 40
+       },
+       "pricePerTicket": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "description": "Price per ticket from get_seat_prices."
+       }
+      },
+      "required": [
+       "showId",
+       "date",
+       "time",
+       "quantity",
+       "row",
+       "pricePerTicket"
+      ]
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    },
+    {
+     "name": "get_rewards_program",
+     "title": "Get TodayTix Rewards",
+     "description": "Get the current TodayTix Rewards page: tiers, benefits, rules and how to join. Returns the page text and its link.",
+     "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {}
+     },
+     "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+     },
+     "execution": {
+      "taskSupport": "forbidden"
+     }
+    }
+   ]
+  },
+  {
+   "step": "search_shows {\"query\":\"Wicked\",\"location\":\"nyc\"}",
+   "data": {
+    "results": [
+     {
+      "id": 1,
+      "name": "Wicked on Broadway",
+      "price": "$89",
+      "url": "https://www.todaytix.com/nyc/shows/1-wicked",
+      "location": "nyc"
+     }
+    ],
+    "location": "nyc"
+   }
+  },
+  {
+   "step": "showId",
+   "data": 1
+  },
+  {
+   "step": "list_performances {\"location\":\"nyc\",\"startDate\":\"2026-11-17\",\"endDate\":\"2026-11-23\",\"quantity\":2,\"showId\":1}",
+   "data": {
+    "results": [
+     {
+      "occurrenceId": "2364276",
+      "date": "2026-11-17T19:00",
+      "day": "Tuesday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 99,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364277",
+      "date": "2026-11-18T19:00",
+      "day": "Wednesday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 99,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364278",
+      "date": "2026-11-19T19:00",
+      "day": "Thursday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 99,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364279",
+      "date": "2026-11-20T19:00",
+      "day": "Friday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 112,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364280",
+      "date": "2026-11-21T14:00",
+      "day": "Saturday",
+      "time": "1400",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 112,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364281",
+      "date": "2026-11-21T20:00",
+      "day": "Saturday",
+      "time": "2000",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 112,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364282",
+      "date": "2026-11-22T14:00",
+      "day": "Sunday",
+      "time": "1400",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 112,
+       "currency": "USD"
+      }
+     },
+     {
+      "occurrenceId": "2364283",
+      "date": "2026-11-22T19:00",
+      "day": "Sunday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "hasAvailability": true,
+      "discount": false,
+      "promotion": false,
+      "lowestSingleSeatPrice": {
+       "amount": 112,
+       "currency": "USD"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "step": "compare_prices {\"location\":\"nyc\",\"startDate\":\"2026-11-17\",\"endDate\":\"2026-11-23\",\"quantity\":2,\"showId\":1}",
+   "data": {
+    "results": [
+     {
+      "date": "2026-11-17",
+      "day": "Tuesday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 99,
+      "median": 118,
+      "mostExpensive": 229,
+      "sections": [
+       {
+        "name": "MMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 99
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 118
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 118
+       }
+      ],
+      "cheapestBlock": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "25",
+        "23"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-17&slot=19:00&showtime_id=2364276&product_type=show&seats=MMEZZ-F23,MMEZZ-F25"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-18",
+      "day": "Wednesday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 99,
+      "median": 130,
+      "mostExpensive": 229,
+      "sections": [
+       {
+        "name": "MMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 99
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 118
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 130
+       }
+      ],
+      "cheapestBlock": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "34",
+        "36"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-18&slot=19:00&showtime_id=2364277&product_type=show&seats=MMEZZ-F36,MMEZZ-F34"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-19",
+      "day": "Thursday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 99,
+      "median": 130,
+      "mostExpensive": 229,
+      "sections": [
+       {
+        "name": "MMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 99
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 99
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 118
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 130
+       }
+      ],
+      "cheapestBlock": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "35",
+        "33"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-19&slot=19:00&showtime_id=2364278&product_type=show&seats=MMEZZ-F35,MMEZZ-F33"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-20",
+      "day": "Friday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 112,
+      "median": 140,
+      "mostExpensive": 249,
+      "sections": [
+       {
+        "name": "MMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 112
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 130
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 140
+       }
+      ],
+      "cheapestBlock": {
+       "section": "MMEZZ",
+       "pricePerTicket": 112,
+       "row": "F",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-20&slot=19:00&showtime_id=2364279&product_type=show&seats=MMEZZ-F26,MMEZZ-F24"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-21",
+      "day": "Saturday",
+      "time": "1400",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 112,
+      "median": 140,
+      "mostExpensive": 260,
+      "sections": [
+       {
+        "name": "MMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 112
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 140
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 152
+       }
+      ],
+      "cheapestBlock": {
+       "section": "MMEZZ",
+       "pricePerTicket": 112,
+       "row": "F",
+       "seats": [
+        "20",
+        "22"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=14:00&showtime_id=2364280&product_type=show&seats=MMEZZ-F22,MMEZZ-F20"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-21",
+      "day": "Saturday",
+      "time": "2000",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 112,
+      "median": 152,
+      "mostExpensive": 260,
+      "sections": [
+       {
+        "name": "ORCHST",
+        "cheapest": 112
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "MMEZZ",
+        "cheapest": 118
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 152
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 152
+       }
+      ],
+      "cheapestBlock": {
+       "section": "ORCHST",
+       "pricePerTicket": 112,
+       "row": "W",
+       "seats": [
+        "30",
+        "32"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W30,ORCHST-W32"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-22",
+      "day": "Sunday",
+      "time": "1400",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 112,
+      "median": 130,
+      "mostExpensive": 283,
+      "sections": [
+       {
+        "name": "ORCHST",
+        "cheapest": 112
+       },
+       {
+        "name": "RMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "MMEZZ",
+        "cheapest": 118
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 152
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 162
+       }
+      ],
+      "cheapestBlock": {
+       "section": "ORCHST",
+       "pricePerTicket": 112,
+       "row": "Z",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-22&slot=14:00&showtime_id=2364282&product_type=show&seats=ORCHST-Z26,ORCHST-Z24"
+      },
+      "discount": false,
+      "promotion": false
+     },
+     {
+      "date": "2026-11-22",
+      "day": "Sunday",
+      "time": "1900",
+      "admissionType": "TIMED",
+      "currency": "USD",
+      "cheapest": 112,
+      "median": 152,
+      "mostExpensive": 283,
+      "sections": [
+       {
+        "name": "RMEZZ",
+        "cheapest": 112
+       },
+       {
+        "name": "MMEZZ",
+        "cheapest": 130
+       },
+       {
+        "name": "ORCHST",
+        "cheapest": 130
+       },
+       {
+        "name": "FMEZZ",
+        "cheapest": 152
+       },
+       {
+        "name": "ORCH",
+        "cheapest": 162
+       }
+      ],
+      "cheapestBlock": {
+       "section": "RMEZZ",
+       "pricePerTicket": 112,
+       "row": "K",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-22&slot=19:00&showtime_id=2364283&product_type=show&seats=RMEZZ-K26,RMEZZ-K24"
+      },
+      "discount": false,
+      "promotion": false
+     }
+    ]
+   }
+  },
+  {
+   "step": "find_seats {\"location\":\"nyc\",\"startDate\":\"2026-11-17\",\"endDate\":\"2026-11-23\",\"quantity\":2,\"showId\":1}",
+   "data": {
+    "currency": "USD",
+    "performances": [
+     {
+      "occurrenceId": "2364276",
+      "date": "2026-11-17",
+      "day": "Tuesday",
+      "time": "1900",
+      "currency": "USD",
+      "cheapest": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "25",
+        "23"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-17&slot=19:00&showtime_id=2364276&product_type=show&seats=MMEZZ-F23,MMEZZ-F25"
+      }
+     },
+     {
+      "occurrenceId": "2364277",
+      "date": "2026-11-18",
+      "day": "Wednesday",
+      "time": "1900",
+      "currency": "USD",
+      "cheapest": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "34",
+        "36"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-18&slot=19:00&showtime_id=2364277&product_type=show&seats=MMEZZ-F36,MMEZZ-F34"
+      }
+     },
+     {
+      "occurrenceId": "2364278",
+      "date": "2026-11-19",
+      "day": "Thursday",
+      "time": "1900",
+      "currency": "USD",
+      "cheapest": {
+       "section": "MMEZZ",
+       "pricePerTicket": 99,
+       "row": "F",
+       "seats": [
+        "35",
+        "33"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-19&slot=19:00&showtime_id=2364278&product_type=show&seats=MMEZZ-F35,MMEZZ-F33"
+      }
+     },
+     {
+      "occurrenceId": "2364279",
+      "date": "2026-11-20",
+      "day": "Friday",
+      "time": "1900",
+      "currency": "USD",
+      "cheapest": {
+       "section": "MMEZZ",
+       "pricePerTicket": 112,
+       "row": "F",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-20&slot=19:00&showtime_id=2364279&product_type=show&seats=MMEZZ-F26,MMEZZ-F24"
+      }
+     },
+     {
+      "occurrenceId": "2364280",
+      "date": "2026-11-21",
+      "day": "Saturday",
+      "time": "1400",
+      "currency": "USD",
+      "cheapest": {
+       "section": "MMEZZ",
+       "pricePerTicket": 112,
+       "row": "F",
+       "seats": [
+        "20",
+        "22"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=14:00&showtime_id=2364280&product_type=show&seats=MMEZZ-F22,MMEZZ-F20"
+      }
+     },
+     {
+      "occurrenceId": "2364281",
+      "date": "2026-11-21",
+      "day": "Saturday",
+      "time": "2000",
+      "currency": "USD",
+      "cheapest": {
+       "section": "ORCHST",
+       "pricePerTicket": 112,
+       "row": "W",
+       "seats": [
+        "30",
+        "32"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W30,ORCHST-W32"
+      }
+     },
+     {
+      "occurrenceId": "2364282",
+      "date": "2026-11-22",
+      "day": "Sunday",
+      "time": "1400",
+      "currency": "USD",
+      "cheapest": {
+       "section": "ORCHST",
+       "pricePerTicket": 112,
+       "row": "Z",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-22&slot=14:00&showtime_id=2364282&product_type=show&seats=ORCHST-Z26,ORCHST-Z24"
+      }
+     },
+     {
+      "occurrenceId": "2364283",
+      "date": "2026-11-22",
+      "day": "Sunday",
+      "time": "1900",
+      "currency": "USD",
+      "cheapest": {
+       "section": "RMEZZ",
+       "pricePerTicket": 112,
+       "row": "K",
+       "seats": [
+        "24",
+        "26"
+       ],
+       "seatingPlanUrl": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-22&slot=19:00&showtime_id=2364283&product_type=show&seats=RMEZZ-K26,RMEZZ-K24"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}
