@@ -1019,7 +1019,11 @@
         <div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`;
     }
 
-    const playable = (d) => perfsFor(show, d).length && performsOn(show, d.date);
+    // Today's performances that have already started are over: not selectable, no prices.
+    const nowMin = (() => { const n = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" })); return n.getHours() * 60 + n.getMinutes(); })();
+    const notOver = (dt, p) => dt.offset !== 0 || toMinutes(p.time) > nowMin;
+    const upcoming = (dt) => perfsFor(show, dt).filter((p) => notOver(dt, p));
+    const playable = (d) => upcoming(d).length && performsOn(show, d.date);
     const note = closingNote(show);
     const on = openingNote(show);
     const ann = anniversaryNote(show);
@@ -1042,23 +1046,19 @@
         <div class="empty">No performances in the next ${DAYS_AHEAD} days${first ? ` — ${first.label} is ${fmtRunDate(first.d)}` : ""}.
           Tickets are on sale now from <b>${money(show.bdcFrom)}</b>. <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">See dates on Broadway.com ↗</a></div>`;
     }
-    // Default to the next performance that hasn't started yet (today's earlier shows are over).
-    const nowMin = (() => { const n = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" })); return n.getHours() * 60 + n.getMinutes(); })();
-    const notOver = (dt, p) => dt.offset !== 0 || toMinutes(p.time) > nowMin;
     if (state.dateIdx === null || !playable(DATES[state.dateIdx])) {
-      state.dateIdx = DATES.findIndex((dt) => playable(dt) && perfsFor(show, dt).some((p) => notOver(dt, p)));
-      if (state.dateIdx < 0) state.dateIdx = DATES.findIndex(playable);
-      state.perfIdx = Math.max(0, perfsFor(show, DATES[state.dateIdx]).findIndex((p) => notOver(DATES[state.dateIdx], p)));
+      state.dateIdx = DATES.findIndex(playable);
+      state.perfIdx = 0;
     }
     const dateObj = DATES[state.dateIdx];
-    const dayPerfs = perfsFor(show, dateObj);
+    const dayPerfs = upcoming(dateObj);
     if (state.perfIdx >= dayPerfs.length) state.perfIdx = 0;
     const perf = dayPerfs[state.perfIdx];
     const alerts = store.get("tm-alerts", {});
     const target = alerts[slug];
 
     // date strip
-    const lows = DATES.map((dt) => (perfsFor(show, dt).length ? lowestForDate(show, dt, { noMember: state.hideMember, section: state.section }) : null));
+    const lows = DATES.map((dt) => (upcoming(dt).length ? lowestForDate(show, dt, { noMember: state.hideMember, section: state.section }) : null));
     const cheapestVal = Math.min(...lows.filter(Boolean).map((o) => o.total));
     const overall = { total: cheapestVal };
 
@@ -1135,6 +1135,9 @@
           ${DATES.map((dt, i) => {
             if (show.closing && show.closing.precision === "day" && dt.date > show.closing.date) return ""; // closed: hide later dates
             const lo = lows[i];
+            if (perfsFor(show, dt).length && !upcoming(dt).length) {
+              return `<button class="date-chip dark" disabled title="Today's performances have already started"><div class="dow">Today</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">Ended</div></button>`;
+            }
             if (!perfsFor(show, dt).length || !performsOn(show, dt.date)) {
               const why = !perfsFor(show, dt).length ? (hasLive(show) && inLiveWindow(dt.date) ? "—" : "Dark") : show.closing && dt.date > show.closing.date ? "Closed" : "—";
               return `<button class="date-chip dark" disabled title="${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
