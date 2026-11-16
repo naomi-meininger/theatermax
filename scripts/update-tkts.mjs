@@ -18,7 +18,17 @@ export function parse(html) {
     for (const b of p.split(/<div class="tkts__board tkts__board--/).slice(1)) {
       const kind = b.slice(0, b.indexOf('"'));
       const upd = (decode((b.match(/tkts__updated">([\s\S]*?)<\/div>/) || [])[1] || "").match(/Updated:\s*(.+)$/) || [])[1];
-      const shows = [...b.matchAll(/<li class="tkts__shows-item">([\s\S]*?)<\/li>/g)].map((m) => {
+      // "tomorrow-…" boards list tomorrow's matinees, sold today.
+      // Open board: a grid with % off, price range and curtain time per show.
+      const grid = [...b.matchAll(/<li class="tkts__grid-list-item">([\s\S]*?)<\/li>/g)].map((m) => {
+        const a = m[1].match(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/) || [null, null, (m[1].match(/__title">([\s\S]*?)<\/div>/) || [])[1]];
+        const cell = (k) => decode((m[1].match(new RegExp(`__${k}">([\\s\\S]*?)<\\/div>`)) || [])[1] || "");
+        const price = cell("discount").match(/\$?(\d+(?:\.\d+)?)(?:\s*[-–]\s*\$?(\d+(?:\.\d+)?))?/);
+        const id = a[1] && (a[1].match(/\/shows\/(\d+)\//) || a[1].match(/\/shows\/(\d+)/) || [])[1];
+        return a[2] ? { title: decode(a[2]), url: a[1] || null, tdfId: id || null, pct: parseInt(cell("percent")) || null,
+          lo: price ? +price[1] : null, hi: price && price[2] ? +price[2] : price ? +price[1] : null, time: cell("time") || null } : null;
+      }).filter(Boolean);
+      const shows = grid.length ? grid : [...b.matchAll(/<li class="tkts__shows-item">([\s\S]*?)<\/li>/g)].map((m) => {
         const a = m[1].match(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/);
         const extra = decode(m[1].replace(/<a[\s\S]*?<\/a>/, ""));        // price / discount text, if the board shows any
         const id = a && (a[1].match(/\/shows\/(\d+)\//) || [])[1];

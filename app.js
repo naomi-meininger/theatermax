@@ -14,7 +14,7 @@
   const TDF = (window.TM_TDF && window.TM_TDF.shows) || {};
   // TKTS Live boards (TDF, hourly in booth hours): which of our shows are on today's board.
   const TKTS_LIVE = window.TM_TKTS || { boards: [] };
-  const tktsNorm = (t) => String(t || "").toLowerCase().replace(/&/g, "and").replace(/\bny\b/g, "new york").replace(/[^a-z0-9]+/g, " ").replace(/^the /, "").trim();
+  const tktsNorm = (t) => String(t || "").toLowerCase().replace(/:\s*(a new musical|the musical|a musical|the play).*$/, "").replace(/&/g, "and").replace(/\bny\b/g, "new york").replace(/[^a-z0-9]+/g, " ").replace(/^the /, "").trim();
   const nyToday = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
   function tktsBoardsFor(show) {
     const tdfPath = window.TM_TDF && window.TM_TDF.ids && window.TM_TDF.ids[show.slug];
@@ -22,6 +22,11 @@
     const key = tktsNorm(show.title);
     return (TKTS_LIVE.boards || []).filter((b) => b.shows.some((x) => (id && x.tdfId === id) || tktsNorm(x.title) === key));
   }
+  const tktsMatch = (show, x) => {
+    const tdfPath = window.TM_TDF && window.TM_TDF.ids && window.TM_TDF.ids[show.slug];
+    const id = tdfPath && (tdfPath.match(/\/shows\/(\d+)\//) || [])[1];
+    return (id && x.tdfId === id) || tktsNorm(x.title) === tktsNorm(show.title);
+  };
   const BOOTH = { "times-square": "Times Square", "lincoln-center": "Lincoln Center" };
 
   // TodayTix: real prices (fees included, 2 seats together) from TodayTix's official MCP server, daily.
@@ -746,20 +751,25 @@
     // TKTS: on today's board (TKTS Live) → a real same-day option; otherwise, if TDF says it's
     // often there or it was on a recent board, an "often at TKTS" possibility like lottery/rush.
     // TKTS doesn't post prices online, so the price is an estimate (~40% off) and never "Best deal".
-    const boards = tktsBoardsFor(show), todayBoards = boards.filter((b) => b.day === nyToday());
+    const boards = tktsBoardsFor(show);
     const freq = tdf && tdf.tkts && /frequently|sometimes|occasionally/i.test(tdf.tkts) ? tdf.tkts.toLowerCase() : null;
     const box = result.find((o) => o.officialRow && o.sec && o.sec.id === "orch") || result.find((o) => o.officialRow);
     const TKTS_URL = "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/";
-    if (box && near === 0 && todayBoards.length) {
-      const where = [...new Set(todayBoards.map((b) => BOOTH[b.booth] || b.booth))].join(" & ");
-      // If the board shows a price, use it; otherwise estimate 40% off face value.
-      const listing = todayBoards.flatMap((b) => b.shows).find((x) => x.note && /\$\d/.test(x.note));
-      const boardPrice = listing ? dollars(listing.note)[0] : null;
-      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: boardPrice || Math.round(box.price * 0.6), fee: boardPrice ? 0 : 7, url: TKTS_URL, live: "tkts", priceEstimated: !boardPrice,
-        note: `On today's TKTS board (checked ${fmtNY(TKTS_LIVE.checkedAt)}) · buy at the booth while they last · ${boardPrice ? `board price ${listing.note}` : "usually 20–50% off; price is our estimate, the board has the real one"}` });
+    // A board updated today lists today's performances (and "tomorrow" boards, tomorrow's matinees)
+    // with % off, the price range and the curtain time. Match it to this exact performance.
+    const today = nyToday(), tomorrow = new Date(Date.parse(today + "T12:00:00Z") + 864e5).toISOString().slice(0, 10);
+    const perfDay = perf.key.slice(0, 10), perfTime = perf.key.slice(11);
+    const listings = boards.filter((b) => b.day === today && b.status === "open")
+      .flatMap((b) => b.shows.filter((x) => tktsMatch(show, x) && x.lo != null && (!x.time || x.time === perfTime)
+        && perfDay === (/^tomorrow/.test(b.kind) ? tomorrow : today)).map((x) => ({ ...x, booth: BOOTH[b.booth] || b.booth, updated: b.updated })));
+    if (listings.length) {
+      const best = listings.slice().sort((a, b) => a.lo - b.lo)[0];
+      const where = [...new Set(listings.map((x) => x.booth))].join(" & ");
+      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts",
+        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} booth while they last` });
     } else if (box && (freq || boards.length)) {
-      result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 7, url: TKTS_URL, chance: true, estimate: true,
-        note: `${freq ? `TDF says this show is ${freq} at TKTS` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · sold same day (some matinees the day before) · check TKTS Live that morning` });
+      result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 0, url: TKTS_URL, chance: true, estimate: true,
+        note: `${freq ? `TDF says this show is ${freq} at TKTS` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
     }
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
