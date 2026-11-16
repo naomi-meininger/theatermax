@@ -2,23 +2,23 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-16T04:30:45.610Z",
-  "lastAttemptAt": "2026-11-16T04:30:45.610Z",
-  "count": 92,
+  "updatedAt": "2026-11-16T05:14:18.938Z",
+  "lastAttemptAt": "2026-11-16T05:14:18.938Z",
+  "count": 89,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-16T04:30:45.610Z",
-      "lastAttemptAt": "2026-11-16T04:30:45.610Z",
-      "count": 67
+      "updatedAt": "2026-11-16T05:14:18.938Z",
+      "lastAttemptAt": "2026-11-16T05:14:18.938Z",
+      "count": 66
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-16T04:30:45.610Z",
-      "lastAttemptAt": "2026-11-16T04:30:45.610Z",
-      "count": 25
+      "updatedAt": "2026-11-16T05:14:18.938Z",
+      "lastAttemptAt": "2026-11-16T05:14:18.938Z",
+      "count": 24
     }
   },
   "shows": [
@@ -42,11 +42,11 @@ window.TM_LIVE = {
     },
     {
       "slug": "masquerade",
-      "title": "Masquerade from $276.11",
+      "title": "Masquerade",
       "url": "https://www.broadway.com/shows/masquerade/",
       "fromPrice": 276.11,
-      "ratingCount": null,
-      "scene": "broadway",
+      "ratingCount": 121,
+      "scene": "off",
       "firstSeen": null
     },
     {
@@ -458,7 +458,7 @@ window.TM_LIVE = {
       "slug": "the-imaginary-invalid",
       "title": "The Imaginary Invalid",
       "url": "https://www.broadway.com/shows/the-imaginary-invalid/",
-      "fromPrice": 66.08,
+      "fromPrice": 145.69,
       "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
@@ -617,24 +617,6 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "find-by-date",
-      "title": "tickets by date.",
-      "url": "https://www.broadway.com/shows/find-by-date/",
-      "fromPrice": null,
-      "ratingCount": null,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "little-shop-horrors",
-      "title": "Little Shop of Horrors",
-      "url": "https://www.broadway.com/shows/little-shop-horrors/",
-      "fromPrice": 91.41,
-      "ratingCount": 243,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "play-goes-wrong-beginning-february-11-2019",
       "title": "The Play That Goes Wrong",
       "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
@@ -644,20 +626,20 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "masquerade",
-      "title": "Masquerade",
-      "url": "https://www.broadway.com/shows/masquerade/",
-      "fromPrice": 276.11,
-      "ratingCount": 121,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "jamie-allans-amaze",
       "title": "Amaze Magic",
       "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
       "fromPrice": 65.36,
       "ratingCount": 126,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "little-shop-horrors",
+      "title": "Little Shop of Horrors",
+      "url": "https://www.broadway.com/shows/little-shop-horrors/",
+      "fromPrice": 91.41,
+      "ratingCount": 243,
       "scene": "off",
       "firstSeen": null
     },
@@ -797,19 +779,19 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "nutty-nattys-magic-puppet-show",
-      "title": "Nutty Natty's Magic Puppet Show",
-      "url": "https://www.broadway.com/shows/nutty-nattys-magic-puppet-show/",
-      "fromPrice": 53.16,
+      "slug": "magic-mike",
+      "title": "Magic Mike Live",
+      "url": "https://www.broadway.com/shows/magic-mike/",
+      "fromPrice": 47.18,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
     },
     {
-      "slug": "magic-mike",
-      "title": "Magic Mike Live",
-      "url": "https://www.broadway.com/shows/magic-mike/",
-      "fromPrice": 47.18,
+      "slug": "nutty-nattys-magic-puppet-show",
+      "title": "Nutty Natty's Magic Puppet Show",
+      "url": "https://www.broadway.com/shows/nutty-nattys-magic-puppet-show/",
+      "fromPrice": 53.16,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
@@ -837,15 +819,6 @@ window.TM_LIVE = {
       "title": "Imitation of Life",
       "url": "https://www.broadway.com/shows/imitation-of-life/",
       "fromPrice": 91.58,
-      "ratingCount": null,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "find-by-date",
-      "title": "tickets by date.",
-      "url": "https://www.broadway.com/shows/find-by-date/",
-      "fromPrice": null,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
