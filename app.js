@@ -31,12 +31,12 @@
   // understudies.org show pages (confirmed paths); otherwise jump to its top search result.
   const UNDERSTUDIES = { "wicked": "wicked-nyc", "the-lion-king": "the-lion-king-nyc", "aladdin-broadway": "aladdin" };
   const understudyUrl = (s) => UNDERSTUDIES[s.slug] ? "https://understudies.org/show/" + UNDERSTUDIES[s.slug]
-    : "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky site:understudies.org/show " + s.title.replace(/\s*\((Encores!)\)/, ""));
+    : "https://duckduckgo.com/?q=" + encodeURIComponent("\\ site:understudies.org/show " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const SHOWSCORE = window.TM_SHOWSCORE || {};
   // Show-Score page for a show: a confirmed URL, or DuckDuckGo's "jump to first result" on show-score.com.
   const showScoreUrl = (s) => SHOWSCORE[s.slug]
     ? "https://www.show-score.com" + SHOWSCORE[s.slug]
-    : "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky site:show-score.com " + s.title.replace(/\s*\((Encores!)\)/, ""));
+    : "https://duckduckgo.com/?q=" + encodeURIComponent("\\ site:show-score.com " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const RUSH = window.TM_RUSH || null; // weekly from bwayrush.com (data/rush.js)
   const cheapest = (deals, type) => deals.filter((d) => d.type === type && d.price != null).sort((a, b) => a.price - b.price)[0] || null;
   const RUN_DATES = window.TM_SCHEDULE || {};
@@ -380,10 +380,12 @@
     const tt = window.TM_TODAYTIX && window.TM_TODAYTIX.ids && window.TM_TODAYTIX.ids[show.slug];
     if (seller === "TodayTix" && tt && tt.url) return tt.url;
     const name = show.title.replace(/\s*\((The Met|Encores!|NYCB)\)\s*/g, " ").trim();
-    if (seller === "Box office") return show.tickets || "https://duckduckgo.com/?q=" + encodeURIComponent("!ducky " + name + " official tickets");
+    if (seller === "Box office") return show.tickets || "https://duckduckgo.com/?q=" + encodeURIComponent("\\ " + name + " official tickets");
     if (show.tickets && /^(The Met|NYC Ballet|New York City Center)$/.test(seller)) return show.tickets;
+    // Broadway Direct show pages use the same name slug as Broadway.com (broadwaydirect.com/show/wicked/).
+    if (seller === "Broadway Direct" && show.bdcUrl && /broadway\.com\/shows\//.test(show.bdcUrl)) return "https://broadwaydirect.com/show/" + show.slug.replace(/-broadway$/, "") + "/";
     const site = SELLER_SITE[seller];
-    return site ? "https://duckduckgo.com/?q=" + encodeURIComponent(`!ducky site:${site} ${name}`) : OFFICIAL_URL[seller] || "#";
+    return site ? "https://duckduckgo.com/?q=" + encodeURIComponent(`\\ site:${site} ${name}`) : OFFICIAL_URL[seller] || "#";
   }
   const OFFICIAL_URL = {
     Telecharge: "https://www.telecharge.com",
@@ -533,7 +535,7 @@
 
   // ---------- seller groups (tabs on the show page) ----------
   const GROUPS = [
-    ["all", "All"], ["official", "Official sellers"], ["codes", "Discount codes"], ["apps", "Discount apps"],
+    ["all", "All"], ["official", "Official sellers"], ["codes", "Discount codes"], ["apps", "Discount apps"], ["sites", "Ticket sites"],
     ["resale", "Resale"], ["sameday", "Same-day & lottery"], ["members", "Memberships"],
   ];
   function groupOf(o) {
@@ -543,6 +545,7 @@
     if (o.member) return "members";
     if (o.seller === "SeatGeek") return "resale";
     if (o.seller === "TodayTix" || o.seller === "Theatr") return "apps";
+    if (o.seller === "Broadway.com") return "sites";
     if (o.tag === "official") return "official";
     return "resale";
   }
@@ -633,6 +636,12 @@
         result.push({ seller: "Ticketmaster", kind: show.official === "Ticketmaster" ? "Face-value tickets" : "Ticketmaster listing", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", ...(show.official === "Ticketmaster" ? { tag: "official" } : {}),
           note: `Face value ${money0(tm.min)}–${money0(tm.max)} · fees estimated (~18%)` });
       }
+    }
+    // Broadway.com: its own lowest price for this exact performance, from its daily calendar (real).
+    if (perf.calFrom) {
+      result.push({ seller: "Broadway.com", kind: "Ticket site · cheapest seat", sec: null, row: null, price: perf.calFrom, fee: 0, live: "broadwaycom",
+        url: (show.bdcUrl || "https://www.broadway.com/").replace(/\/?$/, "/") + "schedule/",
+        note: "Broadway.com's lowest listed price for this performance, as of this morning · section shown at checkout" });
     }
     // TodayTix real prices replace the TodayTix sample rows: one row per section, fees included.
     const tt = ttFor(show, perf);
@@ -1108,7 +1117,7 @@
             ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
             <div class="total">${money(shown)}</div>
-            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save)} vs. box office</div>` : ""}
             ${state.qty > 1 ? `<div class="breakdown">${state.qty} tickets: ${money(shown * state.qty)}</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
