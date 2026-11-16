@@ -9,7 +9,7 @@ for (const url of ["https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkt
     const apiHints = [...new Set([...html.matchAll(/["'](https?:\/\/[^"']*(?:api|tkts|listing|json|graphql)[^"']*)["']/gi)].map((m) => m[1]))].slice(0, 60);
     const idx = Math.max(0, html.search(/Broadway|Wicked|Chicago|Off-Broadway/));
     out.pages.push({ url, status: r.status, length: html.length, scripts, apiHints,
-      sample: html.slice(Math.max(0, idx - 2000), idx + 6000), dataAttrs: [...new Set([...html.matchAll(/data-[a-z-]+=/g)].map((m) => m[0]))].slice(0, 60) });
+      sample: (() => { const a = html.indexOf("tkts-tabbed-booths"); return html.slice(a, a + 120000).replace(/<svg[\s\S]*?<\/svg>/g, "").replace(/<iframe[\s\S]*?<\/iframe>/g, "").replace(/\s+/g, " "); })(), dataAttrs: [...new Set([...html.matchAll(/data-[a-z-]+=/g)].map((m) => m[0]))].slice(0, 60) });
     for (const s of scripts.filter((s) => /tkts|live|app|main|bundle|chunk/i.test(s)).slice(0, 8)) {
       const u = new URL(s, url).href;
       try { const js = await (await fetch(u, { headers: UA })).text();
