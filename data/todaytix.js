@@ -2,8 +2,8 @@
 // TodayTix prices from TodayTix's official MCP server: per ticket, fees included, for 1, 2 and 4 seats together.
 window.TM_TODAYTIX = {
  "status": "ok",
- "updatedAt": "2026-11-16T20:22:15.252Z",
- "lastAttemptAt": "2026-11-16T20:22:15.252Z",
+ "updatedAt": "2026-11-16T21:05:10.279Z",
+ "lastAttemptAt": "2026-11-16T21:05:10.279Z",
  "window": {
   "from": "2026-11-16",
   "to": "2026-11-29"
@@ -1704,7 +1704,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-21 8:00 PM": {
      "low": 102,
-     "med": 200,
+     "med": 188,
      "high": 343,
      "secs": {
       "mezz": 102,
@@ -1712,8 +1712,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=RIGHT_SIDE_REAR_MEZZ-G31,RIGHT_SIDE_REAR_MEZZ-G33"
+      "row": "C",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=RIGHT_REAR_MEZZ-C15,RIGHT_REAR_MEZZ-C17"
      },
      "deal": true
     },
@@ -1734,7 +1734,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-23 7:00 PM": {
      "low": 143,
-     "med": 310,
+     "med": 254,
      "high": 476,
      "secs": {
       "mezz": 143,
@@ -1817,8 +1817,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-28&slot=14:00&showtime_id=2451897&product_type=show&seats=CTR%2FLT_REAR_MEZZ-E110,CTR%2FLT_REAR_MEZZ-E112"
+      "row": "D",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-28&slot=14:00&showtime_id=2451897&product_type=show&seats=CTR%2FLT_REAR_MEZZ-D108,CTR%2FLT_REAR_MEZZ-D110"
      },
      "deal": false
     },
@@ -1946,16 +1946,17 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-21 8:00 PM": {
-      "low": 133,
-      "med": 133,
-      "high": 133,
+      "low": 82,
+      "med": 165,
+      "high": 343,
       "secs": {
-       "orch": 133
+       "mezz": 82,
+       "orch": 112
       },
       "best": {
-       "sec": "orch",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=1&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=LEFT_ORCHESTRA-L18"
+       "sec": "mezz",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=1&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=LEFT_REAR_MEZZ-H6"
       },
       "deal": true
      },
@@ -2188,7 +2189,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-21 8:00 PM": {
       "low": 102,
-      "med": 200,
+      "med": 188,
       "high": 343,
       "secs": {
        "mezz": 102,
@@ -2196,8 +2197,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=RIGHT_SIDE_REAR_MEZZ-G31,RIGHT_SIDE_REAR_MEZZ-G33"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=RIGHT_REAR_MEZZ-C15,RIGHT_REAR_MEZZ-C17"
       },
       "deal": true
      },
@@ -2218,7 +2219,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-23 7:00 PM": {
       "low": 143,
-      "med": 310,
+      "med": 254,
       "high": 476,
       "secs": {
        "mezz": 143,
@@ -2301,8 +2302,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-28&slot=14:00&showtime_id=2451897&product_type=show&seats=CTR%2FLT_REAR_MEZZ-E110,CTR%2FLT_REAR_MEZZ-E112"
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=2&date=2026-11-28&slot=14:00&showtime_id=2451897&product_type=show&seats=CTR%2FLT_REAR_MEZZ-D108,CTR%2FLT_REAR_MEZZ-D110"
       },
       "deal": false
      },
@@ -2429,17 +2430,17 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-21 8:00 PM": {
-      "low": 133,
+      "low": 102,
       "med": 210,
       "high": 343,
       "secs": {
-       "mezz": 133,
+       "mezz": 102,
        "orch": 143
       },
       "best": {
        "sec": "mezz",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=4&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=CTR%2FLT_REAR_MEZZ-F114,CTR%2FLT_REAR_MEZZ-F120,CTR%2FLT_REAR_MEZZ-F118,CTR%2FLT_REAR_MEZZ-F116"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=4&date=2026-11-21&slot=20:00&showtime_id=2401809&product_type=show&seats=RIGHT_REAR_MEZZ-F15,RIGHT_REAR_MEZZ-F9,RIGHT_REAR_MEZZ-F11,RIGHT_REAR_MEZZ-F13"
       },
       "deal": true
      },
@@ -2484,7 +2485,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=4&date=2026-11-24&slot=19:00&showtime_id=2451893&product_type=show&seats=CTR%2FLT_REAR_MEZZ-E112,CTR%2FLT_REAR_MEZZ-E116,CTR%2FLT_REAR_MEZZ-E114,CTR%2FLT_REAR_MEZZ-E110"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=38749&qt=4&date=2026-11-24&slot=19:00&showtime_id=2451893&product_type=show&seats=CTR%2FLT_REAR_MEZZ-E110,CTR%2FLT_REAR_MEZZ-E116,CTR%2FLT_REAR_MEZZ-E114,CTR%2FLT_REAR_MEZZ-E112"
       },
       "deal": true
      },
@@ -2944,7 +2945,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-17&slot=19:00&showtime_id=2440998&product_type=show&seats=RIGHT_REAR_MEZZ-H122"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-17&slot=19:00&showtime_id=2440998&product_type=show&seats=RIGHT_REAR_MEZZ-H124"
       },
       "deal": false
      },
@@ -2960,6 +2961,21 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "E",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-18&slot=14:00&showtime_id=2440999&product_type=show&seats=LEFT_SIDE_REAR_MEZZ-E131"
+      },
+      "deal": false
+     },
+     "2026-11-19 7:00 PM": {
+      "low": 63,
+      "med": 138,
+      "high": 423,
+      "secs": {
+       "mezz": 63,
+       "orch": 87
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-19&slot=19:00&showtime_id=2441000&product_type=show&seats=LEFT_SIDE_REAR_MEZZ-D127"
       },
       "deal": false
      },
@@ -2979,17 +2995,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-21 2:00 PM": {
-      "low": 63,
-      "med": 182,
-      "high": 527,
+      "low": 150,
+      "med": 150,
+      "high": 150,
       "secs": {
-       "mezz": 63,
-       "orch": 97
+       "mezz": 150
       },
       "best": {
        "sec": "mezz",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-21&slot=14:00&showtime_id=2441002&product_type=show&seats=LEFT_SIDE_REAR_MEZZ-E131"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-21&slot=14:00&showtime_id=2441002&product_type=show&seats=LEFT_REAR_MEZZ-B101"
       },
       "deal": false
      },
@@ -3020,21 +3035,6 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "G",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-22&slot=14:00&showtime_id=2441004&product_type=show&seats=RIGHT_REAR_MEZZ-G116"
-      },
-      "deal": false
-     },
-     "2026-11-19 7:00 PM": {
-      "low": 63,
-      "med": 138,
-      "high": 423,
-      "secs": {
-       "mezz": 63,
-       "orch": 87
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=1&date=2026-11-19&slot=19:00&showtime_id=2441000&product_type=show&seats=LEFT_SIDE_REAR_MEZZ-D127"
       },
       "deal": false
      },
@@ -3412,7 +3412,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=4&date=2026-11-17&slot=19:00&showtime_id=2440998&product_type=show&seats=RIGHT_REAR_MEZZ-H122,RIGHT_REAR_MEZZ-H116,RIGHT_REAR_MEZZ-H118,RIGHT_REAR_MEZZ-H120"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42735&qt=4&date=2026-11-17&slot=19:00&showtime_id=2440998&product_type=show&seats=RIGHT_REAR_MEZZ-H124,RIGHT_REAR_MEZZ-H120,RIGHT_REAR_MEZZ-H122,RIGHT_REAR_MEZZ-H126"
       },
       "deal": false
      },
@@ -3613,7 +3613,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-29 2:00 PM": {
       "low": 116,
-      "med": 204,
+      "med": 183,
       "high": 627,
       "secs": {
        "mezz": 116,
@@ -3724,7 +3724,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "orch",
       "row": "W",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W33,ORCHST-W35"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W30,ORCHST-W32"
      },
      "deal": false
     },
@@ -3982,7 +3982,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "W",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=1&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W33"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=1&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W30"
       },
       "deal": false
      },
@@ -4239,7 +4239,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "W",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W33,ORCHST-W35"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=2&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=ORCHST-W30,ORCHST-W32"
       },
       "deal": false
      },
@@ -4495,7 +4495,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=4&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=MMEZZ-F21,MMEZZ-F27,MMEZZ-F25,MMEZZ-F23"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=4&date=2026-11-21&slot=20:00&showtime_id=2364281&product_type=show&seats=MMEZZ-F24,MMEZZ-F18,MMEZZ-F20,MMEZZ-F22"
       },
       "deal": false
      },
@@ -4654,7 +4654,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=4&date=2026-11-29&slot=15:00&showtime_id=2451881&product_type=show&seats=MMEZZ-F22,MMEZZ-F18,MMEZZ-F20,MMEZZ-F24"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=1&qt=4&date=2026-11-29&slot=15:00&showtime_id=2451881&product_type=show&seats=MMEZZ-F23,MMEZZ-F27,MMEZZ-F25,MMEZZ-F21"
       },
       "deal": false
      }
@@ -4810,18 +4810,16 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-25 2:00 PM": {
-     "low": 67,
-     "med": 194,
-     "high": 400,
+     "low": 77,
+     "med": 77,
+     "high": 77,
      "secs": {
-      "mezz": 67,
-      "balc": 77,
-      "orch": 97
+      "balc": 77
      },
      "best": {
-      "sec": "mezz",
+      "sec": "balc",
       "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=2&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=LEFT_MEZZANINE-F27,LEFT_MEZZANINE-F25"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=2&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=RIGHT_BALCONY-F2,RIGHT_BALCONY-F4"
      },
      "deal": false
     },
@@ -4924,38 +4922,6 @@ window.TM_TODAYTIX = {
    },
    "byQty": {
     "1": {
-     "2026-11-21 2:00 PM": {
-      "low": 59,
-      "med": 160,
-      "high": 423,
-      "secs": {
-       "balc": 59,
-       "mezz": 67,
-       "orch": 97
-      },
-      "best": {
-       "sec": "balc",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-21&slot=14:00&showtime_id=2427281&product_type=show&seats=LEFT_BALCONY-F17"
-      },
-      "deal": true
-     },
-     "2026-11-21 7:00 PM": {
-      "low": 59,
-      "med": 138,
-      "high": 423,
-      "secs": {
-       "balc": 59,
-       "mezz": 67,
-       "orch": 97
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-21&slot=19:00&showtime_id=2427282&product_type=show&seats=LEFT_BALCONY-E11"
-      },
-      "deal": true
-     },
      "2026-11-17 7:00 PM": {
       "low": 59,
       "med": 128,
@@ -5036,6 +5002,38 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
+     "2026-11-21 7:00 PM": {
+      "low": 59,
+      "med": 138,
+      "high": 423,
+      "secs": {
+       "balc": 59,
+       "mezz": 67,
+       "orch": 97
+      },
+      "best": {
+       "sec": "balc",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-21&slot=19:00&showtime_id=2427282&product_type=show&seats=LEFT_BALCONY-E11"
+      },
+      "deal": true
+     },
+     "2026-11-21 2:00 PM": {
+      "low": 59,
+      "med": 160,
+      "high": 423,
+      "secs": {
+       "balc": 59,
+       "mezz": 67,
+       "orch": 97
+      },
+      "best": {
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-21&slot=14:00&showtime_id=2427281&product_type=show&seats=LEFT_BALCONY-F17"
+      },
+      "deal": true
+     },
      "2026-11-22 2:00 PM": {
       "low": 59,
       "med": 160,
@@ -5069,18 +5067,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 2:00 PM": {
-      "low": 63,
-      "med": 182,
-      "high": 400,
+      "low": 77,
+      "med": 77,
+      "high": 77,
       "secs": {
-       "balc": 63,
-       "mezz": 67,
-       "orch": 97
+       "balc": 77
       },
       "best": {
        "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=BALC_PARTIAL_VIEW-A21"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=1&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=RIGHT_BALCONY-E2"
       },
       "deal": false
      },
@@ -5327,18 +5323,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 2:00 PM": {
-      "low": 67,
-      "med": 194,
-      "high": 400,
+      "low": 77,
+      "med": 77,
+      "high": 77,
       "secs": {
-       "mezz": 67,
-       "balc": 77,
-       "orch": 97
+       "balc": 77
       },
       "best": {
-       "sec": "mezz",
+       "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=2&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=LEFT_MEZZANINE-F27,LEFT_MEZZANINE-F25"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=2&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=RIGHT_BALCONY-F2,RIGHT_BALCONY-F4"
       },
       "deal": false
      },
@@ -5452,7 +5446,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-17&slot=19:00&showtime_id=2427276&product_type=show&seats=LEFT_BALCONY-E11,LEFT_BALCONY-E13,LEFT_BALCONY-E15,LEFT_BALCONY-E17"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-17&slot=19:00&showtime_id=2427276&product_type=show&seats=LEFT_BALCONY-E3,LEFT_BALCONY-E1,LEFT_BALCONY-E5,LEFT_BALCONY-E7"
       },
       "deal": true
      },
@@ -5563,8 +5557,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "balc",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-22&slot=14:00&showtime_id=2427283&product_type=show&seats=RIGHT_BALCONY-C4,RIGHT_BALCONY-C2,RIGHT_BALCONY-C6,RIGHT_BALCONY-C8"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-22&slot=14:00&showtime_id=2427283&product_type=show&seats=RIGHT_BALCONY-E4,RIGHT_BALCONY-E2,RIGHT_BALCONY-E6,RIGHT_BALCONY-E8"
       },
       "deal": true
      },
@@ -5581,22 +5575,6 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "B",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-24&slot=19:00&showtime_id=2503064&product_type=show&seats=LEFT_BALCONY-B13,LEFT_BALCONY-B9,LEFT_BALCONY-B11,LEFT_BALCONY-B15"
-      },
-      "deal": false
-     },
-     "2026-11-25 2:00 PM": {
-      "low": 77,
-      "med": 194,
-      "high": 400,
-      "secs": {
-       "balc": 77,
-       "mezz": 116,
-       "orch": 194
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41018&qt=4&date=2026-11-25&slot=14:00&showtime_id=2503065&product_type=show&seats=LEFT_BALCONY-E15,LEFT_BALCONY-E17,LEFT_BALCONY-E19,LEFT_BALCONY-E21"
       },
       "deal": false
      },
@@ -6744,8 +6722,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "K",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-21&slot=13:00&showtime_id=2482500&product_type=show&seats=MEZZL-K15,MEZZL-K17"
+      "row": "M",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-21&slot=13:00&showtime_id=2482500&product_type=show&seats=MEZZL-M13,MEZZL-M15"
      },
      "deal": false
     },
@@ -6894,8 +6872,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "H",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-H33,MEZZL-H35"
+      "row": "J",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-J29,MEZZL-J31"
      },
      "deal": false
     },
@@ -7135,8 +7113,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=1&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-H33"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=1&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-J29"
       },
       "deal": false
      },
@@ -7225,8 +7203,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-21&slot=13:00&showtime_id=2482500&product_type=show&seats=MEZZL-K15,MEZZL-K17"
+       "row": "M",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-21&slot=13:00&showtime_id=2482500&product_type=show&seats=MEZZL-M13,MEZZL-M15"
       },
       "deal": false
      },
@@ -7375,8 +7353,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-H33,MEZZL-H35"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=41967&qt=2&date=2026-11-28&slot=19:00&showtime_id=2482510&product_type=show&seats=MEZZL-J29,MEZZL-J31"
       },
       "deal": false
      },
@@ -7654,7 +7632,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G17,BALC-G19"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G18,BALC-G16"
      },
      "deal": false
     },
@@ -7797,7 +7775,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G28,BALC-G26"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G27,BALC-G25"
      },
      "deal": false
     },
@@ -7912,7 +7890,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=1&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G28"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=1&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G26"
       },
       "deal": false
      },
@@ -8170,7 +8148,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G17,BALC-G19"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G18,BALC-G16"
       },
       "deal": false
      },
@@ -8313,7 +8291,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G28,BALC-G26"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=2&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G27,BALC-G25"
       },
       "deal": false
      },
@@ -8427,7 +8405,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G18,BALC-G14,BALC-G16,BALC-G20"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-17&slot=19:00&showtime_id=2470361&product_type=show&seats=BALC-G17,BALC-G21,BALC-G19,BALC-G15"
       },
       "deal": false
      },
@@ -8570,23 +8548,23 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G14,BALC-G16,BALC-G18,BALC-G20"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-25&slot=13:00&showtime_id=2470370&product_type=show&seats=BALC-G10,BALC-G4,BALC-G6,BALC-G8"
       },
       "deal": false
      },
      "2026-11-25 7:00 PM": {
-      "low": 117,
+      "low": 111,
       "med": 141,
       "high": 172,
       "secs": {
-       "balc": 117,
+       "balc": 111,
        "mezz": 130,
        "orch": 139
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-25&slot=19:00&showtime_id=2470371&product_type=show&seats=BALC-B18,BALC-B12,BALC-B14,BALC-B16"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=105&qt=4&date=2026-11-25&slot=19:00&showtime_id=2470371&product_type=show&seats=BALC-H17,BALC-H21,BALC-H19,BALC-H15"
       },
       "deal": false
      },
@@ -8678,31 +8656,16 @@ window.TM_TODAYTIX = {
    "url": "https://www.todaytix.com/nyc/shows/46289-galileo-on-broadway",
    "perfs": {
     "2026-11-16 8:00 PM": {
-     "low": 211,
+     "low": 302,
      "med": 302,
      "high": 302,
      "secs": {
-      "orch": 211
+      "orch": 302
      },
      "best": {
       "sec": "orch",
       "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-16&slot=20:00&showtime_id=2473639&product_type=show&seats=CENTER_ORCHESTRA-E111,CENTER_ORCHESTRA-E112"
-     },
-     "deal": false
-    },
-    "2026-11-18 2:00 PM": {
-     "low": 92,
-     "med": 311,
-     "high": 311,
-     "secs": {
-      "balc": 92,
-      "orch": 311
-     },
-     "best": {
-      "sec": "balc",
-      "row": "D",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-18&slot=14:00&showtime_id=2473641&product_type=show&seats=CENTER_BALCONY-D110,CENTER_BALCONY-D111"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-16&slot=20:00&showtime_id=2473639&product_type=show&seats=CENTER_ORCHESTRA-E113,CENTER_ORCHESTRA-E114"
      },
      "deal": false
     },
@@ -8722,17 +8685,35 @@ window.TM_TODAYTIX = {
      },
      "deal": true
     },
-    "2026-11-21 8:00 PM": {
-     "low": 101,
-     "med": 101,
-     "high": 101,
+    "2026-11-20 8:00 PM": {
+     "low": 72,
+     "med": 257,
+     "high": 391,
      "secs": {
-      "mezz": 101
+      "balc": 72,
+      "mezz": 97,
+      "orch": 257
      },
      "best": {
-      "sec": "mezz",
-      "row": "H",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=RIGHT_MEZZANINE-H16,RIGHT_MEZZANINE-H18"
+      "sec": "balc",
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-20&slot=20:00&showtime_id=2473643&product_type=show&seats=LEFT_BALCONY-G25,LEFT_BALCONY-G23"
+     },
+     "deal": false
+    },
+    "2026-11-21 8:00 PM": {
+     "low": 92,
+     "med": 144,
+     "high": 391,
+     "secs": {
+      "balc": 92,
+      "mezz": 122,
+      "orch": 156
+     },
+     "best": {
+      "sec": "balc",
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=CENTER_BALCONY-G108,CENTER_BALCONY-G107"
      },
      "deal": false
     },
@@ -8749,6 +8730,22 @@ window.TM_TODAYTIX = {
       "sec": "balc",
       "row": "H",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-23&slot=20:00&showtime_id=2473645&product_type=show&seats=CENTER_BALCONY-H106,CENTER_BALCONY-H105"
+     },
+     "deal": false
+    },
+    "2026-11-24 8:00 PM": {
+     "low": 62,
+     "med": 144,
+     "high": 367,
+     "secs": {
+      "balc": 62,
+      "mezz": 72,
+      "orch": 102
+     },
+     "best": {
+      "sec": "balc",
+      "row": "H",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-24&slot=20:00&showtime_id=2473646&product_type=show&seats=CENTER_BALCONY-H107,CENTER_BALCONY-H106"
      },
      "deal": false
     },
@@ -8816,22 +8813,6 @@ window.TM_TODAYTIX = {
      },
      "deal": false
     },
-    "2026-11-28 8:00 PM": {
-     "low": 72,
-     "med": 156,
-     "high": 391,
-     "secs": {
-      "balc": 72,
-      "mezz": 92,
-      "orch": 112
-     },
-     "best": {
-      "sec": "balc",
-      "row": "H",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-28&slot=20:00&showtime_id=2473651&product_type=show&seats=CENTER_BALCONY-H108,CENTER_BALCONY-H107"
-     },
-     "deal": false
-    },
     "2026-11-29 3:00 PM": {
      "low": 61,
      "med": 109,
@@ -8853,12 +8834,11 @@ window.TM_TODAYTIX = {
     "1": {
      "2026-11-16 8:00 PM": {
       "low": 82,
-      "med": 211,
+      "med": 302,
       "high": 302,
       "secs": {
        "balc": 82,
-       "mezz": 102,
-       "orch": 211
+       "orch": 302
       },
       "best": {
        "sec": "balc",
@@ -8868,19 +8848,35 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-17 8:00 PM": {
-      "low": 77,
-      "med": 144,
-      "high": 166,
+      "low": 61,
+      "med": 92,
+      "high": 302,
       "secs": {
-       "balc": 77,
-       "orch": 144
+       "balc": 61,
+       "mezz": 92,
+       "orch": 102
       },
       "best": {
        "sec": "balc",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-17&slot=20:00&showtime_id=2473640&product_type=show&seats=CENTER_BALCONY-D109"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-17&slot=20:00&showtime_id=2473640&product_type=show&seats=RIGHT_BALCONY-C24"
       },
-      "deal": true
+      "deal": false
+     },
+     "2026-11-18 2:00 PM": {
+      "low": 72,
+      "med": 92,
+      "high": 311,
+      "secs": {
+       "balc": 72,
+       "orch": 134
+      },
+      "best": {
+       "sec": "balc",
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-18&slot=14:00&showtime_id=2473641&product_type=show&seats=LEFT_BALCONY-C23"
+      },
+      "deal": false
      },
      "2026-11-18 8:00 PM": {
       "low": 61,
@@ -8899,46 +8895,34 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-20 8:00 PM": {
-      "low": 127,
-      "med": 335,
-      "high": 335,
+      "low": 72,
+      "med": 156,
+      "high": 391,
       "secs": {
-       "mezz": 127,
-       "orch": 335
+       "balc": 72,
+       "mezz": 97,
+       "orch": 112
       },
       "best": {
-       "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-20&slot=20:00&showtime_id=2473643&product_type=show&seats=LEFT_MEZZANINE-D5"
+       "sec": "balc",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-20&slot=20:00&showtime_id=2473643&product_type=show&seats=CENTER_BALCONY-E101"
       },
       "deal": false
      },
      "2026-11-21 8:00 PM": {
-      "low": 101,
-      "med": 101,
-      "high": 101,
+      "low": 92,
+      "med": 144,
+      "high": 391,
       "secs": {
-       "mezz": 101
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=RIGHT_MEZZANINE-H16"
-      },
-      "deal": false
-     },
-     "2026-11-18 2:00 PM": {
-      "low": 72,
-      "med": 134,
-      "high": 311,
-      "secs": {
-       "balc": 72,
-       "orch": 134
+       "balc": 92,
+       "mezz": 92,
+       "orch": 122
       },
       "best": {
        "sec": "balc",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-18&slot=14:00&showtime_id=2473641&product_type=show&seats=LEFT_BALCONY-C23"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=CENTER_BALCONY-F101"
       },
       "deal": false
      },
@@ -8959,16 +8943,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-24 8:00 PM": {
-      "low": 102,
-      "med": 102,
-      "high": 102,
+      "low": 62,
+      "med": 144,
+      "high": 367,
       "secs": {
+       "balc": 62,
+       "mezz": 72,
        "orch": 102
       },
       "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-24&slot=20:00&showtime_id=2473646&product_type=show&seats=RIGHT_ORCHESTRA-O10"
+       "sec": "balc",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-24&slot=20:00&showtime_id=2473646&product_type=show&seats=LEFT_BALCONY-E21"
       },
       "deal": false
      },
@@ -9037,18 +9023,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-28 8:00 PM": {
-      "low": 72,
-      "med": 156,
-      "high": 391,
+      "low": 112,
+      "med": 112,
+      "high": 112,
       "secs": {
-       "balc": 72,
-       "mezz": 92,
-       "orch": 112
+       "mezz": 112
       },
       "best": {
-       "sec": "balc",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-28&slot=20:00&showtime_id=2473651&product_type=show&seats=CENTER_BALCONY-H108"
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=1&date=2026-11-28&slot=20:00&showtime_id=2473651&product_type=show&seats=LEFT_MEZZANINE-B17"
       },
       "deal": false
      },
@@ -9071,31 +9055,16 @@ window.TM_TODAYTIX = {
     },
     "2": {
      "2026-11-16 8:00 PM": {
-      "low": 211,
+      "low": 302,
       "med": 302,
       "high": 302,
       "secs": {
-       "orch": 211
+       "orch": 302
       },
       "best": {
        "sec": "orch",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-16&slot=20:00&showtime_id=2473639&product_type=show&seats=CENTER_ORCHESTRA-E111,CENTER_ORCHESTRA-E112"
-      },
-      "deal": false
-     },
-     "2026-11-18 2:00 PM": {
-      "low": 92,
-      "med": 311,
-      "high": 311,
-      "secs": {
-       "balc": 92,
-       "orch": 311
-      },
-      "best": {
-       "sec": "balc",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-18&slot=14:00&showtime_id=2473641&product_type=show&seats=CENTER_BALCONY-D110,CENTER_BALCONY-D111"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-16&slot=20:00&showtime_id=2473639&product_type=show&seats=CENTER_ORCHESTRA-E113,CENTER_ORCHESTRA-E114"
       },
       "deal": false
      },
@@ -9115,17 +9084,35 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-21 8:00 PM": {
-      "low": 101,
-      "med": 101,
-      "high": 101,
+     "2026-11-20 8:00 PM": {
+      "low": 72,
+      "med": 257,
+      "high": 391,
       "secs": {
-       "mezz": 101
+       "balc": 72,
+       "mezz": 97,
+       "orch": 257
       },
       "best": {
-       "sec": "mezz",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=RIGHT_MEZZANINE-H16,RIGHT_MEZZANINE-H18"
+       "sec": "balc",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-20&slot=20:00&showtime_id=2473643&product_type=show&seats=LEFT_BALCONY-G25,LEFT_BALCONY-G23"
+      },
+      "deal": false
+     },
+     "2026-11-21 8:00 PM": {
+      "low": 92,
+      "med": 144,
+      "high": 391,
+      "secs": {
+       "balc": 92,
+       "mezz": 122,
+       "orch": 156
+      },
+      "best": {
+       "sec": "balc",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=CENTER_BALCONY-G108,CENTER_BALCONY-G107"
       },
       "deal": false
      },
@@ -9142,6 +9129,22 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "H",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-23&slot=20:00&showtime_id=2473645&product_type=show&seats=CENTER_BALCONY-H106,CENTER_BALCONY-H105"
+      },
+      "deal": false
+     },
+     "2026-11-24 8:00 PM": {
+      "low": 62,
+      "med": 144,
+      "high": 367,
+      "secs": {
+       "balc": 62,
+       "mezz": 72,
+       "orch": 102
+      },
+      "best": {
+       "sec": "balc",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-24&slot=20:00&showtime_id=2473646&product_type=show&seats=CENTER_BALCONY-H107,CENTER_BALCONY-H106"
       },
       "deal": false
      },
@@ -9209,22 +9212,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-28 8:00 PM": {
-      "low": 72,
-      "med": 156,
-      "high": 391,
-      "secs": {
-       "balc": 72,
-       "mezz": 92,
-       "orch": 112
-      },
-      "best": {
-       "sec": "balc",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=2&date=2026-11-28&slot=20:00&showtime_id=2473651&product_type=show&seats=CENTER_BALCONY-H108,CENTER_BALCONY-H107"
-      },
-      "deal": false
-     },
      "2026-11-29 3:00 PM": {
       "low": 61,
       "med": 109,
@@ -9259,6 +9246,36 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
+     "2026-11-20 8:00 PM": {
+      "low": 97,
+      "med": 335,
+      "high": 391,
+      "secs": {
+       "mezz": 97,
+       "orch": 257
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-20&slot=20:00&showtime_id=2473643&product_type=show&seats=RIGHT_MEZZANINE-H24,RIGHT_MEZZANINE-H20,RIGHT_MEZZANINE-H22,RIGHT_MEZZANINE-H26"
+      },
+      "deal": false
+     },
+     "2026-11-21 8:00 PM": {
+      "low": 92,
+      "med": 279,
+      "high": 335,
+      "secs": {
+       "balc": 92,
+       "orch": 279
+      },
+      "best": {
+       "sec": "balc",
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-21&slot=20:00&showtime_id=2473644&product_type=show&seats=LEFT_BALCONY-C17,LEFT_BALCONY-C13,LEFT_BALCONY-C15,LEFT_BALCONY-C19"
+      },
+      "deal": false
+     },
      "2026-11-23 8:00 PM": {
       "low": 72,
       "med": 112,
@@ -9272,6 +9289,22 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "H",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-23&slot=20:00&showtime_id=2473645&product_type=show&seats=LEFT_BALCONY-H7,LEFT_BALCONY-H3,LEFT_BALCONY-H5,LEFT_BALCONY-H9"
+      },
+      "deal": false
+     },
+     "2026-11-24 8:00 PM": {
+      "low": 62,
+      "med": 102,
+      "high": 302,
+      "secs": {
+       "balc": 62,
+       "mezz": 72,
+       "orch": 102
+      },
+      "best": {
+       "sec": "balc",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-24&slot=20:00&showtime_id=2473646&product_type=show&seats=CENTER_BALCONY-H107,CENTER_BALCONY-H105,CENTER_BALCONY-H106,CENTER_BALCONY-H108"
       },
       "deal": false
      },
@@ -9336,22 +9369,6 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "J",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-28&slot=14:00&showtime_id=2473650&product_type=show&seats=LEFT_BALCONY-J9,LEFT_BALCONY-J5,LEFT_BALCONY-J7,LEFT_BALCONY-J11"
-      },
-      "deal": false
-     },
-     "2026-11-28 8:00 PM": {
-      "low": 72,
-      "med": 156,
-      "high": 391,
-      "secs": {
-       "balc": 72,
-       "mezz": 92,
-       "orch": 112
-      },
-      "best": {
-       "sec": "balc",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46289&qt=4&date=2026-11-28&slot=20:00&showtime_id=2473651&product_type=show&seats=LEFT_BALCONY-F21,LEFT_BALCONY-F19,LEFT_BALCONY-F23,LEFT_BALCONY-F25"
       },
       "deal": false
      },
@@ -10164,8 +10181,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "rmezz",
-       "row": "NN",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43905&qt=4&date=2026-11-17&slot=19:00&showtime_id=2457882&product_type=show&seats=REAR_MEZZANINE-NN114,REAR_MEZZANINE-NN108,REAR_MEZZANINE-NN110,REAR_MEZZANINE-NN112"
+       "row": "MM",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43905&qt=4&date=2026-11-17&slot=19:00&showtime_id=2457882&product_type=show&seats=REAR_MEZZANINE-MM4,REAR_MEZZANINE-MM2,REAR_MEZZANINE-MM6,REAR_MEZZANINE-MM8"
       },
       "deal": true
      },
@@ -10181,7 +10198,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "rmezz",
        "row": "MM",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43905&qt=4&date=2026-11-18&slot=19:00&showtime_id=2457900&product_type=show&seats=REAR_MEZZANINE-MM108,REAR_MEZZANINE-MM110,REAR_MEZZANINE-MM112,REAR_MEZZANINE-MM114"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43905&qt=4&date=2026-11-18&slot=19:00&showtime_id=2457900&product_type=show&seats=REAR_MEZZANINE-MM111,REAR_MEZZANINE-MM117,REAR_MEZZANINE-MM115,REAR_MEZZANINE-MM113"
       },
       "deal": true
      },
@@ -11334,7 +11351,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-28 2:00 PM": {
       "low": 138,
-      "med": 247,
+      "med": 269,
       "high": 600,
       "secs": {
        "mezz": 138,
@@ -11396,7 +11413,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=43812&qt=2&date=2026-11-17&slot=19:00&showtime_id=2412546&product_type=show&seats=MEZZ_R-B28,MEZZ_R-B26"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=43812&qt=2&date=2026-11-17&slot=19:00&showtime_id=2412546&product_type=show&seats=MEZZ_R-B26,MEZZ_R-B28"
      },
      "deal": false
     },
@@ -11901,7 +11918,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43812&qt=2&date=2026-11-17&slot=19:00&showtime_id=2412546&product_type=show&seats=MEZZ_R-B28,MEZZ_R-B26"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=43812&qt=2&date=2026-11-17&slot=19:00&showtime_id=2412546&product_type=show&seats=MEZZ_R-B26,MEZZ_R-B28"
       },
       "deal": false
      },
@@ -12445,19 +12462,19 @@ window.TM_TODAYTIX = {
      "med": 179,
      "high": 335,
      "secs": {
-      "mezz": 102,
-      "orch": 102
+      "orch": 102,
+      "mezz": 112
      },
      "best": {
-      "sec": "mezz",
-      "row": "L",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-21&slot=14:00&showtime_id=2434819&product_type=show&seats=MEZZANINE_LEFT-L5,MEZZANINE_LEFT-L3"
+      "sec": "orch",
+      "row": "R",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-21&slot=14:00&showtime_id=2434819&product_type=show&seats=ORCHESTRA_RIGHT-R20,ORCHESTRA_RIGHT-R22"
      },
      "deal": false
     },
     "2026-11-21 7:00 PM": {
      "low": 134,
-     "med": 179,
+     "med": 201,
      "high": 335,
      "secs": {
       "mezz": 134,
@@ -12520,13 +12537,13 @@ window.TM_TODAYTIX = {
      "med": 233,
      "high": 369,
      "secs": {
-      "orch": 112,
-      "mezz": 144
+      "mezz": 112,
+      "orch": 112
      },
      "best": {
-      "sec": "orch",
-      "row": "R",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=ORCHESTRA_RIGHT-R20,ORCHESTRA_RIGHT-R22"
+      "sec": "mezz",
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=MEZZANINE_LEFT-F3,MEZZANINE_LEFT-F1"
      },
      "deal": false
     },
@@ -12585,14 +12602,14 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "J",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_RIGHT-J116,MEZZANINE_RIGHT-J118"
+      "row": "H",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_LEFT-H109,MEZZANINE_LEFT-H107"
      },
      "deal": false
     },
     "2026-11-28 7:00 PM": {
      "low": 166,
-     "med": 233,
+     "med": 257,
      "high": 369,
      "secs": {
       "mezz": 166,
@@ -12689,7 +12706,7 @@ window.TM_TODAYTIX = {
       "high": 335,
       "secs": {
        "orch": 102,
-       "mezz": 102
+       "mezz": 112
       },
       "best": {
        "sec": "orch",
@@ -12734,7 +12751,7 @@ window.TM_TODAYTIX = {
       "high": 335,
       "secs": {
        "orch": 102,
-       "mezz": 102
+       "mezz": 112
       },
       "best": {
        "sec": "orch",
@@ -12768,8 +12785,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=1&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=MEZZANINE_LEFT-K9"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=1&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=MEZZANINE_LEFT-F3"
       },
       "deal": false
      },
@@ -12844,7 +12861,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=1&date=2026-11-28&slot=19:00&showtime_id=2434828&product_type=show&seats=MEZZANINE_LEFT-H5"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=1&date=2026-11-28&slot=19:00&showtime_id=2434828&product_type=show&seats=MEZZANINE_RIGHT-H6"
       },
       "deal": false
      },
@@ -12930,19 +12947,19 @@ window.TM_TODAYTIX = {
       "med": 179,
       "high": 335,
       "secs": {
-       "mezz": 102,
-       "orch": 102
+       "orch": 102,
+       "mezz": 112
       },
       "best": {
-       "sec": "mezz",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-21&slot=14:00&showtime_id=2434819&product_type=show&seats=MEZZANINE_LEFT-L5,MEZZANINE_LEFT-L3"
+       "sec": "orch",
+       "row": "R",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-21&slot=14:00&showtime_id=2434819&product_type=show&seats=ORCHESTRA_RIGHT-R20,ORCHESTRA_RIGHT-R22"
       },
       "deal": false
      },
      "2026-11-21 7:00 PM": {
       "low": 134,
-      "med": 179,
+      "med": 201,
       "high": 335,
       "secs": {
        "mezz": 134,
@@ -13005,13 +13022,13 @@ window.TM_TODAYTIX = {
       "med": 233,
       "high": 369,
       "secs": {
-       "orch": 112,
-       "mezz": 144
+       "mezz": 112,
+       "orch": 112
       },
       "best": {
-       "sec": "orch",
-       "row": "R",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=ORCHESTRA_RIGHT-R20,ORCHESTRA_RIGHT-R22"
+       "sec": "mezz",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-25&slot=14:00&showtime_id=2434823&product_type=show&seats=MEZZANINE_LEFT-F3,MEZZANINE_LEFT-F1"
       },
       "deal": false
      },
@@ -13070,14 +13087,14 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_RIGHT-J116,MEZZANINE_RIGHT-J118"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=2&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_LEFT-H109,MEZZANINE_LEFT-H107"
       },
       "deal": false
      },
      "2026-11-28 7:00 PM": {
       "low": 166,
-      "med": 233,
+      "med": 257,
       "high": 369,
       "secs": {
        "mezz": 166,
@@ -13184,7 +13201,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-21 7:00 PM": {
       "low": 134,
-      "med": 179,
+      "med": 201,
       "high": 335,
       "secs": {
        "mezz": 134,
@@ -13312,8 +13329,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=4&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_RIGHT-J116,MEZZANINE_RIGHT-J120,MEZZANINE_RIGHT-J118,MEZZANINE_RIGHT-J114"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=127&qt=4&date=2026-11-28&slot=14:00&showtime_id=2434827&product_type=show&seats=MEZZANINE_LEFT-H109,MEZZANINE_LEFT-H105,MEZZANINE_LEFT-H107,MEZZANINE_LEFT-H111"
       },
       "deal": false
      },
@@ -13508,7 +13525,7 @@ window.TM_TODAYTIX = {
      "high": 308,
      "secs": {
       "orch": 156,
-      "mezz": 201
+      "mezz": 179
      },
      "best": {
       "sec": "orch",
@@ -13528,7 +13545,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "orch",
       "row": "C",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=2&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_LEFT-C11,ORCHESTRA_FRONT_LEFT-C9"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=2&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_LEFT-C9,ORCHESTRA_FRONT_LEFT-C11"
      },
      "deal": false
     },
@@ -13550,7 +13567,7 @@ window.TM_TODAYTIX = {
     "2026-11-27 7:30 PM": {
      "low": 201,
      "med": 279,
-     "high": 335,
+     "high": 447,
      "secs": {
       "orch": 201,
       "mezz": 252
@@ -13564,7 +13581,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-28 2:00 PM": {
      "low": 179,
-     "med": 252,
+     "med": 223,
      "high": 335,
      "secs": {
       "mezz": 179,
@@ -13754,14 +13771,14 @@ window.TM_TODAYTIX = {
       "med": 201,
       "high": 308,
       "secs": {
+       "mezz": 134,
        "orch": 134,
-       "mezz": 156,
        "box": 156
       },
       "best": {
-       "sec": "orch",
-       "row": "R",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=1&date=2026-11-25&slot=14:00&showtime_id=2448717&product_type=show&seats=ORCHESTRA_REAR_LEFT-R21"
+       "sec": "mezz",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=1&date=2026-11-25&slot=14:00&showtime_id=2448717&product_type=show&seats=MEZZANINE_FRONT_LEFT-A21"
       },
       "deal": false
      },
@@ -13801,7 +13818,7 @@ window.TM_TODAYTIX = {
      "2026-11-27 7:30 PM": {
       "low": 179,
       "med": 252,
-      "high": 335,
+      "high": 447,
       "secs": {
        "mezz": 179,
        "orch": 179,
@@ -13832,7 +13849,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-28 7:30 PM": {
       "low": 179,
-      "med": 223,
+      "med": 252,
       "high": 335,
       "secs": {
        "mezz": 179,
@@ -14002,7 +14019,7 @@ window.TM_TODAYTIX = {
       "high": 308,
       "secs": {
        "orch": 156,
-       "mezz": 201
+       "mezz": 179
       },
       "best": {
        "sec": "orch",
@@ -14022,7 +14039,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=2&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_LEFT-C11,ORCHESTRA_FRONT_LEFT-C9"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=2&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_LEFT-C9,ORCHESTRA_FRONT_LEFT-C11"
       },
       "deal": false
      },
@@ -14044,7 +14061,7 @@ window.TM_TODAYTIX = {
      "2026-11-27 7:30 PM": {
       "low": 201,
       "med": 279,
-      "high": 335,
+      "high": 447,
       "secs": {
        "orch": 201,
        "mezz": 252
@@ -14058,7 +14075,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-28 2:00 PM": {
       "low": 179,
-      "med": 252,
+      "med": 223,
       "high": 335,
       "secs": {
        "mezz": 179,
@@ -14236,11 +14253,11 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 2:00 PM": {
-      "low": 201,
-      "med": 223,
+      "low": 179,
+      "med": 308,
       "high": 308,
       "secs": {
-       "mezz": 201,
+       "mezz": 179,
        "orch": 223
       },
       "best": {
@@ -14259,8 +14276,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=4&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_LEFT-G1,ORCHESTRA_FRONT_LEFT-G7,ORCHESTRA_FRONT_LEFT-G5,ORCHESTRA_FRONT_LEFT-G3"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=4&date=2026-11-25&slot=19:30&showtime_id=2448718&product_type=show&seats=ORCHESTRA_FRONT_CENTER-F105,ORCHESTRA_FRONT_CENTER-F108,ORCHESTRA_FRONT_CENTER-F107,ORCHESTRA_FRONT_CENTER-F106"
       },
       "deal": false
      },
@@ -14279,17 +14296,17 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-27 7:30 PM": {
-      "low": 201,
-      "med": 252,
-      "high": 335,
+      "low": 252,
+      "med": 447,
+      "high": 447,
       "secs": {
-       "orch": 201,
-       "mezz": 252
+       "mezz": 252,
+       "orch": 447
       },
       "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=4&date=2026-11-27&slot=19:30&showtime_id=2449172&product_type=show&seats=ORCHESTRA_REAR_LEFT-N17,ORCHESTRA_REAR_LEFT-N21,ORCHESTRA_REAR_LEFT-N19,ORCHESTRA_REAR_LEFT-N15"
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14748&qt=4&date=2026-11-27&slot=19:30&showtime_id=2449172&product_type=show&seats=MEZZANINE_FRONT_LEFT-B11,MEZZANINE_FRONT_LEFT-B15,MEZZANINE_FRONT_LEFT-B13,MEZZANINE_FRONT_LEFT-B9"
       },
       "deal": false
      },
@@ -14299,7 +14316,7 @@ window.TM_TODAYTIX = {
       "high": 335,
       "secs": {
        "orch": 201,
-       "mezz": 252
+       "mezz": 223
       },
       "best": {
        "sec": "orch",
@@ -14371,7 +14388,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=LEFT_MEZZANINE-F21,LEFT_MEZZANINE-F23"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=LEFT_MEZZANINE-F19,LEFT_MEZZANINE-F21"
      },
      "deal": true
     },
@@ -14390,18 +14407,18 @@ window.TM_TODAYTIX = {
      },
      "deal": true
     },
-    "2026-11-21 2:00 PM": {
-     "low": 144,
-     "med": 211,
-     "high": 367,
+    "2026-11-20 7:00 PM": {
+     "low": 112,
+     "med": 166,
+     "high": 311,
      "secs": {
-      "orch": 144,
-      "mezz": 144
+      "mezz": 112,
+      "orch": 134
      },
      "best": {
-      "sec": "orch",
-      "row": "M",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-21&slot=14:00&showtime_id=2456029&product_type=show&seats=LEFT_ORCHESTRA-M21,LEFT_ORCHESTRA-M23"
+      "sec": "mezz",
+      "row": "K",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-20&slot=19:00&showtime_id=2456028&product_type=show&seats=CENTER_MEZZANINE-K109,CENTER_MEZZANINE-K108"
      },
      "deal": false
     },
@@ -14633,21 +14650,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 2:00 PM": {
-      "low": 92,
-      "med": 211,
-      "high": 367,
-      "secs": {
-       "mezz": 92,
-       "orch": 112
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=1&date=2026-11-21&slot=14:00&showtime_id=2456029&product_type=show&seats=LEFT_MEZZANINE-J23"
-      },
-      "deal": false
-     },
      "2026-11-21 7:30 PM": {
       "low": 92,
       "med": 211,
@@ -14841,7 +14843,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=LEFT_MEZZANINE-F21,LEFT_MEZZANINE-F23"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=LEFT_MEZZANINE-F19,LEFT_MEZZANINE-F21"
       },
       "deal": true
      },
@@ -14860,18 +14862,18 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-21 2:00 PM": {
-      "low": 144,
-      "med": 211,
-      "high": 367,
+     "2026-11-20 7:00 PM": {
+      "low": 112,
+      "med": 166,
+      "high": 311,
       "secs": {
-       "orch": 144,
-       "mezz": 144
+       "mezz": 112,
+       "orch": 134
       },
       "best": {
-       "sec": "orch",
-       "row": "M",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-21&slot=14:00&showtime_id=2456029&product_type=show&seats=LEFT_ORCHESTRA-M21,LEFT_ORCHESTRA-M23"
+       "sec": "mezz",
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=2&date=2026-11-20&slot=19:00&showtime_id=2456028&product_type=show&seats=CENTER_MEZZANINE-K109,CENTER_MEZZANINE-K108"
       },
       "deal": false
      },
@@ -15038,7 +15040,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-17&slot=19:00&showtime_id=2456024&product_type=show&seats=LEFT_MEZZANINE-E17,LEFT_MEZZANINE-E23,LEFT_MEZZANINE-E21,LEFT_MEZZANINE-E19"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-17&slot=19:00&showtime_id=2456024&product_type=show&seats=LEFT_MEZZANINE-E19,LEFT_MEZZANINE-E23,LEFT_MEZZANINE-E21,LEFT_MEZZANINE-E17"
       },
       "deal": false
      },
@@ -15059,7 +15061,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-18 7:30 PM": {
       "low": 69,
-      "med": 102,
+      "med": 111,
       "high": 279,
       "secs": {
        "mezz": 69,
@@ -15068,13 +15070,13 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=LEFT_MEZZANINE-F21,LEFT_MEZZANINE-F25,LEFT_MEZZANINE-F23,LEFT_MEZZANINE-F19"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-18&slot=19:30&showtime_id=2456026&product_type=show&seats=RIGHT_MEZZANINE-F22,RIGHT_MEZZANINE-F18,RIGHT_MEZZANINE-F20,RIGHT_MEZZANINE-F24"
       },
       "deal": true
      },
      "2026-11-19 7:00 PM": {
       "low": 67,
-      "med": 109,
+      "med": 102,
       "high": 223,
       "secs": {
        "mezz": 67,
@@ -15087,18 +15089,18 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-21 2:00 PM": {
-      "low": 144,
-      "med": 211,
-      "high": 367,
+     "2026-11-20 7:00 PM": {
+      "low": 122,
+      "med": 166,
+      "high": 311,
       "secs": {
-       "mezz": 144,
-       "orch": 211
+       "mezz": 122,
+       "orch": 134
       },
       "best": {
        "sec": "mezz",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-21&slot=14:00&showtime_id=2456029&product_type=show&seats=LEFT_MEZZANINE-G23,LEFT_MEZZANINE-G27,LEFT_MEZZANINE-G25,LEFT_MEZZANINE-G21"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-20&slot=19:00&showtime_id=2456028&product_type=show&seats=LEFT_MEZZANINE-E19,LEFT_MEZZANINE-E23,LEFT_MEZZANINE-E21,LEFT_MEZZANINE-E17"
       },
       "deal": false
      },
@@ -15207,21 +15209,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-28 2:00 PM": {
-      "low": 166,
-      "med": 211,
-      "high": 367,
-      "secs": {
-       "orch": 166,
-       "mezz": 189
-      },
-      "best": {
-       "sec": "orch",
-       "row": "M",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=31351&qt=4&date=2026-11-28&slot=14:00&showtime_id=2456037&product_type=show&seats=LEFT_ORCHESTRA-M19,LEFT_ORCHESTRA-M23,LEFT_ORCHESTRA-M21,LEFT_ORCHESTRA-M17"
-      },
-      "deal": false
-     },
      "2026-11-28 7:30 PM": {
       "low": 144,
       "med": 233,
@@ -15272,21 +15259,6 @@ window.TM_TODAYTIX = {
       "sec": "balc",
       "row": "E",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-17&slot=19:00&showtime_id=2502705&product_type=show&seats=CENTER_BALCONY-E111,CENTER_BALCONY-E110"
-     },
-     "deal": false
-    },
-    "2026-11-18 2:00 PM": {
-     "low": 107,
-     "med": 172,
-     "high": 284,
-     "secs": {
-      "orch": 107,
-      "mezz": 172
-     },
-     "best": {
-      "sec": "orch",
-      "row": "O",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-18&slot=14:00&showtime_id=2502706&product_type=show&seats=LEFT_ORCHESTRA-O17,LEFT_ORCHESTRA-O19"
      },
      "deal": false
     },
@@ -15354,22 +15326,6 @@ window.TM_TODAYTIX = {
      },
      "deal": false
     },
-    "2026-11-21 8:00 PM": {
-     "low": 67,
-     "med": 160,
-     "high": 340,
-     "secs": {
-      "balc": 67,
-      "mezz": 97,
-      "orch": 138
-     },
-     "best": {
-      "sec": "balc",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-21&slot=20:00&showtime_id=2502711&product_type=show&seats=CENTER_BALCONY-E106,CENTER_BALCONY-E105"
-     },
-     "deal": false
-    },
     "2026-11-22 3:00 PM": {
      "low": 67,
      "med": 182,
@@ -15387,20 +15343,18 @@ window.TM_TODAYTIX = {
      "deal": true
     },
     "2026-11-24 7:00 PM": {
-     "low": 63,
-     "med": 150,
-     "high": 284,
+     "low": 231,
+     "med": 231,
+     "high": 231,
      "secs": {
-      "balc": 63,
-      "mezz": 87,
-      "orch": 97
+      "orch": 231
      },
      "best": {
-      "sec": "balc",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_BALCONY-E106,CENTER_BALCONY-E105"
+      "sec": "orch",
+      "row": "B",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_ORCHESTRA-B101,CENTER_ORCHESTRA-B102"
      },
-     "deal": true
+     "deal": false
     },
     "2026-11-25 2:00 PM": {
      "low": 63,
@@ -15419,16 +15373,18 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-25 7:30 PM": {
-     "low": 67,
-     "med": 67,
-     "high": 67,
+     "low": 63,
+     "med": 150,
+     "high": 284,
      "secs": {
-      "balc": 67
+      "balc": 63,
+      "mezz": 87,
+      "orch": 128
      },
      "best": {
       "sec": "balc",
-      "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-G111,CENTER_BALCONY-G112"
+      "row": "D",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-D106,CENTER_BALCONY-D105"
      },
      "deal": false
     },
@@ -15515,9 +15471,9 @@ window.TM_TODAYTIX = {
    },
    "byQty": {
     "1": {
-     "2026-11-18 2:00 PM": {
+     "2026-11-17 7:00 PM": {
       "low": 63,
-      "med": 172,
+      "med": 128,
       "high": 284,
       "secs": {
        "balc": 63,
@@ -15526,53 +15482,74 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "balc",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-18&slot=14:00&showtime_id=2502706&product_type=show&seats=LEFT_BALCONY-G13"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-17&slot=19:00&showtime_id=2502705&product_type=show&seats=LEFT_BALCONY-F15"
       },
       "deal": false
      },
      "2026-11-18 7:30 PM": {
-      "low": 87,
-      "med": 87,
-      "high": 87,
+      "low": 63,
+      "med": 128,
+      "high": 284,
       "secs": {
-       "orch": 87
+       "balc": 63,
+       "mezz": 87,
+       "orch": 97
       },
       "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-18&slot=19:30&showtime_id=2502707&product_type=show&seats=LEFT_ORCHESTRA-N17"
+       "sec": "balc",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-18&slot=19:30&showtime_id=2502707&product_type=show&seats=CENTER_BALCONY-D110"
       },
       "deal": true
      },
      "2026-11-19 7:00 PM": {
-      "low": 87,
-      "med": 99,
-      "high": 99,
+      "low": 63,
+      "med": 128,
+      "high": 284,
       "secs": {
+       "balc": 63,
        "mezz": 87,
-       "orch": 99
+       "orch": 97
       },
       "best": {
-       "sec": "mezz",
+       "sec": "balc",
        "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-19&slot=19:00&showtime_id=2502708&product_type=show&seats=LEFT_MEZZANINE-D9"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-19&slot=19:00&showtime_id=2502708&product_type=show&seats=CENTER_BALCONY-D112"
       },
       "deal": true
      },
      "2026-11-20 7:30 PM": {
-      "low": 182,
-      "med": 255,
-      "high": 255,
+      "low": 63,
+      "med": 128,
+      "high": 340,
       "secs": {
-       "orch": 182
+       "balc": 63,
+       "mezz": 87,
+       "orch": 97
       },
       "best": {
-       "sec": "orch",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-20&slot=19:30&showtime_id=2502709&product_type=show&seats=CENTER_ORCHESTRA-L108"
+       "sec": "balc",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-20&slot=19:30&showtime_id=2502709&product_type=show&seats=CENTER_BALCONY-E108"
       },
       "deal": true
+     },
+     "2026-11-21 2:00 PM": {
+      "low": 67,
+      "med": 138,
+      "high": 340,
+      "secs": {
+       "balc": 67,
+       "mezz": 97,
+       "orch": 116
+      },
+      "best": {
+       "sec": "balc",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-21&slot=14:00&showtime_id=2502710&product_type=show&seats=CENTER_BALCONY-D106"
+      },
+      "deal": false
      },
      "2026-11-21 8:00 PM": {
       "low": 67,
@@ -15606,53 +15583,19 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-17 7:00 PM": {
-      "low": 63,
-      "med": 128,
-      "high": 284,
-      "secs": {
-       "balc": 63,
-       "mezz": 87,
-       "orch": 107
-      },
-      "best": {
-       "sec": "balc",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-17&slot=19:00&showtime_id=2502705&product_type=show&seats=LEFT_BALCONY-F15"
-      },
-      "deal": false
-     },
-     "2026-11-21 2:00 PM": {
-      "low": 67,
-      "med": 138,
-      "high": 340,
-      "secs": {
-       "balc": 67,
-       "mezz": 97,
-       "orch": 116
-      },
-      "best": {
-       "sec": "balc",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-21&slot=14:00&showtime_id=2502710&product_type=show&seats=CENTER_BALCONY-D106"
-      },
-      "deal": false
-     },
      "2026-11-24 7:00 PM": {
-      "low": 63,
-      "med": 128,
-      "high": 284,
+      "low": 231,
+      "med": 255,
+      "high": 255,
       "secs": {
-       "balc": 63,
-       "mezz": 87,
-       "orch": 97
+       "orch": 231
       },
       "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_BALCONY-E106"
+       "sec": "orch",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_ORCHESTRA-B101"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-25 2:00 PM": {
       "low": 63,
@@ -15671,16 +15614,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 7:30 PM": {
-      "low": 67,
-      "med": 67,
-      "high": 67,
+      "low": 63,
+      "med": 150,
+      "high": 284,
       "secs": {
-       "balc": 67
+       "balc": 63,
+       "mezz": 87,
+       "orch": 107
       },
       "best": {
        "sec": "balc",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-G111"
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=1&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-D106"
       },
       "deal": false
      },
@@ -15782,21 +15727,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-18 2:00 PM": {
-      "low": 107,
-      "med": 172,
-      "high": 284,
-      "secs": {
-       "orch": 107,
-       "mezz": 172
-      },
-      "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-18&slot=14:00&showtime_id=2502706&product_type=show&seats=LEFT_ORCHESTRA-O17,LEFT_ORCHESTRA-O19"
-      },
-      "deal": false
-     },
      "2026-11-18 7:30 PM": {
       "low": 63,
       "med": 128,
@@ -15861,22 +15791,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 8:00 PM": {
-      "low": 67,
-      "med": 160,
-      "high": 340,
-      "secs": {
-       "balc": 67,
-       "mezz": 97,
-       "orch": 138
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-21&slot=20:00&showtime_id=2502711&product_type=show&seats=CENTER_BALCONY-E106,CENTER_BALCONY-E105"
-      },
-      "deal": false
-     },
      "2026-11-22 3:00 PM": {
       "low": 67,
       "med": 182,
@@ -15894,20 +15808,18 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-24 7:00 PM": {
-      "low": 63,
-      "med": 150,
-      "high": 284,
+      "low": 231,
+      "med": 231,
+      "high": 231,
       "secs": {
-       "balc": 63,
-       "mezz": 87,
-       "orch": 97
+       "orch": 231
       },
       "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_BALCONY-E106,CENTER_BALCONY-E105"
+       "sec": "orch",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_ORCHESTRA-B101,CENTER_ORCHESTRA-B102"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-25 2:00 PM": {
       "low": 63,
@@ -15926,16 +15838,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 7:30 PM": {
-      "low": 67,
-      "med": 67,
-      "high": 67,
+      "low": 63,
+      "med": 150,
+      "high": 284,
       "secs": {
-       "balc": 67
+       "balc": 63,
+       "mezz": 87,
+       "orch": 128
       },
       "best": {
        "sec": "balc",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-G111,CENTER_BALCONY-G112"
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=2&date=2026-11-25&slot=19:30&showtime_id=2502715&product_type=show&seats=CENTER_BALCONY-D106,CENTER_BALCONY-D105"
       },
       "deal": false
      },
@@ -16037,21 +15951,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-18 2:00 PM": {
-      "low": 150,
-      "med": 182,
-      "high": 284,
-      "secs": {
-       "orch": 150,
-       "mezz": 172
-      },
-      "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=4&date=2026-11-18&slot=14:00&showtime_id=2502706&product_type=show&seats=CENTER_ORCHESTRA-P107,CENTER_ORCHESTRA-P104,CENTER_ORCHESTRA-P105,CENTER_ORCHESTRA-P106"
-      },
-      "deal": false
-     },
      "2026-11-18 7:30 PM": {
       "low": 63,
       "med": 150,
@@ -16116,22 +16015,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 8:00 PM": {
-      "low": 67,
-      "med": 138,
-      "high": 340,
-      "secs": {
-       "balc": 67,
-       "mezz": 97,
-       "orch": 138
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=4&date=2026-11-21&slot=20:00&showtime_id=2502711&product_type=show&seats=CENTER_BALCONY-E104,CENTER_BALCONY-E101,CENTER_BALCONY-E102,CENTER_BALCONY-E103"
-      },
-      "deal": false
-     },
      "2026-11-22 3:00 PM": {
       "low": 67,
       "med": 182,
@@ -16145,22 +16028,6 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "H",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=4&date=2026-11-22&slot=15:00&showtime_id=2502712&product_type=show&seats=CENTER_BALCONY-H109,CENTER_BALCONY-H106,CENTER_BALCONY-H107,CENTER_BALCONY-H108"
-      },
-      "deal": true
-     },
-     "2026-11-24 7:00 PM": {
-      "low": 63,
-      "med": 128,
-      "high": 284,
-      "secs": {
-       "balc": 63,
-       "mezz": 87,
-       "orch": 107
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44366&qt=4&date=2026-11-24&slot=19:00&showtime_id=2502713&product_type=show&seats=CENTER_BALCONY-E111,CENTER_BALCONY-E110,CENTER_BALCONY-E112,CENTER_BALCONY-E113"
       },
       "deal": true
      },
@@ -16324,7 +16191,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "O",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O108,MEZZ-O107"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O109,MEZZ-O108"
      },
      "deal": false
     },
@@ -16345,11 +16212,11 @@ window.TM_TODAYTIX = {
     },
     "2026-11-20 7:00 PM": {
      "low": 267,
-     "med": 450,
+     "med": 421,
      "high": 450,
      "secs": {
       "mezz": 267,
-      "orch": 450
+      "orch": 421
      },
      "best": {
       "sec": "mezz",
@@ -16434,7 +16301,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-27 1:00 PM": {
      "low": 152,
-     "med": 421,
+     "med": 450,
      "high": 450,
      "secs": {
       "mezz": 152,
@@ -16503,7 +16370,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "N",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N116,MEZZ-N117"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N120,MEZZ-N119"
      },
      "deal": false
     }
@@ -16591,7 +16458,7 @@ window.TM_TODAYTIX = {
       "high": 450,
       "secs": {
        "mezz": 173,
-       "orch": 173
+       "orch": 267
       },
       "best": {
        "sec": "mezz",
@@ -16793,7 +16660,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O108,MEZZ-O107"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O109,MEZZ-O108"
       },
       "deal": false
      },
@@ -16814,11 +16681,11 @@ window.TM_TODAYTIX = {
      },
      "2026-11-20 7:00 PM": {
       "low": 267,
-      "med": 450,
+      "med": 421,
       "high": 450,
       "secs": {
        "mezz": 267,
-       "orch": 450
+       "orch": 421
       },
       "best": {
        "sec": "mezz",
@@ -16903,7 +16770,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-27 1:00 PM": {
       "low": 152,
-      "med": 421,
+      "med": 450,
       "high": 450,
       "secs": {
        "mezz": 152,
@@ -16972,7 +16839,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N116,MEZZ-N117"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=2&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N120,MEZZ-N119"
       },
       "deal": false
      }
@@ -17019,7 +16886,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O106,MEZZ-O105,MEZZ-O107,MEZZ-O108"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-18&slot=19:00&showtime_id=2403118&product_type=show&seats=MEZZ-O108,MEZZ-O105,MEZZ-O106,MEZZ-O107"
       },
       "deal": false
      },
@@ -17040,16 +16907,16 @@ window.TM_TODAYTIX = {
      },
      "2026-11-20 7:00 PM": {
       "low": 301,
-      "med": 450,
+      "med": 421,
       "high": 450,
       "secs": {
        "mezz": 301,
-       "orch": 450
+       "orch": 421
       },
       "best": {
        "sec": "mezz",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-20&slot=19:00&showtime_id=2403120&product_type=show&seats=FMEZZ-E10,FMEZZ-E6,FMEZZ-E8,FMEZZ-E12"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-20&slot=19:00&showtime_id=2403120&product_type=show&seats=FMEZZ-E8,FMEZZ-E6,FMEZZ-E10,FMEZZ-E12"
       },
       "deal": false
      },
@@ -17136,7 +17003,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-28&slot=14:00&showtime_id=2403129&product_type=show&seats=MEZZ-P114,MEZZ-P111,MEZZ-P112,MEZZ-P113"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-28&slot=14:00&showtime_id=2403129&product_type=show&seats=MEZZ-P116,MEZZ-P117,MEZZ-P118,MEZZ-P119"
       },
       "deal": false
      },
@@ -17166,7 +17033,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N116,MEZZ-N117,MEZZ-N118,MEZZ-N119"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=23379&qt=4&date=2026-11-29&slot=15:00&showtime_id=2403131&product_type=show&seats=MEZZ-N118,MEZZ-N116,MEZZ-N117,MEZZ-N119"
       },
       "deal": false
      }
@@ -17188,7 +17055,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "N",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=2&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N16,MEZZ-N14"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=2&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N13,MEZZ-N15"
      },
      "deal": false
     },
@@ -17431,7 +17298,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=1&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N16"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=1&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N13"
       },
       "deal": false
      },
@@ -17673,7 +17540,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=2&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N16,MEZZ-N14"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45429&qt=2&date=2026-11-17&slot=19:00&showtime_id=2460312&product_type=show&seats=MEZZ-N13,MEZZ-N15"
       },
       "deal": false
      },
@@ -18157,8 +18024,8 @@ window.TM_TODAYTIX = {
      "high": 270,
      "secs": {
       "balc": 101,
-      "orch": 119,
-      "mezz": 119
+      "mezz": 101,
+      "orch": 119
      },
      "best": {
       "sec": "balc",
@@ -18168,18 +18035,18 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-18 1:00 PM": {
-     "low": 101,
+     "low": 84,
      "med": 150,
      "high": 270,
      "secs": {
-      "balc": 101,
-      "orch": 119,
-      "mezz": 119
+      "balc": 84,
+      "mezz": 101,
+      "orch": 119
      },
      "best": {
       "sec": "balc",
-      "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-B15,BALCONY-B13"
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-F108,BALCONY-F109"
      },
      "deal": false
     },
@@ -18210,8 +18077,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "balc",
-      "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-19&slot=19:00&showtime_id=2504257&product_type=show&seats=BALCONY-B20,BALCONY-B22"
+      "row": "E",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-19&slot=19:00&showtime_id=2504257&product_type=show&seats=BALCONY-E19,BALCONY-E17"
      },
      "deal": false
     },
@@ -18305,7 +18172,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=13:00&showtime_id=2504263&product_type=show&seats=BALCONY-G15,BALCONY-G13"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=13:00&showtime_id=2504263&product_type=show&seats=BALCONY-G13,BALCONY-G11"
      },
      "deal": false
     },
@@ -18321,7 +18188,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G13,BALCONY-G11"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G21,BALCONY-G19"
      },
      "deal": false
     },
@@ -18337,7 +18204,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F19,BALCONY-F17"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F20,BALCONY-F22"
      },
      "deal": false
     },
@@ -18369,7 +18236,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-28&slot=14:00&showtime_id=2504267&product_type=show&seats=BALCONY-F15,BALCONY-F13"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-28&slot=14:00&showtime_id=2504267&product_type=show&seats=BALCONY-F19,BALCONY-F17"
      },
      "deal": false
     },
@@ -18425,18 +18292,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 1:00 PM": {
-      "low": 101,
+      "low": 84,
       "med": 150,
       "high": 270,
       "secs": {
-       "balc": 101,
+       "balc": 84,
        "mezz": 101,
        "orch": 119
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=1&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-B15"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=1&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-F108"
       },
       "deal": false
      },
@@ -18580,7 +18447,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=1&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G13"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=1&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G21"
       },
       "deal": false
      },
@@ -18672,8 +18539,8 @@ window.TM_TODAYTIX = {
       "high": 270,
       "secs": {
        "balc": 101,
-       "orch": 119,
-       "mezz": 119
+       "mezz": 101,
+       "orch": 119
       },
       "best": {
        "sec": "balc",
@@ -18683,18 +18550,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 1:00 PM": {
-      "low": 101,
+      "low": 84,
       "med": 150,
       "high": 270,
       "secs": {
-       "balc": 101,
-       "orch": 119,
-       "mezz": 119
+       "balc": 84,
+       "mezz": 101,
+       "orch": 119
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-B15,BALCONY-B13"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-F108,BALCONY-F109"
       },
       "deal": false
      },
@@ -18725,8 +18592,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-19&slot=19:00&showtime_id=2504257&product_type=show&seats=BALCONY-B20,BALCONY-B22"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-19&slot=19:00&showtime_id=2504257&product_type=show&seats=BALCONY-E19,BALCONY-E17"
       },
       "deal": false
      },
@@ -18820,7 +18687,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=13:00&showtime_id=2504263&product_type=show&seats=BALCONY-G15,BALCONY-G13"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=13:00&showtime_id=2504263&product_type=show&seats=BALCONY-G13,BALCONY-G11"
       },
       "deal": false
      },
@@ -18836,7 +18703,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G13,BALCONY-G11"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G21,BALCONY-G19"
       },
       "deal": false
      },
@@ -18852,7 +18719,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F19,BALCONY-F17"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F20,BALCONY-F22"
       },
       "deal": false
      },
@@ -18884,7 +18751,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-28&slot=14:00&showtime_id=2504267&product_type=show&seats=BALCONY-F15,BALCONY-F13"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=2&date=2026-11-28&slot=14:00&showtime_id=2504267&product_type=show&seats=BALCONY-F19,BALCONY-F17"
       },
       "deal": false
      },
@@ -18928,8 +18795,8 @@ window.TM_TODAYTIX = {
       "high": 270,
       "secs": {
        "balc": 101,
-       "orch": 119,
-       "mezz": 119
+       "mezz": 101,
+       "orch": 119
       },
       "best": {
        "sec": "balc",
@@ -18939,18 +18806,18 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 1:00 PM": {
-      "low": 101,
+      "low": 84,
       "med": 150,
       "high": 270,
       "secs": {
-       "balc": 101,
-       "orch": 119,
-       "mezz": 119
+       "balc": 84,
+       "mezz": 101,
+       "orch": 119
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-B15,BALCONY-B11,BALCONY-B13,BALCONY-B17"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-18&slot=13:00&showtime_id=2504255&product_type=show&seats=BALCONY-F108,BALCONY-F111,BALCONY-F110,BALCONY-F109"
       },
       "deal": false
      },
@@ -19088,8 +18955,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "balc",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-G13,BALCONY-G7,BALCONY-G9,BALCONY-G11"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-25&slot=19:00&showtime_id=2504264&product_type=show&seats=BALCONY-H11,BALCONY-H5,BALCONY-H7,BALCONY-H9"
       },
       "deal": false
      },
@@ -19105,7 +18972,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F19,BALCONY-F15,BALCONY-F17,BALCONY-F21"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13709&qt=4&date=2026-11-27&slot=14:00&showtime_id=2504265&product_type=show&seats=BALCONY-F20,BALCONY-F24,BALCONY-F22,BALCONY-F18"
       },
       "deal": false
      },
@@ -20081,7 +19948,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "M",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=2&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M11,MEZZ-M9"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=2&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M14,MEZZ-M16"
      },
      "deal": true
     },
@@ -20324,7 +20191,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "M",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=1&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M11"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=1&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M14"
       },
       "deal": true
      },
@@ -20566,7 +20433,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "M",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=2&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M11,MEZZ-M9"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=20737&qt=2&date=2026-11-24&slot=19:00&showtime_id=2529665&product_type=show&seats=MEZZ-M14,MEZZ-M16"
       },
       "deal": true
      },
@@ -20908,6 +20775,21 @@ window.TM_TODAYTIX = {
    "id": 22,
    "url": "https://www.todaytix.com/nyc/shows/22-chicago",
    "perfs": {
+    "2026-11-17 7:00 PM": {
+     "low": 102,
+     "med": 156,
+     "high": 268,
+     "secs": {
+      "mezz": 102,
+      "orch": 102
+     },
+     "best": {
+      "sec": "mezz",
+      "row": "B",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-17&slot=19:00&showtime_id=2450699&product_type=show&seats=LEFT_FRONT_MEZZ-B21,LEFT_FRONT_MEZZ-B19"
+     },
+     "deal": true
+    },
     "2026-11-19 7:00 PM": {
      "low": 93,
      "med": 134,
@@ -20938,6 +20820,36 @@ window.TM_TODAYTIX = {
      },
      "deal": true
     },
+    "2026-11-21 2:30 PM": {
+     "low": 83,
+     "med": 134,
+     "high": 257,
+     "secs": {
+      "mezz": 83,
+      "orch": 102
+     },
+     "best": {
+      "sec": "mezz",
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-21&slot=14:30&showtime_id=2450702&product_type=show&seats=LEFT_CNTR_REAR_MEZZ-F117,LEFT_CNTR_REAR_MEZZ-F119"
+     },
+     "deal": true
+    },
+    "2026-11-21 8:00 PM": {
+     "low": 93,
+     "med": 134,
+     "high": 268,
+     "secs": {
+      "mezz": 93,
+      "orch": 112
+     },
+     "best": {
+      "sec": "mezz",
+      "row": "A",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-21&slot=20:00&showtime_id=2450703&product_type=show&seats=LEFT_REAR_MEZZ-A3,LEFT_REAR_MEZZ-A1"
+     },
+     "deal": true
+    },
     "2026-11-22 2:00 PM": {
      "low": 83,
      "med": 134,
@@ -20951,7 +20863,7 @@ window.TM_TODAYTIX = {
       "row": "F",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-22&slot=14:00&showtime_id=2450704&product_type=show&seats=CENTER_REAR_MEZZ-F110,CENTER_REAR_MEZZ-F108"
      },
-     "deal": false
+     "deal": true
     },
     "2026-11-22 7:00 PM": {
      "low": 93,
@@ -20966,7 +20878,7 @@ window.TM_TODAYTIX = {
       "row": "A",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-22&slot=19:00&showtime_id=2450705&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15"
      },
-     "deal": false
+     "deal": true
     },
     "2026-11-23 7:00 PM": {
      "low": 102,
@@ -21031,7 +20943,7 @@ window.TM_TODAYTIX = {
     "2026-11-27 2:30 PM": {
      "low": 93,
      "med": 156,
-     "high": 257,
+     "high": 233,
      "secs": {
       "mezz": 93,
       "orch": 156
@@ -21039,7 +20951,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "A",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-A19,LEFT_REAR_MEZZ-A21"
      },
      "deal": true
     },
@@ -21091,21 +21003,6 @@ window.TM_TODAYTIX = {
    },
    "byQty": {
     "1": {
-     "2026-11-17 7:00 PM": {
-      "low": 93,
-      "med": 156,
-      "high": 268,
-      "secs": {
-       "mezz": 93,
-       "orch": 102
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-17&slot=19:00&showtime_id=2450699&product_type=show&seats=LEFT_REAR_MEZZ-A9"
-      },
-      "deal": false
-     },
      "2026-11-19 7:00 PM": {
       "low": 93,
       "med": 134,
@@ -21136,6 +21033,36 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
+     "2026-11-21 2:30 PM": {
+      "low": 73,
+      "med": 134,
+      "high": 257,
+      "secs": {
+       "mezz": 73,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-21&slot=14:30&showtime_id=2450702&product_type=show&seats=CENTER_REAR_MEZZ-G116"
+      },
+      "deal": true
+     },
+     "2026-11-21 8:00 PM": {
+      "low": 83,
+      "med": 134,
+      "high": 268,
+      "secs": {
+       "mezz": 83,
+       "orch": 112
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-21&slot=20:00&showtime_id=2450703&product_type=show&seats=CENTER_REAR_MEZZ-H112"
+      },
+      "deal": true
+     },
      "2026-11-22 2:00 PM": {
       "low": 73,
       "med": 134,
@@ -21149,7 +21076,7 @@ window.TM_TODAYTIX = {
        "row": "H",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-22&slot=14:00&showtime_id=2450704&product_type=show&seats=CENTER_REAR_MEZZ-H104"
       },
-      "deal": false
+      "deal": true
      },
      "2026-11-22 7:00 PM": {
       "low": 93,
@@ -21164,7 +21091,22 @@ window.TM_TODAYTIX = {
        "row": "A",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-22&slot=19:00&showtime_id=2450705&product_type=show&seats=LEFT_REAR_MEZZ-A17"
       },
-      "deal": false
+      "deal": true
+     },
+     "2026-11-17 7:00 PM": {
+      "low": 93,
+      "med": 156,
+      "high": 268,
+      "secs": {
+       "mezz": 93,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=1&date=2026-11-17&slot=19:00&showtime_id=2450699&product_type=show&seats=LEFT_REAR_MEZZ-A9"
+      },
+      "deal": true
      },
      "2026-11-23 7:00 PM": {
       "low": 93,
@@ -21288,6 +21230,21 @@ window.TM_TODAYTIX = {
      }
     },
     "2": {
+     "2026-11-17 7:00 PM": {
+      "low": 102,
+      "med": 156,
+      "high": 268,
+      "secs": {
+       "mezz": 102,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-17&slot=19:00&showtime_id=2450699&product_type=show&seats=LEFT_FRONT_MEZZ-B21,LEFT_FRONT_MEZZ-B19"
+      },
+      "deal": true
+     },
      "2026-11-19 7:00 PM": {
       "low": 93,
       "med": 134,
@@ -21318,6 +21275,36 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
+     "2026-11-21 2:30 PM": {
+      "low": 83,
+      "med": 134,
+      "high": 257,
+      "secs": {
+       "mezz": 83,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-21&slot=14:30&showtime_id=2450702&product_type=show&seats=LEFT_CNTR_REAR_MEZZ-F117,LEFT_CNTR_REAR_MEZZ-F119"
+      },
+      "deal": true
+     },
+     "2026-11-21 8:00 PM": {
+      "low": 93,
+      "med": 134,
+      "high": 268,
+      "secs": {
+       "mezz": 93,
+       "orch": 112
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-21&slot=20:00&showtime_id=2450703&product_type=show&seats=LEFT_REAR_MEZZ-A3,LEFT_REAR_MEZZ-A1"
+      },
+      "deal": true
+     },
      "2026-11-22 2:00 PM": {
       "low": 83,
       "med": 134,
@@ -21331,7 +21318,7 @@ window.TM_TODAYTIX = {
        "row": "F",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-22&slot=14:00&showtime_id=2450704&product_type=show&seats=CENTER_REAR_MEZZ-F110,CENTER_REAR_MEZZ-F108"
       },
-      "deal": false
+      "deal": true
      },
      "2026-11-22 7:00 PM": {
       "low": 93,
@@ -21346,7 +21333,7 @@ window.TM_TODAYTIX = {
        "row": "A",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-22&slot=19:00&showtime_id=2450705&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15"
       },
-      "deal": false
+      "deal": true
      },
      "2026-11-23 7:00 PM": {
       "low": 102,
@@ -21411,7 +21398,7 @@ window.TM_TODAYTIX = {
      "2026-11-27 2:30 PM": {
       "low": 93,
       "med": 156,
-      "high": 257,
+      "high": 233,
       "secs": {
        "mezz": 93,
        "orch": 156
@@ -21419,7 +21406,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=2&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-A19,LEFT_REAR_MEZZ-A21"
       },
       "deal": true
      },
@@ -21470,6 +21457,21 @@ window.TM_TODAYTIX = {
      }
     },
     "4": {
+     "2026-11-17 7:00 PM": {
+      "low": 102,
+      "med": 156,
+      "high": 268,
+      "secs": {
+       "mezz": 102,
+       "orch": 122
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-17&slot=19:00&showtime_id=2450699&product_type=show&seats=LEFT_FRONT_MEZZ-B21,LEFT_FRONT_MEZZ-B19,LEFT_FRONT_MEZZ-B23,LEFT_FRONT_MEZZ-B25"
+      },
+      "deal": true
+     },
      "2026-11-19 7:00 PM": {
       "low": 93,
       "med": 134,
@@ -21497,6 +21499,66 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "C",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-20&slot=20:00&showtime_id=2450701&product_type=show&seats=LEFT_FRONT_MEZZ-C21,LEFT_FRONT_MEZZ-C19,LEFT_FRONT_MEZZ-C23,LEFT_FRONT_MEZZ-C25"
+      },
+      "deal": true
+     },
+     "2026-11-21 2:30 PM": {
+      "low": 93,
+      "med": 134,
+      "high": 257,
+      "secs": {
+       "mezz": 93,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-21&slot=14:30&showtime_id=2450702&product_type=show&seats=CENTER_REAR_MEZZ-D112,CENTER_REAR_MEZZ-D106,CENTER_REAR_MEZZ-D108,CENTER_REAR_MEZZ-D110"
+      },
+      "deal": true
+     },
+     "2026-11-21 8:00 PM": {
+      "low": 93,
+      "med": 134,
+      "high": 268,
+      "secs": {
+       "mezz": 93,
+       "orch": 112
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-21&slot=20:00&showtime_id=2450703&product_type=show&seats=LEFT_REAR_MEZZ-B15,LEFT_REAR_MEZZ-B11,LEFT_REAR_MEZZ-B13,LEFT_REAR_MEZZ-B17"
+      },
+      "deal": true
+     },
+     "2026-11-22 2:00 PM": {
+      "low": 83,
+      "med": 134,
+      "high": 257,
+      "secs": {
+       "mezz": 83,
+       "orch": 102
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-22&slot=14:00&showtime_id=2450704&product_type=show&seats=CENTER_REAR_MEZZ-F110,CENTER_REAR_MEZZ-F108,CENTER_REAR_MEZZ-F112,CENTER_REAR_MEZZ-F114"
+      },
+      "deal": true
+     },
+     "2026-11-22 7:00 PM": {
+      "low": 93,
+      "med": 122,
+      "high": 268,
+      "secs": {
+       "mezz": 93,
+       "orch": 112
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-22&slot=19:00&showtime_id=2450705&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15,LEFT_REAR_MEZZ-A19,LEFT_REAR_MEZZ-A21"
       },
       "deal": true
      },
@@ -21570,8 +21632,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-A17,LEFT_REAR_MEZZ-A15,LEFT_REAR_MEZZ-A19,LEFT_REAR_MEZZ-A21"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=22&qt=4&date=2026-11-27&slot=14:30&showtime_id=2450710&product_type=show&seats=LEFT_REAR_MEZZ-B13,LEFT_REAR_MEZZ-B7,LEFT_REAR_MEZZ-B9,LEFT_REAR_MEZZ-B11"
       },
       "deal": true
      },
@@ -21639,7 +21701,7 @@ window.TM_TODAYTIX = {
       "row": "J",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-17&slot=19:00&showtime_id=2522749&product_type=show&seats=ORCH_AISLE_2-J105,ORCH_AISLE_2-J103"
      },
-     "deal": true
+     "deal": false
     },
     "2026-11-18 2:00 PM": {
      "low": 67,
@@ -21667,7 +21729,7 @@ window.TM_TODAYTIX = {
       "row": "K",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-19&slot=13:00&showtime_id=2522751&product_type=show&seats=ORCH_AISLE_3-K134,ORCH_AISLE_3-K136"
      },
-     "deal": true
+     "deal": false
     },
     "2026-11-19 7:00 PM": {
      "low": 77,
@@ -21721,7 +21783,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "orch",
       "row": "K",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K124,ORCH_AISLE_3-K122"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K120"
      },
      "deal": false
     },
@@ -21768,16 +21830,16 @@ window.TM_TODAYTIX = {
      "deal": true
     },
     "2026-11-25 8:00 PM": {
-     "low": 150,
-     "med": 150,
-     "high": 150,
+     "low": 116,
+     "med": 204,
+     "high": 627,
      "secs": {
-      "orch": 150
+      "orch": 116
      },
      "best": {
       "sec": "orch",
-      "row": "K",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K120"
+      "row": "E",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-E244,ORCH_AISLE_3-E246"
      },
      "deal": true
     },
@@ -21866,7 +21928,7 @@ window.TM_TODAYTIX = {
        "row": "J",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=1&date=2026-11-17&slot=19:00&showtime_id=2522749&product_type=show&seats=ORCH_AISLE_2-J107"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-18 2:00 PM": {
       "low": 67,
@@ -21894,7 +21956,7 @@ window.TM_TODAYTIX = {
        "row": "K",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=1&date=2026-11-19&slot=13:00&showtime_id=2522751&product_type=show&seats=ORCH_AISLE_3-K134"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-19 7:00 PM": {
       "low": 77,
@@ -21995,16 +22057,16 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-25 8:00 PM": {
-      "low": 150,
-      "med": 311,
-      "high": 311,
+      "low": 77,
+      "med": 194,
+      "high": 627,
       "secs": {
-       "orch": 150
+       "orch": 77
       },
       "best": {
        "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=1&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-K122"
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=1&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-G244"
       },
       "deal": true
      },
@@ -22092,7 +22154,7 @@ window.TM_TODAYTIX = {
        "row": "J",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-17&slot=19:00&showtime_id=2522749&product_type=show&seats=ORCH_AISLE_2-J105,ORCH_AISLE_2-J103"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-18 2:00 PM": {
       "low": 67,
@@ -22120,7 +22182,7 @@ window.TM_TODAYTIX = {
        "row": "K",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-19&slot=13:00&showtime_id=2522751&product_type=show&seats=ORCH_AISLE_3-K134,ORCH_AISLE_3-K136"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-19 7:00 PM": {
       "low": 77,
@@ -22174,7 +22236,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K124,ORCH_AISLE_3-K122"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K120"
       },
       "deal": false
      },
@@ -22221,16 +22283,16 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-25 8:00 PM": {
-      "low": 150,
-      "med": 150,
-      "high": 150,
+      "low": 116,
+      "med": 204,
+      "high": 627,
       "secs": {
-       "orch": 150
+       "orch": 116
       },
       "best": {
        "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K120"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=2&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-E244,ORCH_AISLE_3-E246"
       },
       "deal": true
      },
@@ -22306,20 +22368,6 @@ window.TM_TODAYTIX = {
      }
     },
     "4": {
-     "2026-11-17 7:00 PM": {
-      "low": 97,
-      "med": 138,
-      "high": 231,
-      "secs": {
-       "orch": 97
-      },
-      "best": {
-       "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-17&slot=19:00&showtime_id=2522749&product_type=show&seats=ORCH_AISLE_1-E243,ORCH_AISLE_1-E247,ORCH_AISLE_1-E245,ORCH_AISLE_1-E241"
-      },
-      "deal": true
-     },
      "2026-11-18 2:00 PM": {
       "low": 67,
       "med": 216,
@@ -22331,20 +22379,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "K",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-18&slot=14:00&showtime_id=2522750&product_type=show&seats=ORCH_AISLE_1-K131,ORCH_AISLE_1-K135,ORCH_AISLE_1-K133,ORCH_AISLE_1-K129"
-      },
-      "deal": true
-     },
-     "2026-11-19 1:00 PM": {
-      "low": 160,
-      "med": 216,
-      "high": 288,
-      "secs": {
-       "orch": 160
-      },
-      "best": {
-       "sec": "orch",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-19&slot=13:00&showtime_id=2522751&product_type=show&seats=ORCH_AISLE_3-D104,ORCH_AISLE_3-D102,ORCH_AISLE_3-D106,ORCH_AISLE_3-D108"
       },
       "deal": true
      },
@@ -22400,7 +22434,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K124,ORCH_AISLE_3-K118,ORCH_AISLE_3-K120,ORCH_AISLE_3-K122"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-21&slot=20:00&showtime_id=2522755&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K118,ORCH_AISLE_3-K120,ORCH_AISLE_3-K124"
       },
       "deal": false
      },
@@ -22447,16 +22481,16 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-25 8:00 PM": {
-      "low": 150,
-      "med": 150,
-      "high": 150,
+      "low": 116,
+      "med": 231,
+      "high": 311,
       "secs": {
-       "orch": 150
+       "orch": 116
       },
       "best": {
        "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-K122,ORCH_AISLE_3-K118,ORCH_AISLE_3-K120,ORCH_AISLE_3-K124"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=42905&qt=4&date=2026-11-25&slot=20:00&showtime_id=2522759&product_type=show&seats=ORCH_AISLE_3-E244,ORCH_AISLE_3-E248,ORCH_AISLE_3-E246,ORCH_AISLE_3-E242"
       },
       "deal": true
      },
@@ -22614,7 +22648,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-21 8:00 PM": {
      "low": 106,
-     "med": 117,
+     "med": 135,
      "high": 291,
      "secs": {
       "mezz": 106,
@@ -22628,17 +22662,17 @@ window.TM_TODAYTIX = {
      "deal": true
     },
     "2026-11-22 2:00 PM": {
-     "low": 69,
-     "med": 109,
+     "low": 82,
+     "med": 127,
      "high": 257,
      "secs": {
-      "mezz": 69,
+      "mezz": 82,
       "orch": 98
      },
      "best": {
       "sec": "mezz",
-      "row": "P",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=14:00&showtime_id=2462537&product_type=show&seats=MEZZANINE_RIGHT-P14,MEZZANINE_RIGHT-P16"
+      "row": "J",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=14:00&showtime_id=2462537&product_type=show&seats=MEZZANINE_CENTER-J110,MEZZANINE_CENTER-J111"
      },
      "deal": true
     },
@@ -22652,8 +22686,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "Q",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_RIGHT-Q18,MEZZANINE_RIGHT-Q16"
+      "row": "N",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_LEFT-N19,MEZZANINE_LEFT-N17"
      },
      "deal": true
     },
@@ -22667,8 +22701,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "Q",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-23&slot=19:00&showtime_id=2462539&product_type=show&seats=MEZZANINE_CENTER-Q105,MEZZANINE_CENTER-Q106"
+      "row": "L",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-23&slot=19:00&showtime_id=2462539&product_type=show&seats=MEZZANINE_LEFT-L17,MEZZANINE_LEFT-L15"
      },
      "deal": true
     },
@@ -22688,17 +22722,17 @@ window.TM_TODAYTIX = {
      "deal": true
     },
     "2026-11-25 7:00 PM": {
-     "low": 87,
+     "low": 82,
      "med": 109,
      "high": 257,
      "secs": {
-      "orch": 87,
-      "mezz": 98
+      "mezz": 82,
+      "orch": 87
      },
      "best": {
-      "sec": "orch",
-      "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-25&slot=19:00&showtime_id=2462541&product_type=show&seats=ORCHESTRA_LEFT-F13,ORCHESTRA_LEFT-F15"
+      "sec": "mezz",
+      "row": "N",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-25&slot=19:00&showtime_id=2462541&product_type=show&seats=MEZZANINE_CENTER-N109,MEZZANINE_CENTER-N110"
      },
      "deal": true
     },
@@ -22713,7 +22747,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "Q",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q110,MEZZANINE_CENTER-Q109"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q111,MEZZANINE_CENTER-Q110"
      },
      "deal": true
     },
@@ -22728,7 +22762,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "mezz",
       "row": "Q",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_CENTER-Q108,MEZZANINE_CENTER-Q107"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_CENTER-Q114,MEZZANINE_CENTER-Q115"
      },
      "deal": true
     },
@@ -22956,7 +22990,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=1&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q112"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=1&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q113"
       },
       "deal": true
      },
@@ -23099,7 +23133,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-21 8:00 PM": {
       "low": 106,
-      "med": 117,
+      "med": 135,
       "high": 291,
       "secs": {
        "mezz": 106,
@@ -23113,17 +23147,17 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-22 2:00 PM": {
-      "low": 69,
-      "med": 109,
+      "low": 82,
+      "med": 127,
       "high": 257,
       "secs": {
-       "mezz": 69,
+       "mezz": 82,
        "orch": 98
       },
       "best": {
        "sec": "mezz",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=14:00&showtime_id=2462537&product_type=show&seats=MEZZANINE_RIGHT-P14,MEZZANINE_RIGHT-P16"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=14:00&showtime_id=2462537&product_type=show&seats=MEZZANINE_CENTER-J110,MEZZANINE_CENTER-J111"
       },
       "deal": true
      },
@@ -23137,8 +23171,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_RIGHT-Q18,MEZZANINE_RIGHT-Q16"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_LEFT-N19,MEZZANINE_LEFT-N17"
       },
       "deal": true
      },
@@ -23152,8 +23186,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-23&slot=19:00&showtime_id=2462539&product_type=show&seats=MEZZANINE_CENTER-Q105,MEZZANINE_CENTER-Q106"
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-23&slot=19:00&showtime_id=2462539&product_type=show&seats=MEZZANINE_LEFT-L17,MEZZANINE_LEFT-L15"
       },
       "deal": true
      },
@@ -23173,17 +23207,17 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-25 7:00 PM": {
-      "low": 87,
+      "low": 82,
       "med": 109,
       "high": 257,
       "secs": {
-       "orch": 87,
-       "mezz": 98
+       "mezz": 82,
+       "orch": 87
       },
       "best": {
-       "sec": "orch",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-25&slot=19:00&showtime_id=2462541&product_type=show&seats=ORCHESTRA_LEFT-F13,ORCHESTRA_LEFT-F15"
+       "sec": "mezz",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-25&slot=19:00&showtime_id=2462541&product_type=show&seats=MEZZANINE_CENTER-N109,MEZZANINE_CENTER-N110"
       },
       "deal": true
      },
@@ -23198,7 +23232,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q110,MEZZANINE_CENTER-Q109"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q111,MEZZANINE_CENTER-Q110"
       },
       "deal": true
      },
@@ -23213,7 +23247,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_CENTER-Q108,MEZZANINE_CENTER-Q107"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=2&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_CENTER-Q114,MEZZANINE_CENTER-Q115"
       },
       "deal": true
      },
@@ -23334,8 +23368,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-21&slot=14:00&showtime_id=2462535&product_type=show&seats=MEZZANINE_LEFT-D19,MEZZANINE_LEFT-D13,MEZZANINE_LEFT-D15,MEZZANINE_LEFT-D17"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-21&slot=14:00&showtime_id=2462535&product_type=show&seats=MEZZANINE_LEFT-J3,MEZZANINE_LEFT-J1,MEZZANINE_LEFT-J5,MEZZANINE_LEFT-J7"
       },
       "deal": true
      },
@@ -23355,11 +23389,11 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-22 2:00 PM": {
-      "low": 98,
+      "low": 82,
       "med": 109,
       "high": 257,
       "secs": {
-       "mezz": 98,
+       "mezz": 82,
        "orch": 98
       },
       "best": {
@@ -23379,8 +23413,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_CENTER-Q106,MEZZANINE_CENTER-Q103,MEZZANINE_CENTER-Q104,MEZZANINE_CENTER-Q105"
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-22&slot=19:30&showtime_id=2462538&product_type=show&seats=MEZZANINE_CENTER-L107,MEZZANINE_CENTER-L104,MEZZANINE_CENTER-L105,MEZZANINE_CENTER-L106"
       },
       "deal": true
      },
@@ -23440,7 +23474,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "mezz",
        "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q110,MEZZANINE_CENTER-Q108,MEZZANINE_CENTER-Q109,MEZZANINE_CENTER-Q111"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-27&slot=14:00&showtime_id=2462542&product_type=show&seats=MEZZANINE_CENTER-Q111,MEZZANINE_CENTER-Q110,MEZZANINE_CENTER-Q112,MEZZANINE_CENTER-Q113"
       },
       "deal": true
      },
@@ -23454,8 +23488,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_CENTER-Q106,MEZZANINE_CENTER-Q105,MEZZANINE_CENTER-Q107,MEZZANINE_CENTER-Q108"
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46971&qt=4&date=2026-11-27&slot=20:00&showtime_id=2462543&product_type=show&seats=MEZZANINE_LEFT-O15,MEZZANINE_LEFT-O13,MEZZANINE_LEFT-O17,MEZZANINE_LEFT-O19"
       },
       "deal": true
      },
@@ -23528,18 +23562,16 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-18 7:30 PM": {
-     "low": 77,
-     "med": 160,
-     "high": 507,
+     "low": 117,
+     "med": 129,
+     "high": 129,
      "secs": {
-      "balc": 77,
-      "mezz": 112,
-      "orch": 128
+      "balc": 117
      },
      "best": {
       "sec": "balc",
-      "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-G11,LEFT_BALCONY-G9"
+      "row": "E",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-E5,LEFT_BALCONY-E7"
      },
      "deal": false
     },
@@ -23557,6 +23589,34 @@ window.TM_TODAYTIX = {
      },
      "deal": false
     },
+    "2026-11-20 7:30 PM": {
+     "low": 284,
+     "med": 467,
+     "high": 627,
+     "secs": {
+      "orch": 284
+     },
+     "best": {
+      "sec": "orch",
+      "row": "A",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-20&slot=19:30&showtime_id=2433600&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+     },
+     "deal": false
+    },
+    "2026-11-21 5:00 PM": {
+     "low": 284,
+     "med": 467,
+     "high": 627,
+     "secs": {
+      "orch": 284
+     },
+     "best": {
+      "sec": "orch",
+      "row": "A",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-21&slot=17:00&showtime_id=2433601&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+     },
+     "deal": false
+    },
     "2026-11-21 8:30 PM": {
      "low": 284,
      "med": 467,
@@ -23568,6 +23628,20 @@ window.TM_TODAYTIX = {
       "sec": "orch",
       "row": "A",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-21&slot=20:30&showtime_id=2433602&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+     },
+     "deal": false
+    },
+    "2026-11-22 3:00 PM": {
+     "low": 284,
+     "med": 467,
+     "high": 627,
+     "secs": {
+      "orch": 284
+     },
+     "best": {
+      "sec": "orch",
+      "row": "A",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-22&slot=15:00&showtime_id=2433603&product_type=show&seats=CENTER_ORCHESTRA-A109,CENTER_ORCHESTRA-A110"
      },
      "deal": false
     },
@@ -23672,6 +23746,50 @@ window.TM_TODAYTIX = {
    },
    "byQty": {
     "1": {
+     "2026-11-19 7:30 PM": {
+      "low": 284,
+      "med": 423,
+      "high": 527,
+      "secs": {
+       "orch": 284
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-19&slot=19:30&showtime_id=2433599&product_type=show&seats=LEFT_ORCHESTRA-A1"
+      },
+      "deal": false
+     },
+     "2026-11-22 3:00 PM": {
+      "low": 239,
+      "med": 284,
+      "high": 627,
+      "secs": {
+       "orch": 239,
+       "mezz": 250
+      },
+      "best": {
+       "sec": "orch",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-22&slot=15:00&showtime_id=2433603&product_type=show&seats=RIGHT_ORCHESTRA-N10"
+      },
+      "deal": false
+     },
+     "2026-11-22 6:30 PM": {
+      "low": 239,
+      "med": 284,
+      "high": 527,
+      "secs": {
+       "orch": 239,
+       "mezz": 250
+      },
+      "best": {
+       "sec": "orch",
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-22&slot=18:30&showtime_id=2433604&product_type=show&seats=RIGHT_ORCHESTRA-L8"
+      },
+      "deal": false
+     },
      "2026-11-17 7:30 PM": {
       "low": 87,
       "med": 160,
@@ -23689,32 +23807,44 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 7:30 PM": {
-      "low": 77,
-      "med": 150,
-      "high": 507,
+      "low": 97,
+      "med": 117,
+      "high": 129,
       "secs": {
-       "balc": 77,
-       "mezz": 112,
-       "orch": 128
+       "balc": 97
       },
       "best": {
        "sec": "balc",
        "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-G11"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=RIGHT_BALCONY-G6"
       },
       "deal": false
      },
-     "2026-11-19 7:30 PM": {
-      "low": 284,
-      "med": 423,
-      "high": 527,
+     "2026-11-20 7:30 PM": {
+      "low": 239,
+      "med": 284,
+      "high": 627,
       "secs": {
-       "orch": 284
+       "orch": 239
       },
       "best": {
        "sec": "orch",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-19&slot=19:30&showtime_id=2433599&product_type=show&seats=LEFT_ORCHESTRA-A1"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-20&slot=19:30&showtime_id=2433600&product_type=show&seats=RIGHT_ORCHESTRA-N14"
+      },
+      "deal": false
+     },
+     "2026-11-21 5:00 PM": {
+      "low": 239,
+      "med": 340,
+      "high": 627,
+      "secs": {
+       "orch": 239
+      },
+      "best": {
+       "sec": "orch",
+       "row": "M",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-21&slot=17:00&showtime_id=2433601&product_type=show&seats=RIGHT_ORCHESTRA-M8"
       },
       "deal": false
      },
@@ -23730,21 +23860,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "J",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-21&slot=20:30&showtime_id=2433602&product_type=show&seats=RIGHT_ORCHESTRA-J14"
-      },
-      "deal": false
-     },
-     "2026-11-22 6:30 PM": {
-      "low": 239,
-      "med": 284,
-      "high": 527,
-      "secs": {
-       "orch": 239,
-       "mezz": 250
-      },
-      "best": {
-       "sec": "orch",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=1&date=2026-11-22&slot=18:30&showtime_id=2433604&product_type=show&seats=RIGHT_ORCHESTRA-L8"
       },
       "deal": false
      },
@@ -23884,18 +23999,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 7:30 PM": {
-      "low": 77,
-      "med": 160,
-      "high": 507,
+      "low": 117,
+      "med": 129,
+      "high": 129,
       "secs": {
-       "balc": 77,
-       "mezz": 112,
-       "orch": 128
+       "balc": 117
       },
       "best": {
        "sec": "balc",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-G11,LEFT_BALCONY-G9"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-E5,LEFT_BALCONY-E7"
       },
       "deal": false
      },
@@ -23913,6 +24026,34 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
+     "2026-11-20 7:30 PM": {
+      "low": 284,
+      "med": 467,
+      "high": 627,
+      "secs": {
+       "orch": 284
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-20&slot=19:30&showtime_id=2433600&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+      },
+      "deal": false
+     },
+     "2026-11-21 5:00 PM": {
+      "low": 284,
+      "med": 467,
+      "high": 627,
+      "secs": {
+       "orch": 284
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-21&slot=17:00&showtime_id=2433601&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+      },
+      "deal": false
+     },
      "2026-11-21 8:30 PM": {
       "low": 284,
       "med": 467,
@@ -23924,6 +24065,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "A",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-21&slot=20:30&showtime_id=2433602&product_type=show&seats=LEFT_ORCHESTRA-A1,LEFT_ORCHESTRA-A3"
+      },
+      "deal": false
+     },
+     "2026-11-22 3:00 PM": {
+      "low": 284,
+      "med": 467,
+      "high": 627,
+      "secs": {
+       "orch": 284
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=2&date=2026-11-22&slot=15:00&showtime_id=2433603&product_type=show&seats=CENTER_ORCHESTRA-A109,CENTER_ORCHESTRA-A110"
       },
       "deal": false
      },
@@ -24044,18 +24199,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 7:30 PM": {
-      "low": 97,
-      "med": 160,
-      "high": 183,
+      "low": 129,
+      "med": 129,
+      "high": 129,
       "secs": {
-       "balc": 97,
-       "orch": 128,
-       "mezz": 150
+       "balc": 129
       },
       "best": {
        "sec": "balc",
        "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=LEFT_BALCONY-D19,LEFT_BALCONY-D23,LEFT_BALCONY-D21,LEFT_BALCONY-D17"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-18&slot=19:30&showtime_id=2433598&product_type=show&seats=CENTER_BALCONY-D106,CENTER_BALCONY-D108,CENTER_BALCONY-D107,CENTER_BALCONY-D105"
       },
       "deal": false
      },
@@ -24073,7 +24226,7 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 8:30 PM": {
+     "2026-11-20 7:30 PM": {
       "low": 627,
       "med": 627,
       "high": 627,
@@ -24082,8 +24235,36 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-21&slot=20:30&showtime_id=2433602&product_type=show&seats=CENTER_ORCHESTRA-F106,CENTER_ORCHESTRA-F108,CENTER_ORCHESTRA-F107,CENTER_ORCHESTRA-F105"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-20&slot=19:30&showtime_id=2433600&product_type=show&seats=CENTER_ORCHESTRA-H107,CENTER_ORCHESTRA-H110,CENTER_ORCHESTRA-H109,CENTER_ORCHESTRA-H108"
+      },
+      "deal": false
+     },
+     "2026-11-21 5:00 PM": {
+      "low": 627,
+      "med": 627,
+      "high": 627,
+      "secs": {
+       "orch": 627
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-21&slot=17:00&showtime_id=2433601&product_type=show&seats=CENTER_ORCHESTRA-A107,CENTER_ORCHESTRA-A110,CENTER_ORCHESTRA-A109,CENTER_ORCHESTRA-A108"
+      },
+      "deal": false
+     },
+     "2026-11-22 3:00 PM": {
+      "low": 627,
+      "med": 627,
+      "high": 627,
+      "secs": {
+       "orch": 627
+      },
+      "best": {
+       "sec": "orch",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=37743&qt=4&date=2026-11-22&slot=15:00&showtime_id=2433603&product_type=show&seats=CENTER_ORCHESTRA-E107,CENTER_ORCHESTRA-E110,CENTER_ORCHESTRA-E109,CENTER_ORCHESTRA-E108"
       },
       "deal": false
      },
@@ -24268,21 +24449,6 @@ window.TM_TODAYTIX = {
      },
      "deal": false
     },
-    "2026-11-22 3:00 PM": {
-     "low": 156,
-     "med": 257,
-     "high": 599,
-     "secs": {
-      "mezz": 156,
-      "orch": 166
-     },
-     "best": {
-      "sec": "mezz",
-      "row": "C",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-22&slot=15:00&showtime_id=2466370&product_type=show&seats=RIGHT_MEZZANINE-C40,RIGHT_MEZZANINE-C38"
-     },
-     "deal": false
-    },
     "2026-11-24 7:00 PM": {
      "low": 156,
      "med": 257,
@@ -24329,17 +24495,16 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-27 2:00 PM": {
-     "low": 156,
+     "low": 201,
      "med": 257,
-     "high": 599,
+     "high": 257,
      "secs": {
-      "mezz": 156,
-      "orch": 166
+      "orch": 201
      },
      "best": {
-      "sec": "mezz",
-      "row": "D",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_MEZZANINE-D51,LEFT_MEZZANINE-D49"
+      "sec": "orch",
+      "row": "N",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_ORCHESTRA-N29,LEFT_ORCHESTRA-N27"
      },
      "deal": false
     },
@@ -24412,7 +24577,7 @@ window.TM_TODAYTIX = {
       "high": 391,
       "secs": {
        "orch": 112,
-       "mezz": 112
+       "mezz": 134
       },
       "best": {
        "sec": "orch",
@@ -24572,17 +24737,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-27 2:00 PM": {
-      "low": 156,
+      "low": 201,
       "med": 257,
-      "high": 599,
+      "high": 257,
       "secs": {
-       "mezz": 156,
-       "orch": 166
+       "orch": 201
       },
       "best": {
-       "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=1&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_MEZZANINE-D51"
+       "sec": "orch",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=1&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_ORCHESTRA-N27"
       },
       "deal": false
      },
@@ -24738,21 +24902,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-22 3:00 PM": {
-      "low": 156,
-      "med": 257,
-      "high": 599,
-      "secs": {
-       "mezz": 156,
-       "orch": 166
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-22&slot=15:00&showtime_id=2466370&product_type=show&seats=RIGHT_MEZZANINE-C40,RIGHT_MEZZANINE-C38"
-      },
-      "deal": false
-     },
      "2026-11-24 7:00 PM": {
       "low": 156,
       "med": 257,
@@ -24799,17 +24948,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-27 2:00 PM": {
-      "low": 156,
+      "low": 201,
       "med": 257,
-      "high": 599,
+      "high": 257,
       "secs": {
-       "mezz": 156,
-       "orch": 166
+       "orch": 201
       },
       "best": {
-       "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_MEZZANINE-D51,LEFT_MEZZANINE-D49"
+       "sec": "orch",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=2&date=2026-11-27&slot=14:00&showtime_id=2466374&product_type=show&seats=LEFT_ORCHESTRA-N29,LEFT_ORCHESTRA-N27"
       },
       "deal": false
      },
@@ -24935,20 +25083,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 2:00 PM": {
-      "low": 166,
-      "med": 257,
-      "high": 599,
-      "secs": {
-       "orch": 166
-      },
-      "best": {
-       "sec": "orch",
-       "row": "U",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=4&date=2026-11-21&slot=14:00&showtime_id=2466368&product_type=show&seats=RIGHT_ORCHESTRA-U34,RIGHT_ORCHESTRA-U32,RIGHT_ORCHESTRA-U36,RIGHT_ORCHESTRA-U38"
-      },
-      "deal": false
-     },
      "2026-11-21 8:00 PM": {
       "low": 201,
       "med": 257,
@@ -24960,20 +25094,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "O",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=4&date=2026-11-21&slot=20:00&showtime_id=2466369&product_type=show&seats=RIGHT_ORCHESTRA-O38,RIGHT_ORCHESTRA-O34,RIGHT_ORCHESTRA-O36,RIGHT_ORCHESTRA-O40"
-      },
-      "deal": false
-     },
-     "2026-11-22 3:00 PM": {
-      "low": 201,
-      "med": 257,
-      "high": 391,
-      "secs": {
-       "orch": 201
-      },
-      "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46347&qt=4&date=2026-11-22&slot=15:00&showtime_id=2466370&product_type=show&seats=RIGHT_ORCHESTRA-O38,RIGHT_ORCHESTRA-O34,RIGHT_ORCHESTRA-O36,RIGHT_ORCHESTRA-O40"
       },
       "deal": false
      },
@@ -25134,7 +25254,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-18 8:00 PM": {
      "low": 201,
-     "med": 447,
+     "med": 335,
      "high": 447,
      "secs": {
       "orch": 201
@@ -25158,6 +25278,20 @@ window.TM_TODAYTIX = {
       "sec": "box",
       "row": "C",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-19&slot=19:00&showtime_id=2546037&product_type=show&seats=CTR%2FRT_LOGE-C413,CTR%2FRT_LOGE-C414"
+     },
+     "deal": false
+    },
+    "2026-11-20 7:00 PM": {
+     "low": 447,
+     "med": 447,
+     "high": 447,
+     "secs": {
+      "orch": 447
+     },
+     "best": {
+      "sec": "orch",
+      "row": "M",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-20&slot=19:00&showtime_id=2546038&product_type=show&seats=CENTER_ORCHESTRA-M311,CENTER_ORCHESTRA-M312"
      },
      "deal": false
     },
@@ -25191,17 +25325,17 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-25 2:00 PM": {
-     "low": 144,
+     "low": 223,
      "med": 335,
      "high": 447,
      "secs": {
-      "box": 144,
-      "orch": 223
+      "orch": 223,
+      "box": 335
      },
      "best": {
-      "sec": "box",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=CTR%2FLT_LOGE-E212,CTR%2FLT_LOGE-E213"
+      "sec": "orch",
+      "row": "O",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=LEFT_SIDE_ORCH-O109,LEFT_SIDE_ORCH-O110"
      },
      "deal": false
     },
@@ -25297,22 +25431,23 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 2:00 PM": {
-      "low": 201,
+      "low": 144,
       "med": 201,
       "high": 447,
       "secs": {
+       "box": 144,
        "orch": 201
       },
       "best": {
-       "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-18&slot=14:00&showtime_id=2546035&product_type=show&seats=CENTER_ORCHESTRA-K310"
+       "sec": "box",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-18&slot=14:00&showtime_id=2546035&product_type=show&seats=CTR%2FLT_LOGE-D201"
       },
       "deal": false
      },
      "2026-11-18 8:00 PM": {
       "low": 201,
-      "med": 201,
+      "med": 335,
       "high": 447,
       "secs": {
        "orch": 201
@@ -25336,6 +25471,20 @@ window.TM_TODAYTIX = {
        "sec": "box",
        "row": "C",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-19&slot=19:00&showtime_id=2546037&product_type=show&seats=CTR%2FRT_LOGE-C413"
+      },
+      "deal": false
+     },
+     "2026-11-20 7:00 PM": {
+      "low": 335,
+      "med": 447,
+      "high": 447,
+      "secs": {
+       "orch": 335
+      },
+      "best": {
+       "sec": "orch",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-20&slot=19:00&showtime_id=2546038&product_type=show&seats=LEFT_SIDE_ORCH-B103"
       },
       "deal": false
      },
@@ -25369,16 +25518,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-22 3:00 PM": {
-      "low": 335,
+      "low": 223,
       "med": 335,
       "high": 335,
       "secs": {
-       "orch": 335
+       "orch": 223
       },
       "best": {
        "sec": "orch",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-22&slot=15:00&showtime_id=2546041&product_type=show&seats=LEFT_SIDE_ORCH-B103"
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-22&slot=15:00&showtime_id=2546041&product_type=show&seats=RIGHT_SIDE_ORCH-O507"
       },
       "deal": false
      },
@@ -25398,17 +25547,17 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 2:00 PM": {
-      "low": 144,
+      "low": 223,
       "med": 335,
       "high": 447,
       "secs": {
-       "box": 144,
-       "orch": 223
+       "orch": 223,
+       "box": 335
       },
       "best": {
-       "sec": "box",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=CTR%2FLT_LOGE-E212"
+       "sec": "orch",
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=1&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=LEFT_SIDE_ORCH-K110"
       },
       "deal": false
      },
@@ -25533,7 +25682,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-18 8:00 PM": {
       "low": 201,
-      "med": 447,
+      "med": 335,
       "high": 447,
       "secs": {
        "orch": 201
@@ -25557,6 +25706,20 @@ window.TM_TODAYTIX = {
        "sec": "box",
        "row": "C",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-19&slot=19:00&showtime_id=2546037&product_type=show&seats=CTR%2FRT_LOGE-C413,CTR%2FRT_LOGE-C414"
+      },
+      "deal": false
+     },
+     "2026-11-20 7:00 PM": {
+      "low": 447,
+      "med": 447,
+      "high": 447,
+      "secs": {
+       "orch": 447
+      },
+      "best": {
+       "sec": "orch",
+       "row": "M",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-20&slot=19:00&showtime_id=2546038&product_type=show&seats=CENTER_ORCHESTRA-M311,CENTER_ORCHESTRA-M312"
       },
       "deal": false
      },
@@ -25590,17 +25753,17 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-25 2:00 PM": {
-      "low": 144,
+      "low": 223,
       "med": 335,
       "high": 447,
       "secs": {
-       "box": 144,
-       "orch": 223
+       "orch": 223,
+       "box": 335
       },
       "best": {
-       "sec": "box",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=CTR%2FLT_LOGE-E212,CTR%2FLT_LOGE-E213"
+       "sec": "orch",
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=2&date=2026-11-25&slot=14:00&showtime_id=2546043&product_type=show&seats=LEFT_SIDE_ORCH-O109,LEFT_SIDE_ORCH-O110"
       },
       "deal": false
      },
@@ -25722,7 +25885,7 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 2:00 PM": {
+     "2026-11-20 7:00 PM": {
       "low": 447,
       "med": 447,
       "high": 447,
@@ -25731,8 +25894,22 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=4&date=2026-11-21&slot=14:00&showtime_id=2546039&product_type=show&seats=CENTER_ORCHESTRA-J302,CENTER_ORCHESTRA-J304,CENTER_ORCHESTRA-J303,CENTER_ORCHESTRA-J301"
+       "row": "M",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=4&date=2026-11-20&slot=19:00&showtime_id=2546038&product_type=show&seats=CENTER_ORCHESTRA-M311,CENTER_ORCHESTRA-M313,CENTER_ORCHESTRA-M312,CENTER_ORCHESTRA-M310"
+      },
+      "deal": false
+     },
+     "2026-11-24 7:00 PM": {
+      "low": 335,
+      "med": 335,
+      "high": 335,
+      "secs": {
+       "orch": 335
+      },
+      "best": {
+       "sec": "orch",
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47264&qt=4&date=2026-11-24&slot=19:00&showtime_id=2546042&product_type=show&seats=LEFT_SIDE_ORCH-O103,LEFT_SIDE_ORCH-O101,LEFT_SIDE_ORCH-O102,LEFT_SIDE_ORCH-O104"
       },
       "deal": false
      },
@@ -25890,7 +26067,7 @@ window.TM_TODAYTIX = {
       "row": "L",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-21&slot=19:00&showtime_id=2555545&product_type=show&seats=CENTER_MEZZANINE-L107,CENTER_MEZZANINE-L108"
      },
-     "deal": true
+     "deal": false
     },
     "2026-11-22 1:00 PM": {
      "low": 82,
@@ -25977,8 +26154,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "mezz",
-      "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-27&slot=13:00&showtime_id=2555551&product_type=show&seats=RIGHT_MEZZANINE-G26,RIGHT_MEZZANINE-G24"
+      "row": "J",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-27&slot=13:00&showtime_id=2555551&product_type=show&seats=RIGHT_MEZZANINE-J24,RIGHT_MEZZANINE-J22"
      },
      "deal": false
     },
@@ -26009,6 +26186,21 @@ window.TM_TODAYTIX = {
       "sec": "mezz",
       "row": "H",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-28&slot=13:00&showtime_id=2555553&product_type=show&seats=LEFT_MEZZANINE-H13,LEFT_MEZZANINE-H15"
+     },
+     "deal": false
+    },
+    "2026-11-28 7:00 PM": {
+     "low": 102,
+     "med": 246,
+     "high": 369,
+     "secs": {
+      "mezz": 102,
+      "orch": 156
+     },
+     "best": {
+      "sec": "mezz",
+      "row": "L",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-28&slot=19:00&showtime_id=2555554&product_type=show&seats=LEFT_MEZZANINE-L7,LEFT_MEZZANINE-L9"
      },
      "deal": false
     },
@@ -26045,18 +26237,18 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-20 7:00 PM": {
-      "low": 72,
-      "med": 144,
+     "2026-11-19 7:00 PM": {
+      "low": 82,
+      "med": 134,
       "high": 313,
       "secs": {
-       "mezz": 72,
+       "mezz": 82,
        "orch": 82
       },
       "best": {
        "sec": "mezz",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-20&slot=19:00&showtime_id=2555543&product_type=show&seats=LEFT_MEZZANINE-L11"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-19&slot=19:00&showtime_id=2555542&product_type=show&seats=CENTER_MEZZANINE-E103"
       },
       "deal": true
      },
@@ -26088,6 +26280,21 @@ window.TM_TODAYTIX = {
        "row": "L",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-21&slot=19:00&showtime_id=2555545&product_type=show&seats=CENTER_MEZZANINE-L107"
       },
+      "deal": false
+     },
+     "2026-11-20 7:00 PM": {
+      "low": 72,
+      "med": 144,
+      "high": 313,
+      "secs": {
+       "mezz": 72,
+       "orch": 82
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-20&slot=19:00&showtime_id=2555543&product_type=show&seats=LEFT_MEZZANINE-L11"
+      },
       "deal": true
      },
      "2026-11-22 1:00 PM": {
@@ -26117,21 +26324,6 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "K",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-22&slot=18:30&showtime_id=2555547&product_type=show&seats=CENTER_MEZZANINE-K102"
-      },
-      "deal": true
-     },
-     "2026-11-19 7:00 PM": {
-      "low": 82,
-      "med": 134,
-      "high": 313,
-      "secs": {
-       "mezz": 82,
-       "orch": 82
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=1&date=2026-11-19&slot=19:00&showtime_id=2555542&product_type=show&seats=CENTER_MEZZANINE-E103"
       },
       "deal": true
      },
@@ -26330,7 +26522,7 @@ window.TM_TODAYTIX = {
        "row": "L",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-21&slot=19:00&showtime_id=2555545&product_type=show&seats=CENTER_MEZZANINE-L107,CENTER_MEZZANINE-L108"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-22 1:00 PM": {
       "low": 82,
@@ -26417,8 +26609,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-27&slot=13:00&showtime_id=2555551&product_type=show&seats=RIGHT_MEZZANINE-G26,RIGHT_MEZZANINE-G24"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-27&slot=13:00&showtime_id=2555551&product_type=show&seats=RIGHT_MEZZANINE-J24,RIGHT_MEZZANINE-J22"
       },
       "deal": false
      },
@@ -26449,6 +26641,21 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "H",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-28&slot=13:00&showtime_id=2555553&product_type=show&seats=LEFT_MEZZANINE-H13,LEFT_MEZZANINE-H15"
+      },
+      "deal": false
+     },
+     "2026-11-28 7:00 PM": {
+      "low": 102,
+      "med": 246,
+      "high": 369,
+      "secs": {
+       "mezz": 102,
+       "orch": 156
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=2&date=2026-11-28&slot=19:00&showtime_id=2555554&product_type=show&seats=LEFT_MEZZANINE-L7,LEFT_MEZZANINE-L9"
       },
       "deal": false
      },
@@ -26542,7 +26749,7 @@ window.TM_TODAYTIX = {
        "row": "K",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=4&date=2026-11-21&slot=19:00&showtime_id=2555545&product_type=show&seats=LEFT_MEZZANINE-K15,LEFT_MEZZANINE-K9,LEFT_MEZZANINE-K11,LEFT_MEZZANINE-K13"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-22 1:00 PM": {
       "low": 82,
@@ -26649,18 +26856,18 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-28 1:00 PM": {
-      "low": 144,
-      "med": 268,
+     "2026-11-28 7:00 PM": {
+      "low": 112,
+      "med": 246,
       "high": 369,
       "secs": {
-       "mezz": 144,
+       "mezz": 112,
        "orch": 156
       },
       "best": {
        "sec": "mezz",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=4&date=2026-11-28&slot=13:00&showtime_id=2555553&product_type=show&seats=LEFT_MEZZANINE-H15,LEFT_MEZZANINE-H13,LEFT_MEZZANINE-H17,LEFT_MEZZANINE-H19"
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48284&qt=4&date=2026-11-28&slot=19:00&showtime_id=2555554&product_type=show&seats=LEFT_MEZZANINE-J27,LEFT_MEZZANINE-J21,LEFT_MEZZANINE-J23,LEFT_MEZZANINE-J25"
       },
       "deal": false
      },
@@ -26696,8 +26903,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "orch",
-      "row": "J",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=2&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-J23,ORCHESTRA_LEFT-J25"
+      "row": "L",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=2&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-L25,ORCHESTRA_LEFT-L23"
      },
      "deal": true
     },
@@ -26939,8 +27146,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=1&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-J23"
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=1&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-K25"
       },
       "deal": true
      },
@@ -27065,17 +27272,17 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-25 7:00 PM": {
-      "low": 62,
+      "low": 72,
       "med": 108,
       "high": 257,
       "secs": {
-       "orch": 62,
-       "mezz": 72
+       "mezz": 72,
+       "orch": 72
       },
       "best": {
-       "sec": "orch",
-       "row": "R",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=1&date=2026-11-25&slot=19:00&showtime_id=2549848&product_type=show&seats=ORCHESTRA_LEFT-R23"
+       "sec": "mezz",
+       "row": "S",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=1&date=2026-11-25&slot=19:00&showtime_id=2549848&product_type=show&seats=MEZZANINE_CENTER-S111"
       },
       "deal": true
      },
@@ -27181,8 +27388,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=2&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-J23,ORCHESTRA_LEFT-J25"
+       "row": "L",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48040&qt=2&date=2026-11-17&slot=19:00&showtime_id=2549839&product_type=show&seats=ORCHESTRA_LEFT-L25,ORCHESTRA_LEFT-L23"
       },
       "deal": true
      },
@@ -27505,7 +27712,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-22 11:00 AM": {
       "low": 58,
-      "med": 79,
+      "med": 98,
       "high": 197,
       "secs": {
        "orch": 58,
@@ -27676,6 +27883,22 @@ window.TM_TODAYTIX = {
      },
      "deal": true
     },
+    "2026-11-18 2:00 PM": {
+     "low": 67,
+     "med": 159,
+     "high": 231,
+     "secs": {
+      "balc": 67,
+      "mezz": 107,
+      "orch": 159
+     },
+     "best": {
+      "sec": "balc",
+      "row": "B",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-18&slot=14:00&showtime_id=2425803&product_type=show&seats=CENTER_BALCONY-B104,CENTER_BALCONY-B105"
+     },
+     "deal": true
+    },
     "2026-11-18 7:30 PM": {
      "low": 77,
      "med": 137,
@@ -27790,7 +28013,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-25 2:00 PM": {
      "low": 67,
-     "med": 127,
+     "med": 149,
      "high": 231,
      "secs": {
       "balc": 67,
@@ -27800,9 +28023,9 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B108,CENTER_BALCONY-B109"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B106,CENTER_BALCONY-B107"
      },
-     "deal": true
+     "deal": false
     },
     "2026-11-25 7:30 PM": {
      "low": 77,
@@ -27931,12 +28154,26 @@ window.TM_TODAYTIX = {
        "row": "B",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-18&slot=14:00&showtime_id=2425803&product_type=show&seats=CENTER_BALCONY-B104"
       },
-      "deal": false
+      "deal": true
      },
      "2026-11-18 7:30 PM": {
+      "low": 159,
+      "med": 159,
+      "high": 159,
+      "secs": {
+       "orch": 159
+      },
+      "best": {
+       "sec": "orch",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-18&slot=19:30&showtime_id=2425804&product_type=show&seats=LEFT_ORCHESTRA-D4"
+      },
+      "deal": true
+     },
+     "2026-11-19 7:30 PM": {
       "low": 77,
-      "med": 137,
-      "high": 182,
+      "med": 149,
+      "high": 231,
       "secs": {
        "balc": 77,
        "mezz": 107,
@@ -27945,7 +28182,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-18&slot=19:30&showtime_id=2425804&product_type=show&seats=CENTER_BALCONY-E101"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-19&slot=19:30&showtime_id=2425805&product_type=show&seats=CENTER_BALCONY-E111"
       },
       "deal": true
      },
@@ -28013,22 +28250,6 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-19 7:30 PM": {
-      "low": 77,
-      "med": 149,
-      "high": 231,
-      "secs": {
-       "balc": 77,
-       "mezz": 107,
-       "orch": 137
-      },
-      "best": {
-       "sec": "balc",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-19&slot=19:30&showtime_id=2425805&product_type=show&seats=CENTER_BALCONY-E111"
-      },
-      "deal": true
-     },
      "2026-11-24 7:30 PM": {
       "low": 77,
       "med": 137,
@@ -28057,9 +28278,9 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B108"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=1&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B106"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-25 7:30 PM": {
       "low": 77,
@@ -28170,6 +28391,22 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "B",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-17&slot=19:30&showtime_id=2425802&product_type=show&seats=LEFT_BALCONY-B18,LEFT_BALCONY-B20"
+      },
+      "deal": true
+     },
+     "2026-11-18 2:00 PM": {
+      "low": 67,
+      "med": 159,
+      "high": 231,
+      "secs": {
+       "balc": 67,
+       "mezz": 107,
+       "orch": 159
+      },
+      "best": {
+       "sec": "balc",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-18&slot=14:00&showtime_id=2425803&product_type=show&seats=CENTER_BALCONY-B104,CENTER_BALCONY-B105"
       },
       "deal": true
      },
@@ -28287,7 +28524,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-25 2:00 PM": {
       "low": 67,
-      "med": 127,
+      "med": 149,
       "high": 231,
       "secs": {
        "balc": 67,
@@ -28297,9 +28534,9 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B108,CENTER_BALCONY-B109"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=2&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B106,CENTER_BALCONY-B107"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-25 7:30 PM": {
       "low": 77,
@@ -28410,6 +28647,22 @@ window.TM_TODAYTIX = {
        "sec": "balc",
        "row": "B",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=4&date=2026-11-17&slot=19:30&showtime_id=2425802&product_type=show&seats=LEFT_BALCONY-B18,LEFT_BALCONY-B24,LEFT_BALCONY-B22,LEFT_BALCONY-B20"
+      },
+      "deal": true
+     },
+     "2026-11-18 2:00 PM": {
+      "low": 67,
+      "med": 159,
+      "high": 182,
+      "secs": {
+       "balc": 67,
+       "mezz": 107,
+       "orch": 159
+      },
+      "best": {
+       "sec": "balc",
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=4&date=2026-11-18&slot=14:00&showtime_id=2425803&product_type=show&seats=CENTER_BALCONY-C107,CENTER_BALCONY-C110,CENTER_BALCONY-C109,CENTER_BALCONY-C108"
       },
       "deal": true
      },
@@ -28525,22 +28778,6 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-25 2:00 PM": {
-      "low": 67,
-      "med": 127,
-      "high": 182,
-      "secs": {
-       "balc": 67,
-       "mezz": 107,
-       "orch": 127
-      },
-      "best": {
-       "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=4&date=2026-11-25&slot=14:00&showtime_id=2544580&product_type=show&seats=CENTER_BALCONY-B108,CENTER_BALCONY-B111,CENTER_BALCONY-B110,CENTER_BALCONY-B109"
-      },
-      "deal": true
-     },
      "2026-11-25 7:30 PM": {
       "low": 77,
       "med": 127,
@@ -28606,18 +28843,18 @@ window.TM_TODAYTIX = {
       "deal": true
      },
      "2026-11-28 8:00 PM": {
-      "low": 77,
+      "low": 67,
       "med": 127,
       "high": 266,
       "secs": {
-       "balc": 77,
+       "balc": 67,
        "mezz": 116,
        "orch": 127
       },
       "best": {
        "sec": "balc",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=4&date=2026-11-28&slot=20:00&showtime_id=2544585&product_type=show&seats=LEFT_BALCONY-C20,LEFT_BALCONY-C26,LEFT_BALCONY-C24,LEFT_BALCONY-C22"
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=45002&qt=4&date=2026-11-28&slot=20:00&showtime_id=2544585&product_type=show&seats=LEFT_BALCONY-D20,LEFT_BALCONY-D26,LEFT_BALCONY-D24,LEFT_BALCONY-D22"
       },
       "deal": true
      }
@@ -28628,31 +28865,17 @@ window.TM_TODAYTIX = {
    "id": 47840,
    "url": "https://www.todaytix.com/nyc/shows/47840-here-there-are-blueberries",
    "perfs": {
-    "2026-11-18 2:00 PM": {
-     "low": 308,
+    "2026-11-19 7:00 PM": {
+     "low": 335,
      "med": 335,
      "high": 335,
      "secs": {
-      "orch": 308
+      "orch": 335
      },
      "best": {
       "sec": "orch",
-      "row": "H",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-18&slot=14:00&showtime_id=2538806&product_type=show&seats=RIGHT_ORCHESTRA-H6,RIGHT_ORCHESTRA-H8"
-     },
-     "deal": false
-    },
-    "2026-11-19 7:00 PM": {
-     "low": 308,
-     "med": 308,
-     "high": 335,
-     "secs": {
-      "orch": 308
-     },
-     "best": {
-      "sec": "orch",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-19&slot=19:00&showtime_id=2538807&product_type=show&seats=LEFT_ORCHESTRA-E3,LEFT_ORCHESTRA-E5"
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-19&slot=19:00&showtime_id=2538807&product_type=show&seats=CENTER_ORCHESTRA-G112,CENTER_ORCHESTRA-G113"
      },
      "deal": false
     },
@@ -28673,7 +28896,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-21 2:00 PM": {
      "low": 53,
-     "med": 156,
+     "med": 72,
      "high": 335,
      "secs": {
       "mezz": 53,
@@ -28808,7 +29031,7 @@ window.TM_TODAYTIX = {
     },
     "2026-11-28 7:00 PM": {
      "low": 62,
-     "med": 112,
+     "med": 134,
      "high": 252,
      "secs": {
       "mezz": 62,
@@ -28840,26 +29063,26 @@ window.TM_TODAYTIX = {
    "byQty": {
     "1": {
      "2026-11-18 2:00 PM": {
-      "low": 223,
-      "med": 308,
+      "low": 156,
+      "med": 223,
       "high": 335,
       "secs": {
-       "orch": 223
+       "orch": 156
       },
       "best": {
        "sec": "orch",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=1&date=2026-11-18&slot=14:00&showtime_id=2538806&product_type=show&seats=RIGHT_ORCHESTRA-A2"
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=1&date=2026-11-18&slot=14:00&showtime_id=2538806&product_type=show&seats=RIGHT_ORCHESTRA-K22"
       },
       "deal": false
      },
      "2026-11-19 7:00 PM": {
       "low": 156,
-      "med": 308,
+      "med": 335,
       "high": 335,
       "secs": {
        "mezz": 156,
-       "orch": 308
+       "orch": 335
       },
       "best": {
        "sec": "mezz",
@@ -29050,31 +29273,17 @@ window.TM_TODAYTIX = {
      }
     },
     "2": {
-     "2026-11-18 2:00 PM": {
-      "low": 308,
+     "2026-11-19 7:00 PM": {
+      "low": 335,
       "med": 335,
       "high": 335,
       "secs": {
-       "orch": 308
+       "orch": 335
       },
       "best": {
        "sec": "orch",
-       "row": "H",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-18&slot=14:00&showtime_id=2538806&product_type=show&seats=RIGHT_ORCHESTRA-H6,RIGHT_ORCHESTRA-H8"
-      },
-      "deal": false
-     },
-     "2026-11-19 7:00 PM": {
-      "low": 308,
-      "med": 308,
-      "high": 335,
-      "secs": {
-       "orch": 308
-      },
-      "best": {
-       "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-19&slot=19:00&showtime_id=2538807&product_type=show&seats=LEFT_ORCHESTRA-E3,LEFT_ORCHESTRA-E5"
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=2&date=2026-11-19&slot=19:00&showtime_id=2538807&product_type=show&seats=CENTER_ORCHESTRA-G112,CENTER_ORCHESTRA-G113"
       },
       "deal": false
      },
@@ -29095,7 +29304,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-21 2:00 PM": {
       "low": 53,
-      "med": 156,
+      "med": 72,
       "high": 335,
       "secs": {
        "mezz": 53,
@@ -29230,7 +29439,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-28 7:00 PM": {
       "low": 62,
-      "med": 112,
+      "med": 134,
       "high": 252,
       "secs": {
        "mezz": 62,
@@ -29261,11 +29470,11 @@ window.TM_TODAYTIX = {
     },
     "4": {
      "2026-11-19 7:00 PM": {
-      "low": 308,
-      "med": 308,
-      "high": 308,
+      "low": 335,
+      "med": 335,
+      "high": 335,
       "secs": {
-       "orch": 308
+       "orch": 335
       },
       "best": {
        "sec": "orch",
@@ -29345,21 +29554,6 @@ window.TM_TODAYTIX = {
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=4&date=2026-11-24&slot=14:00&showtime_id=2538812&product_type=show&seats=LEFT_FRONT_MEZZ-D21,LEFT_FRONT_MEZZ-D25,LEFT_FRONT_MEZZ-D23,LEFT_FRONT_MEZZ-D19"
       },
       "deal": true
-     },
-     "2026-11-24 7:00 PM": {
-      "low": 62,
-      "med": 92,
-      "high": 156,
-      "secs": {
-       "mezz": 62,
-       "orch": 134
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47840&qt=4&date=2026-11-24&slot=19:00&showtime_id=2538813&product_type=show&seats=LEFT_REAR_MEZZ-F13,LEFT_REAR_MEZZ-F17,LEFT_REAR_MEZZ-F15,LEFT_REAR_MEZZ-F11"
-      },
-      "deal": false
      },
      "2026-11-25 2:00 PM": {
       "low": 53,
@@ -29473,17 +29667,17 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-17 7:30 PM": {
-     "low": 122,
-     "med": 233,
+     "low": 67,
+     "med": 156,
      "high": 324,
      "secs": {
-      "mezz": 122,
+      "mezz": 67,
       "orch": 156
      },
      "best": {
       "sec": "mezz",
-      "row": "D",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_MEZZANINE-D25,LEFT_MEZZANINE-D23"
+      "row": "K",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_MEZZANINE-K1,LEFT_MEZZANINE-K3"
      },
      "deal": false
     },
@@ -29503,16 +29697,17 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-19 7:30 PM": {
-     "low": 156,
-     "med": 324,
-     "high": 324,
+     "low": 122,
+     "med": 233,
+     "high": 479,
      "secs": {
+      "mezz": 122,
       "orch": 156
      },
      "best": {
-      "sec": "orch",
-      "row": "G",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_ORCHESTRA-G5,LEFT_ORCHESTRA-G7"
+      "sec": "mezz",
+      "row": "B",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_MEZZANINE-B25,LEFT_MEZZANINE-B27"
      },
      "deal": false
     },
@@ -29694,23 +29889,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-16&slot=19:30&showtime_id=2457720&product_type=show&seats=CENTER_ORCHESTRA-J106"
-      },
-      "deal": false
-     },
-     "2026-11-17 7:30 PM": {
-      "low": 102,
-      "med": 156,
-      "high": 324,
-      "secs": {
-       "mezz": 102,
-       "orch": 156
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=CENTER_MEZZANINE-J111"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-16&slot=19:30&showtime_id=2457720&product_type=show&seats=LEFT_ORCHESTRA-N25"
       },
       "deal": false
      },
@@ -29726,20 +29906,6 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "B",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-18&slot=19:30&showtime_id=2457722&product_type=show&seats=LEFT_MEZZANINE-B25"
-      },
-      "deal": false
-     },
-     "2026-11-19 7:30 PM": {
-      "low": 156,
-      "med": 233,
-      "high": 324,
-      "secs": {
-       "orch": 156
-      },
-      "best": {
-       "sec": "orch",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_ORCHESTRA-G5"
       },
       "deal": false
      },
@@ -29785,6 +29951,36 @@ window.TM_TODAYTIX = {
        "sec": "mezz",
        "row": "E",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-21&slot=19:30&showtime_id=2457726&product_type=show&seats=RIGHT_MEZZANINE-E28"
+      },
+      "deal": false
+     },
+     "2026-11-17 7:30 PM": {
+      "low": 67,
+      "med": 156,
+      "high": 324,
+      "secs": {
+       "mezz": 67,
+       "orch": 156
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_MEZZANINE-K1"
+      },
+      "deal": false
+     },
+     "2026-11-19 7:30 PM": {
+      "low": 122,
+      "med": 233,
+      "high": 479,
+      "secs": {
+       "mezz": 122,
+       "orch": 156
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=1&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_MEZZANINE-B25"
       },
       "deal": false
      },
@@ -29925,17 +30121,17 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-17 7:30 PM": {
-      "low": 122,
-      "med": 233,
+      "low": 67,
+      "med": 156,
       "high": 324,
       "secs": {
-       "mezz": 122,
+       "mezz": 67,
        "orch": 156
       },
       "best": {
        "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_MEZZANINE-D25,LEFT_MEZZANINE-D23"
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_MEZZANINE-K1,LEFT_MEZZANINE-K3"
       },
       "deal": false
      },
@@ -29955,16 +30151,17 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-19 7:30 PM": {
-      "low": 156,
-      "med": 324,
-      "high": 324,
+      "low": 122,
+      "med": 233,
+      "high": 479,
       "secs": {
+       "mezz": 122,
        "orch": 156
       },
       "best": {
-       "sec": "orch",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_ORCHESTRA-G5,LEFT_ORCHESTRA-G7"
+       "sec": "mezz",
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=2&date=2026-11-19&slot=19:30&showtime_id=2457723&product_type=show&seats=LEFT_MEZZANINE-B25,LEFT_MEZZANINE-B27"
       },
       "deal": false
      },
@@ -30135,20 +30332,6 @@ window.TM_TODAYTIX = {
      }
     },
     "4": {
-     "2026-11-16 7:30 PM": {
-      "low": 156,
-      "med": 156,
-      "high": 156,
-      "secs": {
-       "orch": 156
-      },
-      "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=4&date=2026-11-16&slot=19:30&showtime_id=2457720&product_type=show&seats=LEFT_ORCHESTRA-P3,LEFT_ORCHESTRA-P1,LEFT_ORCHESTRA-P5,LEFT_ORCHESTRA-P7"
-      },
-      "deal": false
-     },
      "2026-11-17 7:30 PM": {
       "low": 156,
       "med": 156,
@@ -30159,8 +30342,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=4&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_ORCHESTRA-P15,LEFT_ORCHESTRA-P9,LEFT_ORCHESTRA-P11,LEFT_ORCHESTRA-P13"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46738&qt=4&date=2026-11-17&slot=19:30&showtime_id=2457721&product_type=show&seats=LEFT_ORCHESTRA-C3,LEFT_ORCHESTRA-C1,LEFT_ORCHESTRA-C5,LEFT_ORCHESTRA-C7"
       },
       "deal": false
      },
@@ -30229,7 +30412,7 @@ window.TM_TODAYTIX = {
       "high": 380,
       "secs": {
        "mezz": 122,
-       "orch": 156
+       "orch": 179
       },
       "best": {
        "sec": "mezz",
@@ -30353,15 +30536,15 @@ window.TM_TODAYTIX = {
     "2026-11-18 2:00 PM": {
      "low": 69,
      "med": 99,
-     "high": 131,
+     "high": 129,
      "secs": {
       "mezz": 69,
       "orch": 99
      },
      "best": {
       "sec": "mezz",
-      "row": "D",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=2&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-D11,MEZZANINE-D13"
+      "row": "C",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=2&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-C11,MEZZANINE-C9"
      },
      "deal": true
     },
@@ -30588,23 +30771,23 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=1&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-D12"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=1&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-C11"
       },
       "deal": true
      },
      "2026-11-18 7:00 PM": {
-      "low": 62,
+      "low": 69,
       "med": 99,
       "high": 131,
       "secs": {
-       "mezz": 62,
+       "mezz": 69,
        "orch": 99
       },
       "best": {
        "sec": "mezz",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=1&date=2026-11-18&slot=19:00&showtime_id=2508472&product_type=show&seats=MEZZANINE-J103"
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=1&date=2026-11-18&slot=19:00&showtime_id=2508472&product_type=show&seats=MEZZANINE-E107"
       },
       "deal": true
      },
@@ -30808,15 +30991,15 @@ window.TM_TODAYTIX = {
      "2026-11-18 2:00 PM": {
       "low": 69,
       "med": 99,
-      "high": 131,
+      "high": 129,
       "secs": {
        "mezz": 69,
        "orch": 99
       },
       "best": {
        "sec": "mezz",
-       "row": "D",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=2&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-D11,MEZZANINE-D13"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47137&qt=2&date=2026-11-18&slot=14:00&showtime_id=2508471&product_type=show&seats=MEZZANINE-C11,MEZZANINE-C9"
       },
       "deal": true
      },
@@ -31034,11 +31217,11 @@ window.TM_TODAYTIX = {
     "4": {
      "2026-11-18 2:00 PM": {
       "low": 99,
-      "med": 129,
-      "high": 131,
+      "med": 99,
+      "high": 129,
       "secs": {
        "orch": 99,
-       "mezz": 131
+       "mezz": 99
       },
       "best": {
        "sec": "orch",
@@ -31268,7 +31451,7 @@ window.TM_TODAYTIX = {
      "high": 201,
      "secs": {
       "mezz": 97,
-      "orch": 130
+      "orch": 158
      },
      "best": {
       "sec": "mezz",
@@ -31522,7 +31705,7 @@ window.TM_TODAYTIX = {
     "1": {
      "2026-11-17 7:00 PM": {
       "low": 52,
-      "med": 130,
+      "med": 111,
       "high": 201,
       "secs": {
        "orch": 52,
@@ -31783,7 +31966,7 @@ window.TM_TODAYTIX = {
       "high": 201,
       "secs": {
        "mezz": 97,
-       "orch": 130
+       "orch": 158
       },
       "best": {
        "sec": "mezz",
@@ -32036,7 +32219,7 @@ window.TM_TODAYTIX = {
     "4": {
      "2026-11-17 7:00 PM": {
       "low": 97,
-      "med": 130,
+      "med": 111,
       "high": 158,
       "secs": {
        "mezz": 97,
@@ -32298,7 +32481,7 @@ window.TM_TODAYTIX = {
    "perfs": {
     "2026-11-16 7:00 PM": {
      "low": 89,
-     "med": 99,
+     "med": 107,
      "high": 204,
      "secs": {
       "orch": 89,
@@ -32406,13 +32589,13 @@ window.TM_TODAYTIX = {
      "med": 99,
      "high": 231,
      "secs": {
-      "orch": 69,
-      "mezz": 69
+      "mezz": 69,
+      "orch": 69
      },
      "best": {
-      "sec": "orch",
-      "row": "P",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-22&slot=18:30&showtime_id=2541442&product_type=show&seats=RIGHT_ORCHESTRA-P10,RIGHT_ORCHESTRA-P8"
+      "sec": "mezz",
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-22&slot=18:30&showtime_id=2541442&product_type=show&seats=CENTER_MEZZANINE-F106,CENTER_MEZZANINE-F105"
      },
      "deal": true
     },
@@ -32428,21 +32611,6 @@ window.TM_TODAYTIX = {
       "sec": "orch",
       "row": "E",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-23&slot=19:00&showtime_id=2546398&product_type=show&seats=LEFT_ORCHESTRA-E13,LEFT_ORCHESTRA-E15"
-     },
-     "deal": true
-    },
-    "2026-11-24 7:00 PM": {
-     "low": 69,
-     "med": 128,
-     "high": 255,
-     "secs": {
-      "mezz": 69,
-      "orch": 69
-     },
-     "best": {
-      "sec": "mezz",
-      "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-24&slot=19:00&showtime_id=2546399&product_type=show&seats=CENTER_MEZZANINE-F111,CENTER_MEZZANINE-F112"
      },
      "deal": true
     },
@@ -32687,7 +32855,7 @@ window.TM_TODAYTIX = {
        "row": "F",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=1&date=2026-11-24&slot=19:00&showtime_id=2546399&product_type=show&seats=LEFT_MEZZANINE-F11"
       },
-      "deal": true
+      "deal": false
      },
      "2026-11-25 2:00 PM": {
       "low": 69,
@@ -32783,7 +32951,7 @@ window.TM_TODAYTIX = {
     "2": {
      "2026-11-16 7:00 PM": {
       "low": 89,
-      "med": 99,
+      "med": 107,
       "high": 204,
       "secs": {
        "orch": 89,
@@ -32891,13 +33059,13 @@ window.TM_TODAYTIX = {
       "med": 99,
       "high": 231,
       "secs": {
-       "orch": 69,
-       "mezz": 69
+       "mezz": 69,
+       "orch": 69
       },
       "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-22&slot=18:30&showtime_id=2541442&product_type=show&seats=RIGHT_ORCHESTRA-P10,RIGHT_ORCHESTRA-P8"
+       "sec": "mezz",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-22&slot=18:30&showtime_id=2541442&product_type=show&seats=CENTER_MEZZANINE-F106,CENTER_MEZZANINE-F105"
       },
       "deal": true
      },
@@ -32913,21 +33081,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "E",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-23&slot=19:00&showtime_id=2546398&product_type=show&seats=LEFT_ORCHESTRA-E13,LEFT_ORCHESTRA-E15"
-      },
-      "deal": true
-     },
-     "2026-11-24 7:00 PM": {
-      "low": 69,
-      "med": 128,
-      "high": 255,
-      "secs": {
-       "mezz": 69,
-       "orch": 69
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=2&date=2026-11-24&slot=19:00&showtime_id=2546399&product_type=show&seats=CENTER_MEZZANINE-F111,CENTER_MEZZANINE-F112"
       },
       "deal": true
      },
@@ -33034,7 +33187,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=4&date=2026-11-16&slot=19:00&showtime_id=2541435&product_type=show&seats=CENTER_ORCHESTRA-N108,CENTER_ORCHESTRA-N105,CENTER_ORCHESTRA-N106,CENTER_ORCHESTRA-N107"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=4&date=2026-11-16&slot=19:00&showtime_id=2541435&product_type=show&seats=CENTER_ORCHESTRA-N105,CENTER_ORCHESTRA-N103,CENTER_ORCHESTRA-N104,CENTER_ORCHESTRA-N106"
       },
       "deal": true
      },
@@ -33055,7 +33208,7 @@ window.TM_TODAYTIX = {
      },
      "2026-11-19 7:00 PM": {
       "low": 89,
-      "med": 128,
+      "med": 107,
       "high": 255,
       "secs": {
        "orch": 89,
@@ -33154,22 +33307,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=4&date=2026-11-23&slot=19:00&showtime_id=2546398&product_type=show&seats=LEFT_ORCHESTRA-P7,LEFT_ORCHESTRA-P3,LEFT_ORCHESTRA-P5,LEFT_ORCHESTRA-P9"
-      },
-      "deal": true
-     },
-     "2026-11-24 7:00 PM": {
-      "low": 69,
-      "med": 128,
-      "high": 255,
-      "secs": {
-       "orch": 69,
-       "mezz": 69
-      },
-      "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=4&date=2026-11-24&slot=19:00&showtime_id=2546399&product_type=show&seats=LEFT_ORCHESTRA-P7,LEFT_ORCHESTRA-P1,LEFT_ORCHESTRA-P3,LEFT_ORCHESTRA-P5"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47978&qt=4&date=2026-11-23&slot=19:00&showtime_id=2546398&product_type=show&seats=LEFT_ORCHESTRA-P11,LEFT_ORCHESTRA-P7,LEFT_ORCHESTRA-P9,LEFT_ORCHESTRA-P13"
       },
       "deal": true
      },
@@ -33271,16 +33409,16 @@ window.TM_TODAYTIX = {
    "url": "https://www.todaytix.com/nyc/shows/44369-the-imaginary-invalid",
    "perfs": {
     "2026-11-17 7:00 PM": {
-     "low": 69,
+     "low": 175,
      "med": 175,
      "high": 175,
      "secs": {
-      "balc": 69
+      "balc": 175
      },
      "best": {
       "sec": "balc",
-      "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-F113,BALCONY-F114"
+      "row": "C",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-C136,BALCONY-C137"
      },
      "deal": false
     },
@@ -33295,81 +33433,81 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "balc",
       "row": "F",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F106,BALCONY-F107"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F105,BALCONY-F104"
      },
      "deal": false
     },
     "2026-11-18 8:00 PM": {
-     "low": 179,
+     "low": 69,
      "med": 179,
      "high": 185,
      "secs": {
-      "balc": 179,
+      "balc": 69,
       "orch": 179
      },
      "best": {
       "sec": "balc",
-      "row": "A",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-A139,BALCONY-A140"
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-F105,BALCONY-F106"
      },
      "deal": false
     },
     "2026-11-19 7:00 PM": {
-     "low": 179,
+     "low": 69,
      "med": 182,
      "high": 185,
      "secs": {
-      "balc": 179,
+      "balc": 69,
       "orch": 179
      },
      "best": {
       "sec": "balc",
-      "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-B110,BALCONY-B109"
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-F105,BALCONY-F106"
      },
      "deal": false
     },
     "2026-11-20 7:00 PM": {
-     "low": 175,
-     "med": 182,
+     "low": 69,
+     "med": 179,
      "high": 185,
      "secs": {
-      "orch": 175,
-      "balc": 179
+      "balc": 69,
+      "orch": 175
      },
      "best": {
-      "sec": "orch",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=ORCHESTRA-E11,ORCHESTRA-E9"
+      "sec": "balc",
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=BALCONY-F105,BALCONY-F106"
      },
      "deal": false
     },
     "2026-11-21 2:00 PM": {
-     "low": 177,
+     "low": 69,
      "med": 177,
      "high": 177,
      "secs": {
-      "balc": 177
+      "balc": 69
      },
      "best": {
       "sec": "balc",
-      "row": "B",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-B105,BALCONY-B104"
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-F106,BALCONY-F107"
      },
      "deal": false
     },
     "2026-11-21 8:00 PM": {
-     "low": 175,
-     "med": 185,
+     "low": 69,
+     "med": 179,
      "high": 185,
      "secs": {
-      "balc": 175,
+      "balc": 69,
       "orch": 179
      },
      "best": {
       "sec": "balc",
-      "row": "A",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-A103,BALCONY-A102"
+      "row": "F",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-F105,BALCONY-F106"
      },
      "deal": false
     },
@@ -33400,7 +33538,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-F113"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-F111"
       },
       "deal": false
      },
@@ -33415,82 +33553,82 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F106"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F105"
       },
       "deal": false
      },
      "2026-11-18 8:00 PM": {
-      "low": 118,
+      "low": 69,
       "med": 179,
       "high": 185,
       "secs": {
-       "orch": 118,
-       "balc": 179
+       "balc": 69,
+       "orch": 118
       },
       "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=ORCHESTRA-P15"
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-F105"
       },
       "deal": false
      },
      "2026-11-19 7:00 PM": {
-      "low": 179,
+      "low": 69,
       "med": 182,
       "high": 185,
       "secs": {
-       "balc": 179,
+       "balc": 69,
        "orch": 179
       },
       "best": {
        "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-A103"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-F105"
       },
       "deal": false
      },
      "2026-11-20 7:00 PM": {
-      "low": 118,
+      "low": 69,
       "med": 179,
       "high": 185,
       "secs": {
-       "orch": 118,
-       "balc": 179
+       "balc": 69,
+       "orch": 118
       },
       "best": {
-       "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=ORCHESTRA-P12"
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=BALCONY-F105"
       },
       "deal": false
      },
      "2026-11-21 2:00 PM": {
-      "low": 177,
+      "low": 69,
       "med": 182,
       "high": 189,
       "secs": {
-       "balc": 177,
+       "balc": 69,
        "orch": 182
       },
       "best": {
        "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-A140"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-F106"
       },
       "deal": false
      },
      "2026-11-21 8:00 PM": {
-      "low": 118,
+      "low": 69,
       "med": 179,
       "high": 185,
       "secs": {
-       "orch": 118,
-       "balc": 175
+       "balc": 69,
+       "orch": 118
       },
       "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=ORCHESTRA-N12"
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=1&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-F105"
       },
       "deal": false
      },
@@ -33512,16 +33650,16 @@ window.TM_TODAYTIX = {
     },
     "2": {
      "2026-11-17 7:00 PM": {
-      "low": 69,
+      "low": 175,
       "med": 175,
       "high": 175,
       "secs": {
-       "balc": 69
+       "balc": 175
       },
       "best": {
        "sec": "balc",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-F113,BALCONY-F114"
+       "row": "C",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-17&slot=19:00&showtime_id=2515234&product_type=show&seats=BALCONY-C136,BALCONY-C137"
       },
       "deal": false
      },
@@ -33536,81 +33674,81 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F106,BALCONY-F107"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F105,BALCONY-F104"
       },
       "deal": false
      },
      "2026-11-18 8:00 PM": {
-      "low": 179,
+      "low": 69,
       "med": 179,
       "high": 185,
       "secs": {
-       "balc": 179,
+       "balc": 69,
        "orch": 179
       },
       "best": {
        "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-A139,BALCONY-A140"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-F105,BALCONY-F106"
       },
       "deal": false
      },
      "2026-11-19 7:00 PM": {
-      "low": 179,
+      "low": 69,
       "med": 182,
       "high": 185,
       "secs": {
-       "balc": 179,
+       "balc": 69,
        "orch": 179
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-B110,BALCONY-B109"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-F105,BALCONY-F106"
       },
       "deal": false
      },
      "2026-11-20 7:00 PM": {
-      "low": 175,
-      "med": 182,
+      "low": 69,
+      "med": 179,
       "high": 185,
       "secs": {
-       "orch": 175,
-       "balc": 179
+       "balc": 69,
+       "orch": 175
       },
       "best": {
-       "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=ORCHESTRA-E11,ORCHESTRA-E9"
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=BALCONY-F105,BALCONY-F106"
       },
       "deal": false
      },
      "2026-11-21 2:00 PM": {
-      "low": 177,
+      "low": 69,
       "med": 177,
       "high": 177,
       "secs": {
-       "balc": 177
+       "balc": 69
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-B105,BALCONY-B104"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-F106,BALCONY-F107"
       },
       "deal": false
      },
      "2026-11-21 8:00 PM": {
-      "low": 175,
-      "med": 185,
+      "low": 69,
+      "med": 179,
       "high": 185,
       "secs": {
-       "balc": 175,
+       "balc": 69,
        "orch": 179
       },
       "best": {
        "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-A103,BALCONY-A102"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=2&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-F105,BALCONY-F106"
       },
       "deal": false
      },
@@ -33645,9 +33783,54 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-18 2:00 PM": {
-      "low": 69,
+      "low": 175,
       "med": 175,
       "high": 175,
+      "secs": {
+       "balc": 175,
+       "orch": 175
+      },
+      "best": {
+       "sec": "balc",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-A138,BALCONY-A141,BALCONY-A140,BALCONY-A139"
+      },
+      "deal": false
+     },
+     "2026-11-18 8:00 PM": {
+      "low": 69,
+      "med": 179,
+      "high": 179,
+      "secs": {
+       "balc": 69,
+       "orch": 179
+      },
+      "best": {
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-F105,BALCONY-F108,BALCONY-F107,BALCONY-F106"
+      },
+      "deal": false
+     },
+     "2026-11-19 7:00 PM": {
+      "low": 69,
+      "med": 179,
+      "high": 179,
+      "secs": {
+       "balc": 69,
+       "orch": 179
+      },
+      "best": {
+       "sec": "balc",
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-F107,BALCONY-F109,BALCONY-F108,BALCONY-F106"
+      },
+      "deal": false
+     },
+     "2026-11-20 7:00 PM": {
+      "low": 69,
+      "med": 175,
+      "high": 179,
       "secs": {
        "balc": 69,
        "orch": 175
@@ -33655,81 +33838,36 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "balc",
        "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-18&slot=14:00&showtime_id=2515295&product_type=show&seats=BALCONY-F106,BALCONY-F108,BALCONY-F107,BALCONY-F105"
-      },
-      "deal": false
-     },
-     "2026-11-18 8:00 PM": {
-      "low": 179,
-      "med": 179,
-      "high": 179,
-      "secs": {
-       "balc": 179,
-       "orch": 179
-      },
-      "best": {
-       "sec": "balc",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-18&slot=20:00&showtime_id=2515297&product_type=show&seats=BALCONY-A139,BALCONY-A141,BALCONY-A140,BALCONY-A138"
-      },
-      "deal": false
-     },
-     "2026-11-19 7:00 PM": {
-      "low": 179,
-      "med": 179,
-      "high": 179,
-      "secs": {
-       "balc": 179,
-       "orch": 179
-      },
-      "best": {
-       "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-19&slot=19:00&showtime_id=2515257&product_type=show&seats=BALCONY-B110,BALCONY-B109,BALCONY-B108,BALCONY-B107"
-      },
-      "deal": false
-     },
-     "2026-11-20 7:00 PM": {
-      "low": 175,
-      "med": 179,
-      "high": 179,
-      "secs": {
-       "orch": 175,
-       "balc": 179
-      },
-      "best": {
-       "sec": "orch",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=ORCHESTRA-G15,ORCHESTRA-G13,ORCHESTRA-G17,ORCHESTRA-G19"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-20&slot=19:00&showtime_id=2515289&product_type=show&seats=BALCONY-F105,BALCONY-F108,BALCONY-F107,BALCONY-F106"
       },
       "deal": false
      },
      "2026-11-21 2:00 PM": {
-      "low": 177,
+      "low": 69,
       "med": 177,
       "high": 177,
       "secs": {
-       "balc": 177
+       "balc": 69
       },
       "best": {
        "sec": "balc",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-C135,BALCONY-C138,BALCONY-C137,BALCONY-C136"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-21&slot=14:00&showtime_id=2515271&product_type=show&seats=BALCONY-F106,BALCONY-F109,BALCONY-F108,BALCONY-F107"
       },
       "deal": false
      },
      "2026-11-21 8:00 PM": {
-      "low": 175,
+      "low": 69,
       "med": 179,
       "high": 185,
       "secs": {
-       "balc": 175,
+       "balc": 69,
        "orch": 179
       },
       "best": {
        "sec": "balc",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-B107,BALCONY-B106,BALCONY-B105,BALCONY-B104"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44369&qt=4&date=2026-11-21&slot=20:00&showtime_id=2515276&product_type=show&seats=BALCONY-F105,BALCONY-F108,BALCONY-F107,BALCONY-F106"
       },
       "deal": false
      },
@@ -33991,8 +34129,8 @@ window.TM_TODAYTIX = {
      },
      "2026-11-22 3:00 PM": {
       "low": 134,
-      "med": 145,
-      "high": 145,
+      "med": 134,
+      "high": 134,
       "secs": {
        "orch": 134
       },
@@ -34004,16 +34142,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-24 7:00 PM": {
-      "low": 68,
+      "low": 134,
       "med": 134,
       "high": 134,
       "secs": {
-       "orch": 68
+       "orch": 134
       },
       "best": {
        "sec": "orch",
-       "row": "Q",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46809&qt=1&date=2026-11-24&slot=19:00&showtime_id=2514830&product_type=show&seats=ORCHESTRA-Q12"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=46809&qt=1&date=2026-11-24&slot=19:00&showtime_id=2514830&product_type=show&seats=ORCHESTRA-F14"
       },
       "deal": false
      },
@@ -34396,21 +34534,6 @@ window.TM_TODAYTIX = {
    "id": 44453,
    "url": "https://www.todaytix.com/nyc/shows/44453-amaze-magic",
    "perfs": {
-    "2026-11-16 7:00 PM": {
-     "low": 96,
-     "med": 96,
-     "high": 96,
-     "secs": {
-      "mezz": 96,
-      "orch": 96
-     },
-     "best": {
-      "sec": "mezz",
-      "row": "A",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=2&date=2026-11-16&slot=19:00&showtime_id=2464048&product_type=show&seats=CENTER_MEZZANINE-A1,CENTER_MEZZANINE-A2"
-     },
-     "deal": false
-    },
     "2026-11-18 7:00 PM": {
      "low": 58,
      "med": 96,
@@ -34696,18 +34819,17 @@ window.TM_TODAYTIX = {
     "1": {
      "2026-11-16 7:00 PM": {
       "low": 96,
-      "med": 96,
-      "high": 96,
+      "med": 130,
+      "high": 130,
       "secs": {
-       "mezz": 96,
        "orch": 96
       },
       "best": {
-       "sec": "mezz",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-16&slot=19:00&showtime_id=2464048&product_type=show&seats=CENTER_MEZZANINE-A1"
+       "sec": "orch",
+       "row": "J",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-16&slot=19:00&showtime_id=2464048&product_type=show&seats=CENTER_ORCHESTRA-J13"
       },
-      "deal": false
+      "deal": true
      },
      "2026-11-18 7:00 PM": {
       "low": 58,
@@ -34751,6 +34873,21 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "F",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-20&slot=19:00&showtime_id=2464052&product_type=show&seats=CENTER_ORCHESTRA-F18"
+      },
+      "deal": false
+     },
+     "2026-11-21 2:00 PM": {
+      "low": 96,
+      "med": 200,
+      "high": 265,
+      "secs": {
+       "mezz": 96,
+       "orch": 96
+      },
+      "best": {
+       "sec": "mezz",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-21&slot=14:00&showtime_id=2464053&product_type=show&seats=CENTER_MEZZANINE-A12"
       },
       "deal": false
      },
@@ -34799,18 +34936,18 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-21 2:00 PM": {
-      "low": 96,
-      "med": 200,
+     "2026-11-23 7:00 PM": {
+      "low": 58,
+      "med": 96,
       "high": 265,
       "secs": {
-       "mezz": 96,
+       "mezz": 58,
        "orch": 96
       },
       "best": {
        "sec": "mezz",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-21&slot=14:00&showtime_id=2464053&product_type=show&seats=CENTER_MEZZANINE-A12"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-23&slot=19:00&showtime_id=2464057&product_type=show&seats=CENTER_MEZZANINE-B7"
       },
       "deal": false
      },
@@ -34948,21 +35085,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-23 7:00 PM": {
-      "low": 58,
-      "med": 96,
-      "high": 265,
-      "secs": {
-       "mezz": 58,
-       "orch": 96
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "B",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=1&date=2026-11-23&slot=19:00&showtime_id=2464057&product_type=show&seats=CENTER_MEZZANINE-B7"
-      },
-      "deal": false
-     },
      "2026-11-29 12:00 PM": {
       "low": 96,
       "med": 200,
@@ -34995,21 +35117,6 @@ window.TM_TODAYTIX = {
      }
     },
     "2": {
-     "2026-11-16 7:00 PM": {
-      "low": 96,
-      "med": 96,
-      "high": 96,
-      "secs": {
-       "mezz": 96,
-       "orch": 96
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=44453&qt=2&date=2026-11-16&slot=19:00&showtime_id=2464048&product_type=show&seats=CENTER_MEZZANINE-A1,CENTER_MEZZANINE-A2"
-      },
-      "deal": false
-     },
      "2026-11-18 7:00 PM": {
       "low": 58,
       "med": 96,
@@ -35802,6 +35909,20 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
+     "2026-11-19 7:00 PM": {
+      "low": 88,
+      "med": 109,
+      "high": 168,
+      "secs": {
+       "orch": 88
+      },
+      "best": {
+       "sec": "orch",
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-19&slot=19:00&showtime_id=2477169&product_type=show&seats=CENTER_ORCHESTRA-O112"
+      },
+      "deal": true
+     },
      "2026-11-20 7:00 PM": {
       "low": 88,
       "med": 109,
@@ -35858,9 +35979,9 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-19 7:00 PM": {
+     "2026-11-23 7:00 PM": {
       "low": 88,
-      "med": 109,
+      "med": 138,
       "high": 168,
       "secs": {
        "orch": 88
@@ -35868,7 +35989,21 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-19&slot=19:00&showtime_id=2477169&product_type=show&seats=CENTER_ORCHESTRA-O112"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-23&slot=19:00&showtime_id=2477174&product_type=show&seats=LEFT_ORCHESTRA-O11"
+      },
+      "deal": true
+     },
+     "2026-11-24 7:00 PM": {
+      "low": 88,
+      "med": 138,
+      "high": 168,
+      "secs": {
+       "orch": 88
+      },
+      "best": {
+       "sec": "orch",
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-24&slot=19:00&showtime_id=2477175&product_type=show&seats=LEFT_ORCHESTRA-O13"
       },
       "deal": true
      },
@@ -35897,6 +36032,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "M",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-27&slot=14:00&showtime_id=2477177&product_type=show&seats=LEFT_ORCHESTRA-M11"
+      },
+      "deal": true
+     },
+     "2026-11-27 7:00 PM": {
+      "low": 109,
+      "med": 158,
+      "high": 168,
+      "secs": {
+       "orch": 109
+      },
+      "best": {
+       "sec": "orch",
+       "row": "O",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-27&slot=19:00&showtime_id=2477178&product_type=show&seats=CENTER_ORCHESTRA-O111"
       },
       "deal": true
      },
@@ -35939,48 +36088,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "N",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-29&slot=14:00&showtime_id=2477181&product_type=show&seats=CENTER_ORCHESTRA-N106"
-      },
-      "deal": true
-     },
-     "2026-11-23 7:00 PM": {
-      "low": 88,
-      "med": 138,
-      "high": 168,
-      "secs": {
-       "orch": 88
-      },
-      "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-23&slot=19:00&showtime_id=2477174&product_type=show&seats=LEFT_ORCHESTRA-O11"
-      },
-      "deal": true
-     },
-     "2026-11-24 7:00 PM": {
-      "low": 88,
-      "med": 138,
-      "high": 168,
-      "secs": {
-       "orch": 88
-      },
-      "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-24&slot=19:00&showtime_id=2477175&product_type=show&seats=LEFT_ORCHESTRA-O13"
-      },
-      "deal": true
-     },
-     "2026-11-27 7:00 PM": {
-      "low": 109,
-      "med": 158,
-      "high": 168,
-      "secs": {
-       "orch": 109
-      },
-      "best": {
-       "sec": "orch",
-       "row": "O",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=14790&qt=1&date=2026-11-27&slot=19:00&showtime_id=2477178&product_type=show&seats=CENTER_ORCHESTRA-O111"
       },
       "deal": true
      }
@@ -36443,20 +36550,6 @@ window.TM_TODAYTIX = {
      },
      "deal": true
     },
-    "2026-11-19 7:00 PM": {
-     "low": 100,
-     "med": 134,
-     "high": 189,
-     "secs": {
-      "orch": 100
-     },
-     "best": {
-      "sec": "orch",
-      "row": "M",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=2&date=2026-11-19&slot=19:00&showtime_id=2198745&product_type=show&seats=CENTER_ORCHESTRA-M103,CENTER_ORCHESTRA-M104"
-     },
-     "deal": true
-    },
     "2026-11-21 8:00 PM": {
      "low": 223,
      "med": 223,
@@ -36572,34 +36665,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-20 7:00 PM": {
-      "low": 100,
-      "med": 134,
-      "high": 223,
-      "secs": {
-       "orch": 100
-      },
-      "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-20&slot=19:00&showtime_id=2198746&product_type=show&seats=CENTER_ORCHESTRA-N103"
-      },
-      "deal": true
-     },
-     "2026-11-22 2:00 PM": {
-      "low": 223,
-      "med": 264,
-      "high": 264,
-      "secs": {
-       "orch": 223
-      },
-      "best": {
-       "sec": "orch",
-       "row": "A",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-22&slot=14:00&showtime_id=2198749&product_type=show&seats=CENTER_ORCHESTRA-A111"
-      },
-      "deal": false
-     },
      "2026-11-18 7:00 PM": {
       "low": 100,
       "med": 112,
@@ -36614,17 +36679,17 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-19 7:00 PM": {
+     "2026-11-20 7:00 PM": {
       "low": 100,
       "med": 134,
-      "high": 189,
+      "high": 223,
       "secs": {
        "orch": 100
       },
       "best": {
        "sec": "orch",
-       "row": "L",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-19&slot=19:00&showtime_id=2198745&product_type=show&seats=CENTER_ORCHESTRA-L107"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-20&slot=19:00&showtime_id=2198746&product_type=show&seats=CENTER_ORCHESTRA-N103"
       },
       "deal": true
      },
@@ -36653,6 +36718,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "A",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-21&slot=20:00&showtime_id=2198748&product_type=show&seats=CENTER_ORCHESTRA-A111"
+      },
+      "deal": false
+     },
+     "2026-11-22 2:00 PM": {
+      "low": 223,
+      "med": 264,
+      "high": 264,
+      "secs": {
+       "orch": 223
+      },
+      "best": {
+       "sec": "orch",
+       "row": "A",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=1&date=2026-11-22&slot=14:00&showtime_id=2198749&product_type=show&seats=CENTER_ORCHESTRA-A111"
       },
       "deal": false
      },
@@ -36798,20 +36877,6 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-19 7:00 PM": {
-      "low": 100,
-      "med": 134,
-      "high": 189,
-      "secs": {
-       "orch": 100
-      },
-      "best": {
-       "sec": "orch",
-       "row": "M",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=2&date=2026-11-19&slot=19:00&showtime_id=2198745&product_type=show&seats=CENTER_ORCHESTRA-M103,CENTER_ORCHESTRA-M104"
-      },
-      "deal": true
-     },
      "2026-11-21 8:00 PM": {
       "low": 223,
       "med": 223,
@@ -36940,20 +37005,6 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-19 7:00 PM": {
-      "low": 100,
-      "med": 134,
-      "high": 189,
-      "secs": {
-       "orch": 100
-      },
-      "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=24608&qt=4&date=2026-11-19&slot=19:00&showtime_id=2198745&product_type=show&seats=CENTER_ORCHESTRA-N108,CENTER_ORCHESTRA-N111,CENTER_ORCHESTRA-N110,CENTER_ORCHESTRA-N109"
-      },
-      "deal": true
-     },
      "2026-11-25 8:00 PM": {
       "low": 144,
       "med": 166,
@@ -37032,30 +37083,16 @@ window.TM_TODAYTIX = {
    "url": "https://www.todaytix.com/nyc/shows/47251-midnight",
    "perfs": {
     "2026-11-17 7:30 PM": {
-     "low": 95,
-     "med": 146,
+     "low": 85,
+     "med": 95,
      "high": 146,
      "secs": {
-      "orch": 95
+      "orch": 85
      },
      "best": {
       "sec": "orch",
-      "row": "J",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-J103,ORCH_ORCHESTRA-J104"
-     },
-     "deal": false
-    },
-    "2026-11-18 7:30 PM": {
-     "low": 95,
-     "med": 114,
-     "high": 146,
-     "secs": {
-      "orch": 95
-     },
-     "best": {
-      "sec": "orch",
-      "row": "K",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-18&slot=19:30&showtime_id=2570451&product_type=show&seats=ORCH_ORCHESTRA-K117,ORCH_ORCHESTRA-K118"
+      "row": "N",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-N115,ORCH_ORCHESTRA-N116"
      },
      "deal": false
     },
@@ -37069,7 +37106,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "orch",
       "row": "J",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-19&slot=19:30&showtime_id=2570452&product_type=show&seats=ORCH_ORCHESTRA-J104,ORCH_ORCHESTRA-J103"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-19&slot=19:30&showtime_id=2570452&product_type=show&seats=ORCH_ORCHESTRA-J115,ORCH_ORCHESTRA-J116"
      },
      "deal": false
     },
@@ -37102,16 +37139,16 @@ window.TM_TODAYTIX = {
      "deal": false
     },
     "2026-11-21 7:30 PM": {
-     "low": 95,
+     "low": 75,
      "med": 95,
-     "high": 95,
+     "high": 126,
      "secs": {
-      "orch": 95
+      "orch": 75
      },
      "best": {
       "sec": "orch",
-      "row": "P",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-P115,ORCH_ORCHESTRA-P116"
+      "row": "K",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-K111,ORCH_ORCHESTRA-K112"
      },
      "deal": false
     },
@@ -37152,8 +37189,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "orch",
-      "row": "C",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-C111,ORCH_ORCHESTRA-C112"
+      "row": "B",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-B114,ORCH_ORCHESTRA-B115"
      },
      "deal": false
     },
@@ -37167,7 +37204,7 @@ window.TM_TODAYTIX = {
      "best": {
       "sec": "orch",
       "row": "J",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J114,ORCH_ORCHESTRA-J113"
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J106,ORCH_ORCHESTRA-J105"
      },
      "deal": false
     },
@@ -37259,16 +37296,16 @@ window.TM_TODAYTIX = {
    "byQty": {
     "1": {
      "2026-11-17 7:30 PM": {
-      "low": 95,
+      "low": 85,
       "med": 105,
       "high": 146,
       "secs": {
-       "orch": 95
+       "orch": 85
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-J104"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-N115"
       },
       "deal": false
      },
@@ -37329,30 +37366,30 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-21 7:30 PM": {
-      "low": 95,
+      "low": 75,
       "med": 95,
-      "high": 95,
+      "high": 126,
       "secs": {
-       "orch": 95
+       "orch": 75
       },
       "best": {
        "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-P115"
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-K111"
       },
       "deal": false
      },
      "2026-11-22 2:00 PM": {
       "low": 95,
-      "med": 95,
-      "high": 95,
+      "med": 126,
+      "high": 171,
       "secs": {
        "orch": 95
       },
       "best": {
        "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-22&slot=14:00&showtime_id=2570456&product_type=show&seats=ORCH_ORCHESTRA-P116"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-22&slot=14:00&showtime_id=2570456&product_type=show&seats=ORCH_ORCHESTRA-N109"
       },
       "deal": false
      },
@@ -37371,16 +37408,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-24 7:30 PM": {
-      "low": 114,
-      "med": 146,
+      "low": 146,
+      "med": 181,
       "high": 181,
       "secs": {
-       "orch": 114
+       "orch": 146
       },
       "best": {
        "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-K114"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-B114"
       },
       "deal": false
      },
@@ -37394,7 +37431,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J114"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=1&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J106"
       },
       "deal": false
      },
@@ -37485,30 +37522,16 @@ window.TM_TODAYTIX = {
     },
     "2": {
      "2026-11-17 7:30 PM": {
-      "low": 95,
-      "med": 146,
+      "low": 85,
+      "med": 95,
       "high": 146,
       "secs": {
-       "orch": 95
+       "orch": 85
       },
       "best": {
        "sec": "orch",
-       "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-J103,ORCH_ORCHESTRA-J104"
-      },
-      "deal": false
-     },
-     "2026-11-18 7:30 PM": {
-      "low": 95,
-      "med": 114,
-      "high": 146,
-      "secs": {
-       "orch": 95
-      },
-      "best": {
-       "sec": "orch",
-       "row": "K",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-18&slot=19:30&showtime_id=2570451&product_type=show&seats=ORCH_ORCHESTRA-K117,ORCH_ORCHESTRA-K118"
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-17&slot=19:30&showtime_id=2570450&product_type=show&seats=ORCH_ORCHESTRA-N115,ORCH_ORCHESTRA-N116"
       },
       "deal": false
      },
@@ -37522,7 +37545,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-19&slot=19:30&showtime_id=2570452&product_type=show&seats=ORCH_ORCHESTRA-J104,ORCH_ORCHESTRA-J103"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-19&slot=19:30&showtime_id=2570452&product_type=show&seats=ORCH_ORCHESTRA-J115,ORCH_ORCHESTRA-J116"
       },
       "deal": false
      },
@@ -37555,16 +37578,16 @@ window.TM_TODAYTIX = {
       "deal": false
      },
      "2026-11-21 7:30 PM": {
-      "low": 95,
+      "low": 75,
       "med": 95,
-      "high": 95,
+      "high": 126,
       "secs": {
-       "orch": 95
+       "orch": 75
       },
       "best": {
        "sec": "orch",
-       "row": "P",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-P115,ORCH_ORCHESTRA-P116"
+       "row": "K",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-21&slot=19:30&showtime_id=2570455&product_type=show&seats=ORCH_ORCHESTRA-K111,ORCH_ORCHESTRA-K112"
       },
       "deal": false
      },
@@ -37605,8 +37628,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-C111,ORCH_ORCHESTRA-C112"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-B114,ORCH_ORCHESTRA-B115"
       },
       "deal": false
      },
@@ -37620,7 +37643,7 @@ window.TM_TODAYTIX = {
       "best": {
        "sec": "orch",
        "row": "J",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J114,ORCH_ORCHESTRA-J113"
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=2&date=2026-11-25&slot=14:00&showtime_id=2570459&product_type=show&seats=ORCH_ORCHESTRA-J106,ORCH_ORCHESTRA-J105"
       },
       "deal": false
      },
@@ -37724,20 +37747,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-18 7:30 PM": {
-      "low": 146,
-      "med": 146,
-      "high": 146,
-      "secs": {
-       "orch": 146
-      },
-      "best": {
-       "sec": "orch",
-       "row": "F",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=4&date=2026-11-18&slot=19:30&showtime_id=2570451&product_type=show&seats=ORCH_ORCHESTRA-F107,ORCH_ORCHESTRA-F110,ORCH_ORCHESTRA-F109,ORCH_ORCHESTRA-F108"
-      },
-      "deal": false
-     },
      "2026-11-19 7:30 PM": {
       "low": 95,
       "med": 114,
@@ -37817,8 +37826,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=4&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-C111,ORCH_ORCHESTRA-C114,ORCH_ORCHESTRA-C113,ORCH_ORCHESTRA-C112"
+       "row": "B",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=47251&qt=4&date=2026-11-24&slot=19:30&showtime_id=2570458&product_type=show&seats=ORCH_ORCHESTRA-B114,ORCH_ORCHESTRA-B117,ORCH_ORCHESTRA-B116,ORCH_ORCHESTRA-B115"
       },
       "deal": false
      },
@@ -39582,21 +39591,6 @@ window.TM_TODAYTIX = {
      },
      "deal": false
     },
-    "2026-11-20 8:00 PM": {
-     "low": 49,
-     "med": 79,
-     "high": 154,
-     "secs": {
-      "mezz": 49,
-      "orch": 79
-     },
-     "best": {
-      "sec": "mezz",
-      "row": "C",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=48341&qt=2&date=2026-11-20&slot=20:00&showtime_id=2564628&product_type=show&seats=LEFT_MEZZANINE-C17,LEFT_MEZZANINE-C19"
-     },
-     "deal": false
-    },
     "2026-11-21 5:00 PM": {
      "low": 49,
      "med": 79,
@@ -39837,21 +39831,6 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "L",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=48341&qt=1&date=2026-11-19&slot=19:00&showtime_id=2564627&product_type=show&seats=LEFT_ORCHESTRA-L15"
-      },
-      "deal": false
-     },
-     "2026-11-20 8:00 PM": {
-      "low": 49,
-      "med": 79,
-      "high": 154,
-      "secs": {
-       "mezz": 49,
-       "orch": 49
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48341&qt=1&date=2026-11-20&slot=20:00&showtime_id=2564628&product_type=show&seats=LEFT_MEZZANINE-C17"
       },
       "deal": false
      },
@@ -40097,21 +40076,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-20 8:00 PM": {
-      "low": 49,
-      "med": 79,
-      "high": 154,
-      "secs": {
-       "mezz": 49,
-       "orch": 79
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48341&qt=2&date=2026-11-20&slot=20:00&showtime_id=2564628&product_type=show&seats=LEFT_MEZZANINE-C17,LEFT_MEZZANINE-C19"
-      },
-      "deal": false
-     },
      "2026-11-21 5:00 PM": {
       "low": 49,
       "med": 79,
@@ -40354,21 +40318,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-20 8:00 PM": {
-      "low": 49,
-      "med": 79,
-      "high": 154,
-      "secs": {
-       "mezz": 49,
-       "orch": 79
-      },
-      "best": {
-       "sec": "mezz",
-       "row": "C",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=48341&qt=4&date=2026-11-20&slot=20:00&showtime_id=2564628&product_type=show&seats=LEFT_MEZZANINE-C17,LEFT_MEZZANINE-C23,LEFT_MEZZANINE-C21,LEFT_MEZZANINE-C19"
-      },
-      "deal": false
-     },
      "2026-11-21 5:00 PM": {
       "low": 49,
       "med": 79,
@@ -40571,6 +40520,20 @@ window.TM_TODAYTIX = {
    "id": 575,
    "url": "https://www.todaytix.com/nyc/shows/575-seven-guitars",
    "perfs": {
+    "2026-11-17 8:00 PM": {
+     "low": 117,
+     "med": 117,
+     "high": 117,
+     "secs": {
+      "orch": 117
+     },
+     "best": {
+      "sec": "orch",
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-17&slot=20:00&showtime_id=2587514&product_type=show&seats=CENTER_ORCHESTRA-G111,CENTER_ORCHESTRA-G112"
+     },
+     "deal": false
+    },
     "2026-11-18 2:00 PM": {
      "low": 97,
      "med": 97,
@@ -40580,8 +40543,8 @@ window.TM_TODAYTIX = {
      },
      "best": {
       "sec": "orch",
-      "row": "E",
-      "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-E110,CENTER_ORCHESTRA-E109"
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-G103,CENTER_ORCHESTRA-G104"
      },
      "deal": false
     },
@@ -40610,6 +40573,20 @@ window.TM_TODAYTIX = {
       "sec": "orch",
       "row": "E",
       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-19&slot=20:00&showtime_id=2587517&product_type=show&seats=CENTER_ORCHESTRA-E109,CENTER_ORCHESTRA-E110"
+     },
+     "deal": false
+    },
+    "2026-11-20 8:00 PM": {
+     "low": 159,
+     "med": 159,
+     "high": 159,
+     "secs": {
+      "orch": 159
+     },
+     "best": {
+      "sec": "orch",
+      "row": "G",
+      "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-20&slot=20:00&showtime_id=2587518&product_type=show&seats=CENTER_ORCHESTRA-G102,CENTER_ORCHESTRA-G101"
      },
      "deal": false
     },
@@ -40756,6 +40733,20 @@ window.TM_TODAYTIX = {
    },
    "byQty": {
     "1": {
+     "2026-11-17 8:00 PM": {
+      "low": 117,
+      "med": 117,
+      "high": 117,
+      "secs": {
+       "orch": 117
+      },
+      "best": {
+       "sec": "orch",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-17&slot=20:00&showtime_id=2587514&product_type=show&seats=CENTER_ORCHESTRA-G111"
+      },
+      "deal": false
+     },
      "2026-11-18 2:00 PM": {
       "low": 97,
       "med": 97,
@@ -40765,8 +40756,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-E110"
+       "row": "F",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-F107"
       },
       "deal": false
      },
@@ -40781,6 +40772,34 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "E",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-18&slot=20:00&showtime_id=2587516&product_type=show&seats=CENTER_ORCHESTRA-E109"
+      },
+      "deal": false
+     },
+     "2026-11-19 8:00 PM": {
+      "low": 117,
+      "med": 117,
+      "high": 117,
+      "secs": {
+       "orch": 117
+      },
+      "best": {
+       "sec": "orch",
+       "row": "E",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-19&slot=20:00&showtime_id=2587517&product_type=show&seats=CENTER_ORCHESTRA-E109"
+      },
+      "deal": false
+     },
+     "2026-11-20 8:00 PM": {
+      "low": 159,
+      "med": 159,
+      "high": 159,
+      "secs": {
+       "orch": 159
+      },
+      "best": {
+       "sec": "orch",
+       "row": "D",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-20&slot=20:00&showtime_id=2587518&product_type=show&seats=CTR%2FRT_ORCHESTRA-D8"
       },
       "deal": false
      },
@@ -40826,21 +40845,7 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-19 8:00 PM": {
-      "low": 117,
-      "med": 117,
-      "high": 117,
-      "secs": {
-       "orch": 117
-      },
-      "best": {
-       "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-19&slot=20:00&showtime_id=2587517&product_type=show&seats=CENTER_ORCHESTRA-E109"
-      },
-      "deal": false
-     },
-     "2026-11-20 8:00 PM": {
+     "2026-11-25 2:00 PM": {
       "low": 159,
       "med": 159,
       "high": 159,
@@ -40849,8 +40854,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-20&slot=20:00&showtime_id=2587518&product_type=show&seats=CTR%2FRT_ORCHESTRA-E2"
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-25&slot=14:00&showtime_id=2587522&product_type=show&seats=CENTER_ORCHESTRA-G111"
       },
       "deal": false
      },
@@ -40924,20 +40929,6 @@ window.TM_TODAYTIX = {
       },
       "deal": false
      },
-     "2026-11-25 2:00 PM": {
-      "low": 159,
-      "med": 159,
-      "high": 159,
-      "secs": {
-       "orch": 159
-      },
-      "best": {
-       "sec": "orch",
-       "row": "G",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=1&date=2026-11-25&slot=14:00&showtime_id=2587522&product_type=show&seats=CENTER_ORCHESTRA-G111"
-      },
-      "deal": false
-     },
      "2026-11-29 3:00 PM": {
       "low": 214,
       "med": 214,
@@ -40954,6 +40945,20 @@ window.TM_TODAYTIX = {
      }
     },
     "2": {
+     "2026-11-17 8:00 PM": {
+      "low": 117,
+      "med": 117,
+      "high": 117,
+      "secs": {
+       "orch": 117
+      },
+      "best": {
+       "sec": "orch",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-17&slot=20:00&showtime_id=2587514&product_type=show&seats=CENTER_ORCHESTRA-G111,CENTER_ORCHESTRA-G112"
+      },
+      "deal": false
+     },
      "2026-11-18 2:00 PM": {
       "low": 97,
       "med": 97,
@@ -40963,8 +40968,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-E110,CENTER_ORCHESTRA-E109"
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-G103,CENTER_ORCHESTRA-G104"
       },
       "deal": false
      },
@@ -40993,6 +40998,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "E",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-19&slot=20:00&showtime_id=2587517&product_type=show&seats=CENTER_ORCHESTRA-E109,CENTER_ORCHESTRA-E110"
+      },
+      "deal": false
+     },
+     "2026-11-20 8:00 PM": {
+      "low": 159,
+      "med": 159,
+      "high": 159,
+      "secs": {
+       "orch": 159
+      },
+      "best": {
+       "sec": "orch",
+       "row": "G",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=2&date=2026-11-20&slot=20:00&showtime_id=2587518&product_type=show&seats=CENTER_ORCHESTRA-G102,CENTER_ORCHESTRA-G101"
       },
       "deal": false
      },
@@ -41138,6 +41157,20 @@ window.TM_TODAYTIX = {
      }
     },
     "4": {
+     "2026-11-17 8:00 PM": {
+      "low": 117,
+      "med": 117,
+      "high": 117,
+      "secs": {
+       "orch": 117
+      },
+      "best": {
+       "sec": "orch",
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=4&date=2026-11-17&slot=20:00&showtime_id=2587514&product_type=show&seats=CENTER_ORCHESTRA-H110,CENTER_ORCHESTRA-H109,CENTER_ORCHESTRA-H111,CENTER_ORCHESTRA-H112"
+      },
+      "deal": false
+     },
      "2026-11-18 2:00 PM": {
       "low": 97,
       "med": 97,
@@ -41147,8 +41180,8 @@ window.TM_TODAYTIX = {
       },
       "best": {
        "sec": "orch",
-       "row": "E",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=4&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CENTER_ORCHESTRA-E110,CENTER_ORCHESTRA-E109,CENTER_ORCHESTRA-E111,CENTER_ORCHESTRA-E112"
+       "row": "H",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=575&qt=4&date=2026-11-18&slot=14:00&showtime_id=2587515&product_type=show&seats=CTR%2FRT_ORCHESTRA-H14,CTR%2FRT_ORCHESTRA-H18,CTR%2FRT_ORCHESTRA-H16,CTR%2FRT_ORCHESTRA-H12"
       },
       "deal": false
      },
@@ -41554,34 +41587,6 @@ window.TM_TODAYTIX = {
       },
       "deal": true
      },
-     "2026-11-21 2:00 PM": {
-      "low": 58,
-      "med": 75,
-      "high": 124,
-      "secs": {
-       "orch": 58
-      },
-      "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-21&slot=14:00&showtime_id=2522886&product_type=show&seats=CENTER_ORCHESTRA-N106"
-      },
-      "deal": true
-     },
-     "2026-11-22 3:00 PM": {
-      "low": 58,
-      "med": 75,
-      "high": 124,
-      "secs": {
-       "orch": 58
-      },
-      "best": {
-       "sec": "orch",
-       "row": "N",
-       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-22&slot=15:00&showtime_id=2522889&product_type=show&seats=CENTER_ORCHESTRA-N106"
-      },
-      "deal": true
-     },
      "2026-11-21 11:00 AM": {
       "low": 58,
       "med": 75,
@@ -41593,6 +41598,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "N",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-21&slot=11:00&showtime_id=2522885&product_type=show&seats=CENTER_ORCHESTRA-N105"
+      },
+      "deal": true
+     },
+     "2026-11-21 2:00 PM": {
+      "low": 58,
+      "med": 75,
+      "high": 124,
+      "secs": {
+       "orch": 58
+      },
+      "best": {
+       "sec": "orch",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-21&slot=14:00&showtime_id=2522886&product_type=show&seats=CENTER_ORCHESTRA-N106"
       },
       "deal": true
      },
@@ -41621,6 +41640,20 @@ window.TM_TODAYTIX = {
        "sec": "orch",
        "row": "N",
        "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-22&slot=12:00&showtime_id=2522888&product_type=show&seats=CENTER_ORCHESTRA-N108"
+      },
+      "deal": true
+     },
+     "2026-11-22 3:00 PM": {
+      "low": 58,
+      "med": 75,
+      "high": 124,
+      "secs": {
+       "orch": 58
+      },
+      "best": {
+       "sec": "orch",
+       "row": "N",
+       "url": "https://www.todaytix.com/booking/seating-plan?product_id=13514&qt=1&date=2026-11-22&slot=15:00&showtime_id=2522889&product_type=show&seats=CENTER_ORCHESTRA-N106"
       },
       "deal": true
      },
@@ -45326,7 +45359,7 @@ window.TM_TODAYTIX = {
     "1": {
      "2026-11-21 7:30 PM": {
       "low": 95,
-      "med": 145,
+      "med": 95,
       "high": 145,
       "secs": {},
       "best": {
@@ -45904,7 +45937,7 @@ window.TM_TODAYTIX = {
     "4": {
      "2026-11-17 7:30 PM": {
       "low": 55,
-      "med": 98,
+      "med": 126,
       "high": 195,
       "secs": {
        "mezz": 55,
