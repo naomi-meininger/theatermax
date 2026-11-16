@@ -533,7 +533,9 @@ main { view-transition-name: page; }
 .poster-img { position: absolute; right: 12px; top: 12px; bottom: 12px; height: calc(100% - 24px); width: auto; aspect-ratio: 178 / 275;
   object-fit: cover; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.35); z-index: 1; }
 .poster.has-img .p-title, .poster.has-img .p-theater { padding-right: 46%; }
-.poster.has-img .ribbon { max-width: 50%; }
+.poster.has-img .p-title { font-size: 22px; hyphens: auto; overflow-wrap: break-word; }
+.poster.has-img { padding-top: 40px; }
+.poster.has-img .ribbon { max-width: 52%; font-size: 11px; }
 .poster .ribbon { z-index: 2; }
 .hero-poster { float: left; width: 96px; aspect-ratio: 178 / 275; object-fit: cover; border-radius: 6px; margin: 0 18px 6px 0;
   box-shadow: 0 6px 18px rgba(0,0,0,.35); position: relative; }
