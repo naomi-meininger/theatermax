@@ -1187,10 +1187,10 @@
           <div class="seat">${o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
             ${o.sec && show.theater ? (() => { const v = sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           <div class="price">
-            <div class="total">${money(shown)}</div>
+            <div class="total">${money(shown * state.qty)}</div>
+            ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
             <div class="breakdown">${o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
-            ${save > 1 ? `<div class="save">Save ${money0(save)} vs. box office</div>` : ""}
-            ${state.qty > 1 ? `<div class="breakdown">${state.qty} tickets: ${money(shown * state.qty)}</div>` : ""}
+            ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>
         </article>`;
@@ -1209,7 +1209,7 @@
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
-        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} ${windowWord}${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total)}</strong><span>all-in</span></div>
+        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} ${windowWord}${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total * state.qty)}</strong><span>all-in${state.qty > 1 ? ` · ${state.qty} tickets (${money0(overall.total)} each)` : ""}</span></div>
       </section>
       ${banner}
 
@@ -1319,15 +1319,15 @@
       const best = inSec[0], box = inSec.find((o) => o.officialRow);
       const save = box && best !== box ? box[key] - best[key] : 0;
       return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th>
-        <td class="bs-price">${money0(best[key])}</td>
+        <td class="bs-price">${money0(best[key] * state.qty)}${state.qty > 1 ? `<span class="bs-each">${money0(best[key])} each</span>` : ""}</td>
         <td>${esc(best.seller)}${best.code ? ` <code>${esc(best.code.code)}</code>` : ""}${best.sample ? ' <span class="badge sample">Sample</span>' : ""}</td>
-        <td class="bs-save">${save > 1 ? `save ${money0(save)}` : (best.officialRow || best.boxOffice) ? (best.boxOffice ? "box office, in person" : "official price is cheapest") : ""}</td>
+        <td class="bs-save">${save > 1 ? `save ${money0(save * state.qty)}` : (best.officialRow || best.boxOffice) ? (best.boxOffice ? "box office, in person" : "official price is cheapest") : ""}</td>
         <td><a href="${esc(best.url)}" target="_blank" rel="noopener">View →</a></td></tr>`;
     }).join("");
     if (!rows) return "";
     const loose = offers.filter((o) => o.secUnknown);
     return `<div class="by-section panel">
-      <h3>Cheapest by section <span class="muted">${state.fees ? "with fees" : "before fees"} · each</span></h3>
+      <h3>Cheapest by section <span class="muted">${state.fees ? "with fees" : "before fees"} · ${state.qty > 1 ? `${state.qty} tickets` : "1 ticket"}</span></h3>
       <table><tbody>${rows}</tbody></table>
       ${loose.length ? `<p class="muted bs-foot">${loose.map((o) => `<b>${esc(o.code.source)} code <code>${esc(o.code.code)}</code></b> (${o.code.to ? `${money0(o.code.from)}–${money0(o.code.to)}` : `from ${money0(o.code.from)}`})`).join(", ")} ${loose.length === 1 ? "isn't" : "aren't"} split by section because the offer doesn't say which seats get which price. Enter the code at checkout to see each section's price.</p>` : ""}
     </div>`;

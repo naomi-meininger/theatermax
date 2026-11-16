@@ -543,3 +543,4 @@ main { view-transition-name: page; }
 
 .stat .stat-split { display: block; font-size: 11px; opacity: .75; margin-top: 2px; }
 .code-src { font-size: 12px; margin-left: 6px; }
+.by-section .bs-each { display: block; font-size: 11px; font-weight: 500; opacity: .7; }
