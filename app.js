@@ -43,12 +43,12 @@
   // understudies.org show pages (confirmed paths); otherwise jump to its top search result.
   const UNDERSTUDIES = { "wicked": "wicked-nyc", "the-lion-king": "the-lion-king-nyc", "aladdin-broadway": "aladdin" };
   const understudyUrl = (s) => UNDERSTUDIES[s.slug] ? "https://understudies.org/show/" + UNDERSTUDIES[s.slug]
-    : "https://duckduckgo.com/?q=" + encodeURIComponent("\\ site:understudies.org/show " + s.title.replace(/\s*\((Encores!)\)/, ""));
+    : "https://www.google.com/search?btnI=1&q=" + encodeURIComponent("site:understudies.org/show " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const SHOWSCORE = window.TM_SHOWSCORE || {};
   // Show-Score page for a show: a confirmed URL, or DuckDuckGo's "jump to first result" on show-score.com.
   const showScoreUrl = (s) => SHOWSCORE[s.slug]
     ? "https://www.show-score.com" + SHOWSCORE[s.slug]
-    : "https://duckduckgo.com/?q=" + encodeURIComponent("\\ site:show-score.com " + s.title.replace(/\s*\((Encores!)\)/, ""));
+    : "https://www.google.com/search?btnI=1&q=" + encodeURIComponent("site:show-score.com " + s.title.replace(/\s*\((Encores!)\)/, ""));
   const RUSH = window.TM_RUSH || null; // weekly from bwayrush.com (data/rush.js)
   const cheapest = (deals, type) => deals.filter((d) => d.type === type && d.price != null).sort((a, b) => a.price - b.price)[0] || null;
   const RUN_DATES = window.TM_SCHEDULE || {};
@@ -374,9 +374,33 @@
   // Box seats: only for theaters that have boxes (mapped in data/seatviews.js). Often a partial
   // view, so usually priced between orchestra and mezzanine.
   const BOX_SECTION = { id: "box", name: "Box", mult: 0.72, rows: "ABCD" };
+  const STAGE_SECTION = { id: "stage", name: "Stage seating", mult: 1.1, rows: "ABC" };
+  const ALL_SECTIONS = [...SECTIONS, BOX_SECTION, STAGE_SECTION];
+  // Shows with seating a ticket site doesn't list (reported by people who've been).
+  const SPECIAL_SEATING = { "slam-frank": ["orch", "stage"] };
+  // Sections a show really sells: Broadway.com's per-performance "Pricing by Section" and
+  // TodayTix's section prices, combined. Falls back to the theater's levels.
+  const seenSections = (show) => {
+    const ids = new Set(SPECIAL_SEATING[show.slug] || []);
+    const cal = (window.TM_SCHEDULES && window.TM_SCHEDULES.shows || {})[show.slug];
+    if (cal) for (const ps of Object.values(cal.days || {})) for (const p of ps) Object.keys(p.secs || {}).forEach((k) => ids.add(k));
+    const tt = (window.TM_TODAYTIX && window.TM_TODAYTIX.shows || {})[show.slug];
+    if (tt) for (const p of Object.values(tt.perfs || {})) Object.keys(p.secs || {}).forEach((k) => ids.add(k));
+    return ids;
+  };
+  const SECTION_CACHE = new Map();
   const sectionsFor = (show) => {
+    if (!show) return SECTIONS;
+    if (SECTION_CACHE.has(show.slug)) return SECTION_CACHE.get(show.slug);
+    const seen = seenSections(show);
+    const res = seen.size ? ALL_SECTIONS.filter((x) => seen.has(x.id)) : sectionsByTheater(show);
+    SECTION_CACHE.set(show.slug, res);
+    return res;
+  };
+  const sectionsByTheater = (show) => {
     const map = show && show.theater && (window.TM_SEATVIEWS || {})[show.theater];
-    if (!map) return SECTIONS;
+    // Off-Broadway houses without a mapped seating chart are almost all one level.
+    if (!map) return show && show.scene === "off" ? SECTIONS.slice(0, 1) : SECTIONS;
     // Two-level theaters (no separate balcony): drop the Balcony section.
     const twoLevel = map.balc && map.mezz && map.balc[0] === map.mezz[0];
     return [...SECTIONS.filter((x) => !(twoLevel && x.id === "balc")), ...(map.box ? [BOX_SECTION] : [])];
@@ -392,12 +416,12 @@
     const tt = window.TM_TODAYTIX && window.TM_TODAYTIX.ids && window.TM_TODAYTIX.ids[show.slug];
     if (seller === "TodayTix" && tt && tt.url) return tt.url;
     const name = show.title.replace(/\s*\((The Met|Encores!|NYCB)\)\s*/g, " ").trim();
-    if (seller === "Box office") return show.tickets || "https://duckduckgo.com/?q=" + encodeURIComponent("\\ " + name + " official tickets");
+    if (seller === "Box office") return show.tickets || "https://www.google.com/search?btnI=1&q=" + encodeURIComponent("" + name + " official tickets");
     if (show.tickets && /^(The Met|NYC Ballet|New York City Center)$/.test(seller)) return show.tickets;
     // Broadway Direct show pages use the same name slug as Broadway.com (broadwaydirect.com/show/wicked/).
     if (seller === "Broadway Direct" && show.bdcUrl && /broadway\.com\/shows\//.test(show.bdcUrl)) return "https://broadwaydirect.com/show/" + show.slug.replace(/-broadway$/, "") + "/";
     const site = SELLER_SITE[seller];
-    return site ? "https://duckduckgo.com/?q=" + encodeURIComponent(`\\ site:${site} ${name}`) : OFFICIAL_URL[seller] || "#";
+    return site ? "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(`site:${site} ${name}`) : OFFICIAL_URL[seller] || "#";
   }
   const OFFICIAL_URL = {
     Telecharge: "https://www.telecharge.com",
@@ -553,6 +577,7 @@
   function groupOf(o) {
     if (o.code) return "codes";
     if (o.seller === "TDF") return "members";
+    if (o.boxOffice) return "official";
     if (o.chance || o.inPerson) return "sameday";
     if (o.member) return "members";
     if (o.seller === "SeatGeek") return "resale";
@@ -578,7 +603,11 @@
 
     sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
-      offers.push({ seller: show.official === "Box office" ? "Box office (official)" : show.official, kind: "Official seller", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official" });
+      offers.push({ seller: show.official === "Box office" ? "Official site" : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
+      // The theater's box office: same tickets at face value without online fees, and sometimes
+      // seats (house seats, returns) that aren't listed online.
+      offers.push({ seller: "Box office", kind: "Official · in person, no online fees", sec, row: null, price: p, fee: 0, url: showLink(show.official, show), tag: "official", inPerson: true, boxOffice: true,
+        note: `At the ${show.theater || "theater"} box office · face value, no online fees · sometimes has seats that aren't listed online` });
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
@@ -587,7 +616,7 @@
     // "section not listed" offer, and it's never counted as the cheapest in any one section.
     // The code is redeemed at the show's official seller (Playbill/BroadwayBox only publish it),
     // so the row is that seller, and the View link goes there.
-    const codeSeller = show.official === "Box office" ? "Box office (official)" : show.official;
+    const codeSeller = show.official === "Box office" ? "Official site" : show.official;
     validCodes(show).forEach((c) => {
       const secs = sectionsFor(show);
       const valid = `valid through ${fmtRunDate(parseDay(c.expires))}`;
@@ -686,12 +715,15 @@
     // TKTS doesn't post prices online, so the price is an estimate (~40% off) and never "Best deal".
     const boards = tktsBoardsFor(show), todayBoards = boards.filter((b) => b.day === nyToday());
     const freq = tdf && tdf.tkts && /frequently|sometimes|occasionally/i.test(tdf.tkts) ? tdf.tkts.toLowerCase() : null;
-    const box = result.find((o) => o.kind === "Official seller" && o.sec && o.sec.id === "orch") || result.find((o) => o.kind === "Official seller");
+    const box = result.find((o) => o.officialRow && o.sec && o.sec.id === "orch") || result.find((o) => o.officialRow);
     const TKTS_URL = "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/";
     if (box && near === 0 && todayBoards.length) {
       const where = [...new Set(todayBoards.map((b) => BOOTH[b.booth] || b.booth))].join(" & ");
-      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: Math.round(box.price * 0.6), fee: 7, url: TKTS_URL, live: "tkts", estimate: true,
-        note: `Listed on today's TKTS board (checked ${fmtNY(TKTS_LIVE.checkedAt)}) · buy at the booth, usually 20–50% off · price shown is an estimate; the board has the real one` });
+      // If the board shows a price, use it; otherwise estimate 40% off face value.
+      const listing = todayBoards.flatMap((b) => b.shows).find((x) => x.note && /\$\d/.test(x.note));
+      const boardPrice = listing ? dollars(listing.note)[0] : null;
+      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: boardPrice || Math.round(box.price * 0.6), fee: boardPrice ? 0 : 7, url: TKTS_URL, live: "tkts", priceEstimated: !boardPrice,
+        note: `On today's TKTS board (checked ${fmtNY(TKTS_LIVE.checkedAt)}) · buy at the booth while they last · ${boardPrice ? `board price ${listing.note}` : "usually 20–50% off; price is our estimate, the board has the real one"}` });
     } else if (box && (freq || boards.length)) {
       result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 7, url: TKTS_URL, chance: true, estimate: true,
         note: `${freq ? `TDF says this show is ${freq} at TKTS` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · sold same day (some matinees the day before) · check TKTS Live that morning` });
@@ -733,7 +765,7 @@
   function officialLowest(show) {
     let best = null;
     datesFor(show).filter((dt) => performsOn(show, dt.date)).forEach((dt) => perfsFor(show, dt).forEach((p) => {
-      buildOffers(show, p).forEach((o) => { if (o.kind === "Official seller" && (!best || o.total < best.total)) best = o; });
+      buildOffers(show, p).forEach((o) => { if (o.officialRow && (!best || o.total < best.total)) best = o; });
     }));
     return best;
   }
@@ -741,6 +773,9 @@
   const fmtDow = (d) => d.toLocaleDateString("en-US", { weekday: "short" });
   const fmtLong = (d) => d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
   const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
+
+  // Opera & ballet: link straight to the production on TodayTix when TodayTix sells it.
+  SHOWS.forEach((s) => { const id = s.scene === "arts" && TT.ids && TT.ids[s.slug]; if (id && id.url) { if (s.bdcUrl === s.tickets) s.bdcUrl = id.url; s.tickets = id.url; } });
 
   // ---------- views ----------
   // ---------- filters ----------
@@ -797,7 +832,11 @@
         ${sc === "arts" ? `
         <p class="eyebrow">Lincoln Center & beyond</p>
         <h1>Opera &amp; <em>Ballet</em></h1>
-        <p class="lede">The Met Opera and New York City Ballet, with their run dates and the cheap-seat programs (under-40 nights, $30 for 30, TDF). These companies perform in rotating repertory, so each show links to the company's own calendar.</p>` :
+        <p class="lede">The Met Opera and New York City Ballet, with their run dates and the cheap-seat programs (under-40 nights, $30 for 30, TDF). Each show links to its tickets: the show's TodayTix page when TodayTix sells it, otherwise the company's ticket page.</p>` :
+        sc === "broadway" ? `
+        <p class="eyebrow">41 theaters · 500+ seats each</p>
+        <h1><em>Broadway</em></h1>
+        <p class="lede">Broadway's theaters sit in and around Times Square and seat 500 or more. Each show below compares its official seller, the box office, discount codes, TodayTix, Broadway.com, resale, TKTS, lottery and rush, so you can see the cheapest seat in every section.</p>` :
         off ? `
         <p class="eyebrow">Smaller stages · bigger bargains</p>
         <h1>Off-<em>Broadway</em></h1>
@@ -1115,7 +1154,7 @@
     if (state.sort === "official") offers.sort((a, b) => (b.tag === "official") - (a.tag === "official") || a[key] - b[key]);
     const bestDeal = lowest(offers, { noMember: false });
     const officialBySec = {};
-    all.forEach((o) => { if (o.kind === "Official seller") officialBySec[o.sec.id] = o; });
+    all.forEach((o) => { if (o.officialRow) officialBySec[o.sec.id] = o; });
 
     const offerHtml = offers.map((o) => {
       const shown = state.fees ? o.total : o.price;
@@ -1269,12 +1308,12 @@
       const real = all.filter((o) => !o.sample);
       const inSec = (real.length ? real : all).sort((a, b) => a[key] - b[key]);
       if (!inSec.length) return "";
-      const best = inSec[0], box = inSec.find((o) => o.kind === "Official seller");
+      const best = inSec[0], box = inSec.find((o) => o.officialRow);
       const save = box && best !== box ? box[key] - best[key] : 0;
       return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th>
         <td class="bs-price">${money0(best[key])}</td>
         <td>${esc(best.seller)}${best.code ? ` <code>${esc(best.code.code)}</code>` : ""}${best.sample ? ' <span class="badge sample">Sample</span>' : ""}</td>
-        <td class="bs-save">${save > 1 ? `save ${money0(save)}` : best.kind === "Official seller" ? "box office is cheapest" : ""}</td>
+        <td class="bs-save">${save > 1 ? `save ${money0(save)}` : (best.officialRow || best.boxOffice) ? (best.boxOffice ? "box office, in person" : "official price is cheapest") : ""}</td>
         <td><a href="${esc(best.url)}" target="_blank" rel="noopener">View →</a></td></tr>`;
     }).join("");
     if (!rows) return "";

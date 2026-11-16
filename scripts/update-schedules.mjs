@@ -44,7 +44,7 @@ export function parseSectionPrices(html) {
   const t = text(html), i = t.search(/Pricing by Section/i);
   if (i < 0) return null;
   const seg = t.slice(i, i + 3000), out = {};
-  const id = (n) => /box|loge/i.test(n) ? "box" : /balc/i.test(n) ? "balc" : /mezz|dress|circle/i.test(n) ? "mezz" : /orch|stall|premium/i.test(n) ? "orch" : null;
+  const id = (n) => /stage/i.test(n) ? "stage" : /box|loge/i.test(n) ? "box" : /balc/i.test(n) ? "balc" : /mezz|dress|circle/i.test(n) ? "mezz" : /orch|stall|premium/i.test(n) ? "orch" : null;
   for (const m of seg.matchAll(/(?:am|pm)\s+([A-Za-z][A-Za-z .&'-]{2,40}?)\s+\$([\d,]+\.\d{2})\s+\$([\d,]+\.\d{2})/gi)) {
     const k = id(m[1]); if (!k) continue;
     const lo = +m[2].replace(/,/g, ""), hi = +m[3].replace(/,/g, "");

@@ -24,7 +24,7 @@ const sameShow = (a, b) => { const x = norm(a), y = norm(b); return x === y || (
 
 // TodayTix section codes (ORCH, ORCHST, FMEZZ, RMEZZ, BALC, BOXL…) → our section ids.
 const secId = (name) => { const n = String(name).toUpperCase();
-  if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
+  if (/STAGE/.test(n)) return "stage"; if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
   if (/MEZ|DRESS|CIRCLE|TIER/.test(n)) return "mezz"; if (/ORCH|ORC|STALL|PARQ|PARTERRE|PIT/.test(n)) return "orch"; return null; };
 const to12 = (hhmm) => { const h = +hhmm.slice(0, 2), m = hhmm.slice(2); return `${h % 12 || 12}:${m} ${h < 12 ? "AM" : "PM"}`; };
 const ny = (d) => new Date(d.toLocaleString("en-US", { timeZone: "America/New_York" }));
