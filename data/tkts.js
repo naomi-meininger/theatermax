@@ -2,14 +2,51 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-16T20:21:59.702Z",
+ "checkedAt": "2026-11-16T20:26:07.472Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
    "updated": "Monday, 16 November 2026 02:38 PM",
-   "shows": [],
+   "shows": [
+    {
+     "title": "Downstate",
+     "url": "https://www.tdf.org/shows/23521/downstate",
+     "tdfId": "23521",
+     "pct": 50,
+     "lo": 83,
+     "hi": 102,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "Galileo",
+     "url": "https://www.tdf.org/shows/23112/galileo",
+     "tdfId": "23112",
+     "pct": 30,
+     "lo": 66,
+     "hi": 115,
+     "time": "8:00 PM"
+    },
+    {
+     "title": "Six",
+     "url": "https://www.tdf.org/shows/17685/six",
+     "tdfId": "17685",
+     "pct": 50,
+     "lo": 70,
+     "hi": 103,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "The Great Gatsby",
+     "url": "https://www.tdf.org/shows/21385/the-great-gatsby",
+     "tdfId": "21385",
+     "pct": 50,
+     "lo": 65,
+     "hi": 110,
+     "time": "7:00 PM"
+    }
+   ],
    "day": "2026-11-16"
   },
   {
@@ -17,7 +54,71 @@ window.TM_TKTS = {
    "kind": "off",
    "status": "open",
    "updated": "Monday, 16 November 2026 02:38 PM",
-   "shows": [],
+   "shows": [
+    {
+     "title": "A Kidman Carol",
+     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
+     "tdfId": "23586",
+     "pct": 40,
+     "lo": 51,
+     "hi": 69,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "Drunk Christmas Carol",
+     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
+     "tdfId": "23582",
+     "pct": 50,
+     "lo": 38,
+     "hi": 58,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "Going Bacharach",
+     "url": "https://www.tdf.org/shows/23016/going-bacharach",
+     "tdfId": "23016",
+     "pct": 30,
+     "lo": 42,
+     "hi": 72,
+     "time": "7:30 PM"
+    },
+    {
+     "title": "Perfect Crime",
+     "url": "https://www.tdf.org/shows/1681/perfect-crime",
+     "tdfId": "1681",
+     "pct": 30,
+     "lo": 49,
+     "hi": 57,
+     "time": "8:00 PM"
+    },
+    {
+     "title": "Singfeld! A Musical About Nothing!",
+     "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing",
+     "tdfId": "19478",
+     "pct": 30,
+     "lo": 49,
+     "hi": 57,
+     "time": "7:30 PM"
+    },
+    {
+     "title": "Slam Frank",
+     "url": "https://www.tdf.org/shows/22731/slam-frank",
+     "tdfId": "22731",
+     "pct": 30,
+     "lo": 53,
+     "hi": 67,
+     "time": "7:00 PM"
+    },
+    {
+     "title": "The Play That Goes Wrong",
+     "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
+     "tdfId": "17222",
+     "pct": 50,
+     "lo": 50,
+     "hi": 71,
+     "time": "7:00 PM"
+    }
+   ],
    "day": "2026-11-16"
   },
   {
@@ -25,7 +126,17 @@ window.TM_TKTS = {
    "kind": "tomorrow-off",
    "status": "open",
    "updated": "Monday, 16 November 2026 02:38 PM",
-   "shows": [],
+   "shows": [
+    {
+     "title": "Christmas Spectacular w/ the Radio City Rockettes",
+     "url": "https://www.tdf.org/shows/10181/christmas-spectacular-w-the-radio-city-rockettes",
+     "tdfId": "10181",
+     "pct": 50,
+     "lo": 38,
+     "hi": 128,
+     "time": "3:00 PM"
+    }
+   ],
    "day": "2026-11-16"
   },
   {
