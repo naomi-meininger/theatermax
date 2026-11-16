@@ -2,9 +2,9 @@
 window.TM_RUSH = {
  "source": "https://bwayrush.com/",
  "status": "ok",
- "weekOf": "11/09/26",
- "updatedAt": "2026-11-14T04:39:07.248Z",
- "lastAttemptAt": "2026-11-14T04:39:07.248Z",
+ "weekOf": "11/16/26",
+ "updatedAt": "2026-11-16T20:57:10.640Z",
+ "lastAttemptAt": "2026-11-16T20:57:10.640Z",
  "shows": {
   "860": {
    "title": "860",
@@ -205,7 +205,7 @@ window.TM_RUSH = {
   },
   "a-few-good-men": {
    "title": "A Few Good Men",
-   "theater": "Vivian Beaumont Theater",
+   "theater": "Vivian Beaumont Theatre",
    "deals": [
     {
      "label": "$32 student",
@@ -465,7 +465,7 @@ window.TM_RUSH = {
   },
   "just-in-time": {
    "title": "Just in Time",
-   "theater": "Circle in the Square Theatre",
+   "theater": "Circle in the Square",
    "deals": [
     {
      "label": "$40 in-person",
@@ -835,36 +835,6 @@ window.TM_RUSH = {
     }
    ]
   },
-  "school-girls-or-african-mean-girls-play": {
-   "title": "School Girls; Or, The African Mean Girls Play",
-   "theater": "Samuel J. Friedman Theatre",
-   "deals": [
-    {
-     "label": "$49 mobile",
-     "url": "https://www.todaytix.com/nyc/shows/46505",
-     "type": "rush",
-     "channel": "Mobile",
-     "platform": "TodayTix",
-     "price": 49
-    },
-    {
-     "label": "$0 college student nyc only",
-     "url": "https://www.manhattantheatreclub.com/_old-join/college-students/",
-     "type": "student",
-     "channel": null,
-     "platform": "Manhattan Theatre Club",
-     "price": 0
-    },
-    {
-     "label": "$35 mtc35",
-     "url": "https://www.manhattantheatreclub.com/_old-join/mtc35/",
-     "type": "young",
-     "channel": null,
-     "platform": "Manhattan Theatre Club",
-     "price": 35
-    }
-   ]
-  },
   "six": {
    "title": "Six",
    "theater": "Lena Horne Theatre",
@@ -879,7 +849,7 @@ window.TM_RUSH = {
     },
     {
      "label": "$45 digital",
-     "url": "https://lottery.broadwaydirect.com/show/six-ny",
+     "url": "https://lottery.broadwaydirect.com/show/six-ny ",
      "type": "lottery",
      "channel": "Digital",
      "platform": "Broadway Direct",
@@ -1064,9 +1034,39 @@ window.TM_RUSH = {
     }
    ]
   },
+  "three-days-of-rain": {
+   "title": "Three Days of Rain",
+   "theater": "Longacre Theatre",
+   "deals": []
+  },
+  "the-amish-project": {
+   "title": "The Amish Project",
+   "theater": "Broadhurst Theatre",
+   "deals": []
+  },
+  "small-mouth-sounds-broadway": {
+   "title": "Small Mouth Sounds",
+   "theater": "Ethel Barrymore Theatre",
+   "deals": []
+  },
+  "dirty-dancing": {
+   "title": "Dirty Dancing",
+   "theater": "Lena Horne Theatre",
+   "deals": []
+  },
+  "evita": {
+   "title": "Evita",
+   "theater": "Winter Garden Theatre",
+   "deals": []
+  },
+  "the-odd-couple": {
+   "title": "The Odd Couple",
+   "theater": "Stephen Sondheim Theatre",
+   "deals": []
+  },
   "warriors": {
    "title": "Warriors",
-   "theater": "TBA",
+   "theater": "Lunt-Fontanne Theatre",
    "deals": [
     {
      "label": "$19.79 front rows",
@@ -1086,9 +1086,19 @@ window.TM_RUSH = {
     }
    ]
   },
+  "purple-rain": {
+   "title": "Purple Rain",
+   "theater": "Majestic Theatre",
+   "deals": []
+  },
+  "gloria": {
+   "title": "Gloria",
+   "theater": "Hayes Theater",
+   "deals": []
+  },
   "the-sound-of-music": {
    "title": "The Sound of Music",
-   "theater": "Vivian Beaumont Theater",
+   "theater": "Vivian Beaumont Theatre",
    "deals": [
     {
      "label": "$32 student",
@@ -1116,6 +1126,16 @@ window.TM_RUSH = {
     }
    ]
   },
+  "damn-yankees": {
+   "title": "Damn Yankees",
+   "theater": "Marquis Theatre",
+   "deals": []
+  },
+  "lost-lear": {
+   "title": "Lost Lear",
+   "theater": "Booth Theatre",
+   "deals": []
+  },
   "montauk": {
    "title": "Montauk",
    "theater": "Samuel J. Friedman Theatre",
@@ -1138,79 +1158,29 @@ window.TM_RUSH = {
     }
    ]
   },
-  "three-days-of-rain": {
-   "title": "Three Days of Rain",
-   "theater": "TBA",
-   "deals": []
-  },
-  "the-amish-project": {
-   "title": "The Amish Project",
-   "theater": "TBA",
-   "deals": []
-  },
-  "small-mouth-sounds-broadway": {
-   "title": "Small Mouth Sounds",
-   "theater": "TBA",
-   "deals": []
-  },
-  "dirty-dancing": {
-   "title": "Dirty Dancing",
-   "theater": "TBA",
-   "deals": []
-  },
-  "evita": {
-   "title": "Evita",
-   "theater": "TBA",
-   "deals": []
-  },
-  "the-odd-couple": {
-   "title": "The Odd Couple",
-   "theater": "TBA",
-   "deals": []
-  },
-  "purple-rain": {
-   "title": "Purple Rain",
-   "theater": "TBA",
-   "deals": []
-  },
-  "gloria": {
-   "title": "Gloria",
-   "theater": "TBA",
-   "deals": []
-  },
-  "damn-yankees": {
-   "title": "Damn Yankees",
-   "theater": "TBA",
-   "deals": []
-  },
-  "lost-lear": {
-   "title": "Lost Lear",
-   "theater": "TBA",
-   "deals": []
-  },
   "paddington": {
    "title": "Paddington",
-   "theater": "TBA",
+   "theater": "Al Hirschfeld Theatre",
    "deals": []
   },
   "rhinoceros": {
    "title": "Rhinoceros",
-   "theater": "TBA",
+   "theater": "Todd Haimes Theatre",
    "deals": []
   },
   "10-things-i-hate-about-you": {
    "title": "10 Things I Hate About You",
-   "theater": "TBA",
+   "theater": "Unannounced Broadway Theatre",
    "deals": []
   },
   "annie": {
    "title": "Annie",
-   "theater": "TBA",
+   "theater": "Unannounced Broadway Theatre",
    "deals": []
   },
   "this-world-of-tomorrow": {
    "title": "This World of Tomorrow",
-   "theater": "TBA",
+   "theater": "Unannounced Broadway Theatre",
    "deals": []
   }
  },
