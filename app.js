@@ -301,7 +301,7 @@
     for (const [seller, list] of Object.entries(OFFICIAL_BY_THEATER)) if (list.some((n) => theater.startsWith(n))) return seller;
     return "Box office";
   }
-  const SHOWS = [...(LIVE ? LIVE.shows : []), ...EXTRA_SHOWS].map((l) => ({ ...l, title: unent(l.title) })).map((l, i, arr) => {
+  const SHOWS = [...(LIVE ? LIVE.shows : []).filter((l) => !/^(find-by-date|tickets|calendar|gift-cards?)$/.test(l.slug)), ...EXTRA_SHOWS].map((l) => ({ ...l, title: unent(l.title) })).map((l, i, arr) => {
     const x = EXTRAS[l.slug] || {};
     const h = hash(l.slug);
     const popularity = l.ratingCount ? Math.min(1, l.ratingCount / 1000) : 0.3;

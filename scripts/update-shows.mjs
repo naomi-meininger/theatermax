@@ -39,6 +39,7 @@ export function parseShows(html) {
   // Only look at the page body, and skip header/footer nav if they're marked up as such.
   const body = html.replace(/<(header|footer|nav)\b[\s\S]*?<\/\1>/gi, " ").replace(/<script\b[\s\S]*?<\/script>/gi, " ");
 
+  const NOT_SHOWS = /^(find-by-date|tickets|calendar|gift-cards?|deals|discounts?|broadway|off-broadway|new-york|london|touring|search)$/;
   // Every link to a show page: /shows/{slug}/ (relative or absolute)
   const linkRe = /<a\b[^>]*href="(?:https?:\/\/(?:www\.)?broadway\.com)?\/shows\/([a-z0-9-]+)\/?"[^>]*>([\s\S]*?)<\/a>/gi;
   const hits = [];
@@ -82,6 +83,8 @@ export function parseShows(html) {
       if (r && ratingCount === null) ratingCount = parseInt(r[1].replace(/,/g, ""), 10);
       if (fromPrice !== null && ratingCount !== null) break;
     }
+    // Skip Broadway.com's own pages that live under /shows/ (e.g. "Find tickets by date").
+    if (NOT_SHOWS.test(s.slug) || /^(find |shop |browse |see all|view all|tickets by)/i.test(title || "") || /\.$/.test(title || "")) continue;
     shows.push({ slug: s.slug, title, url: `https://www.broadway.com/shows/${s.slug}/`, fromPrice, ratingCount });
   }
   return shows;
