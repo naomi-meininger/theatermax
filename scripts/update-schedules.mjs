@@ -36,7 +36,7 @@ export function parseOgImage(html) {
   const m = html.match(/<meta[^>]+property=["']og:image(?::secure_url)?["'][^>]+content=["']([^"']+)["']/i)
     || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
   const u = m && m[1].replace(/&amp;/g, "&");
-  return u && /^https:\/\//.test(u) && !/logo|default|placeholder/i.test(u) ? u : null;
+  return u && /^https:\/\//.test(u) && !/logo|default|placeholder|fallback/i.test(u) ? u : null;
 }
 
 export function parseRunDates(html) {
