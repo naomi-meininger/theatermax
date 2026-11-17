@@ -1246,8 +1246,12 @@
     // Sellers without live prices: one row each (no made-up section, row or price).
     const seenNA = new Set();
     const shownOffers = offers.filter((o) => { if (!o.sample) return true; const k = o.seller + "|" + o.kind; if (seenNA.has(k)) return false; seenNA.add(k); return true; });
-    const renderOffer = (o) => {
+    const renderOffer = (o, group) => {
       const shown = state.fees ? o.total : o.price;
+      // One card per seller: its other sections listed inside (filter by section to see them separately).
+      const many = group && group.length > 1;
+      const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => sectionsFor(show).indexOf(a.sec) - sectionsFor(show).indexOf(b.sec)).map((g) =>
+        `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>` : "";
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
@@ -1264,10 +1268,11 @@
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
-            ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
+            ${o.note && !many ? `<div class="note">${esc(o.note)}</div>` : ""}
+            ${secList}
           </div>
-          <div class="seat">${o.sample ? `<b>All sections</b>` : o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
-            ${o.sec && show.theater && !o.sample ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
+          <div class="seat">${many ? `<b>${group.length} sections</b>From ${esc(o.sec.name)}` : o.sample ? `<b>All sections</b>` : o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
+            ${o.sec && show.theater && !o.sample && !many ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           ${o.sample ? `<div class="price na">
             <div class="total na">Price not available right now</div>
             <div class="breakdown">We don't get live prices from ${esc(o.seller)}. Check its site for this performance.</div>
@@ -1283,11 +1288,20 @@
     };
     // Sellers without live prices get their own section at the bottom.
     const naOffers = shownOffers.filter((o) => o.sample);
-    const offerHtml = shownOffers.filter((o) => !o.sample).map(renderOffer).join("") + (naOffers.length ? `
+    // "All sections": group each seller's per-section rows into one card, led by its cheapest.
+    const realOffers = shownOffers.filter((o) => !o.sample);
+    const groups = new Map();
+    realOffers.forEach((o) => {
+      const k = state.section === "all" && o.sec && !o.chance ? [o.seller, o.kind, o.code ? o.code.code : ""].join("|") : Symbol();
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(o);
+    });
+    const lead = (g) => g.slice().sort((a, b) => a[key] - b[key])[0];
+    const offerHtml = [...groups.values()].map((g) => renderOffer(lead(g), g)).join("") + (naOffers.length ? `
       <div class="na-section">
         <h3>No live prices right now</h3>
         <p class="muted">We can't get prices from these sellers yet. Tap through to check this performance on their site.</p>
-      </div>${naOffers.map(renderOffer).join("")}` : "");
+      </div>${naOffers.map((o) => renderOffer(o)).join("")}` : "");
 
     const matches = target ? lows.filter((o) => o && o.total <= target).length : 0;
 
