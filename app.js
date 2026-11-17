@@ -804,8 +804,14 @@
     if (listings.length) {
       const best = listings.slice().sort((a, b) => a.lo - b.lo)[0];
       const where = [...new Set(listings.map((x) => x.booth))].join(" & ");
-      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts",
-        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} booth while they last${(() => {
+      // One bubble per booth: its price if it lists this performance, greyed out if closed or not listing it.
+      const booths = Object.entries(BOOTH).map(([id, name]) => {
+        const l = listings.filter((x) => x.booth === name).sort((a, b) => a.lo - b.lo)[0];
+        const closed = boards.some((b) => b.booth === id && b.day === today && b.status === "closed") && !l;
+        return { name, price: l ? l.lo : null, pct: l ? l.pct : null, state: l ? "on" : closed ? "closed" : "off" };
+      });
+      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts", booths,
+        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} ${where.includes("&") ? "booths" : "booth"} while they last${(() => {
           const closed = boards.filter((b) => b.day === today && b.status === "closed" && !listings.some((x) => x.booth === (BOOTH[b.booth] || b.booth))).map((b) => BOOTH[b.booth] || b.booth);
           return closed.length ? ` · the ${[...new Set(closed)].join(" & ")} booth has closed for today` : "";
         })()}` });
@@ -1333,6 +1339,7 @@
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
             ${o.note && !many ? `<div class="note">${esc(o.note)}</div>` : ""}
+            ${o.booths ? `<div class="sec-prices">${o.booths.map((b) => `<span class="sec-price booth ${b.state}" title="${b.state === "on" ? `${b.pct ? b.pct + "% off at " : "On the board at "}${esc(b.name)}` : b.state === "closed" ? `The ${esc(b.name)} booth has closed for today` : `Not on the ${esc(b.name)} board today`}"><span>${esc(b.name)}</span><b>${b.state === "on" ? money0(b.price * state.qty) : b.state === "closed" ? "Closed" : "Not listed"}</b></span>`).join("")}</div>` : ""}
             ${secList}
           </div>
           <div class="seat">${many ? `<b>${group.length} sections</b>From ${esc(o.sec.name)}` : o.sample ? `<b>All sections</b>` : o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}

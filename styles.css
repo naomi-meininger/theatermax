@@ -602,3 +602,7 @@ main { view-transition-name: page; }
 }
 .date-chip.holiday.active { background: var(--ink); border-color: var(--gold); }
 .date-chip.dark .hol { font-size: 12px; }
+.sec-price.booth { cursor: default; }
+.sec-price.booth.on { border-color: #1d7a3e; background: #eef7f0; }
+.sec-price.booth.closed, .sec-price.booth.off { opacity: .5; background: #f1eee8; }
+.sec-price.booth.closed b, .sec-price.booth.off b { font-weight: 600; }
