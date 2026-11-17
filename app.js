@@ -194,6 +194,23 @@
     return null;
   }
 
+  // Tonight's board: the cheapest real price for tonight's performances, like a TKTS board.
+  function tonightBoard(inScene) {
+    const today = (window.__TM_DATES_ALL || [])[0];
+    if (!today) return "";
+    const n = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" })), nowMin = n.getHours() * 60 + n.getMinutes();
+    const rows = SHOWS.filter((s) => s.onSale && inScene(s) && perfsFor(s, today).some((p) => toMinutes(p.time) > nowMin)).map((s) => {
+      const best = lowestForDate(s, today, { noMember: true });
+      return best ? { s, best } : null;
+    }).filter(Boolean).sort((a, b) => a.best.total - b.best.total).slice(0, 8);
+    if (!rows.length) return "";
+    return `<aside class="tonight" aria-label="Cheapest seats tonight">
+      <div class="tonight-head"><b>Tonight</b><span>${today.date.toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}</span></div>
+      <ol>${rows.map(({ s, best }) => `<li><a href="#show-${esc(s.slug)}"><span class="t-title">${esc(s.title)}</span><span class="t-src">${esc(best.seller)}</span><span class="t-price">${money0(best.total)}</span></a></li>`).join("")}</ol>
+      <p>Lowest real price per ticket, fees in, for tonight's shows.</p>
+    </aside>`;
+  }
+
   // "Recently announced" strip on the home / Broadway / Off-Broadway pages.
   function announcedStrip(inScene) {
     const list = SHOWS.filter((s) => inScene(s) && announcedOn(s))
@@ -903,7 +920,8 @@
     const where = sc === "off" ? "off-Broadway" : sc === "broadway" ? "on Broadway" : sc === "arts" ? "operas & ballets" : "on & off Broadway, opera & ballet";
 
     return `
-      <section class="hero">
+      <section class="hero ${sc !== "arts" ? "with-board" : ""}">
+        ${sc !== "arts" ? tonightBoard((s) => sc === "all" || sceneKey(s) === sc) : ""}
         ${sc === "arts" ? `
         <p class="eyebrow">Lincoln Center & beyond</p>
         <h1>Opera &amp; <em>Ballet</em></h1>
@@ -996,6 +1014,7 @@
     return `
       <article class="show-card ${s.onSale ? "" : "soon"}" style="--i:${Math.min(i, 12)}">
         <a class="card-link" href="${esc(href)}"${ext}>
+          <div class="p-band"><span>${esc(s.theater || sceneLabel(s))}</span>${s.type ? `<span>${esc(s.type)}</span>` : ""}</div>
           <div class="poster ${IMAGES[s.slug] ? "has-img" : ""}" style="${posterStyle(s)}">
             ${IMAGES[s.slug] ? `<img class="poster-img" src="${esc(IMAGES[s.slug])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ""}
             ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">${closingNote(s).short}</div>`
@@ -1003,7 +1022,7 @@
               : previewNote(s) ? `<div class="ribbon preview">${previewNote(s).short}</div>`
               : anniversaryNote(s) ? `<div class="ribbon anniv">${anniversaryNote(s).short}</div>` : ""}
             <div class="p-title ${s.title.length > 30 ? "xlong" : s.title.length > 16 ? "long" : ""}">${esc(s.title)}</div>
-            <div class="p-theater">${esc(s.theater || sceneLabel(s))}</div>
+
           </div>
           <div class="body">
             <div class="price-line">${false

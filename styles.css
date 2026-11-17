@@ -675,3 +675,44 @@ h2 { font-weight: 800; }
 .bsc-attr { font-size: 12px; }
 .p-theater, .kind, .meta { text-transform: none !important; letter-spacing: 0 !important; }
 .p-theater { font-weight: 600; }
+
+/* ---- Refinement: less basic, still restrained ---- */
+body { background: #f3f3f0; }
+main { background: transparent; }
+.panel, .by-section, .offer, .show-card, .ann-card, .buy-row, .filters { background: #fff; }
+.site-header { border-bottom-width: 0; box-shadow: inset 0 -4px 0 var(--ink); }
+
+/* Home hero: headline on the left, tonight's board on the right. */
+.hero.with-board { display: grid; grid-template-columns: minmax(0, 1fr) 380px; column-gap: 48px; align-items: start; }
+.hero.with-board > *:not(.tonight) { grid-column: 1; }
+.hero.with-board .tonight { grid-column: 2; grid-row: 1 / span 6; }
+@media (max-width: 900px) { .hero.with-board { display: block; } .hero.with-board .tonight { margin: 0 0 24px; } }
+.tonight { background: var(--ink); color: #fff; padding: 18px 20px 14px; border-radius: 3px; }
+.tonight-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 4px; }
+.tonight-head b { font-family: var(--display); font-stretch: 72%; font-size: 30px; font-weight: 800; color: var(--yellow); }
+.tonight-head span { font-size: 13px; color: #bbb; }
+.tonight ol { list-style: none; margin: 0; padding: 0; }
+.tonight li a { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "title price" "src price"; column-gap: 12px; padding: 9px 0; border-bottom: 1px solid #2c2c2c; color: #fff; text-decoration: none; }
+.tonight li:last-child a { border-bottom: 0; }
+.tonight li a:hover .t-title { text-decoration: underline; }
+.t-title { grid-area: title; font-weight: 700; font-size: 15px; line-height: 1.2; }
+.t-src { grid-area: src; font-size: 12px; color: #aaa; }
+.t-price { grid-area: price; align-self: center; font-family: var(--display); font-stretch: 72%; font-size: 28px; font-weight: 800; color: var(--yellow); }
+.tonight p { margin: 8px 0 0; font-size: 12px; color: #aaa; }
+
+/* Show cards: a program-style band above each poster. */
+.show-card { overflow: hidden; }
+.p-band { display: flex; justify-content: space-between; gap: 8px; background: var(--yellow); color: var(--ink); font-size: 12px; font-weight: 700; padding: 6px 12px; border-bottom: 2px solid var(--ink); }
+.p-band span:last-child { font-weight: 500; }
+.poster { min-height: 170px; }
+.poster .p-title { font-size: 30px; font-weight: 800; }
+.poster.has-img .p-title { font-size: 24px; }
+.show-card .body { padding: 14px 16px 16px; }
+.show-card:hover { border-color: var(--ink); }
+
+/* Section headings get a thick program rule. */
+.grid-head h2, .announced-head h2, .buy-box h2 { border-top: 4px solid var(--ink); padding-top: 10px; }
+.offers-head h2, .detail-head h1 { letter-spacing: -.01em; }
+.hero.with-board h1 { font-size: clamp(40px, 5.4vw, 70px); }
+.hero.with-board .stats { gap: 18px 28px; }
+.hero.with-board .stat strong { font-size: 26px; }
