@@ -425,6 +425,9 @@
     SECTION_CACHE.set(show.slug, res);
     return res;
   };
+  // Seating order: orchestra up, then special seating (boxes, stage/table seats) last.
+  const SEC_ORDER = ["orch", "mezz", "rmezz", "balc", "box", "stage"];
+  const secRank = (show, sec) => { const i = SEC_ORDER.indexOf(sec && sec.id); return i < 0 ? 99 : i; };
   const sectionsByTheater = (show) => {
     const map = show && show.theater && (window.TM_SEATVIEWS || {})[show.theater];
     // Off-Broadway houses without a mapped seating chart are almost all one level.
@@ -1235,7 +1238,7 @@
     let offers = preGroup.filter((o) => state.group === "all" || o.group === state.group);
     const key = state.fees ? "total" : "price";
     if (state.sort === "total") offers.sort((a, b) => a[key] - b[key]);
-    if (state.sort === "section") offers.sort((a, b) => (a.sec ? sectionsFor(show).indexOf(a.sec) : 9) - (b.sec ? sectionsFor(show).indexOf(b.sec) : 9) || a[key] - b[key]);
+    if (state.sort === "section") offers.sort((a, b) => (a.sec ? secRank(show, a.sec) : 9) - (b.sec ? secRank(show, b.sec) : 9) || a[key] - b[key]);
     if (state.sort === "official") offers.sort((a, b) => (b.tag === "official") - (a.tag === "official") || a[key] - b[key]);
     // Sellers we have no live price for go last, without a made-up number.
     offers.sort((a, b) => (!!a.sample) - (!!b.sample));
@@ -1250,9 +1253,9 @@
       const shown = state.fees ? o.total : o.price;
       // One card per seller: its other sections listed inside (filter by section to see them separately).
       const many = group && group.length > 1;
-      const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => sectionsFor(show).indexOf(a.sec) - sectionsFor(show).indexOf(b.sec)).map((g) =>
+      const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) =>
         `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>
-        ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.slice().sort((a, b) => sectionsFor(show).indexOf(a.sec) - sectionsFor(show).indexOf(b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
+        ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
