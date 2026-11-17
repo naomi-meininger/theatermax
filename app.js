@@ -805,7 +805,7 @@
   function lowest(offers, opts = {}) {
     let best = null;
     offers.forEach((o) => {
-      if (o.chance || o.estimate) return;
+      if (o.chance || o.estimate || o.sample) return;
       if (opts.noMember && o.member) return;
       if (opts.section && opts.section !== "all" && (!o.sec || o.sec.id !== opts.section)) return;
       if (!best || o.total < best.total) best = o;
@@ -1237,11 +1237,16 @@
     if (state.sort === "total") offers.sort((a, b) => a[key] - b[key]);
     if (state.sort === "section") offers.sort((a, b) => (a.sec ? sectionsFor(show).indexOf(a.sec) : 9) - (b.sec ? sectionsFor(show).indexOf(b.sec) : 9) || a[key] - b[key]);
     if (state.sort === "official") offers.sort((a, b) => (b.tag === "official") - (a.tag === "official") || a[key] - b[key]);
+    // Sellers we have no live price for go last, without a made-up number.
+    offers.sort((a, b) => (!!a.sample) - (!!b.sample));
     const bestDeal = lowest(offers, { noMember: false });
     const officialBySec = {};
     all.forEach((o) => { if (o.officialRow) officialBySec[o.sec.id] = o; });
 
-    const offerHtml = offers.map((o) => {
+    // Sellers without live prices: one row each (no made-up section, row or price).
+    const seenNA = new Set();
+    const shownOffers = offers.filter((o) => { if (!o.sample) return true; const k = o.seller + "|" + o.kind; if (seenNA.has(k)) return false; seenNA.add(k); return true; });
+    const offerHtml = shownOffers.map((o) => {
       const shown = state.fees ? o.total : o.price;
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
@@ -1255,21 +1260,25 @@
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="Estimated — this seller's real prices aren't connected yet">Sample</span>` : ""}
+              ${o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
             ${o.note ? `<div class="note">${esc(o.note)}</div>` : ""}
           </div>
-          <div class="seat">${o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
-            ${o.sec && show.theater ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
-          <div class="price">
+          <div class="seat">${o.sample ? `<b>All sections</b>` : o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
+            ${o.sec && show.theater && !o.sample ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
+          ${o.sample ? `<div class="price na">
+            <div class="total na">Price not available right now</div>
+            <div class="breakdown">We don't get live prices from ${esc(o.seller)}. Check its site for this performance.</div>
+            <div class="actions"><a class="btn ghost" href="${esc(o.url)}" target="_blank" rel="noopener">Check price →</a></div>
+          </div>` : `<div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
             <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
-          </div>
+          </div>`}
         </article>`;
     }).join("");
 
@@ -1287,7 +1296,7 @@
           <div class="meta"><a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener" style="color:inherit">Broadway.com lists from <b>${money(show.bdcFrom)}</b> ↗</a> <span style="opacity:.75">· real price as of ${esc(freshness(show.scene).when)}</span></div>
         </div>
         <button class="preview-btn on-dark" data-preview="${esc(show.slug)}">Preview: about the show &amp; reviews</button>
-        <div class="cheapest"><span>${hasLive(show) ? "Lowest" : "Est. lowest"} ${windowWord}${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total * state.qty)}</strong><span>all-in${state.qty > 1 ? ` · ${state.qty} tickets (${money0(overall.total)} each)` : ""}</span></div>
+        <div class="cheapest"><span>Lowest ${windowWord}${state.section !== "all" ? " · " + sectionsFor(show).find((x) => x.id === state.section).name : ""}</span><strong>${money0(overall.total * state.qty)}</strong><span>all-in${state.qty > 1 ? ` · ${state.qty} tickets (${money0(overall.total)} each)` : ""}</span></div>
       </section>
       ${banner}
 
@@ -1367,8 +1376,8 @@
             </select>
           </div>
           ${hasLive(show)
-            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${fmtNY(PRICES.updatedAt)}. Rows marked <span class="badge sample">Sample</span> are estimates.</p>`
-            : `<p class="sample-note">${hasTT(show) ? "TodayTix prices are live (from TodayTix, updated daily) where it has this date. " : ""}Rows marked <span class="badge sample">Sample</span> are estimates; the View links go to the show on each seller's site for the real price.</p>`}
+            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${fmtNY(PRICES.updatedAt)}. Sellers we don't have live prices for are listed last, with a link to check.</p>`
+            : `<p class="sample-note">${hasTT(show) ? "TodayTix prices are live (from TodayTix, updated daily) where it has this date. " : ""}Sellers we don't have live prices for are listed last as "price not available right now", with a link to check on their site.</p>`}
           <div class="group-tabs" role="tablist" aria-label="Seller type">
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
           </div>
@@ -1379,7 +1388,7 @@
             return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
           <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF (not in the prices above yet for this show): ${tdfLinks(show)}`}</p>
           <p class="also-check">Also check: <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
-          <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
+          <p class="muted" style="margin-top:-4px">${offers.filter((o) => !o.sample).length} prices from ${new Set(offers.filter((o) => !o.sample).map((o) => o.seller)).size} sources${offers.some((o) => o.sample) ? ` · ${new Set(offers.filter((o) => o.sample).map((o) => o.seller)).size} more without live prices` : ""}${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>
@@ -1393,8 +1402,8 @@
       // Real prices first: when a section has any, sample estimates don't compete with them.
       const all = offers.filter((o) => !o.chance && !o.estimate && o.sec && o.sec.id === sec.id);
       const real = all.filter((o) => !o.sample);
-      const inSec = (real.length ? real : all).sort((a, b) => a[key] - b[key]);
-      if (!inSec.length) return "";
+      const inSec = real.sort((a, b) => a[key] - b[key]);
+      if (!inSec.length) return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th><td class="muted" colspan="4">Price not available right now</td></tr>`;
       const best = inSec[0], box = inSec.find((o) => o.officialRow);
       const save = box && best !== box && !box.sample ? box[key] - best[key] : 0;
       return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th>

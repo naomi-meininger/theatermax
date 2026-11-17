@@ -552,3 +552,5 @@ main { view-transition-name: page; }
 .bsc-badge { height: 28px; width: auto; display: block; }
 .bsc-attr { font-size: 11px; }
 .bsc.bsc-none { display: none; }
+.price.na .total.na { font-size: 15px; font-weight: 700; line-height: 1.25; color: #6b6458; }
+.price.na .breakdown { max-width: 220px; }
