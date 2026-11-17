@@ -569,3 +569,109 @@ main { view-transition-name: page; }
 .buy-row { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 16px; border: 2px solid var(--ink); border-radius: var(--radius); background: #fff; color: inherit; text-decoration: none; margin-bottom: 10px; }
 .buy-row:hover { box-shadow: 4px 4px 0 var(--ink); }
 .buy-row .muted { font-size: 13px; }
+
+/* =====================================================================
+   House style (Nov 2026): a theater-program look instead of the generic
+   cream-and-serif template. White paper, true black ink, one program-
+   yellow accent used only for the masthead and the best deal, one
+   condensed sans (Archivo) for everything. No emoji, no all-caps
+   labels, no offset shadows; structure comes from rules and type.
+   ===================================================================== */
+:root {
+  --paper: #ffffff;
+  --paper-2: #f1f1ee;
+  --ink: #000000;
+  --ink-2: #2b2b2b;
+  --muted: #666666;
+  --line: #d6d6d2;
+  --red: #c8102e;
+  --red-dark: #9c0c24;
+  --yellow: #ffd100;
+  --green: #00703c;
+  --gold: #8a6d00;
+  --card: #ffffff;
+  --radius: 3px;
+  --shadow: none;
+  --display: "Archivo", "Arial Narrow", sans-serif;
+  --body: "Archivo", system-ui, sans-serif;
+}
+body { font-family: var(--body); font-stretch: 100%; font-variant-numeric: tabular-nums; background: var(--paper); }
+h1, h2, h3, .logo, .p-title, .offer .price .total, .cheapest strong, .stat strong {
+  font-family: var(--display); font-stretch: 72%; letter-spacing: -.01em;
+}
+h1 { font-weight: 800; line-height: .95; }
+h2 { font-weight: 800; }
+
+/* Masthead: a full-width yellow band, like a program cover. */
+.demo-banner { background: var(--ink); color: #fff; font-size: 12px; letter-spacing: 0; }
+.site-header { max-width: none; background: var(--yellow); border-bottom: 3px solid var(--ink); padding: 14px max(20px, calc((100vw - 1180px) / 2 + 20px)); }
+.logo { font-size: 34px; font-weight: 900; letter-spacing: -.02em; }
+.logo span { color: var(--ink); font-weight: 400; }
+.nav a { border-radius: 0; padding: 6px 10px; font-weight: 600; font-stretch: 90%; }
+.nav a:hover { background: transparent; text-decoration: underline; text-underline-offset: 4px; }
+.nav a.active { background: transparent; color: var(--ink); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.site-footer { border-top: 3px solid var(--ink); }
+
+/* Labels: sentence case, no tracking. */
+.eyebrow, .panel h3, .announced-head h2, .by-section h3, .ann-when, .stat span, .date-chip .dow,
+.badge, .pv-facts span, .cheapest span {
+  text-transform: none !important; letter-spacing: 0 !important;
+}
+.eyebrow { color: var(--muted); font-weight: 600; font-size: 14px; }
+.panel h3 { font-size: 15px; color: var(--ink); font-weight: 700; }
+
+/* Surfaces: flat, ruled, no lift. */
+.panel, .by-section, .ann-card, .buy-row, .show-card, .offer {
+  box-shadow: none !important; border-radius: var(--radius);
+}
+.show-card, .offer, .ann-card, .buy-row { border: 1px solid var(--line); }
+.show-card:hover, .ann-card:hover, .buy-row:hover { transform: none; box-shadow: none !important; border-color: var(--ink); }
+.offer.best { border: 1px solid var(--ink); border-left: 8px solid var(--yellow); box-shadow: none; }
+.offer { animation: none !important; }
+
+/* Posters: solid program colors, no diagonal gradients. */
+.poster { background-image: none !important; }
+.poster.has-img::after { background: none; }
+
+/* Tags: quiet text tags instead of colored pills. */
+.badge { background: transparent !important; border: 1px solid currentColor; border-radius: 2px; padding: 1px 6px; font-weight: 600; font-size: 12px; color: var(--ink-2) !important; }
+.badge.red { background: var(--yellow) !important; color: var(--ink) !important; border-color: var(--ink); }
+.badge.live { color: var(--green) !important; }
+.badge.sample { color: var(--muted) !important; border-style: dashed; }
+.badge.gold { color: var(--gold) !important; }
+
+/* Buttons: square, black. */
+.btn { border-radius: 2px; background: var(--ink); color: #fff; font-weight: 700; }
+.btn:hover { background: var(--ink-2); }
+.btn.ghost { border-radius: 2px; border-width: 1px; }
+.chip, .pg, .sec-price, .date-chip, .preview-btn, .qty button { border-radius: 2px !important; }
+.chip.on, .chip[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.sec-price.low { background: #fff7cc; border-color: var(--ink); }
+
+/* Prices read like a program's price list: big, condensed, black. */
+.offer .price .total { font-size: 34px; font-weight: 800; }
+.cheapest strong { font-weight: 800; }
+.offer .price .save { color: var(--green); }
+.na-section { border-top: 1px solid var(--ink); }
+
+/* Ribbons on posters become plain black tabs. */
+.ribbon { background: var(--ink) !important; color: #fff !important; border-radius: 0 !important; font-weight: 600; text-transform: none !important; letter-spacing: 0 !important; }
+.ribbon.anniv, .ribbon.preview { background: var(--yellow) !important; color: var(--ink) !important; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.hero h1 { max-width: 15ch; font-size: clamp(44px, 7vw, 84px); }
+.hero h1 em { font-style: normal; color: inherit; }
+.search-bar { border-radius: 2px; box-shadow: none; border-width: 2px; }
+.poster::before, .detail-hero::before, .modal-head::before { content: none !important; }
+.week-banner { background: #fff !important; color: var(--ink) !important; border: 1px solid var(--ink); border-left: 8px solid var(--yellow); border-radius: var(--radius); }
+.week-banner a { color: var(--ink) !important; font-weight: 700; }
+.opening-note { background: #fff7cc !important; color: var(--ink) !important; border: 1px solid var(--ink); }
+.filter-label { text-transform: none !important; letter-spacing: 0 !important; color: var(--ink) !important; font-weight: 700; }
+.stat strong { font-size: 30px; }
+.ann-when { color: var(--ink-2) !important; font-weight: 600; }
+/* Broadway Scorecard badge: shown big (their badge as-is, just larger; credit link kept) */
+.bsc-badge { height: 64px !important; }
+.bsc-attr { font-size: 12px; }
+.p-theater, .kind, .meta { text-transform: none !important; letter-spacing: 0 !important; }
+.p-theater { font-weight: 600; }

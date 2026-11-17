@@ -158,14 +158,14 @@
   // Short run-date notes for anything happening within a month: first preview, opening, closing.
   function runNotes(s) {
     const out = [], within = (dt) => { const d = Math.round((dt - TODAY) / 864e5); return d >= 0 && d <= 31; };
-    if (s.previews && !s.previews.assumed && !noPreviews(s) && s.previews.precision === "day" && within(s.previews.date)) out.push(`🎭 First preview ${fmtDay(s.previews.date)}`);
-    if (s.opening && s.opening.precision === "day" && within(s.opening.date)) out.push(`🎉 Opens ${fmtDay(s.opening.date)}`);
-    if (s.closing && s.closing.precision === "day" && within(s.closing.date)) out.push(`⏳ Closes ${fmtDay(s.closing.date)}`);
+    if (s.previews && !s.previews.assumed && !noPreviews(s) && s.previews.precision === "day" && within(s.previews.date)) out.push(`First preview ${fmtDay(s.previews.date)}`);
+    if (s.opening && s.opening.precision === "day" && within(s.opening.date)) out.push(`Opens ${fmtDay(s.opening.date)}`);
+    if (s.closing && s.closing.precision === "day" && within(s.closing.date)) out.push(`Closes ${fmtDay(s.closing.date)}`);
     // Not started yet and more than a month out: still say so, with the dates we know.
     if (!out.length && s.status === "upcoming") {
       const start = s.previews && !s.previews.assumed ? s.previews : s.opening;
       const limited = s.closing && start && +start.date === +(s.opening && s.opening.date) ? `–${fmtRunDate(s.closing)}` : "";
-      out.push(start ? `🗓 Upcoming · ${s.previews && !s.previews.assumed && s.opening && s.previews.date < s.opening.date ? "previews from" : "plays"} ${fmtRunDate(start)}${limited}` : "🗓 Upcoming · dates TBA");
+      out.push(start ? `Upcoming · ${s.previews && !s.previews.assumed && s.opening && s.previews.date < s.opening.date ? "previews from" : "plays"} ${fmtRunDate(start)}${limited}` : "Upcoming · dates TBA");
     }
     return out;
   }
@@ -194,14 +194,14 @@
     return null;
   }
 
-  // "📣 Recently announced" strip on the home / Broadway / Off-Broadway pages.
+  // "Recently announced" strip on the home / Broadway / Off-Broadway pages.
   function announcedStrip(inScene) {
     const list = SHOWS.filter((s) => inScene(s) && announcedOn(s))
       .sort((a, b) => announcedOn(b).date.localeCompare(announcedOn(a).date)).slice(0, 8);
     if (!list.length) return "";
     const fmtA = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
     return `<section class="announced" aria-labelledby="ann-h">
-      <div class="announced-head"><h2 id="ann-h">📣 Recently announced</h2><button class="linkish" data-quickstatus="new">See all →</button></div>
+      <div class="announced-head"><h2 id="ann-h">Recently announced</h2><button class="linkish" data-quickstatus="new">See all</button></div>
       <div class="announced-row">${list.map((s) => {
         const a = announcedOn(s);
         const when = s.previews && !s.previews.assumed ? `Previews ${fmtRunDate(s.previews)}` : s.opening ? `Opens ${fmtRunDate(s.opening)}` : "Dates TBA";
@@ -234,16 +234,16 @@
   function thisWeekBanner(filter = () => true) {
     const items = [];
     SHOWS.filter((s) => s.status !== "closed" && filter(s)).forEach((s) => {
-      if (daysToPreview(s) !== null) items.push({ d: s.previews.date, html: `🎭 <b>First preview</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.previews.date)}` });
-      if (daysToOpening(s) !== null) items.push({ d: s.opening.date, html: `🎉 <b>Opening night</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.opening.date)}` });
+      if (daysToPreview(s) !== null) items.push({ d: s.previews.date, html: `<b>First preview</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.previews.date)}` });
+      if (daysToOpening(s) !== null) items.push({ d: s.opening.date, html: `<b>Opening night</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.opening.date)}` });
       const left = daysLeft(s);
       const ann = anniversaryNote(s);
-      if (ann && ann.soon && ann.date - TODAY <= 7 * 864e5) items.push({ d: ann.date, html: `🎂 <b>${ann.years} years</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${ann.today ? "today!" : fmtDay(ann.date)}` });
-      if (left !== null && left <= 7) items.push({ d: s.closing.date, html: `⏳ <b>Final performance</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.closing.date)}` });
+      if (ann && ann.soon && ann.date - TODAY <= 7 * 864e5) items.push({ d: ann.date, html: `<b>${ann.years} years</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${ann.today ? "today!" : fmtDay(ann.date)}` });
+      if (left !== null && left <= 7) items.push({ d: s.closing.date, html: `<b>Final performance</b> <a href="#show-${s.slug}">${esc(s.title)}</a> · ${fmtDay(s.closing.date)}` });
     });
     if (!items.length) return "";
     items.sort((a, b) => a.d - b.d);
-    return `<section class="week-banner" aria-label="This week">${confetti()}<div class="wb-inner"><span class="wb-title">This week</span><ul>${items.map((i) => `<li>${i.html}</li>`).join("")}</ul></div></section>`;
+    return `<section class="week-banner" aria-label="This week"><div class="wb-inner"><span class="wb-title">This week</span><ul>${items.map((i) => `<li>${i.html}</li>`).join("")}</ul></div></section>`;
   }
 
   const confetti = () => `<span class="confetti" aria-hidden="true">${Array.from({ length: 14 }, (_, i) => `<i style="--i:${i}"></i>`).join("")}</span>`;
@@ -280,12 +280,12 @@
   function sectionView(theater, secId) {
     const map = SEATVIEWS[theater];
     if (secId === "box") return map && map.box
-      ? { url: `${AVFMS}${plus(avfmsName(theater))}/${plus(map.box)}/`, label: "📷 Views from the boxes", name: "Box", exact: true }
-      : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
+      ? { url: `${AVFMS}${plus(avfmsName(theater))}/${plus(map.box)}/`, label: "Views from the boxes", name: "Box", exact: true }
+      : { url: seatViewUrl(theater), label: "Seat views at this theater", exact: false };
     const lvl = map && (secId === "rmezz" ? map.rmezz || map.balc : map[secId]);
     return lvl
-      ? { url: `${AVFMS}${plus(avfmsName(theater))}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `📷 Views from the ${lvl[1]}`, name: lvl[1], exact: true }
-      : { url: seatViewUrl(theater), label: "📷 Seat views at this theater", exact: false };
+      ? { url: `${AVFMS}${plus(avfmsName(theater))}/level/${lvl[0]}/${plus(lvl[1])}/`, label: `Views from the ${lvl[1]}`, name: lvl[1], exact: true }
+      : { url: seatViewUrl(theater), label: "Seat views at this theater", exact: false };
   }
   const PALETTES = [
     ["#1b1b1b", "#c9a227"], ["#123d2a", "#7fd36b"], ["#7a2e0e", "#f2a33a"], ["#3a1f14", "#d98f3e"],
@@ -446,10 +446,10 @@
   function infoLine(show) {
     const inf = ((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[show.slug] || {};
     const bits = [
-      inf.runtime ? `⏱ ${esc(inf.runtime)}` : null,
-      inf.address ? `📍 <a href="https://www.google.com/maps/search/${encodeURIComponent((show.theater ? show.theater + ", " : "") + inf.address + ", New York, NY")}" target="_blank" rel="noopener">${esc(inf.address)}</a>` : null,
-      inf.age ? `👪 ${esc(inf.age)}` : null,
-      inf.advisories ? `⚠️ ${esc(inf.advisories.join(", "))}` : null,
+      inf.runtime ? `${esc(inf.runtime)}` : null,
+      inf.address ? `<a href="https://www.google.com/maps/search/${encodeURIComponent((show.theater ? show.theater + ", " : "") + inf.address + ", New York, NY")}" target="_blank" rel="noopener">${esc(inf.address)}</a>` : null,
+      inf.age ? `${esc(inf.age)}` : null,
+      inf.advisories ? `${esc(inf.advisories.join(", "))}` : null,
     ].filter(Boolean);
     const off = show.official && show.official !== "Box office" ? `<a href="${esc(showLink(show.official, show))}" target="_blank" rel="noopener">Box office hours &amp; accessibility on ${esc(show.official)} ↗</a>` : null;
     if (!bits.length && !off) return "";
@@ -845,7 +845,7 @@
 
   const fmtDow = (d) => d.toLocaleDateString("en-US", { weekday: "short" });
   const fmtLong = (d) => d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
-  const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
+  const posterStyle = (s) => `background: ${s.colors[0]}; color: ${s.colors[1]};`;
 
   // Opera & ballet: link straight to the production on TodayTix when TodayTix sells it.
   window.__TM_SHOWS = SHOWS; // handy for debugging in the browser console
@@ -862,7 +862,7 @@
   const FILTERS = {
     scene: [["all", "All"], ["broadway", "Broadway"], ["off", "Off-Broadway"], ["arts", "Opera & ballet"]],
     type: [["all", "All types"], ["Musical", "Musicals"], ["Play", "Plays"], ["Opera", "Opera"], ["Ballet", "Ballet & dance"], ["Special", "Specials"], ["Other", "Other"]],
-    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "🎉 Opening this week"], ["closing", "⏳ Closing soon"], ["new", "📣 Recently announced"], ["longrun", "🏆 Long-running (5+ yrs)"], ["anniv", "🎂 Anniversary year"]],
+    status: [["all", "Any time"], ["playing", "Now playing"], ["previews", "In previews"], ["upcoming", "Upcoming"], ["opening", "Opening this week"], ["closing", "Closing soon"], ["new", "Recently announced"], ["longrun", "Long-running (5+ yrs)"], ["anniv", "Anniversary year"]],
   };
   const SCENE_HASH = { all: "#home", broadway: "#broadway", off: "#off-broadway", arts: "#opera-ballet" };
   function passes(s, f, skip) {
@@ -916,8 +916,7 @@
         <p class="eyebrow">Smaller stages · bigger bargains</p>
         <h1>Off-<em>Broadway</em></h1>
         <p class="lede">Off-Broadway theaters seat 499 people or fewer, so you're closer to the stage and tickets usually cost less. Every show below gets the same price comparison as Broadway.</p>` : `
-        <p class="eyebrow">Every seller · one search</p>
-        <h1>Stop tab-hopping. <em>Get the best seat price.</em></h1>
+        <h1>Every seller’s price for every Broadway seat, side by side.</h1>
         <p class="lede">TheaterMax compares official sellers, discount codes, apps, resale, TKTS, memberships, lotteries and rush, so you see every price, date and seat in one place, with fees included.</p>`}
         <div class="search-bar" role="search">
           <input id="q" type="search" placeholder="Search a show or theater…" value="${esc(state.homeQuery)}" aria-label="Search shows" />
@@ -934,7 +933,7 @@
           <div class="stat"><strong>${SOURCES.length}</strong><span>ticket sources compared</span></div>
           <div class="stat"><strong>${withLot}</strong><span>with lottery or rush this week</span></div>
         </div>
-        <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "⚠ " : "● "}${esc(fresh.text)}</p>
+        <p class="updated ${fresh.stale ? "stale" : ""}">${fresh.stale ? "" : "● "}${esc(fresh.text)}</p>
       </section>
       ${thisWeekBanner((s) => sc === "all" || sceneKey(s) === sc)}
       ${announcedStrip((s) => sc === "all" || sceneKey(s) === sc)}
@@ -999,10 +998,10 @@
         <a class="card-link" href="${esc(href)}"${ext}>
           <div class="poster ${IMAGES[s.slug] ? "has-img" : ""}" style="${posterStyle(s)}">
             ${IMAGES[s.slug] ? `<img class="poster-img" src="${esc(IMAGES[s.slug])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ""}
-            ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).short}</div>`
-              : openingNote(s) ? `<div class="ribbon opening">🎉 ${openingNote(s).short}</div>`
-              : previewNote(s) ? `<div class="ribbon preview">🎭 ${previewNote(s).short}</div>`
-              : anniversaryNote(s) ? `<div class="ribbon anniv">🎂 ${anniversaryNote(s).short}</div>` : ""}
+            ${closingNote(s) ? `<div class="ribbon ${closingNote(s).urgent ? "urgent" : ""}">${closingNote(s).short}</div>`
+              : openingNote(s) ? `<div class="ribbon opening">${openingNote(s).short}</div>`
+              : previewNote(s) ? `<div class="ribbon preview">${previewNote(s).short}</div>`
+              : anniversaryNote(s) ? `<div class="ribbon anniv">${anniversaryNote(s).short}</div>` : ""}
             <div class="p-title ${s.title.length > 30 ? "xlong" : s.title.length > 16 ? "long" : ""}">${esc(s.title)}</div>
             <div class="p-theater">${esc(s.theater || sceneLabel(s))}</div>
           </div>
@@ -1027,7 +1026,7 @@
         </a>
         <div class="card-actions">
           <button class="preview-btn" data-preview="${esc(s.slug)}">Preview</button>
-          <a href="${esc(href)}"${ext}>${s.onSale || href.startsWith("#") ? "Compare prices →" : s.tickets ? "Get tickets ↗" : "Broadway.com ↗"}</a>
+          <a href="${esc(href)}"${ext}>${s.onSale || href.startsWith("#") ? "Compare prices" : s.tickets ? "Get tickets ↗" : "Broadway.com ↗"}</a>
         </div>
       </article>`;
   }
@@ -1047,10 +1046,10 @@
           <div class="pv-status">${statusBadge(s, true)}${s.status === "playing" && s.opening && s.opening.precision === "day" ? `<span>Opened ${fmtRunDate(s.opening)}</span>` : ""}${s.closing && s.status !== "closed" ? `<span>Final show ${fmtRunDate(s.closing)}</span>` : s.status === "playing" && !s.guessed ? `<span>Open-ended run</span>` : ""}${s.guessed ? `<span title="We don't have this show's dates yet, so the status is estimated from its listing.">Status estimated</span>` : ""}</div>
         </div>
         <div class="modal-body">
-          ${closingNote(s) ? `<div class="closing-note ${closingNote(s).urgent ? "urgent" : ""}">⏳ ${closingNote(s).long}</div>` : ""}
-          ${openingNote(s) ? `<div class="opening-note">${confetti()}<span class="on-text">🎉 ${openingNote(s).long}</span></div>` : ""}
-          ${previewNote(s) ? `<div class="opening-note preview-note">${confetti()}<span class="on-text">🎭 ${previewNote(s).long}</span></div>` : ""}
-          ${anniversaryNote(s) ? `<div class="opening-note anniv-note">${confetti()}<span class="on-text">🎂 ${anniversaryNote(s).long}</span></div>` : ""}
+          ${closingNote(s) ? `<div class="closing-note ${closingNote(s).urgent ? "urgent" : ""}">${closingNote(s).long}</div>` : ""}
+          ${openingNote(s) ? `<div class="opening-note"><span class="on-text">${openingNote(s).long}</span></div>` : ""}
+          ${previewNote(s) ? `<div class="opening-note preview-note"><span class="on-text">${previewNote(s).long}</span></div>` : ""}
+          ${anniversaryNote(s) ? `<div class="opening-note anniv-note"><span class="on-text">${anniversaryNote(s).long}</span></div>` : ""}
           ${s.blurb
             ? `<p class="pv-blurb">${esc(s.blurb)}</p>`
             : `<p class="pv-blurb muted">We haven't written a description for this show yet. <a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Read about it ${s.tickets ? "on the venue's site" : "on Broadway.com"} ↗</a></p>`}
@@ -1078,12 +1077,11 @@
           </section>` : ""}
 
           <div class="pv-links">
-            ${s.opening && s.opening.date <= TODAY ? `<a href="${esc(roundupUrl(s))}" target="_blank" rel="noopener">📰 Critics' review roundup on BroadwayWorld ↗</a>` : ""}
             ${s.ratingCount ? `<a href="${esc(s.bdcUrl)}" target="_blank" rel="noopener">Audience reviews on Broadway.com ↗</a>` : ""}
             <a href="${esc(showScoreUrl(s))}" target="_blank" rel="noopener">⭐ Audience scores on Show-Score ↗</a>
             ${(s.reddit || []).map((t) => `<a class="reddit-thread" href="${esc(t.url)}" target="_blank" rel="noopener">💬 r/Broadway: “${esc(t.title)}” ↗</a>`).join("")}
             <a href="https://www.reddit.com/r/Broadway/search/?q=${encodeURIComponent('"' + s.title.replace(/[:(].*$/, "").trim() + '"')}&restrict_sr=1&sort=relevance" target="_blank" rel="noopener">${s.reddit && s.reddit.length ? "More on r/Broadway ↗" : "What theatergoers say on r/Broadway ↗"}</a>
-            ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">📷 Seat views at ${esc(s.theater)} ↗</a>` : ""}
+            ${s.theater ? `<a href="${esc(seatViewUrl(s.theater))}" target="_blank" rel="noopener">Seat views at ${esc(s.theater)} ↗</a>` : ""}
           </div>
         </div>
         <div class="modal-foot">
@@ -1176,7 +1174,7 @@
     const ttLow = lows.length ? Math.min(...lows) : null;
     const rows = [
       show.officialTickets ? `<a class="buy-row" href="${esc(show.officialTickets)}" target="_blank" rel="noopener"><span><b>${esc(company)}</b> <span class="badge green">Official</span><br><span class="muted">Box office and the company's own website · no live price here</span></span><span class="btn ghost">Tickets ↗</span></a>` : "",
-      show.todaytixUrl ? `<a class="buy-row" href="${esc(show.todaytixUrl)}" target="_blank" rel="noopener"><span><b>TodayTix</b> ${ttLow ? `<span class="badge live">● Live price</span>` : ""}<br><span class="muted">${ttLow ? `From ${money0(ttLow)} each for 2 seats together in the next two weeks · fees included` : "Prices on TodayTix"}</span></span><span class="btn ${ttLow ? "" : "ghost"}">${ttLow ? money0(ttLow) + " →" : "View ↗"}</span></a>` : "",
+      show.todaytixUrl ? `<a class="buy-row" href="${esc(show.todaytixUrl)}" target="_blank" rel="noopener"><span><b>TodayTix</b> ${ttLow ? `<span class="badge live">Live price</span>` : ""}<br><span class="muted">${ttLow ? `From ${money0(ttLow)} each for 2 seats together in the next two weeks · fees included` : "Prices on TodayTix"}</span></span><span class="btn ${ttLow ? "" : "ghost"}">${ttLow ? money0(ttLow) + " →" : "View ↗"}</span></a>` : "",
     ].join("");
     return `<section class="buy-box"><h2>Where to buy</h2>${rows}</section>`;
   }
@@ -1209,10 +1207,10 @@
     const note = closingNote(show);
     const on = openingNote(show);
     const ann = anniversaryNote(show);
-    const annBanner = ann ? `<div class="opening-note anniv-note big">${confetti()}<span class="on-text"><b>🎂 ${ann.soon ? (ann.today ? ann.short : "Big anniversary coming up!") : ann.short + "!"}</b><br>${ann.long}</span></div>` : "";
-    const banner0 = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">⏳ ${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
-      : previewNote(show) ? `<div class="opening-note preview-note big">${confetti()}<span class="on-text"><b>🎭 First preview coming up!</b><br>${previewNote(show).long}</span></div>`
-      : on ? `<div class="opening-note big ${on.tonight ? "tonight" : ""}">${confetti()}<span class="on-text"><b>🎉 ${on.tonight ? "Opening night tonight!" : "Opening night is almost here!"}</b><br>${on.long}</span></div>` : "";
+    const annBanner = ann ? `<div class="opening-note anniv-note big"><span class="on-text"><b>${ann.soon ? (ann.today ? ann.short : "Big anniversary coming up!") : ann.short + "!"}</b><br>${ann.long}</span></div>` : "";
+    const banner0 = note ? `<div class="closing-note big ${note.urgent ? "urgent" : ""}">${note.long} <a href="#" data-date-first>See remaining dates ↓</a></div>`
+      : previewNote(show) ? `<div class="opening-note preview-note big"><span class="on-text"><b>First preview coming up!</b><br>${previewNote(show).long}</span></div>`
+      : on ? `<div class="opening-note big ${on.tonight ? "tonight" : ""}"><span class="on-text"><b>${on.tonight ? "Opening night tonight!" : "Opening night is almost here!"}</b><br>${on.long}</span></div>` : "";
     const banner = banner0 + annBanner;
     if (!DATES.some(playable)) {
       // Only state dates we actually have: a real first-preview date, otherwise the opening date.
@@ -1273,7 +1271,7 @@
       const many = group && group.length > 1;
       const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) =>
         `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>
-        ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
+        ${show.theater ? `<div class="sec-views">Seat views: ${[...new Map(group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
@@ -1285,8 +1283,8 @@
               ${o.chance ? `<span class="badge gold">${/lottery/i.test(o.kind) ? "Lottery · not guaranteed" : o.seller === "TKTS" ? "Estimate · same day" : o.seller === "TDF" ? "Members · if offered" : "Rush · while they last"}</span>` : ""}
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
-              ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
+              ${o.verified ? `<span class="badge live">Verified code</span>` : ""}
+              ${o.live === "tkts" ? `<span class="badge live">On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
@@ -1294,17 +1292,17 @@
             ${secList}
           </div>
           <div class="seat">${many ? `<b>${group.length} sections</b>From ${esc(o.sec.name)}` : o.sample ? `<b>All sections</b>` : o.sec ? `<b>${o.sec.name}</b>${o.row ? `Row ${o.row}` : o.code ? "Discounted seats" : ""}` : o.code ? `<b>Section not listed</b>Price varies by seat` : o.live ? `<b>Any section</b>Best available` : `<b>Seat assigned</b>Any section`}
-            ${o.sec && show.theater && !o.sample && !many ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
+            ${o.sec && show.theater && !o.sample && !many ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           ${o.sample ? `<div class="price na">
             <div class="total na">Price not available right now</div>
             <div class="breakdown">We don't get live prices from ${esc(o.seller)}. Check its site for this performance.</div>
-            <div class="actions"><a class="btn ghost" href="${esc(o.url)}" target="_blank" rel="noopener">Check price →</a></div>
+            <div class="actions"><a class="btn ghost" href="${esc(o.url)}" target="_blank" rel="noopener">Check price</a></div>
           </div>` : `<div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
             <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
-            <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
+            <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"}</a></div>
           </div>`}
         </article>`;
     };
@@ -1391,10 +1389,10 @@
             ${seatMap(all, show)}
             <div class="legend">Greener = cheaper. Tap a section to filter.</div>
             ${show.theater && SEATVIEWS[show.theater] ? `<div class="level-links">${
-                [...new Map(sectionsFor(show).map((sec) => { const v = sec.view ? { url: sec.view, label: `📷 ${sec.name}`, name: sec.name, exact: true } : sectionView(show.theater, sec.id); return [v.url, { sec, v }]; })).values()]
-                  .map(({ sec, v }) => `<a class="btn ghost" href="${esc(v.url)}" target="_blank" rel="noopener" title="Audience photos from the whole ${esc(v.name)}">📷 ${esc(v.name)}${v.name !== sec.name ? ` <span class="lvl-note">(${sec.name.toLowerCase()})</span>` : ""}</a>`).join("")
+                [...new Map(sectionsFor(show).map((sec) => { const v = sec.view ? { url: sec.view, label: `${sec.name}`, name: sec.name, exact: true } : sectionView(show.theater, sec.id); return [v.url, { sec, v }]; })).values()]
+                  .map(({ sec, v }) => `<a class="btn ghost" href="${esc(v.url)}" target="_blank" rel="noopener" title="Audience photos from the whole ${esc(v.name)}">${esc(v.name)}${v.name !== sec.name ? ` <span class="lvl-note">(${sec.name.toLowerCase()})</span>` : ""}</a>`).join("")
               }</div>` : ""}
-            ${show.theater ? `<a class="${SEATVIEWS[show.theater] ? "all-views" : "btn ghost seatview-btn"}" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">${SEATVIEWS[show.theater] ? "All sections at " + esc(show.theater) + " ↗" : "📷 See real seat views ↗"}</a>
+            ${show.theater ? `<a class="${SEATVIEWS[show.theater] ? "all-views" : "btn ghost seatview-btn"}" href="${esc(seatViewUrl(show.theater))}" target="_blank" rel="noopener">${SEATVIEWS[show.theater] ? "All sections at " + esc(show.theater) + " ↗" : "See real seat views ↗"}</a>
             <div class="legend">Audience photos from every section on A View From My Seat.</div>` : ""}
           </div>
           <div class="panel alert-box">
@@ -1411,7 +1409,7 @@
 
         <section>
           <div class="offers-head">
-            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2><p class="understudy-line">Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>
@@ -1419,7 +1417,7 @@
             </select>
           </div>
           ${hasLive(show)
-            ? `<p class="live-note">● Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${fmtNY(PRICES.updatedAt)}. Sellers we don't have live prices for are listed last, with a link to check.</p>`
+            ? `<p class="live-note">Live prices from ${LIVE_SOURCES.map((k) => ({ seatgeek: "SeatGeek", ticketmaster: "Ticketmaster" }[k])).join(" & ")} · updated ${fmtNY(PRICES.updatedAt)}. Sellers we don't have live prices for are listed last, with a link to check.</p>`
             : `<p class="sample-note">${hasTT(show) ? "TodayTix prices are live (from TodayTix, updated daily) where it has this date. " : ""}Sellers we don't have live prices for are listed last as "price not available right now", with a link to check on their site.</p>`}
           <div class="group-tabs" role="tablist" aria-label="Seller type">
             ${GROUPS.filter(([g]) => g === "all" || groupCounts[g]).map(([g, label]) => `<button class="pill ${state.group === g ? "active" : ""}" role="tab" aria-selected="${state.group === g}" data-group="${g}">${label} <span class="n">${groupCounts[g] || 0}</span></button>`).join("")}
@@ -1428,7 +1426,7 @@
           ${(() => { const id = TT.ids && TT.ids[show.slug]; if (!id || !id.url) return "";
             const inWin = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
             if (ttFor(show, perf)) return "";
-            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
+            return `<p class="also-check"><a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
           <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF (not in the prices above yet for this show): ${tdfLinks(show)}`}</p>
           <p class="also-check">Also check: <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value, plus Theatr fees)</span></p>
           <p class="muted" style="margin-top:-4px">${offers.filter((o) => !o.sample).length} prices from ${new Set(offers.filter((o) => !o.sample).map((o) => o.seller)).size} sources${offers.some((o) => o.sample) ? ` · ${new Set(offers.filter((o) => o.sample).map((o) => o.seller)).size} more without live prices` : ""}${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
@@ -1453,7 +1451,7 @@
         <td class="bs-price">${money0(best[key] * state.qty)}${state.qty > 1 ? `<span class="bs-each">${money0(best[key])} each</span>` : ""}</td>
         <td>${esc(best.seller)}${best.code ? ` <code>${esc(best.code.code)}</code>` : ""}${best.sample ? ' <span class="badge sample">Sample</span>' : ""}</td>
         <td class="bs-save">${save > 1 ? `save ${money0(save * state.qty)}` : (best.officialRow || best.boxOffice) ? (best.boxOffice ? "box office, in person" : "official price is cheapest") : ""}</td>
-        <td><a href="${esc(best.url)}" target="_blank" rel="noopener">View →</a></td></tr>`;
+        <td><a href="${esc(best.url)}" target="_blank" rel="noopener">View</a></td></tr>`;
     }).join("");
     if (!rows) return "";
     const loose = offers.filter((o) => o.secUnknown);
@@ -1530,8 +1528,8 @@
         <p class="eyebrow">Same-day steals</p>
         <h1>Lottery &amp; <em>Rush</em></h1>
         <p class="lede">${esc(lot.what)} Every show from Broadway.com (Broadway and Off-Broadway), cheapest first.</p>
-        ${RUSH ? `<p class="updated ${stale ? "stale" : ""}">${stale ? "⚠ Couldn't refresh this week. Showing" : "● Deals from"} <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a> · week of ${esc(RUSH.weekOf || "?")} · updated ${esc(fmt(RUSH.updatedAt))} · refreshed every Monday</p>`
-          : `<p class="updated stale">⚠ Lottery &amp; rush data hasn't been loaded yet. Check <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a>.</p>`}
+        ${RUSH ? `<p class="updated ${stale ? "stale" : ""}">${stale ? "Couldn't refresh this week. Showing" : "● Deals from"} <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a> · week of ${esc(RUSH.weekOf || "?")} · updated ${esc(fmt(RUSH.updatedAt))} · refreshed every Monday</p>`
+          : `<p class="updated stale">Lottery &amp; rush data hasn't been loaded yet. Check <a href="https://bwayrush.com/" target="_blank" rel="noopener">bwayrush.com</a>.</p>`}
       </section>
       ${thisWeekBanner(inScene)}
       <div class="chip-row" style="margin:6px 0 14px" role="group" aria-label="Where">
@@ -1760,7 +1758,7 @@
     const t = document.getElementById("grid-title"); if (t) t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   });
 
-  // "See all →" on the Recently announced strip: set the status filter.
+  // "See all" on the Recently announced strip: set the status filter.
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-quickstatus]");
     if (!b) return;
