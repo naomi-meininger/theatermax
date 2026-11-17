@@ -662,10 +662,6 @@
     sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
       offers.push({ seller: show.official === "Box office" ? "Official site" : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
-      // The theater's box office: same tickets at face value without online fees, and sometimes
-      // seats (house seats, returns) that aren't listed online.
-      offers.push({ seller: "Box office", kind: "Official · in person, no online fees", sec, row: null, price: p, fee: 0, url: showLink(show.official, show), tag: "official", inPerson: true, boxOffice: true,
-        note: `At the ${show.theater || "theater"} box office · face value, no online fees · sometimes has seats that aren't listed online` });
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
@@ -791,6 +787,14 @@
       result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 0, url: TKTS_URL, chance: true, estimate: true,
         note: `${freq ? `TDF says this show is ${freq} at TKTS` : recentTkts(show) ? `Was on the TKTS board ${fmtRunDate({ date: new Date(recentTkts(show).last + "T12:00:00"), precision: "day" })}` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
     }
+    // Box office = the official seller's price minus its fees, always $0 fees (same tickets,
+    // bought in person), one per official row. Sometimes it also has seats not listed online.
+    result = result.filter((o) => !o.boxOffice);
+    result.filter((o) => o.officialRow).forEach((o) => result.push({
+      seller: "Box office", kind: "Official · in person, no fees", sec: o.sec, row: null,
+      price: Math.round((o.feesIncluded ? o.price - o.fee : o.price) * 100) / 100, fee: 0,
+      url: o.url, tag: "official", inPerson: true, boxOffice: true, sample: o.sample, live: o.live,
+      note: `${show.official === "Box office" ? "Official" : show.official} price without its online fees, bought at the ${show.theater || "theater"} box office · sometimes has seats that aren't listed online` }));
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
     cache.set(ck, offers);
@@ -1373,7 +1377,8 @@
             const inWin = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
             if (ttFor(show, perf)) return "";
             return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
-          <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) + " · " : `Not in the prices above (no data yet for this show): ${tdfLinks(show)} · `}<a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
+          <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF (not in the prices above yet for this show): ${tdfLinks(show)}`}</p>
+          <p class="also-check">Also check: <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value)</span></p>
           <p class="muted" style="margin-top:-4px">${offers.length} offers from ${new Set(offers.map((o) => o.seller)).size} sources${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
