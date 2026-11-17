@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-17T00:11:53.341Z",
+ "checkedAt": "2026-11-17T00:41:59.110Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:58 PM",
+   "updated": "Monday, 16 November 2026 07:33 PM",
    "shows": [
     {
      "title": "Galileo",
@@ -26,7 +26,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:58 PM",
+   "updated": "Monday, 16 November 2026 07:33 PM",
    "shows": [
     {
      "title": "Perfect Crime",
@@ -36,15 +36,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Singfeld! A Musical About Nothing!",
-     "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing",
-     "tdfId": "19478",
-     "pct": 30,
-     "lo": 49,
-     "hi": 57,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-16"
@@ -53,7 +44,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:58 PM",
+   "updated": "Monday, 16 November 2026 07:33 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
