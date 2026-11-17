@@ -562,3 +562,5 @@ main { view-transition-name: page; }
 .sec-price b { font-weight: 800; }
 .sec-price.low { border-color: #1d7a3e; background: #eef7f0; }
 .sec-price:hover { border-color: #16130f; }
+.sec-views { font-size: 12px; margin-top: 6px; }
+.sec-views a { color: inherit; }
