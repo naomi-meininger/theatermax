@@ -1246,7 +1246,7 @@
     // Sellers without live prices: one row each (no made-up section, row or price).
     const seenNA = new Set();
     const shownOffers = offers.filter((o) => { if (!o.sample) return true; const k = o.seller + "|" + o.kind; if (seenNA.has(k)) return false; seenNA.add(k); return true; });
-    const offerHtml = shownOffers.map((o) => {
+    const renderOffer = (o) => {
       const shown = state.fees ? o.total : o.price;
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
@@ -1280,7 +1280,14 @@
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>`}
         </article>`;
-    }).join("");
+    };
+    // Sellers without live prices get their own section at the bottom.
+    const naOffers = shownOffers.filter((o) => o.sample);
+    const offerHtml = shownOffers.filter((o) => !o.sample).map(renderOffer).join("") + (naOffers.length ? `
+      <div class="na-section">
+        <h3>No live prices right now</h3>
+        <p class="muted">We can't get prices from these sellers yet. Tap through to check this performance on their site.</p>
+      </div>${naOffers.map(renderOffer).join("")}` : "");
 
     const matches = target ? lows.filter((o) => o && o.total <= target).length : 0;
 

@@ -554,3 +554,6 @@ main { view-transition-name: page; }
 .bsc.bsc-none { display: none; }
 .price.na .total.na { font-size: 15px; font-weight: 700; line-height: 1.25; color: #6b6458; }
 .price.na .breakdown { max-width: 220px; }
+.na-section { margin: 26px 0 10px; padding-top: 16px; border-top: 2px dashed #d8cfbf; }
+.na-section h3 { margin: 0 0 4px; font-size: 18px; }
+.na-section p { margin: 0; font-size: 13px; }
