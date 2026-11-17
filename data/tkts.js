@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-17T23:20:12.745Z",
+ "checkedAt": "2026-11-17T23:50:21.449Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 02:46 PM",
+   "updated": "Tuesday, 17 November 2026 06:42 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -80,15 +80,6 @@ window.TM_TKTS = {
      "pct": 30,
      "lo": 109,
      "hi": 123,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Harry Potter and the Cursed Child",
-     "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child",
-     "tdfId": "16274",
-     "pct": 40,
-     "lo": 109,
-     "hi": 109,
      "time": "7:00 PM"
     },
     {
@@ -251,35 +242,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 02:46 PM",
+   "updated": "Tuesday, 17 November 2026 06:42 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 48,
-     "hi": 48,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Christmas Spectacular w/ the Radio City Rockettes",
-     "url": "https://www.tdf.org/shows/10181/christmas-spectacular-w-the-radio-city-rockettes",
-     "tdfId": "10181",
-     "pct": 50,
-     "lo": 38,
-     "hi": 88,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "7:00 PM"
-    },
     {
      "title": "Friends! The Musical Parody",
      "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
@@ -288,15 +252,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "7:30 PM"
-    },
-    {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 76,
-     "time": "7:00 PM"
     },
     {
      "title": "Little Shop of Horrors",
@@ -350,7 +305,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 02:46 PM",
+   "updated": "Tuesday, 17 November 2026 06:42 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -494,7 +449,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 02:46 PM",
+   "updated": "Tuesday, 17 November 2026 06:42 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
