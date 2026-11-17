@@ -2,7 +2,7 @@
 window.TM_TDF = {
   "status": "ok",
   "source": "https://www.tdf.org/on-stage/show-finder/",
-  "updatedAt": "2026-11-16T05:05:30.082Z",
+  "updatedAt": "2026-11-17T19:27:21.251Z",
   "ids": {
     "860": "/shows/23349/860/",
     "lost-lear": "/shows/23651/lost-lear/",
@@ -61,32 +61,6 @@ window.TM_TDF = {
       "tkts": "N/a",
       "fullPrice": "$79.00 - $399.00"
     },
-    "inter-alia": {
-      "url": "https://www.tdf.org/shows/23204/inter-alia/",
-      "title": "Inter Alia",
-      "venue": "Music Box Theatre",
-      "previews": "2026-11-11",
-      "opening": "2026-12-01",
-      "closing": "2027-02-21",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "N/a",
-      "fullPrice": "$84.00 - $361.00"
-    },
-    "its-a-wonderful-life": {
-      "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play/",
-      "title": "It’s A Wonderful Life: A Live Radio Play",
-      "venue": "Broadhurst Theatre",
-      "previews": "2026-11-04",
-      "opening": "2026-11-18",
-      "closing": "2027-01-03",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "Frequently",
-      "fullPrice": "$58.00 - $351.00"
-    },
     "here-there-are-blueberries": {
       "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries/",
       "title": "Here There Are Blueberries",
@@ -99,6 +73,19 @@ window.TM_TDF = {
       "memberPrice": null,
       "tkts": "Frequently",
       "fullPrice": "$49.00 - $297.00"
+    },
+    "inter-alia": {
+      "url": "https://www.tdf.org/shows/23204/inter-alia/",
+      "title": "Inter Alia",
+      "venue": "Music Box Theatre",
+      "previews": "2026-11-11",
+      "opening": "2026-12-01",
+      "closing": "2027-02-21",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$84.00 - $361.00"
     },
     "harry-potter-and-cursed-child-broadway": {
       "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child/",
@@ -113,19 +100,6 @@ window.TM_TDF = {
       "tkts": "Frequently",
       "fullPrice": "$59.00 - $524.00"
     },
-    "gloria": {
-      "url": "https://www.tdf.org/shows/23329/gloria/",
-      "title": "Gloria",
-      "venue": "Hayes Theater",
-      "previews": "2027-03-17",
-      "opening": "2027-04-05",
-      "closing": null,
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "N/a",
-      "fullPrice": null
-    },
     "a-few-good-men": {
       "url": "https://www.tdf.org/shows/23368/a-few-good-men/",
       "title": "A Few Good Men",
@@ -139,13 +113,26 @@ window.TM_TDF = {
       "tkts": "Rarely",
       "fullPrice": "$58.00 - $301.00"
     },
+    "gloria": {
+      "url": "https://www.tdf.org/shows/23329/gloria/",
+      "title": "Gloria",
+      "venue": "Hayes Theater",
+      "previews": "2027-03-17",
+      "opening": "2027-04-05",
+      "closing": null,
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": null
+    },
     "downstate": {
       "url": "https://www.tdf.org/shows/23521/downstate/",
       "title": "Downstate",
       "venue": "Booth Theatre",
       "previews": "2026-10-22",
       "opening": "2026-11-15",
-      "closing": "2027-01-10",
+      "closing": "2027-02-14",
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
@@ -242,6 +229,19 @@ window.TM_TDF = {
       "memberPrice": null,
       "tkts": "Frequently",
       "fullPrice": "$68.00 - $269.00"
+    },
+    "its-a-wonderful-life": {
+      "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play/",
+      "title": "It’s A Wonderful Life: A Live Radio Play",
+      "venue": "Broadhurst Theatre",
+      "previews": "2026-11-04",
+      "opening": "2026-11-18",
+      "closing": "2027-01-03",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "Frequently",
+      "fullPrice": "$58.00 - $351.00"
     },
     "aladdin-broadway": {
       "url": "https://www.tdf.org/shows/12819/aladdin/",
