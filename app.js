@@ -728,7 +728,7 @@
         const tm = live.ticketmaster;
         if (show.official === "Ticketmaster") result = result.filter((o) => !(o.tag === "official" && o.seller.startsWith("Ticketmaster")));
         const fee = Math.round(tm.min * 0.18 * 100) / 100; // TM shows face value; fees are added at checkout
-        result.push({ seller: "Ticketmaster", kind: show.official === "Ticketmaster" ? "Face-value tickets" : "Ticketmaster listing", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", ...(show.official === "Ticketmaster" ? { tag: "official" } : {}),
+        result.push({ seller: "Ticketmaster", kind: show.official === "Ticketmaster" ? "Face-value tickets" : "Ticketmaster listing", sec: null, row: null, price: tm.min, fee, feeEstimated: true, url: tm.url, live: "ticketmaster", ...(show.official === "Ticketmaster" ? { tag: "official", officialRow: true } : {}),
           note: `Face value ${money0(tm.min)}–${money0(tm.max)} · fees estimated (~18%)` });
       }
     }
