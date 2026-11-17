@@ -861,6 +861,28 @@
   }
 
   const fmtDow = (d) => d.toLocaleDateString("en-US", { weekday: "short" });
+
+  // ---- major holidays: a small icon on the date, like opening and final nights ----
+  const nthWeekday = (y, m, dow, n) => { const d = new Date(y, m, 1); d.setDate(1 + ((dow - d.getDay() + 7) % 7) + (n - 1) * 7); return d; };
+  const lastWeekday = (y, m, dow) => { const d = new Date(y, m + 1, 0); d.setDate(d.getDate() - ((d.getDay() - dow + 7) % 7)); return d; };
+  const easter = (y) => { const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3),
+    h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451),
+    mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1; return new Date(y, mo - 1, da); };
+  const HOLIDAY_CACHE = {};
+  function holidayOn(date) {
+    const y = date.getFullYear();
+    if (!HOLIDAY_CACHE[y]) {
+      const list = [
+        [new Date(y, 0, 1), "🎉", "New Year's Day"], [new Date(y, 1, 14), "💝", "Valentine's Day"], [easter(y), "🐣", "Easter"],
+        [nthWeekday(y, 4, 0, 2), "💐", "Mother's Day"], [lastWeekday(y, 4, 1), "🇺🇸", "Memorial Day"], [nthWeekday(y, 5, 0, 3), "👔", "Father's Day"],
+        [new Date(y, 6, 4), "🎆", "Fourth of July"], [nthWeekday(y, 8, 1, 1), "🛠️", "Labor Day"], [new Date(y, 9, 31), "🎃", "Halloween"],
+        [nthWeekday(y, 10, 4, 4), "🦃", "Thanksgiving"], [new Date(y, 11, 24), "🎄", "Christmas Eve"], [new Date(y, 11, 25), "🎄", "Christmas"],
+        [new Date(y, 11, 31), "🥂", "New Year's Eve"],
+      ];
+      HOLIDAY_CACHE[y] = Object.fromEntries(list.map(([d, icon, name]) => [dayKey(d), { icon, name }]));
+    }
+    return HOLIDAY_CACHE[y][dayKey(date)] || null;
+  }
   const fmtLong = (d) => d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
   const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
 
@@ -1372,12 +1394,12 @@
             }
             if (!perfsFor(show, dt).length || !performsOn(show, dt.date)) {
               const why = !perfsFor(show, dt).length ? (hasLive(show) && inLiveWindow(dt.date) ? "—" : "Dark") : show.closing && dt.date > show.closing.date ? "Closed" : "—";
-              return `<button class="date-chip dark" disabled title="${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
+              return `<button class="date-chip dark" disabled title="${holidayOn(dt.date) ? holidayOn(dt.date).name + " · " : ""}${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}${holidayOn(dt.date) ? ` <span class="hol" aria-label="${holidayOn(dt.date).name}">${holidayOn(dt.date).icon}</span>` : ""}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
             }
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
             const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
             const cls = ["date-chip", isOpening ? "opening-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
-            return `<button class="${cls}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
+            return `<button class="${cls} ${holidayOn(dt.date) ? "holiday" : ""}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : holidayOn(dt.date) ? ` title="${holidayOn(dt.date).name}"` : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
           }).join("")}
         </div>
         <div class="time-row">
@@ -1428,7 +1450,7 @@
 
         <section>
           <div class="offers-head">
-            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>
