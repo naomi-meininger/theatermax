@@ -56,6 +56,9 @@ export function parseSectionPrices(html) {
 /** Visitor info from a Broadway.com show page: running time, address, age guidance, advisories. */
 export function parseShowInfo(html) {
   const t = text(html), info = {};
+  // Theater name: the "Theater" block on Broadway.com show pages ("Learn more about the theater. <name>").
+  const th = t.match(/Learn more about the theater\.?\s+([A-Z][^.\n]{3,80}?)(?=\s+(?:Hearing|Wheelchair|Accessib|Restroom|Address|\d{2,4}\s)|\s*$)/);
+  if (th) info.theater = th[1].trim();
   const rt = t.match(/(?:Running Time|Run Time|Runtime)\s*:?\s*((?:\d+\s*(?:hours?|hrs?|h)\.?\s*(?:and\s*)?)?(?:\d+\s*(?:minutes?|mins?|m)\.?)?(?:[^.]{0,40}?(?:intermission|no intermission))?)/i);
   if (rt && /\d/.test(rt[1])) info.runtime = rt[1].replace(/\s+/g, " ").trim();
   const ad = t.match(/(\d{2,4}\s+(?:West|East|W\.?|E\.?)\s+\d{1,3}(?:st|nd|rd|th)\s+(?:Street|St\.?))/i) || t.match(/(\d{1,4}\s+(?:\d{1,2}(?:st|nd|rd|th)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:Avenue|Ave\.?|Street|St\.?|Place|Plaza))/);

@@ -322,6 +322,9 @@
     "The Met": ["Metropolitan Opera House"],
     "NYC Ballet": ["David H. Koch"],
   };
+  // Shows sold by their producing company rather than the theater's usual seller.
+  const OFFICIAL_BY_SHOW = { "the-visitors": "Second Stage" };
+  const INFO_THEATER = (slug) => (((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[slug] || {}).theater || null;
   function officialFor(theater) {
     if (!theater) return "Box office";
     for (const [seller, list] of Object.entries(OFFICIAL_BY_THEATER)) if (list.some((n) => theater.startsWith(n))) return seller;
@@ -336,7 +339,7 @@
     return {
       slug: l.slug, title: l.title, bdcUrl: l.url, bdcFrom: l.fromPrice, ratingCount: l.ratingCount,
       onSale: l.fromPrice !== null,
-      theater: x.theater || THEATERS[l.slug] || l.theater || null,
+      theater: x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug) || null,
       type: x.type || (PREVIEWS[l.slug] || {}).type || l.type || (PLAYS.has(l.slug) ? "Play" : null),
       blurb: (PREVIEWS[l.slug] || {}).blurb || l.blurb || null,
       critics: (PREVIEWS[l.slug] || {}).critics || null,
@@ -349,7 +352,7 @@
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
       // Official (primary) seller is set by who runs the theater — see OFFICIAL_BY_THEATER.
-      official: x.official || officialFor(x.theater || THEATERS[l.slug] || l.theater || null),
+      official: x.official || OFFICIAL_BY_SHOW[l.slug] || officialFor(x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug)),
       colors: PALETTES[h % PALETTES.length],
       // Real deals from bwayrush when we have them; the old sample values only if that file is missing.
       deals: [...(RUSH ? ((RUSH.shows[l.slug] || {}).deals || []) : []),
@@ -664,7 +667,7 @@
 
     sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
-      offers.push({ seller: show.official === "Box office" ? "Official site" : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
+      offers.push({ seller: show.official === "Box office" ? (show.theater ? `${show.theater} (official)` : "Theater's official site") : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
@@ -673,7 +676,7 @@
     // "section not listed" offer, and it's never counted as the cheapest in any one section.
     // The code is redeemed at the show's official seller (Playbill/BroadwayBox only publish it),
     // so the row is that seller, and the View link goes there.
-    const codeSeller = show.official === "Box office" ? "Official site" : show.official;
+    const codeSeller = show.official === "Box office" ? (show.theater ? `${show.theater} box office` : "Theater box office") : show.official;
     validCodes(show).forEach((c) => {
       const secs = sectionsFor(show);
       const valid = `valid through ${fmtRunDate(parseDay(c.expires))}`;
@@ -845,7 +848,9 @@
   const posterStyle = (s) => `background: linear-gradient(150deg, ${s.colors[0]} 0%, ${s.colors[0]} 45%, ${s.colors[1]} 160%); color: ${s.colors[1]};`;
 
   // Opera & ballet: link straight to the production on TodayTix when TodayTix sells it.
-  SHOWS.forEach((s) => { const id = s.scene === "arts" && TT.ids && TT.ids[s.slug]; if (id && id.url) { if (s.bdcUrl === s.tickets) s.bdcUrl = id.url; s.tickets = id.url; } });
+  window.__TM_SHOWS = SHOWS; // handy for debugging in the browser console
+  // Opera & ballet sell on the company's own site; TodayTix also sells many of them.
+  SHOWS.forEach((s) => { if (s.scene === "arts") { s.officialTickets = s.tickets; const id = TT.ids && TT.ids[s.slug]; if (id && id.url) s.todaytixUrl = id.url; } });
 
   // ---------- views ----------
   // ---------- filters ----------
@@ -902,7 +907,7 @@
         ${sc === "arts" ? `
         <p class="eyebrow">Lincoln Center & beyond</p>
         <h1>Opera &amp; <em>Ballet</em></h1>
-        <p class="lede">The Met Opera and New York City Ballet, with their run dates and the cheap-seat programs (under-40 nights, $30 for 30, TDF). Each show links to its tickets: the show's TodayTix page when TodayTix sells it, otherwise the company's ticket page.</p>` :
+        <p class="lede">The Met Opera and New York City Ballet, with their run dates and the cheap-seat programs (under-40 nights, $30 for 30, TDF). Each show lists where to buy: the company itself (box office and website) and TodayTix, with its live prices, when TodayTix sells it.</p>` :
         sc === "broadway" ? `
         <p class="eyebrow">41 theaters · 500+ seats each</p>
         <h1><em>Broadway</em></h1>
@@ -987,8 +992,8 @@
   }
 
   function cardHtml({ s }, i = 0) {
-    const href = s.onSale ? `#show-${s.slug}` : s.bdcUrl;
-    const ext = s.onSale ? "" : ` target="_blank" rel="noopener"`;
+    const href = s.onSale || (s.scene === "arts" && (s.officialTickets || s.todaytixUrl)) ? `#show-${s.slug}` : s.bdcUrl;
+    const ext = href.startsWith("#") ? "" : ` target="_blank" rel="noopener"`;
     return `
       <article class="show-card ${s.onSale ? "" : "soon"}" style="--i:${Math.min(i, 12)}">
         <a class="card-link" href="${esc(href)}"${ext}>
@@ -1022,7 +1027,7 @@
         </a>
         <div class="card-actions">
           <button class="preview-btn" data-preview="${esc(s.slug)}">Preview</button>
-          <a href="${esc(href)}"${ext}>${s.onSale ? "Compare prices →" : s.tickets ? "Get tickets ↗" : "Broadway.com ↗"}</a>
+          <a href="${esc(href)}"${ext}>${s.onSale || href.startsWith("#") ? "Compare prices →" : s.tickets ? "Get tickets ↗" : "Broadway.com ↗"}</a>
         </div>
       </article>`;
   }
@@ -1163,6 +1168,19 @@
       </svg>`;
   }
 
+  // Where to buy an opera / ballet: the company (official) and TodayTix (real prices when loaded).
+  function artsTickets(show) {
+    const company = { "Metropolitan Opera House": "The Met", "David H. Koch Theater": "New York City Ballet" }[show.theater] || show.theater || "the company";
+    const tt = TT.shows && TT.shows[show.slug], perfs = tt && (tt.byQty ? tt.byQty[2] : tt.perfs);
+    const lows = perfs ? Object.values(perfs).map((p) => p.low).filter((x) => x != null) : [];
+    const ttLow = lows.length ? Math.min(...lows) : null;
+    const rows = [
+      show.officialTickets ? `<a class="buy-row" href="${esc(show.officialTickets)}" target="_blank" rel="noopener"><span><b>${esc(company)}</b> <span class="badge green">Official</span><br><span class="muted">Box office and the company's own website · no live price here</span></span><span class="btn ghost">Tickets ↗</span></a>` : "",
+      show.todaytixUrl ? `<a class="buy-row" href="${esc(show.todaytixUrl)}" target="_blank" rel="noopener"><span><b>TodayTix</b> ${ttLow ? `<span class="badge live">● Live price</span>` : ""}<br><span class="muted">${ttLow ? `From ${money0(ttLow)} each for 2 seats together in the next two weeks · fees included` : "Prices on TodayTix"}</span></span><span class="btn ${ttLow ? "" : "ghost"}">${ttLow ? money0(ttLow) + " →" : "View ↗"}</span></a>` : "",
+    ].join("");
+    return `<section class="buy-box"><h2>Where to buy</h2>${rows}</section>`;
+  }
+
   function viewShow(slug) {
     let DATES = window.__TM_DATES_ALL;
     const show = SHOWS.find((s) => s.slug === slug);
@@ -1180,7 +1198,7 @@
         <div class="muted">${[show.theater, show.type].filter(Boolean).map(esc).join(" · ")}</div>
         <div style="margin:8px 0">${statusBadge(show, true)}</div>
         ${run.length ? `<p><b>${run.join(" · ")}</b></p>` : ""}${blurb ? `<p>${esc(blurb)}</p>` : ""}</div>
-        <div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`;
+        ${show.scene === "arts" && (show.officialTickets || show.todaytixUrl) ? artsTickets(show) : `<div class="empty"><b>${esc(show.title)}</b> ${show.tickets ? `sells tickets on its own site.` : `doesn't have tickets on sale yet.`} <a href="${esc(show.bdcUrl)}" target="_blank" rel="noopener">${show.tickets ? "Get tickets" : "See it on Broadway.com"} ↗</a></div>`}`;
     }
 
     // Today's performances that have already started are over: not selectable, no prices.
