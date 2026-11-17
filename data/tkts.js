@@ -2,23 +2,14 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-16T23:41:47.402Z",
+ "checkedAt": "2026-11-17T00:11:53.341Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:31 PM",
+   "updated": "Monday, 16 November 2026 06:58 PM",
    "shows": [
-    {
-     "title": "Downstate",
-     "url": "https://www.tdf.org/shows/23521/downstate",
-     "tdfId": "23521",
-     "pct": 50,
-     "lo": 83,
-     "hi": 102,
-     "time": "7:00 PM"
-    },
     {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
@@ -27,24 +18,6 @@ window.TM_TKTS = {
      "lo": 66,
      "hi": 115,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Six",
-     "url": "https://www.tdf.org/shows/17685/six",
-     "tdfId": "17685",
-     "pct": 50,
-     "lo": 70,
-     "hi": 103,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Great Gatsby",
-     "url": "https://www.tdf.org/shows/21385/the-great-gatsby",
-     "tdfId": "21385",
-     "pct": 50,
-     "lo": 75,
-     "hi": 110,
-     "time": "7:00 PM"
     }
    ],
    "day": "2026-11-16"
@@ -53,35 +26,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:31 PM",
+   "updated": "Monday, 16 November 2026 06:58 PM",
    "shows": [
-    {
-     "title": "A Kidman Carol",
-     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
-     "tdfId": "23586",
-     "pct": 40,
-     "lo": 51,
-     "hi": 69,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Amaze Magic",
-     "url": "https://www.tdf.org/shows/22653/amaze-magic",
-     "tdfId": "22653",
-     "pct": 50,
-     "lo": 53,
-     "hi": 102,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Going Bacharach",
-     "url": "https://www.tdf.org/shows/23016/going-bacharach",
-     "tdfId": "23016",
-     "pct": 30,
-     "lo": 42,
-     "hi": 72,
-     "time": "7:30 PM"
-    },
     {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
@@ -99,15 +45,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "7:30 PM"
-    },
-    {
-     "title": "The Play That Goes Wrong",
-     "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
-     "tdfId": "17222",
-     "pct": 50,
-     "lo": 50,
-     "hi": 71,
-     "time": "7:00 PM"
     }
    ],
    "day": "2026-11-16"
@@ -116,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Monday, 16 November 2026 06:31 PM",
+   "updated": "Monday, 16 November 2026 06:58 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
