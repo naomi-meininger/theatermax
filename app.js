@@ -22,6 +22,7 @@
     const key = tktsNorm(show.title);
     return (TKTS_LIVE.boards || []).filter((b) => b.shows.some((x) => (id && x.tdfId === id) || tktsNorm(x.title) === key));
   }
+  const recentTkts = (show) => Object.values(TKTS_LIVE.recent || {}).find((x) => tktsMatch(show, x)) || null;
   const tktsMatch = (show, x) => {
     const tdfPath = window.TM_TDF && window.TM_TDF.ids && window.TM_TDF.ids[show.slug];
     const id = tdfPath && (tdfPath.match(/\/shows\/(\d+)\//) || [])[1];
@@ -600,7 +601,9 @@
     }
     // Real calendar from Broadway.com (daily): exact dates & curtain times, holiday weeks included.
     const cal = CALENDARS[show.slug], k = dayKey(dt.date);
-    if (cal && k >= cal.from && k <= cal.to) {
+    // Between today and the calendar's first date there are no performances (the calendar only
+    // starts at the next one), so those days are dark rather than guessed from a standard week.
+    if (cal && k <= cal.to && (k >= cal.from || k >= dayKey(TODAY))) {
       return (cal.days[k] || []).map(({ t, from, secs, ev }) => {
         const mins = toMinutes(t), dow = dt.date.getDay();
         const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
@@ -784,9 +787,9 @@
       const where = [...new Set(listings.map((x) => x.booth))].join(" & ");
       result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts",
         note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} booth while they last` });
-    } else if (box && (freq || boards.length)) {
+    } else if (box && (freq || boards.length || recentTkts(show))) {
       result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 0, url: TKTS_URL, chance: true, estimate: true,
-        note: `${freq ? `TDF says this show is ${freq} at TKTS` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
+        note: `${freq ? `TDF says this show is ${freq} at TKTS` : recentTkts(show) ? `Was on the TKTS board ${fmtRunDate({ date: new Date(recentTkts(show).last + "T12:00:00"), precision: "day" })}` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
     }
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);

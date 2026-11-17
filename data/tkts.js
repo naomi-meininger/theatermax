@@ -1012,5 +1012,237 @@ window.TM_TKTS = {
    ],
    "day": "2026-11-17"
   }
- ]
+ ],
+ "recent": {
+  "1581": {
+   "title": "Chicago",
+   "tdfId": "1581",
+   "last": "2026-11-17"
+  },
+  "1681": {
+   "title": "Perfect Crime",
+   "tdfId": "1681",
+   "last": "2026-11-17"
+  },
+  "7596": {
+   "title": "Little Shop of Horrors",
+   "tdfId": "7596",
+   "last": "2026-11-17"
+  },
+  "8843": {
+   "title": "The Book of Mormon",
+   "tdfId": "8843",
+   "last": "2026-11-17"
+  },
+  "10181": {
+   "title": "Christmas Spectacular w/ the Radio City Rockettes",
+   "tdfId": "10181",
+   "last": "2026-11-17"
+  },
+  "12819": {
+   "title": "Aladdin",
+   "tdfId": "12819",
+   "last": "2026-11-17"
+  },
+  "16274": {
+   "title": "Harry Potter and the Cursed Child",
+   "tdfId": "16274",
+   "last": "2026-11-17"
+  },
+  "17222": {
+   "title": "The Play That Goes Wrong",
+   "tdfId": "17222",
+   "last": "2026-11-16"
+  },
+  "17230": {
+   "title": "Hadestown",
+   "tdfId": "17230",
+   "last": "2026-11-17"
+  },
+  "17685": {
+   "title": "Six",
+   "tdfId": "17685",
+   "last": "2026-11-16"
+  },
+  "18033": {
+   "title": "MJ The Musical",
+   "tdfId": "18033",
+   "last": "2026-11-17"
+  },
+  "18504": {
+   "title": "Friends! The Musical Parody",
+   "tdfId": "18504",
+   "last": "2026-11-17"
+  },
+  "19001": {
+   "title": "& Juliet",
+   "tdfId": "19001",
+   "last": "2026-11-17"
+  },
+  "19478": {
+   "title": "Singfeld! A Musical About Nothing!",
+   "tdfId": "19478",
+   "last": "2026-11-16"
+  },
+  "19730": {
+   "title": "Buena Vista Social Club",
+   "tdfId": "19730",
+   "last": "2026-11-17"
+  },
+  "19937": {
+   "title": "The Outsiders",
+   "tdfId": "19937",
+   "last": "2026-11-17"
+  },
+  "21288": {
+   "title": "Oh, Mary!",
+   "tdfId": "21288",
+   "last": "2026-11-17"
+  },
+  "21385": {
+   "title": "The Great Gatsby",
+   "tdfId": "21385",
+   "last": "2026-11-16"
+  },
+  "21710": {
+   "title": "Maybe Happy Ending",
+   "tdfId": "21710",
+   "last": "2026-11-17"
+  },
+  "21916": {
+   "title": "Stranger Things: The First Shadow",
+   "tdfId": "21916",
+   "last": "2026-11-17"
+  },
+  "22082": {
+   "title": "Operation Mincemeat",
+   "tdfId": "22082",
+   "last": "2026-11-17"
+  },
+  "22112": {
+   "title": "Just In Time",
+   "tdfId": "22112",
+   "last": "2026-11-17"
+  },
+  "22653": {
+   "title": "Amaze Magic",
+   "tdfId": "22653",
+   "last": "2026-11-16"
+  },
+  "22731": {
+   "title": "Slam Frank",
+   "tdfId": "22731",
+   "last": "2026-11-16"
+  },
+  "22756": {
+   "title": "Two Strangers Carry a Cake Across NY",
+   "tdfId": "22756",
+   "last": "2026-11-17"
+  },
+  "22904": {
+   "title": "Schmigadoon!",
+   "tdfId": "22904",
+   "last": "2026-11-17"
+  },
+  "22915": {
+   "title": "The Rocky Horror Show",
+   "tdfId": "22915",
+   "last": "2026-11-17"
+  },
+  "22920": {
+   "title": "The Lost Boys",
+   "tdfId": "22920",
+   "last": "2026-11-17"
+  },
+  "23016": {
+   "title": "Going Bacharach",
+   "tdfId": "23016",
+   "last": "2026-11-16"
+  },
+  "23112": {
+   "title": "Galileo",
+   "tdfId": "23112",
+   "last": "2026-11-17"
+  },
+  "23169": {
+   "title": "Wanted",
+   "tdfId": "23169",
+   "last": "2026-11-17"
+  },
+  "23194": {
+   "title": "Heated Rivalry: The Unauthorized Musical Parody",
+   "tdfId": "23194",
+   "last": "2026-11-17"
+  },
+  "23295": {
+   "title": "Paranormal Activity",
+   "tdfId": "23295",
+   "last": "2026-11-17"
+  },
+  "23297": {
+   "title": "Much Ado About Nothing",
+   "tdfId": "23297",
+   "last": "2026-11-17"
+  },
+  "23326": {
+   "title": "The Fantasticks",
+   "tdfId": "23326",
+   "last": "2026-11-17"
+  },
+  "23360": {
+   "title": "Midnight",
+   "tdfId": "23360",
+   "last": "2026-11-17"
+  },
+  "23452": {
+   "title": "A Ghost in Your Ear",
+   "tdfId": "23452",
+   "last": "2026-11-17"
+  },
+  "23469": {
+   "title": "Our Sinatra, a Musical Celebration",
+   "tdfId": "23469",
+   "last": "2026-11-17"
+  },
+  "23478": {
+   "title": "The Hope Theory",
+   "tdfId": "23478",
+   "last": "2026-11-17"
+  },
+  "23521": {
+   "title": "Downstate",
+   "tdfId": "23521",
+   "last": "2026-11-17"
+  },
+  "23523": {
+   "title": "Now You See Me Live",
+   "tdfId": "23523",
+   "last": "2026-11-17"
+  },
+  "23551": {
+   "title": "Blue Man Group: A New Holiday Surprise",
+   "tdfId": "23551",
+   "last": "2026-11-17"
+  },
+  "23562": {
+   "title": "Its A Wonderful Life: A Live Radio Play",
+   "tdfId": "23562",
+   "last": "2026-11-17"
+  },
+  "23582": {
+   "title": "Drunk Christmas Carol",
+   "tdfId": "23582",
+   "last": "2026-11-17"
+  },
+  "23586": {
+   "title": "A Kidman Carol",
+   "tdfId": "23586",
+   "last": "2026-11-16"
+  },
+  "23594": {
+   "title": "Traitorz: The Unauthorized Musical Parody",
+   "tdfId": "23594",
+   "last": "2026-11-17"
+  }
+ }
 };
