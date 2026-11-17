@@ -805,7 +805,10 @@
       const best = listings.slice().sort((a, b) => a.lo - b.lo)[0];
       const where = [...new Set(listings.map((x) => x.booth))].join(" & ");
       result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts",
-        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} booth while they last` });
+        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} booth while they last${(() => {
+          const closed = boards.filter((b) => b.day === today && b.status === "closed" && !listings.some((x) => x.booth === (BOOTH[b.booth] || b.booth))).map((b) => BOOTH[b.booth] || b.booth);
+          return closed.length ? ` · the ${[...new Set(closed)].join(" & ")} booth has closed for today` : "";
+        })()}` });
     } else if (box && (freq || boards.length || recentTkts(show))) {
       result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 0, url: TKTS_URL, chance: true, estimate: true,
         note: `${freq ? `TDF says this show is ${freq} at TKTS` : recentTkts(show) ? `Was on the TKTS board ${fmtRunDate({ date: new Date(recentTkts(show).last + "T12:00:00"), precision: "day" })}` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
