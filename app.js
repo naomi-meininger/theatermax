@@ -1252,7 +1252,7 @@
       const many = group && group.length > 1;
       const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => sectionsFor(show).indexOf(a.sec) - sectionsFor(show).indexOf(b.sec)).map((g) =>
         `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>
-        ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
+        ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.slice().sort((a, b) => sectionsFor(show).indexOf(a.sec) - sectionsFor(show).indexOf(b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
       const isBest = bestDeal && o === bestDeal;
