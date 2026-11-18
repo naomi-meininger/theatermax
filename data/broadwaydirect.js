@@ -3,7 +3,7 @@
 // cheapest listed seat per section, per performance, next two weeks. Booking link = publicUrl.
 window.TM_BD = {
  "status": "ok",
- "updatedAt": "2026-11-18T00:46:03.752Z",
+ "updatedAt": "2026-11-18T03:51:16.187Z",
  "window": {
   "from": "2026-11-17",
   "to": "2026-11-30"
@@ -108,7 +108,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:30 PM": {
      "low": 69.75,
-     "seats": 410,
+     "seats": 407,
      "secs": {
       "mezz": 69.75,
       "orch": 69.75,
@@ -128,7 +128,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 59.75,
-     "seats": 815,
+     "seats": 812,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -152,7 +152,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 59.75,
-     "seats": 581,
+     "seats": 570,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -163,7 +163,7 @@ window.TM_BD = {
       "BALC C": 69.75,
       "BALC L": 59.75,
       "BALC R": 59.75,
-      "MEZZ C": 89.75,
+      "MEZZ C": 133,
       "MEZZ L": 69.75,
       "MEZZ R": 69.75,
       "ORCH L": 69.75,
@@ -176,7 +176,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 59.75,
-     "seats": 332,
+     "seats": 322,
      "secs": {
       "balc": 59.75,
       "mezz": 89.75,
@@ -199,7 +199,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 59.75,
-     "seats": 346,
+     "seats": 337,
      "secs": {
       "balc": 59.75,
       "mezz": 89.75,
@@ -235,7 +235,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 59.75,
-     "seats": 188,
+     "seats": 184,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -259,7 +259,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 59.75,
-     "seats": 738,
+     "seats": 736,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -283,7 +283,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:30 PM": {
      "low": 59.75,
-     "seats": 635,
+     "seats": 627,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -307,7 +307,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 69.75,
-     "seats": 735,
+     "seats": 731,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -355,7 +355,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 69.75,
-     "seats": 877,
+     "seats": 871,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -379,7 +379,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 69.75,
-     "seats": 972,
+     "seats": 969,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -403,7 +403,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 59.75,
-     "seats": 980,
+     "seats": 978,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -434,7 +434,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 59,
-     "seats": 358,
+     "seats": 351,
      "secs": {
       "orch": 59
      },
@@ -447,7 +447,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 59,
-     "seats": 921,
+     "seats": 912,
      "secs": {
       "mezz": 59,
       "orch": 59
@@ -464,7 +464,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 69,
-     "seats": 851,
+     "seats": 842,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -481,7 +481,7 @@ window.TM_BD = {
     },
     "2026-11-21 1:00 PM": {
      "low": 69,
-     "seats": 776,
+     "seats": 768,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -498,7 +498,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:00 PM": {
      "low": 69,
-     "seats": 814,
+     "seats": 806,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -515,7 +515,7 @@ window.TM_BD = {
     },
     "2026-11-22 1:00 PM": {
      "low": 69,
-     "seats": 751,
+     "seats": 739,
      "secs": {
       "mezz": 69,
       "orch": 99
@@ -532,7 +532,7 @@ window.TM_BD = {
     },
     "2026-11-22 7:00 PM": {
      "low": 69,
-     "seats": 976,
+     "seats": 974,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -549,7 +549,7 @@ window.TM_BD = {
     },
     "2026-11-23 7:00 PM": {
      "low": 69,
-     "seats": 758,
+     "seats": 754,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -566,7 +566,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 69,
-     "seats": 561,
+     "seats": 549,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -583,7 +583,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 99.5,
-     "seats": 993,
+     "seats": 989,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -651,7 +651,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 99.5,
-     "seats": 1084,
+     "seats": 1081,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -668,7 +668,7 @@ window.TM_BD = {
     },
     "2026-11-29 1:00 PM": {
      "low": 99.5,
-     "seats": 1252,
+     "seats": 1251,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -692,7 +692,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 68.25,
-     "seats": 574,
+     "seats": 561,
      "secs": {
       "balc": 68.25,
       "box": 68.25,
@@ -709,7 +709,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 68.25,
-     "seats": 1045,
+     "seats": 1042,
      "secs": {
       "balc": 68.25,
       "mezz": 101.25,
@@ -724,7 +724,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 68.25,
-     "seats": 692,
+     "seats": 653,
      "secs": {
       "balc": 68.25,
       "mezz": 107.25,
@@ -739,7 +739,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 68.25,
-     "seats": 424,
+     "seats": 416,
      "secs": {
       "balc": 68.25,
       "mezz": 139.5,
@@ -754,7 +754,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:30 PM": {
      "low": 68.25,
-     "seats": 623,
+     "seats": 588,
      "secs": {
       "balc": 68.25,
       "mezz": 125.5,
@@ -769,7 +769,7 @@ window.TM_BD = {
     },
     "2026-11-22 1:00 PM": {
      "low": 68.25,
-     "seats": 650,
+     "seats": 645,
      "secs": {
       "balc": 68.25,
       "mezz": 143.5,
@@ -784,7 +784,7 @@ window.TM_BD = {
     },
     "2026-11-22 6:30 PM": {
      "low": 68.25,
-     "seats": 478,
+     "seats": 468,
      "secs": {
       "balc": 68.25,
       "mezz": 143.5,
@@ -799,7 +799,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 163.5,
-     "seats": 440,
+     "seats": 436,
      "secs": {
       "balc": 163.5,
       "mezz": 163.5,
@@ -814,7 +814,7 @@ window.TM_BD = {
     },
     "2026-11-25 1:00 PM": {
      "low": 99.25,
-     "seats": 678,
+     "seats": 672,
      "secs": {
       "balc": 99.25,
       "box": 111.25,
@@ -831,7 +831,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 94.25,
-     "seats": 619,
+     "seats": 609,
      "secs": {
       "balc": 94.25,
       "box": 117.25,
@@ -841,7 +841,6 @@ window.TM_BD = {
      "raw": {
       "BALC": 94.25,
       "BOX 11": 117.25,
-      "BOX 12": 117.25,
       "MEZZ": 153.5,
       "ORCH": 153.5
      },
@@ -849,7 +848,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 94.25,
-     "seats": 589,
+     "seats": 583,
      "secs": {
       "balc": 94.25,
       "mezz": 159.5,
@@ -864,7 +863,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 88.25,
-     "seats": 882,
+     "seats": 865,
      "secs": {
       "balc": 88.25,
       "box": 110.25,
@@ -881,7 +880,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 88.25,
-     "seats": 695,
+     "seats": 690,
      "secs": {
       "balc": 88.25,
       "box": 109.25,
@@ -916,7 +915,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 78.25,
-     "seats": 796,
+     "seats": 787,
      "secs": {
       "balc": 78.25,
       "mezz": 133.5,
@@ -937,15 +936,28 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-19 7:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 100.75,
+     "seats": 565,
+     "secs": {
+      "mezz": 100.75,
+      "orch": 100.75,
+      "rmezz": 101.25
+     },
+     "raw": {
+      "FMEZZ": 100.75,
+      "FMEZZC": 133,
+      "FMEZZO": 100.75,
+      "ORCHC": 133,
+      "ORCHO": 100.75,
+      "RMEZZ": 101.25,
+      "RMEZZC": 101.25,
+      "RMEZZO": 101.25
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089866?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-20 8:00 PM": {
      "low": 90.25,
-     "seats": 495,
+     "seats": 483,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -965,7 +977,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:30 PM": {
      "low": 80.25,
-     "seats": 329,
+     "seats": 377,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -985,7 +997,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 80.25,
-     "seats": 406,
+     "seats": 306,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -993,19 +1005,19 @@ window.TM_BD = {
      },
      "raw": {
       "FMEZZ": 100.75,
-      "FMEZZC": 133,
+      "FMEZZC": 163,
       "FMEZZO": 110.75,
       "ORCHC": 175,
       "ORCHO": 110.75,
       "RMEZZ": 80.25,
-      "RMEZZC": 101.25,
+      "RMEZZC": 111.25,
       "RMEZZO": 90.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089893?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-22 2:00 PM": {
      "low": 70.25,
-     "seats": 404,
+     "seats": 393,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -1045,7 +1057,7 @@ window.TM_BD = {
     },
     "2026-11-23 7:00 PM": {
      "low": 90.25,
-     "seats": 443,
+     "seats": 433,
      "secs": {
       "mezz": 100.75,
       "orch": 120.75,
@@ -1065,7 +1077,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 90.25,
-     "seats": 372,
+     "seats": 367,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -1105,7 +1117,7 @@ window.TM_BD = {
     },
     "2026-11-26 7:00 PM": {
      "low": 101.25,
-     "seats": 242,
+     "seats": 234,
      "secs": {
       "mezz": 133,
       "orch": 120.75,
@@ -1125,7 +1137,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:30 PM": {
      "low": 70.25,
-     "seats": 253,
+     "seats": 251,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -1145,7 +1157,7 @@ window.TM_BD = {
     },
     "2026-11-27 8:00 PM": {
      "low": 90.25,
-     "seats": 324,
+     "seats": 317,
      "secs": {
       "mezz": 110.75,
       "orch": 120.75,
@@ -1165,7 +1177,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:30 PM": {
      "low": 80.25,
-     "seats": 327,
+     "seats": 323,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -1185,7 +1197,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 90.25,
-     "seats": 502,
+     "seats": 496,
      "secs": {
       "mezz": 110.75,
       "orch": 120.75,
@@ -1231,29 +1243,40 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-18 2:00 PM": {
-     "low": 205,
-     "seats": 55,
+     "low": 59.75,
+     "seats": 74,
      "secs": {
       "mezz": 205,
-      "orch": 230
+      "orch": 59.75
      },
      "raw": {
       "MEZZC": 205,
       "ORCHC": 230,
-      "ORCHO": 230
+      "ORCHO": 143,
+      "ORCHPV": 59.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097418?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-18 7:30 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 59.75,
+     "seats": 229,
+     "secs": {
+      "mezz": 59.75,
+      "orch": 59.75
+     },
+     "raw": {
+      "MEZZC": 100.75,
+      "MEZZO": 79.75,
+      "MEZZPV": 59.75,
+      "ORCHC": 133,
+      "ORCHO": 89.75,
+      "ORCHPV": 59.75
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097421?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-19 7:00 PM": {
      "low": 59.75,
-     "seats": 282,
+     "seats": 274,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1269,7 +1292,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 59.75,
-     "seats": 268,
+     "seats": 264,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1286,7 +1309,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 69.75,
-     "seats": 188,
+     "seats": 186,
      "secs": {
       "mezz": 69.75,
       "orch": 79.75
@@ -1303,7 +1326,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:30 PM": {
      "low": 69.75,
-     "seats": 257,
+     "seats": 268,
      "secs": {
       "mezz": 69.75,
       "orch": 79.75
@@ -1320,7 +1343,7 @@ window.TM_BD = {
     },
     "2026-11-22 3:00 PM": {
      "low": 69.75,
-     "seats": 221,
+     "seats": 219,
      "secs": {
       "mezz": 69.75,
       "orch": 79.75
@@ -1337,7 +1360,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 89.75,
-     "seats": 274,
+     "seats": 269,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1353,15 +1376,25 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097437?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 59.75,
+     "seats": 543,
+     "secs": {
+      "mezz": 59.75,
+      "orch": 89.75
+     },
+     "raw": {
+      "MEZZC": 110.75,
+      "MEZZO": 79.75,
+      "MEZZPV": 59.75,
+      "ORCHC": 163,
+      "ORCHO": 95.75,
+      "ORCHPV": 89.75
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097438?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
      "low": 89.75,
-     "seats": 524,
+     "seats": 516,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1378,7 +1411,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 89.75,
-     "seats": 401,
+     "seats": 396,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1395,7 +1428,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 89.75,
-     "seats": 357,
+     "seats": 355,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1412,7 +1445,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 89.75,
-     "seats": 410,
+     "seats": 398,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1429,7 +1462,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 89.75,
-     "seats": 547,
+     "seats": 535,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1446,7 +1479,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 89.75,
-     "seats": 428,
+     "seats": 427,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1470,13 +1503,11 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 2:00 PM": {
      "low": 136.5,
-     "seats": 46,
+     "seats": 44,
      "secs": {
-      "mezz": 136.5,
       "orch": 136.5
      },
      "raw": {
-      "MEZZ": 136.5,
       "ORCHC": 178,
       "ORCHO": 136.5
      },
@@ -1499,7 +1530,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 95.75,
-     "seats": 130,
+     "seats": 125,
      "secs": {
       "mezz": 95.75,
       "orch": 126.5
@@ -1514,14 +1545,14 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048285?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-20 7:00 PM": {
-     "low": 105.75,
-     "seats": 125,
+     "low": 95.75,
+     "seats": 130,
      "secs": {
-      "mezz": 105.75,
+      "mezz": 95.75,
       "orch": 136.5
      },
      "raw": {
-      "MEZZ": 105.75,
+      "MEZZ": 95.75,
       "MEZZC": 198,
       "MEZZO": 146.5,
       "ORCHC": 146.5,
@@ -1531,7 +1562,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 95.75,
-     "seats": 128,
+     "seats": 124,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
@@ -1547,7 +1578,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 95.75,
-     "seats": 53,
+     "seats": 52,
      "secs": {
       "mezz": 95.75,
       "orch": 146.5
@@ -1563,7 +1594,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 95.75,
-     "seats": 65,
+     "seats": 61,
      "secs": {
       "mezz": 95.75,
       "orch": 188
@@ -1579,7 +1610,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 95.75,
-     "seats": 170,
+     "seats": 165,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
@@ -1611,7 +1642,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 105.75,
-     "seats": 108,
+     "seats": 104,
      "secs": {
       "mezz": 105.75,
       "orch": 136.5
@@ -1627,7 +1658,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 243,
-     "seats": 50,
+     "seats": 48,
      "secs": {
       "mezz": 243,
       "orch": 271
@@ -1640,24 +1671,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048312?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
-     "low": 105.75,
-     "seats": 194,
-     "secs": {
-      "mezz": 105.75,
-      "orch": 156.5
-     },
-     "raw": {
-      "MEZZ": 105.75,
-      "MEZZC": 261,
-      "MEZZO": 201,
-      "ORCHC": 261,
-      "ORCHO": 156.5
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048313?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
      "low": 105.75,
-     "seats": 307,
+     "seats": 305,
      "secs": {
       "mezz": 105.75,
       "orch": 168
@@ -1673,7 +1695,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 105.75,
-     "seats": 347,
+     "seats": 340,
      "secs": {
       "mezz": 105.75,
       "orch": 136.5
@@ -1696,7 +1718,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 2:00 PM": {
      "low": 105.75,
-     "seats": 112,
+     "seats": 108,
      "secs": {
       "mezz": 105.75,
       "orch": 156
@@ -1711,7 +1733,7 @@ window.TM_BD = {
     },
     "2026-11-18 7:30 PM": {
      "low": 74.75,
-     "seats": 159,
+     "seats": 158,
      "secs": {
       "balc": 74.75,
       "mezz": 105.75,
@@ -1745,7 +1767,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:30 PM": {
      "low": 74.75,
-     "seats": 223,
+     "seats": 212,
      "secs": {
       "balc": 74.75,
       "mezz": 114.75,
@@ -1762,24 +1784,24 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 64.75,
-     "seats": 194,
+     "seats": 193,
      "secs": {
       "balc": 64.75,
       "mezz": 105.75,
-      "orch": 105.75
+      "orch": 178
      },
      "raw": {
       "BALC": 64.75,
       "MEZZC": 114.75,
       "MEZZO": 105.75,
       "ORCHC": 178,
-      "ORCHO": 105.75
+      "ORCHO": 198
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-1996638?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-21 8:00 PM": {
      "low": 64.75,
-     "seats": 178,
+     "seats": 176,
      "secs": {
       "balc": 64.75,
       "mezz": 114.75,
@@ -1795,25 +1817,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-1996641?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-22 3:00 PM": {
-     "low": 64.75,
-     "seats": 128,
-     "secs": {
-      "balc": 64.75,
-      "mezz": 105.75,
-      "orch": 105.75
-     },
-     "raw": {
-      "BALC": 64.75,
-      "MEZZC": 178,
-      "MEZZO": 105.75,
-      "ORCHC": 178,
-      "ORCHO": 105.75
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-1996644?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-24 7:30 PM": {
      "low": 74.75,
-     "seats": 188,
+     "seats": 182,
      "secs": {
       "balc": 74.75,
       "mezz": 105.75,
@@ -1847,7 +1859,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:30 PM": {
      "low": 74.75,
-     "seats": 261,
+     "seats": 256,
      "secs": {
       "balc": 74.75,
       "mezz": 105.75,
@@ -1881,7 +1893,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 74.75,
-     "seats": 225,
+     "seats": 223,
      "secs": {
       "balc": 74.75,
       "mezz": 114.75,
@@ -1898,7 +1910,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 64.75,
-     "seats": 200,
+     "seats": 197,
      "secs": {
       "balc": 64.75,
       "mezz": 105.75,
@@ -1915,7 +1927,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 64.75,
-     "seats": 262,
+     "seats": 259,
      "secs": {
       "balc": 64.75,
       "mezz": 114.75,
@@ -1953,16 +1965,9 @@ window.TM_BD = {
    "name": "Maybe Happy Ending",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/629234?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-17 7:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/629234/maybe-happy-ending-2002156?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-18 2:00 PM": {
      "low": 56.75,
-     "seats": 216,
+     "seats": 207,
      "secs": {
       "balc": 56.75,
       "mezz": 95.75,
@@ -1982,7 +1987,7 @@ window.TM_BD = {
     },
     "2026-11-18 7:00 PM": {
      "low": 60.75,
-     "seats": 302,
+     "seats": 286,
      "secs": {
       "balc": 60.75,
       "mezz": 95.75,
@@ -2003,7 +2008,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 60.75,
-     "seats": 425,
+     "seats": 417,
      "secs": {
       "balc": 60.75,
       "mezz": 95.75,
@@ -2024,7 +2029,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 60.75,
-     "seats": 338,
+     "seats": 330,
      "secs": {
       "balc": 60.75,
       "mezz": 95.75,
@@ -2044,7 +2049,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 56.75,
-     "seats": 306,
+     "seats": 299,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2087,7 +2092,7 @@ window.TM_BD = {
     },
     "2026-11-22 2:00 PM": {
      "low": 56.75,
-     "seats": 167,
+     "seats": 158,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2109,7 +2114,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 60.75,
-     "seats": 207,
+     "seats": 203,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2129,7 +2134,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 60.75,
-     "seats": 373,
+     "seats": 369,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2172,7 +2177,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 60.75,
-     "seats": 197,
+     "seats": 193,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2193,7 +2198,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 60.75,
-     "seats": 328,
+     "seats": 324,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2214,7 +2219,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 60.75,
-     "seats": 372,
+     "seats": 369,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2236,7 +2241,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 60.75,
-     "seats": 402,
+     "seats": 396,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2258,7 +2263,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 60.75,
-     "seats": 418,
+     "seats": 408,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2286,7 +2291,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 68.75,
-     "seats": 423,
+     "seats": 415,
      "secs": {
       "mezz": 119.25,
       "orch": 89.75,
@@ -2303,7 +2308,7 @@ window.TM_BD = {
     },
     "2026-11-19 2:00 PM": {
      "low": 68.75,
-     "seats": 506,
+     "seats": 501,
      "secs": {
       "mezz": 119.25,
       "orch": 89.75,
@@ -2320,7 +2325,7 @@ window.TM_BD = {
     },
     "2026-11-19 8:00 PM": {
      "low": 68.75,
-     "seats": 573,
+     "seats": 563,
      "secs": {
       "mezz": 119.25,
       "orch": 89.75,
@@ -2337,7 +2342,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 89.75,
-     "seats": 527,
+     "seats": 523,
      "secs": {
       "mezz": 141.5,
       "orch": 100.75,
@@ -2354,7 +2359,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 89.75,
-     "seats": 388,
+     "seats": 384,
      "secs": {
       "mezz": 131.5,
       "orch": 89.75,
@@ -2371,7 +2376,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 79.75,
-     "seats": 359,
+     "seats": 346,
      "secs": {
       "mezz": 141.5,
       "orch": 110.75,
@@ -2388,7 +2393,7 @@ window.TM_BD = {
     },
     "2026-11-22 3:00 PM": {
      "low": 68.75,
-     "seats": 348,
+     "seats": 335,
      "secs": {
       "mezz": 141.5,
       "orch": 88.75,
@@ -2405,7 +2410,7 @@ window.TM_BD = {
     },
     "2026-11-23 7:00 PM": {
      "low": 89.75,
-     "seats": 343,
+     "seats": 347,
      "secs": {
       "mezz": 193.5,
       "orch": 141.5,
@@ -2422,7 +2427,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 89.75,
-     "seats": 428,
+     "seats": 424,
      "secs": {
       "mezz": 193.5,
       "orch": 141.5,
@@ -2439,7 +2444,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 79.75,
-     "seats": 674,
+     "seats": 671,
      "secs": {
       "mezz": 131.5,
       "orch": 89.75,
@@ -2471,7 +2476,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 141.5,
-     "seats": 223,
+     "seats": 219,
      "secs": {
       "mezz": 213.5,
       "orch": 141.5,
@@ -2488,7 +2493,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 89.75,
-     "seats": 462,
+     "seats": 460,
      "secs": {
       "mezz": 193.5,
       "orch": 141.5,
@@ -2505,7 +2510,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 79.75,
-     "seats": 554,
+     "seats": 547,
      "secs": {
       "mezz": 151.5,
       "orch": 110.75,
@@ -2521,25 +2526,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092555?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
-     "low": 89.75,
-     "seats": 810,
-     "secs": {
-      "mezz": 141.5,
-      "orch": 100.75,
-      "rmezz": 89.75
-     },
-     "raw": {
-      "FMEZC": 183.5,
-      "FMEZO": 141.5,
-      "ORCHC": 100.75,
-      "ORCHO": 100.75,
-      "RMEZZ": 89.75
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092556?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-30 7:00 PM": {
      "low": 89.75,
-     "seats": 786,
+     "seats": 784,
      "secs": {
       "mezz": 141.5,
       "orch": 100.75,
@@ -2563,16 +2558,16 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 2:00 PM": {
      "low": 60.75,
-     "seats": 209,
+     "seats": 193,
      "secs": {
       "mezz": 136.5,
-      "orch": 74.75,
+      "orch": 91.75,
       "rmezz": 60.75
      },
      "raw": {
       "FMEZZ": 136.5,
       "ORCHC": 115.75,
-      "ORCHO": 74.75,
+      "ORCHO": 91.75,
       "RMEZPV": 60.75,
       "RMEZZ": 60.75
      },
@@ -2580,7 +2575,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 60.75,
-     "seats": 312,
+     "seats": 310,
      "secs": {
       "mezz": 136.5,
       "orch": 84.75,
@@ -2597,7 +2592,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:30 PM": {
      "low": 60.75,
-     "seats": 237,
+     "seats": 236,
      "secs": {
       "mezz": 136.5,
       "orch": 95.75,
@@ -2647,7 +2642,7 @@ window.TM_BD = {
     },
     "2026-11-22 2:00 PM": {
      "low": 60.75,
-     "seats": 134,
+     "seats": 119,
      "secs": {
       "mezz": 136.5,
       "orch": 74.75,
@@ -2664,7 +2659,7 @@ window.TM_BD = {
     },
     "2026-11-22 7:30 PM": {
      "low": 60.75,
-     "seats": 187,
+     "seats": 183,
      "secs": {
       "mezz": 136.5,
       "orch": 74.75,
@@ -2681,7 +2676,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 111.75,
-     "seats": 236,
+     "seats": 234,
      "secs": {
       "mezz": 188.5,
       "orch": 148,
@@ -2698,7 +2693,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 111.75,
-     "seats": 284,
+     "seats": 281,
      "secs": {
       "mezz": 188.5,
       "orch": 148,
@@ -2749,24 +2744,24 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 111.75,
-     "seats": 94,
+     "seats": 119,
      "secs": {
-      "mezz": 248,
-      "orch": 198,
+      "mezz": 178.5,
+      "orch": 138,
       "rmezz": 111.75
      },
      "raw": {
-      "FMEZZ": 248,
-      "ORCHC": 298,
-      "ORCHO": 198,
+      "FMEZZ": 178.5,
+      "ORCHC": 178.5,
+      "ORCHO": 138,
       "RMEZPV": 111.75,
-      "RMEZZ": 126.5
+      "RMEZZ": 115.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/673728/operation-mincemeat-2048519?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 101.75,
-     "seats": 239,
+     "seats": 237,
      "secs": {
       "mezz": 178.5,
       "orch": 138,
@@ -2782,10 +2777,20 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/673728/operation-mincemeat-2048520?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 7:30 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 101.75,
+     "seats": 308,
+     "secs": {
+      "mezz": 178.5,
+      "orch": 138,
+      "rmezz": 101.75
+     },
+     "raw": {
+      "FMEZZ": 178.5,
+      "ORCHC": 178.5,
+      "ORCHO": 138,
+      "RMEZPV": 101.75,
+      "RMEZZ": 115.75
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/673728/operation-mincemeat-2048521?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 2:00 PM": {
@@ -2833,12 +2838,12 @@ window.TM_BD = {
     },
     "2026-11-19 7:30 PM": {
      "low": 274,
-     "seats": 36,
+     "seats": 33,
      "secs": {
       "orch": 274
      },
      "raw": {
-      "ORCHC": 274,
+      "ORCHC": 400.5,
       "ORCHO": 274
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033222?trafficSource=agentic&trafficChannel=api"
@@ -2857,7 +2862,7 @@ window.TM_BD = {
     },
     "2026-11-21 5:00 PM": {
      "low": 234,
-     "seats": 74,
+     "seats": 72,
      "secs": {
       "orch": 234
      },
@@ -2869,7 +2874,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:30 PM": {
      "low": 225,
-     "seats": 84,
+     "seats": 86,
      "secs": {
       "mezz": 244,
       "orch": 225
@@ -2883,14 +2888,14 @@ window.TM_BD = {
     },
     "2026-11-22 3:00 PM": {
      "low": 234,
-     "seats": 15,
+     "seats": 14,
      "secs": {
       "mezz": 244,
       "orch": 234
      },
      "raw": {
       "MEZZO": 244,
-      "ORCHC": 274,
+      "ORCHC": 326.5,
       "ORCHO": 234
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033234?trafficSource=agentic&trafficChannel=api"
@@ -2923,7 +2928,7 @@ window.TM_BD = {
     },
     "2026-11-25 3:00 PM": {
      "low": 115.75,
-     "seats": 44,
+     "seats": 40,
      "secs": {
       "balc": 115.75,
       "mezz": 168.5,
@@ -2940,7 +2945,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:30 PM": {
      "low": 115.75,
-     "seats": 22,
+     "seats": 20,
      "secs": {
       "balc": 115.75,
       "mezz": 274,
@@ -3034,6 +3039,7 @@ window.TM_BD = {
      "low": 178,
      "seats": 69,
      "secs": {
+      "stage": 278,
       "orch": 178
      },
      "raw": {
@@ -3046,8 +3052,9 @@ window.TM_BD = {
     },
     "2026-11-19 1:00 PM": {
      "low": 74.75,
-     "seats": 98,
+     "seats": 96,
      "secs": {
+      "stage": 258,
       "orch": 74.75
      },
      "raw": {
@@ -3063,6 +3070,7 @@ window.TM_BD = {
      "low": 74.75,
      "seats": 123,
      "secs": {
+      "stage": 258,
       "orch": 74.75
      },
      "raw": {
@@ -3078,6 +3086,7 @@ window.TM_BD = {
      "low": 84.75,
      "seats": 138,
      "secs": {
+      "stage": 258,
       "orch": 84.75
      },
      "raw": {
@@ -3093,6 +3102,7 @@ window.TM_BD = {
      "low": 178,
      "seats": 124,
      "secs": {
+      "stage": 258,
       "orch": 178
      },
      "raw": {
@@ -3106,8 +3116,9 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 95.75,
-     "seats": 83,
+     "seats": 79,
      "secs": {
+      "stage": 298,
       "orch": 95.75
      },
      "raw": {
@@ -3123,6 +3134,7 @@ window.TM_BD = {
      "low": 136.5,
      "seats": 98,
      "secs": {
+      "stage": 258,
       "orch": 136.5
      },
      "raw": {
@@ -3137,6 +3149,7 @@ window.TM_BD = {
      "low": 198,
      "seats": 154,
      "secs": {
+      "stage": 298,
       "orch": 198
      },
      "raw": {
@@ -3151,6 +3164,7 @@ window.TM_BD = {
      "low": 198,
      "seats": 155,
      "secs": {
+      "stage": 298,
       "orch": 198
      },
      "raw": {
@@ -3166,6 +3180,7 @@ window.TM_BD = {
      "low": 146.5,
      "seats": 169,
      "secs": {
+      "stage": 298,
       "orch": 146.5
      },
      "raw": {
@@ -3181,6 +3196,7 @@ window.TM_BD = {
      "low": 198,
      "seats": 163,
      "secs": {
+      "stage": 298,
       "orch": 198
      },
      "raw": {
@@ -3196,6 +3212,7 @@ window.TM_BD = {
      "low": 146.5,
      "seats": 150,
      "secs": {
+      "stage": 298,
       "orch": 146.5
      },
      "raw": {
@@ -3211,6 +3228,7 @@ window.TM_BD = {
      "low": 146.5,
      "seats": 187,
      "secs": {
+      "stage": 298,
       "orch": 146.5
      },
      "raw": {
@@ -3224,8 +3242,9 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 146.5,
-     "seats": 192,
+     "seats": 190,
      "secs": {
+      "stage": 298,
       "orch": 146.5
      },
      "raw": {
@@ -3241,6 +3260,7 @@ window.TM_BD = {
      "low": 146.5,
      "seats": 164,
      "secs": {
+      "stage": 298,
       "orch": 146.5
      },
      "raw": {
@@ -3261,13 +3281,13 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 2:00 PM": {
      "low": 66.75,
-     "seats": 173,
+     "seats": 168,
      "secs": {
-      "mezz": 86.75,
+      "mezz": 97.75,
       "orch": 66.75
      },
      "raw": {
-      "MEZZ": 86.75,
+      "MEZZ": 97.75,
       "ORCH C": 120.75,
       "ORCH L": 97.75,
       "ORCH R": 66.75
@@ -3276,7 +3296,7 @@ window.TM_BD = {
     },
     "2026-11-18 7:30 PM": {
      "low": 59.75,
-     "seats": 301,
+     "seats": 296,
      "secs": {
       "mezz": 59.75,
       "orch": 97.75
@@ -3291,7 +3311,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 59.75,
-     "seats": 275,
+     "seats": 273,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -3306,7 +3326,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 59.75,
-     "seats": 416,
+     "seats": 414,
      "secs": {
       "mezz": 59.75,
       "orch": 97.75
@@ -3321,7 +3341,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 66.75,
-     "seats": 563,
+     "seats": 561,
      "secs": {
       "mezz": 66.75,
       "orch": 97.75
@@ -3336,7 +3356,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:30 PM": {
      "low": 66.75,
-     "seats": 306,
+     "seats": 300,
      "secs": {
       "mezz": 66.75,
       "orch": 143
@@ -3366,7 +3386,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 97.75,
-     "seats": 462,
+     "seats": 458,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75
@@ -3426,13 +3446,13 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 76.75,
-     "seats": 382,
+     "seats": 377,
      "secs": {
-      "mezz": 76.75,
+      "mezz": 97.75,
       "orch": 76.75
      },
      "raw": {
-      "MEZZ": 76.75,
+      "MEZZ": 97.75,
       "ORCH C": 195,
       "ORCH L": 175,
       "ORCH R": 76.75
@@ -3456,7 +3476,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 97.75,
-     "seats": 617,
+     "seats": 610,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75
@@ -3471,7 +3491,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 76.75,
-     "seats": 713,
+     "seats": 704,
      "secs": {
       "mezz": 76.75,
       "orch": 97.75
@@ -3493,7 +3513,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 1:00 PM": {
      "low": 149,
-     "seats": 182,
+     "seats": 178,
      "secs": {
       "mezz": 149,
       "orch": 149
@@ -3507,7 +3527,7 @@ window.TM_BD = {
     },
     "2026-11-18 7:00 PM": {
      "low": 99.75,
-     "seats": 281,
+     "seats": 273,
      "secs": {
       "mezz": 143,
       "orch": 99.75
@@ -3535,7 +3555,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 189,
-     "seats": 65,
+     "seats": 63,
      "secs": {
       "mezz": 189,
       "orch": 189
@@ -3577,7 +3597,7 @@ window.TM_BD = {
     },
     "2026-11-22 3:00 PM": {
      "low": 149,
-     "seats": 42,
+     "seats": 37,
      "secs": {
       "mezz": 149,
       "orch": 149
@@ -3619,7 +3639,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 149,
-     "seats": 53,
+     "seats": 52,
      "secs": {
       "mezz": 149,
       "orch": 169
@@ -3675,7 +3695,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 149,
-     "seats": 306,
+     "seats": 299,
      "secs": {
       "mezz": 149,
       "orch": 169
@@ -3710,7 +3730,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 79,
-     "seats": 401,
+     "seats": 396,
      "secs": {
       "mezz": 79,
       "orch": 89
@@ -3738,7 +3758,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 69,
-     "seats": 241,
+     "seats": 238,
      "secs": {
       "mezz": 69,
       "orch": 139
@@ -3752,7 +3772,7 @@ window.TM_BD = {
     },
     "2026-11-21 3:00 PM": {
      "low": 120.75,
-     "seats": 163,
+     "seats": 159,
      "secs": {
       "mezz": 120.75,
       "orch": 153
@@ -3766,7 +3786,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 99,
-     "seats": 259,
+     "seats": 256,
      "secs": {
       "mezz": 99,
       "orch": 106
@@ -3794,7 +3814,7 @@ window.TM_BD = {
     },
     "2026-11-22 7:00 PM": {
      "low": 79.75,
-     "seats": 331,
+     "seats": 327,
      "secs": {
       "mezz": 89.75,
       "orch": 79.75
@@ -3808,7 +3828,7 @@ window.TM_BD = {
     },
     "2026-11-23 7:00 PM": {
      "low": 79.75,
-     "seats": 331,
+     "seats": 327,
      "secs": {
       "mezz": 79.75,
       "orch": 79.75
@@ -3822,7 +3842,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 69,
-     "seats": 341,
+     "seats": 337,
      "secs": {
       "mezz": 69,
       "orch": 89
@@ -3941,7 +3961,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 98.75,
-     "seats": 227,
+     "seats": 199,
      "secs": {
       "mezz": 98.75,
       "orch": 110.75
@@ -3954,7 +3974,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 98.75,
-     "seats": 456,
+     "seats": 429,
      "secs": {
       "mezz": 98.75,
       "orch": 110.75
@@ -3967,7 +3987,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 120.75,
-     "seats": 686,
+     "seats": 671,
      "secs": {
       "mezz": 120.75,
       "orch": 159
@@ -3980,7 +4000,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 163,
-     "seats": 324,
+     "seats": 322,
      "secs": {
       "mezz": 163,
       "orch": 195
@@ -3993,7 +4013,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:30 PM": {
      "low": 159,
-     "seats": 444,
+     "seats": 432,
      "secs": {
       "mezz": 159,
       "orch": 191
@@ -4006,7 +4026,7 @@ window.TM_BD = {
     },
     "2026-11-22 1:00 PM": {
      "low": 185,
-     "seats": 174,
+     "seats": 169,
      "secs": {
       "mezz": 185,
       "orch": 195
@@ -4019,7 +4039,7 @@ window.TM_BD = {
     },
     "2026-11-22 6:30 PM": {
      "low": 173,
-     "seats": 431,
+     "seats": 414,
      "secs": {
       "mezz": 173,
       "orch": 215
@@ -4032,7 +4052,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 215,
-     "seats": 225,
+     "seats": 221,
      "secs": {
       "mezz": 215,
       "orch": 240
@@ -4058,7 +4078,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 185,
-     "seats": 553,
+     "seats": 551,
      "secs": {
       "mezz": 185,
       "orch": 215
@@ -4071,7 +4091,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 205,
-     "seats": 380,
+     "seats": 376,
      "secs": {
       "mezz": 205,
       "orch": 240
@@ -4110,7 +4130,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 185,
-     "seats": 706,
+     "seats": 704,
      "secs": {
       "mezz": 185,
       "orch": 215
@@ -4123,7 +4143,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 159,
-     "seats": 516,
+     "seats": 509,
      "secs": {
       "mezz": 159,
       "orch": 201
@@ -4184,7 +4204,7 @@ window.TM_BD = {
     },
     "2026-11-21 1:00 PM": {
      "low": 250,
-     "seats": 71,
+     "seats": 69,
      "secs": {
       "box": 300,
       "mezz": 300,
@@ -4204,7 +4224,7 @@ window.TM_BD = {
     },
     "2026-11-21 7:00 PM": {
      "low": 230,
-     "seats": 45,
+     "seats": 33,
      "secs": {
       "box": 300,
       "mezz": 300,
@@ -4224,7 +4244,7 @@ window.TM_BD = {
     },
     "2026-11-22 1:00 PM": {
      "low": 250,
-     "seats": 30,
+     "seats": 29,
      "secs": {
       "box": 300,
       "mezz": 300,
@@ -4245,7 +4265,7 @@ window.TM_BD = {
     },
     "2026-11-22 7:00 PM": {
      "low": 250,
-     "seats": 33,
+     "seats": 29,
      "secs": {
       "box": 300,
       "mezz": 300,
@@ -4264,7 +4284,7 @@ window.TM_BD = {
     },
     "2026-11-23 7:00 PM": {
      "low": 270,
-     "seats": 98,
+     "seats": 93,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -4284,7 +4304,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 270,
-     "seats": 153,
+     "seats": 151,
      "secs": {
       "box": 320,
       "mezz": 422.5,
@@ -4303,7 +4323,7 @@ window.TM_BD = {
     },
     "2026-11-25 1:00 PM": {
      "low": 270,
-     "seats": 212,
+     "seats": 210,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -4323,7 +4343,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 270,
-     "seats": 222,
+     "seats": 227,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -4343,7 +4363,7 @@ window.TM_BD = {
     },
     "2026-11-27 1:00 PM": {
      "low": 270,
-     "seats": 131,
+     "seats": 123,
      "secs": {
       "box": 320,
       "mezz": 625,
@@ -4361,7 +4381,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 270,
-     "seats": 81,
+     "seats": 79,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -4380,7 +4400,7 @@ window.TM_BD = {
     },
     "2026-11-28 1:00 PM": {
      "low": 270,
-     "seats": 187,
+     "seats": 180,
      "secs": {
       "box": 320,
       "mezz": 422.5,
@@ -4400,7 +4420,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 270,
-     "seats": 188,
+     "seats": 184,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -4426,7 +4446,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-18 7:00 PM": {
      "low": 97.75,
-     "seats": 573,
+     "seats": 571,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4443,7 +4463,7 @@ window.TM_BD = {
     },
     "2026-11-19 7:00 PM": {
      "low": 97.75,
-     "seats": 579,
+     "seats": 574,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4460,7 +4480,7 @@ window.TM_BD = {
     },
     "2026-11-20 7:00 PM": {
      "low": 97.75,
-     "seats": 574,
+     "seats": 564,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4477,7 +4497,7 @@ window.TM_BD = {
     },
     "2026-11-21 2:00 PM": {
      "low": 97.75,
-     "seats": 578,
+     "seats": 575,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4494,7 +4514,7 @@ window.TM_BD = {
     },
     "2026-11-21 8:00 PM": {
      "low": 97.75,
-     "seats": 654,
+     "seats": 641,
      "secs": {
       "mezz": 97.75,
       "orch": 110.75,
@@ -4511,7 +4531,7 @@ window.TM_BD = {
     },
     "2026-11-22 2:00 PM": {
      "low": 97.75,
-     "seats": 595,
+     "seats": 586,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4528,7 +4548,7 @@ window.TM_BD = {
     },
     "2026-11-22 7:00 PM": {
      "low": 97.75,
-     "seats": 646,
+     "seats": 639,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4545,7 +4565,7 @@ window.TM_BD = {
     },
     "2026-11-24 7:00 PM": {
      "low": 110.75,
-     "seats": 403,
+     "seats": 402,
      "secs": {
       "mezz": 110.75,
       "orch": 129,
@@ -4562,7 +4582,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 139,
-     "seats": 140,
+     "seats": 145,
      "secs": {
       "mezz": 139,
       "orch": 139,
@@ -4578,7 +4598,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 129,
-     "seats": 383,
+     "seats": 388,
      "secs": {
       "mezz": 129,
       "orch": 129,
@@ -4612,7 +4632,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 110.75,
-     "seats": 588,
+     "seats": 586,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75,
@@ -4629,7 +4649,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 110.75,
-     "seats": 593,
+     "seats": 587,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75,
@@ -4646,7 +4666,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 110.75,
-     "seats": 667,
+     "seats": 664,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75,
@@ -4663,7 +4683,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 97.75,
-     "seats": 731,
+     "seats": 728,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -4681,5 +4701,5 @@ window.TM_BD = {
    }
   }
  },
- "calls": 290
+ "calls": 289
 };
