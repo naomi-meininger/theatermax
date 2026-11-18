@@ -2,32 +2,50 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-18T00:03:21.061Z",
-  "lastAttemptAt": "2026-11-18T00:03:21.061Z",
+  "updatedAt": "2026-11-18T00:13:26.826Z",
+  "lastAttemptAt": "2026-11-18T00:13:26.826Z",
   "count": 89,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-18T00:03:21.061Z",
-      "lastAttemptAt": "2026-11-18T00:03:21.061Z",
+      "updatedAt": "2026-11-18T00:13:26.826Z",
+      "lastAttemptAt": "2026-11-18T00:13:26.826Z",
       "count": 66
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-18T00:03:21.061Z",
-      "lastAttemptAt": "2026-11-18T00:03:21.061Z",
+      "updatedAt": "2026-11-18T00:13:26.826Z",
+      "lastAttemptAt": "2026-11-18T00:13:26.826Z",
       "count": 24
     }
   },
   "shows": [
+    {
+      "slug": "mj",
+      "title": "MJ",
+      "url": "https://www.broadway.com/shows/mj/",
+      "fromPrice": 70.25,
+      "ratingCount": 1316,
+      "scene": "broadway",
+      "firstSeen": null
+    },
     {
       "slug": "the-outsiders",
       "title": "The Outsiders",
       "url": "https://www.broadway.com/shows/the-outsiders/",
       "fromPrice": 88.16,
       "ratingCount": 895,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "stranger-things-the-first-shadow",
+      "title": "Stranger Things: The First Shadow",
+      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
+      "fromPrice": 64.01,
+      "ratingCount": 755,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -46,24 +64,6 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/the-rocky-horror-show/",
       "fromPrice": 62.54,
       "ratingCount": 246,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "stranger-things-the-first-shadow",
-      "title": "Stranger Things: The First Shadow",
-      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
-      "fromPrice": 64.01,
-      "ratingCount": 755,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "mj",
-      "title": "MJ",
-      "url": "https://www.broadway.com/shows/mj/",
-      "fromPrice": 70.25,
-      "ratingCount": 1316,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -117,7 +117,7 @@ window.TM_LIVE = {
       "title": "Schmigadoon!",
       "url": "https://www.broadway.com/shows/schmigadoon/",
       "fromPrice": 64.83,
-      "ratingCount": 233,
+      "ratingCount": 232,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -144,7 +144,7 @@ window.TM_LIVE = {
       "title": "Hadestown",
       "url": "https://www.broadway.com/shows/hadestown/",
       "fromPrice": 62.72,
-      "ratingCount": 671,
+      "ratingCount": 670,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -162,7 +162,7 @@ window.TM_LIVE = {
       "title": "Galileo",
       "url": "https://www.broadway.com/shows/galileo/",
       "fromPrice": 49.95,
-      "ratingCount": 4,
+      "ratingCount": 3,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -216,7 +216,7 @@ window.TM_LIVE = {
       "title": "Operation Mincemeat: A New Musical",
       "url": "https://www.broadway.com/shows/operation-mincemeat/",
       "fromPrice": 65.37,
-      "ratingCount": 686,
+      "ratingCount": 685,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -261,7 +261,7 @@ window.TM_LIVE = {
       "title": "Other Desert Cities",
       "url": "https://www.broadway.com/shows/other-desert-cities/",
       "fromPrice": 248.36,
-      "ratingCount": 74,
+      "ratingCount": 71,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -288,7 +288,7 @@ window.TM_LIVE = {
       "title": "860",
       "url": "https://www.broadway.com/shows/860/",
       "fromPrice": 91.41,
-      "ratingCount": 137,
+      "ratingCount": 136,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -297,7 +297,7 @@ window.TM_LIVE = {
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
       "fromPrice": 102.26,
-      "ratingCount": 14,
+      "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -333,7 +333,7 @@ window.TM_LIVE = {
       "title": "It's a Wonderful Life: A Live Radio Play",
       "url": "https://www.broadway.com/shows/its-a-wonderful-life/",
       "fromPrice": 80.56,
-      "ratingCount": 5,
+      "ratingCount": 4,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -423,7 +423,7 @@ window.TM_LIVE = {
       "title": "Inter Alia",
       "url": "https://www.broadway.com/shows/inter-alia/",
       "fromPrice": 74.92,
-      "ratingCount": 5,
+      "ratingCount": 3,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -450,7 +450,7 @@ window.TM_LIVE = {
       "title": "Downstate",
       "url": "https://www.broadway.com/shows/downstate/",
       "fromPrice": 56.69,
-      "ratingCount": 5,
+      "ratingCount": 4,
       "scene": "broadway",
       "firstSeen": null
     },
