@@ -610,7 +610,6 @@ main { view-transition-name: page; }
 /* opening night & first preview in the date picker */
 .date-chip.opening-day, .date-chip.preview-day { position: relative; padding-top: 14px; }
 .date-chip.opening-day { border: 2px solid var(--red); background: #fde8e6; }
-.date-chip.preview-day { border: 2px solid #6b4fb0; background: #efe9fb; }
 .date-chip .open-tag, .date-chip .prev-tag {
   position: absolute; top: -9px; left: 50%; transform: translateX(-50%); white-space: nowrap;
   color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .04em; padding: 2px 6px; border-radius: 999px;
@@ -618,19 +617,16 @@ main { view-transition-name: page; }
 .date-chip .open-tag { background: var(--red); }
 .date-chip .prev-tag { background: #6b4fb0; }
 .date-chip.opening-day.active { background: var(--red); }
-.date-chip.preview-day.active { background: #6b4fb0; border-color: #6b4fb0; }
 .date-chip:first-child .final-tag { left: 4px; transform: none; }
 .date-chip.dark.holiday { opacity: 1; background: #f6efe0; border-style: dashed; }
 .date-chip.dark.holiday .day, .date-chip.dark.holiday .dow, .date-chip.dark.holiday .lo { opacity: .55; }
-/* first preview: quieter — an ink tag on a normal date, no purple fill */
-.date-chip.preview-day { border: 2px solid var(--ink); background: var(--card); }
-.date-chip .prev-tag { background: var(--ink); }
-.date-chip.preview-day.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.date-chip.preview-day.active .prev-tag { background: var(--red); }
 .date-chip.opening-day .dow::after, .date-chip.final-day .dow::after { content: none; }
 .date-chip.opening-day { box-shadow: none; }
 /* first preview: light purple fill, purple outline and tag */
-.date-chip.preview-day { border: 2px solid #6b4fb0; background: #efe9fb; }
 .date-chip .prev-tag { background: #6b4fb0; }
 .date-chip.preview-day.active { background: #ddd0f5; border-color: #6b4fb0; color: var(--ink); }
 .date-chip.preview-day.active .prev-tag { background: #6b4fb0; }
+.date-chip.preview-day.active .dow, .date-chip.preview-day.active .day { color: var(--ink); }
+.date-chip.preview-day.active .lo { color: var(--green); }
+.date-chip.preview-day { border: 2px solid #6b4fb0; background: #efe9fb; }
+.date-chip.preview-day.active { background: #ddd0f5; }
