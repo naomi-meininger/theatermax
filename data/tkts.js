@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-18T00:05:25.025Z",
+ "checkedAt": "2026-11-18T00:35:33.544Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 06:57 PM",
+   "updated": "Tuesday, 17 November 2026 07:26 PM",
    "shows": [
     {
      "title": "Galileo",
@@ -18,33 +18,6 @@ window.TM_TKTS = {
      "lo": 76,
      "hi": 96,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Its A Wonderful Life: A Live Radio Play",
-     "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play",
-     "tdfId": "23562",
-     "pct": 50,
-     "lo": 101,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Oh, Mary!",
-     "url": "https://www.tdf.org/shows/21288/oh-mary",
-     "tdfId": "21288",
-     "pct": 50,
-     "lo": 111,
-     "hi": 113,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 50,
-     "lo": 58,
-     "hi": 92,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-17"
@@ -53,35 +26,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 06:57 PM",
+   "updated": "Tuesday, 17 November 2026 07:26 PM",
    "shows": [
-    {
-     "title": "Friends! The Musical Parody",
-     "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
-     "tdfId": "18504",
-     "pct": 30,
-     "lo": 49,
-     "hi": 57,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 40,
-     "lo": 73,
-     "hi": 73,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Our Sinatra, a Musical Celebration",
-     "url": "https://www.tdf.org/shows/23469/our-sinatra-a-musical-celebration",
-     "tdfId": "23469",
-     "pct": 50,
-     "lo": 42,
-     "hi": 72,
-     "time": "7:30 PM"
-    },
     {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
@@ -98,7 +44,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 06:57 PM",
+   "updated": "Tuesday, 17 November 2026 07:26 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -242,7 +188,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Tuesday, 17 November 2026 06:57 PM",
+   "updated": "Tuesday, 17 November 2026 07:26 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
