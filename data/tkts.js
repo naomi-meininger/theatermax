@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-18T23:21:18.261Z",
+ "checkedAt": "2026-11-18T23:36:22.624Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:04 PM",
+   "updated": "Wednesday, 18 November 2026 06:28 PM",
    "shows": [
     {
      "title": "Aladdin",
@@ -32,9 +32,9 @@ window.TM_TKTS = {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
-     "pct": 40,
-     "lo": 62,
-     "hi": 101,
+     "pct": 50,
+     "lo": 61,
+     "hi": 106,
      "time": "8:00 PM"
     },
     {
@@ -45,15 +45,6 @@ window.TM_TKTS = {
      "lo": 95,
      "hi": 107,
      "time": "7:30 PM"
-    },
-    {
-     "title": "Harry Potter and the Cursed Child",
-     "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child",
-     "tdfId": "16274",
-     "pct": 40,
-     "lo": 88,
-     "hi": 109,
-     "time": "7:00 PM"
     },
     {
      "title": "MJ The Musical",
@@ -72,15 +63,6 @@ window.TM_TKTS = {
      "lo": 102,
      "hi": 102,
      "time": "7:00 PM"
-    },
-    {
-     "title": "Much Ado About Nothing",
-     "url": "https://www.tdf.org/shows/23297/much-ado-about-nothing",
-     "tdfId": "23297",
-     "pct": 50,
-     "lo": 90,
-     "hi": 90,
-     "time": "7:30 PM"
     },
     {
      "title": "Oh, Mary!",
@@ -206,17 +188,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:04 PM",
+   "updated": "Wednesday, 18 November 2026 06:28 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 48,
-     "hi": 48,
-     "time": "7:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -245,15 +218,6 @@ window.TM_TKTS = {
      "time": "7:00 PM"
     },
     {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Going Bacharach",
      "url": "https://www.tdf.org/shows/23016/going-bacharach",
      "tdfId": "23016",
@@ -261,15 +225,6 @@ window.TM_TKTS = {
      "lo": 42,
      "hi": 72,
      "time": "7:30 PM"
-    },
-    {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 40,
-     "lo": 42,
-     "hi": 66,
-     "time": "7:00 PM"
     },
     {
      "title": "Little Shop of Horrors",
@@ -323,7 +278,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:04 PM",
+   "updated": "Wednesday, 18 November 2026 06:28 PM",
    "shows": [
     {
      "title": "Just In Time",
@@ -359,7 +314,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:04 PM",
+   "updated": "Wednesday, 18 November 2026 06:28 PM",
    "shows": [
     {
      "title": "Amaze Magic",
