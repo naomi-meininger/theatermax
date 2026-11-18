@@ -620,3 +620,5 @@ main { view-transition-name: page; }
 .date-chip.opening-day.active { background: var(--red); }
 .date-chip.preview-day.active { background: #6b4fb0; border-color: #6b4fb0; }
 .date-chip:first-child .final-tag { left: 4px; transform: none; }
+.date-chip.dark.holiday { opacity: 1; background: #f6efe0; border-style: dashed; }
+.date-chip.dark.holiday .day, .date-chip.dark.holiday .dow, .date-chip.dark.holiday .lo { opacity: .55; }

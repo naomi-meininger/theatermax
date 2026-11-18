@@ -1406,7 +1406,7 @@
             }
             if (!perfsFor(show, dt).length || !performsOn(show, dt.date)) {
               const why = !perfsFor(show, dt).length ? (hasLive(show) && inLiveWindow(dt.date) ? "—" : "Dark") : show.closing && dt.date > show.closing.date ? "Closed" : "—";
-              return `<button class="date-chip dark" disabled title="${holidayOn(dt.date) ? holidayOn(dt.date).name + " · " : ""}${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}"><div class="dow">${fmtDow(dt.date)}${holidayOn(dt.date) ? ` <span class="hol" aria-label="${holidayOn(dt.date).name}">${holidayOn(dt.date).icon}</span>` : ""}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
+              return `<button class="date-chip dark ${holidayOn(dt.date) ? "holiday" : ""}" disabled title="${holidayOn(dt.date) ? holidayOn(dt.date).name + " · " : ""}${why === "Closed" ? "After the final performance" : why === "Dark" ? "No show this day" : "Before the first performance"}">${holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${fmtDow(dt.date)}</div><div class="day">${dt.date.getDate()}</div><div class="lo muted">${why}</div></button>`;
             }
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
             const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
