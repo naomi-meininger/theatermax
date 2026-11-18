@@ -15,6 +15,9 @@ const load = (file, name) => { if (!existsSync(file)) return null; const ctx = {
 const prev = load(OUT, "TM_TODAYTIX") || { ids: {}, shows: {} };
 const live = load("data/live-shows.js", "TM_LIVE") || { shows: [] };
 const extra = load("data/extra-shows.js", "TM_EXTRA_SHOWS") || [];
+// Shows that start later: also price their first two weeks (from Broadway.com's calendar).
+const cals = (load("data/schedules.js", "TM_SCHEDULES") || {}).shows || {};
+const addDays = (isoDay, n) => { const d = new Date(isoDay + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 const ours = [...live.shows, ...(Array.isArray(extra) ? extra : [])].filter((s) => s.slug && s.title);
 
 const norm = (t) => String(t).toLowerCase().replace(/&#x?[0-9a-f]+;/gi, "'").replace(/\((the met|encores!?|nycb)\)/g, "")
@@ -66,6 +69,8 @@ try {
       };
       const mid = iso(new Date(today.getTime() + 6 * 864e5)), mid2 = iso(new Date(today.getTime() + 7 * 864e5));
       await ask(from, mid); await ask(mid2, to);
+      const first = cals[s.slug] && cals[s.slug].from;
+      if (first && first > to) { await ask(first, addDays(first, 6)); await ask(addDays(first, 7), addDays(first, 13)); }
       const seenPerf = new Set();
       const perfs = {};
       for (const p of results) {
@@ -81,7 +86,8 @@ try {
       }
       if (Object.keys(perfs).length) byQty[q] = perfs;
       }
-      if (Object.keys(byQty).length) out.shows[s.slug] = { id: id.id, url: id.url, perfs: byQty[2] || {}, byQty };
+      const firstW = cals[s.slug] && cals[s.slug].from > to ? [[cals[s.slug].from, addDays(cals[s.slug].from, 13)]] : [];
+      if (Object.keys(byQty).length) out.shows[s.slug] = { id: id.id, url: id.url, perfs: byQty[2] || {}, byQty, windows: [[from, to], ...firstW] };
     } catch (e) {
       errors++; console.error(`${s.slug}: ${e.message}`);
       if (/denied|throttled/.test(e.message)) throw e; // stop politely

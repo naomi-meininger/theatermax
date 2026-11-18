@@ -41,6 +41,8 @@
     const perfs = t.byQty ? t.byQty[q] : (q === 2 ? t.perfs : null);
     return perfs && perfs[perf.key] ? { ...perfs[perf.key], showUrl: t.url, qty: q } : null;
   };
+  // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
+  const ttCovers = (show, day) => { const t = TT.shows && TT.shows[show.slug]; const w = (t && t.windows) || (TT.window ? [[TT.window.from, TT.window.to]] : []); return w.some(([a, b]) => day >= a && day <= b); };
   const hasTT = (show) => !!(TT.shows && TT.shows[show.slug]);
   // Show images: each show's own share image (og:image), hotlinked from its page.
   const IMAGES = Object.fromEntries(Object.entries((window.TM_SCHEDULES && window.TM_SCHEDULES.images) || {}).filter(([, u]) => !/\/fallback\//.test(u)));
@@ -767,7 +769,7 @@
     }
     // TodayTix real prices replace the TodayTix sample rows: one row per section, fees included.
     const tt = ttFor(show, perf);
-    const inTTWindow = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
+    const inTTWindow = ttCovers(show, perf.key.slice(0, 10));
     if (tt || (hasTT(show) && inTTWindow)) result = result.filter((o) => o.seller !== "TodayTix");
     if (tt) {
       const secs = sectionsFor(show);
@@ -1346,7 +1348,7 @@
             ${o.sec && show.theater && !o.sample && !many ? (() => { const v = o.sec.view ? { url: o.sec.view, label: `📷 Views from the ${o.sec.name.toLowerCase()}`, exact: true } : sectionView(show.theater, o.sec.id); return `<a class="seatview" href="${esc(v.url)}" target="_blank" rel="noopener" title="${v.exact ? "Audience photos from this section" : "Audience photos from all over the theater"}">${esc(v.label)}</a>`; })() : ""}</div>
           ${o.sample ? `<div class="price na">
             <div class="total na">Price not available right now</div>
-            <div class="breakdown">We don't get live prices from ${esc(o.seller)}. Check its site for this performance.</div>
+            <div class="breakdown">${o.seller === "TodayTix" ? "TodayTix prices load for the next two weeks (and a later show's first two). Check TodayTix for this date." : o.boxOffice ? "Same tickets as the official seller, without online fees. Ask at the box office." : `We don't get live prices from ${esc(o.seller)}. Check its site for this performance.`}</div>
             <div class="actions"><a class="btn ghost" href="${esc(o.url)}" target="_blank" rel="noopener">Check price →</a></div>
           </div>` : `<div class="price">
             <div class="total">${money(shown * state.qty)}</div>
@@ -1408,8 +1410,9 @@
             }
             const isOpening = show.opening && show.opening.precision === "day" && dt.date.getTime() === show.opening.date.getTime();
             const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
-            const cls = ["date-chip", isOpening ? "opening-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
-            return `<button class="${cls} ${holidayOn(dt.date) ? "holiday" : ""}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : holidayOn(dt.date) ? ` title="${holidayOn(dt.date).name}"` : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
+            const isFirstPreview = show.previews && show.previews.precision === "day" && !show.previews.assumed && !isOpening && dt.date.getTime() === show.previews.date.getTime();
+            const cls = ["date-chip", isOpening ? "opening-day" : "", isFirstPreview ? "preview-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
+            return `<button class="${cls} ${holidayOn(dt.date) ? "holiday" : ""}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : holidayOn(dt.date) ? ` title="${holidayOn(dt.date).name}"` : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : isOpening ? `<div class="final-tag open-tag">🎉 Opening night</div>` : isFirstPreview ? `<div class="final-tag prev-tag">🎭 First preview</div>` : holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
           }).join("")}
         </div>
         <div class="time-row">
@@ -1475,12 +1478,12 @@
           </div>
           ${validCodes(show).length ? "" : `<p class="code-hint">No verified discount code for this show right now. Codes appear here once confirmed. Check <a href="https://playbill.com/discount" target="_blank" rel="noopener">Playbill Discounts ↗</a> or <a href="https://www.broadwaybox.com" target="_blank" rel="noopener">BroadwayBox ↗</a>.</p>`}
           ${(() => { const id = TT.ids && TT.ids[show.slug]; if (!id || !id.url) return "";
-            const inWin = TT.window && perf.key.slice(0, 10) >= TT.window.from && perf.key.slice(0, 10) <= TT.window.to;
+            const inWin = ttCovers(show, perf.key.slice(0, 10));
             if (ttFor(show, perf)) return "";
-            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks."}</span></p>`; })()}
+            return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks, and a show's first two weeks if it starts later."}</span></p>`; })()}
           <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF (not in the prices above yet for this show): ${tdfLinks(show)}`}</p>
           <p class="also-check">Also check: <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value, plus Theatr fees)</span></p>
-          <p class="muted" style="margin-top:-4px">${offers.filter((o) => !o.sample).length} prices from ${new Set(offers.filter((o) => !o.sample).map((o) => o.seller)).size} sources${offers.some((o) => o.sample) ? ` · ${new Set(offers.filter((o) => o.sample).map((o) => o.seller)).size} more without live prices` : ""}${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
+          <p class="muted" style="margin-top:-4px">${(() => { const n = offers.filter((o) => !o.sample).length, k = new Set(offers.filter((o) => !o.sample).map((o) => o.seller)).size; return `${n} ${n === 1 ? "price" : "prices"} from ${k} ${k === 1 ? "source" : "sources"}`; })()}${offers.some((o) => o.sample) ? ` · ${new Set(offers.filter((o) => o.sample).map((o) => o.seller)).size} more without live prices` : ""}${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
           ${offerHtml || `<div class="empty">No offers match these filters. Try another section or fewer tickets.</div>`}
         </section>

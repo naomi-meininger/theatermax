@@ -57,8 +57,12 @@ export function parseSectionPrices(html) {
 export function parseShowInfo(html) {
   const t = text(html), info = {};
   // Theater name: the "Theater" block on Broadway.com show pages ("Learn more about the theater. <name>").
-  const th = t.match(/Learn more about the theater\.?\s+([A-Z][^.\n]{3,80}?)(?=\s+(?:Hearing|Wheelchair|Accessib|Restroom|Address|\d{2,4}\s)|\s*$)/);
-  if (th) info.theater = th[1].trim();
+  // Prefer the link to the venue page (/venues/theaters/<slug>/), whose text is the theater's name.
+  const vl = [...html.matchAll(/href="[^"]*\/venues\/[a-z-]+\/[a-z0-9-]+\/?"[^>]*>\s*([^<]{3,90}?)\s*</gi)].map((m) => m[1].replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").trim())
+    .find((n) => /[A-Za-z]/.test(n) && !/^(view|see|learn|more|map|directions|venue|theaters?)\b/i.test(n));
+  if (vl) { info.theater = vl; }
+  const th = info.theater ? null : t.match(/Learn more about the theater\.?\s+([A-Z][^.\n]{3,80}?)(?=\s+(?:Hearing|Wheelchair|Accessib|Restroom|Address|\d{2,4}\s)|\s*$)/);
+  if (th) info.theater = th[1].trim().replace(/\s+Entrance$/i, "");
   const rt = t.match(/(?:Running Time|Run Time|Runtime)\s*:?\s*((?:\d+\s*(?:hours?|hrs?|h)\.?\s*(?:and\s*)?)?(?:\d+\s*(?:minutes?|mins?|m)\.?)?(?:[^.]{0,40}?(?:intermission|no intermission))?)/i);
   if (rt && /\d/.test(rt[1])) info.runtime = rt[1].replace(/\s+/g, " ").trim();
   const ad = t.match(/(\d{2,4}\s+(?:West|East|W\.?|E\.?)\s+\d{1,3}(?:st|nd|rd|th)\s+(?:Street|St\.?))/i) || t.match(/(\d{1,4}\s+(?:\d{1,2}(?:st|nd|rd|th)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:Avenue|Ave\.?|Street|St\.?|Place|Plaza))/);

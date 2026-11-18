@@ -606,3 +606,16 @@ main { view-transition-name: page; }
 .sec-price.booth.on { border-color: #1d7a3e; background: #eef7f0; }
 .sec-price.booth.closed, .sec-price.booth.off { opacity: .5; background: #f1eee8; }
 .sec-price.booth.closed b, .sec-price.booth.off b { font-weight: 600; }
+
+/* opening night & first preview in the date picker */
+.date-chip.opening-day, .date-chip.preview-day { position: relative; padding-top: 14px; }
+.date-chip.opening-day { border: 2px solid var(--red); background: #fde8e6; }
+.date-chip.preview-day { border: 2px solid #6b4fb0; background: #efe9fb; }
+.date-chip .open-tag, .date-chip .prev-tag {
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .04em; padding: 2px 6px; border-radius: 999px;
+}
+.date-chip .open-tag { background: var(--red); }
+.date-chip .prev-tag { background: #6b4fb0; }
+.date-chip.opening-day.active { background: var(--red); }
+.date-chip.preview-day.active { background: #6b4fb0; border-color: #6b4fb0; }
