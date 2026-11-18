@@ -1,0 +1,14 @@
+name: Probe Broadway Direct agent API
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          UA="TheaterMax/1.0 (+https://naomi-meininger.github.io/theatermax/)"
+          for u in https://broadwaydirect.com/ai.txt https://tickets.broadwaydirect.com/llms.txt https://tickets.broadwaydirect.com/api/v1/agentic/openapi.yaml https://tickets.broadwaydirect.com/.well-known/mcp.json; do
+            echo "=================== $u"; curl -sS -A "$UA" "$u" | head -c 30000; echo; done
+          echo "=================== /agent/shows.json"; curl -sS -A "$UA" https://broadwaydirect.com/agent/shows.json | head -c 4000; echo
+          echo "=================== /agent/shows/wicked/availability.json"; curl -sS -A "$UA" https://broadwaydirect.com/agent/shows/wicked/availability.json | head -c 4000; echo
+          echo "=================== /events/series"; curl -sS -A "$UA" "https://tickets.broadwaydirect.com/api/v1/agentic/events/series" | head -c 4000; echo
+          echo "=================== /events"; curl -sS -A "$UA" "https://tickets.broadwaydirect.com/api/v1/agentic/events" | head -c 4000; echo
