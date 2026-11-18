@@ -2,22 +2,22 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-17T19:13:45.709Z",
-  "lastAttemptAt": "2026-11-17T19:13:45.709Z",
+  "updatedAt": "2026-11-18T00:03:21.061Z",
+  "lastAttemptAt": "2026-11-18T00:03:21.061Z",
   "count": 89,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-17T19:13:45.709Z",
-      "lastAttemptAt": "2026-11-17T19:13:45.709Z",
+      "updatedAt": "2026-11-18T00:03:21.061Z",
+      "lastAttemptAt": "2026-11-18T00:03:21.061Z",
       "count": 66
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-17T19:13:45.709Z",
-      "lastAttemptAt": "2026-11-17T19:13:45.709Z",
+      "updatedAt": "2026-11-18T00:03:21.061Z",
+      "lastAttemptAt": "2026-11-18T00:03:21.061Z",
       "count": 24
     }
   },
@@ -32,29 +32,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "stranger-things-the-first-shadow",
-      "title": "Stranger Things: The First Shadow",
-      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
-      "fromPrice": 64.01,
-      "ratingCount": 755,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
       "slug": "book-mormon",
       "title": "The Book of Mormon",
       "url": "https://www.broadway.com/shows/book-mormon/",
       "fromPrice": 75.52,
       "ratingCount": 506,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "mj",
-      "title": "MJ",
-      "url": "https://www.broadway.com/shows/mj/",
-      "fromPrice": 70.25,
-      "ratingCount": 1316,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -68,10 +50,28 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
+      "slug": "stranger-things-the-first-shadow",
+      "title": "Stranger Things: The First Shadow",
+      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
+      "fromPrice": 64.01,
+      "ratingCount": 755,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "mj",
+      "title": "MJ",
+      "url": "https://www.broadway.com/shows/mj/",
+      "fromPrice": 70.25,
+      "ratingCount": 1316,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
       "slug": "just-in-time",
       "title": "Just In Time",
       "url": "https://www.broadway.com/shows/just-in-time/",
-      "fromPrice": 74.92,
+      "fromPrice": 75.14,
       "ratingCount": 1083,
       "scene": "broadway",
       "firstSeen": null
@@ -161,7 +161,7 @@ window.TM_LIVE = {
       "slug": "galileo",
       "title": "Galileo",
       "url": "https://www.broadway.com/shows/galileo/",
-      "fromPrice": 50.18,
+      "fromPrice": 49.95,
       "ratingCount": 4,
       "scene": "broadway",
       "firstSeen": null
@@ -236,7 +236,7 @@ window.TM_LIVE = {
       "fromPrice": 276.11,
       "ratingCount": 121,
       "scene": "off",
-      "firstSeen": "2026-11-17"
+      "firstSeen": "2026-11-18"
     },
     {
       "slug": "dolly",
@@ -314,7 +314,7 @@ window.TM_LIVE = {
       "slug": "a-few-good-men",
       "title": "A Few Good Men",
       "url": "https://www.broadway.com/shows/a-few-good-men/",
-      "fromPrice": 206.74,
+      "fromPrice": 178.99,
       "ratingCount": 21,
       "scene": "broadway",
       "firstSeen": null
@@ -332,7 +332,7 @@ window.TM_LIVE = {
       "slug": "its-a-wonderful-life",
       "title": "It's a Wonderful Life: A Live Radio Play",
       "url": "https://www.broadway.com/shows/its-a-wonderful-life/",
-      "fromPrice": 64.29,
+      "fromPrice": 80.56,
       "ratingCount": 5,
       "scene": "broadway",
       "firstSeen": null
@@ -422,7 +422,7 @@ window.TM_LIVE = {
       "slug": "inter-alia",
       "title": "Inter Alia",
       "url": "https://www.broadway.com/shows/inter-alia/",
-      "fromPrice": 75.14,
+      "fromPrice": 74.92,
       "ratingCount": 5,
       "scene": "broadway",
       "firstSeen": null
@@ -494,7 +494,7 @@ window.TM_LIVE = {
       "slug": "the-odd-couple",
       "title": "The Odd Couple",
       "url": "https://www.broadway.com/shows/the-odd-couple/",
-      "fromPrice": 199.8,
+      "fromPrice": null,
       "ratingCount": null,
       "scene": "broadway",
       "firstSeen": null
@@ -617,20 +617,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 9,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "jamie-allans-amaze",
-      "title": "Amaze Magic",
-      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
-      "fromPrice": 65.36,
-      "ratingCount": 126,
+      "slug": "play-goes-wrong-beginning-february-11-2019",
+      "title": "The Play That Goes Wrong",
+      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
+      "fromPrice": 101.18,
+      "ratingCount": 367,
       "scene": "off",
       "firstSeen": null
     },
@@ -644,11 +635,20 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "play-goes-wrong-beginning-february-11-2019",
-      "title": "The Play That Goes Wrong",
-      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
-      "fromPrice": 101.18,
-      "ratingCount": 367,
+      "slug": "jamie-allans-amaze",
+      "title": "Amaze Magic",
+      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
+      "fromPrice": 65.36,
+      "ratingCount": 126,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 9,
       "scene": "off",
       "firstSeen": null
     },
@@ -719,7 +719,7 @@ window.TM_LIVE = {
       "slug": "the-conversation",
       "title": "The Conversation",
       "url": "https://www.broadway.com/shows/the-conversation/",
-      "fromPrice": 83.2,
+      "fromPrice": 71.68,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
