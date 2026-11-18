@@ -42,7 +42,14 @@
     return perfs && perfs[perf.key] ? { ...perfs[perf.key], showUrl: t.url, qty: q } : null;
   };
   // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
-  const ttCovers = (show, day) => { const t = TT.shows && TT.shows[show.slug]; const w = (t && t.windows) || (TT.window ? [[TT.window.from, TT.window.to]] : []); return w.some(([a, b]) => day >= a && day <= b); };
+  // Far-out weeks are loaded for 2 tickets only.
+  const ttCovers = (show, day) => {
+    const t = TT.shows && TT.shows[show.slug];
+    const far = t && t.farWindow && day >= t.farWindow.from && day <= t.farWindow.to;
+    if (far) return ttQty() === 2;
+    const w = (t && t.windows) || (TT.window ? [[TT.window.from, TT.window.to]] : []);
+    return w.some(([a, b]) => day >= a && day <= b) && !(t && t.farWindow && day >= t.farWindow.from);
+  };
   const hasTT = (show) => !!(TT.shows && TT.shows[show.slug]);
   // Show images: each show's own share image (og:image), hotlinked from its page.
   const IMAGES = Object.fromEntries(Object.entries((window.TM_SCHEDULES && window.TM_SCHEDULES.images) || {}).filter(([, u]) => !/\/fallback\//.test(u)));
@@ -401,6 +408,7 @@
   }
   const SOURCES = window.TM_SOURCES || [];
   const DAYS_AHEAD = 14;
+  const STRIP_DAYS = 84; // show-page date strip: 12 weeks
 
   const SECTIONS = [
     { id: "orch", name: "Orchestra", mult: 1.0, rows: "ABCDEFGHJKLMNOPQRSTU" },
@@ -568,11 +576,11 @@
   };
   const TIME_MULT = { mat: 0.9, eve: 0.97, peak: 1.15 };
 
-  function getDates(start) {
+  function getDates(start, days = DAYS_AHEAD) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const from = start && start > today ? start : today, skip = Math.round((from - today) / 864e5);
     const out = [];
-    for (let j = 0; j < DAYS_AHEAD; j++) {
+    for (let j = 0; j < days; j++) {
       const i = skip + j;
       const d = new Date(today); d.setDate(today.getDate() + i);
       const perfs = SCHEDULE[d.getDay()].map(([time, kind]) => ({
@@ -1236,6 +1244,10 @@
     const show = SHOWS.find((s) => s.slug === slug);
     if (!show) return `<a class="back" href="#home">← All shows</a><div class="empty">Show not found.</div>`;
     DATES = datesFor(show);
+    // The date strip on a show page runs 12 weeks so you can shop further out
+    // (Broadway.com's calendar has prices for the whole run; TodayTix where loaded).
+    const FIRST_WINDOW = DATES.length;
+    if (show.onSale) DATES = getDates(DATES[0] && DATES[0].offset > 0 ? DATES[0].date : null, STRIP_DAYS);
     const windowWord = datesShifted(show) ? "in its first 2 weeks of performances" : `in the next ${DAYS_AHEAD} days`;
     const backHref = SCENE_HASH[state.f.scene] || "#home";
     if (!show.onSale) {
@@ -1292,7 +1304,7 @@
 
     // date strip
     const lows = DATES.map((dt) => (upcoming(dt).length ? lowestForDate(show, dt, { noMember: state.hideMember, section: state.section }) : null));
-    const cheapestVal = Math.min(...lows.filter(Boolean).map((o) => o.total));
+    const cheapestVal = Math.min(...lows.slice(0, FIRST_WINDOW).filter(Boolean).map((o) => o.total));
     const overall = { total: cheapestVal };
 
     // offers
