@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-18T23:06:13.548Z",
+ "checkedAt": "2026-11-18T23:21:18.261Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 05:13 PM",
+   "updated": "Wednesday, 18 November 2026 06:04 PM",
    "shows": [
     {
      "title": "Aladdin",
@@ -72,6 +72,15 @@ window.TM_TKTS = {
      "lo": 102,
      "hi": 102,
      "time": "7:00 PM"
+    },
+    {
+     "title": "Much Ado About Nothing",
+     "url": "https://www.tdf.org/shows/23297/much-ado-about-nothing",
+     "tdfId": "23297",
+     "pct": 50,
+     "lo": 90,
+     "hi": 90,
+     "time": "7:30 PM"
     },
     {
      "title": "Oh, Mary!",
@@ -197,7 +206,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 05:13 PM",
+   "updated": "Wednesday, 18 November 2026 06:04 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -314,7 +323,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 05:13 PM",
+   "updated": "Wednesday, 18 November 2026 06:04 PM",
    "shows": [
     {
      "title": "Just In Time",
@@ -350,7 +359,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 05:13 PM",
+   "updated": "Wednesday, 18 November 2026 06:04 PM",
    "shows": [
     {
      "title": "Amaze Magic",
