@@ -622,3 +622,10 @@ main { view-transition-name: page; }
 .date-chip:first-child .final-tag { left: 4px; transform: none; }
 .date-chip.dark.holiday { opacity: 1; background: #f6efe0; border-style: dashed; }
 .date-chip.dark.holiday .day, .date-chip.dark.holiday .dow, .date-chip.dark.holiday .lo { opacity: .55; }
+/* first preview: quieter — an ink tag on a normal date, no purple fill */
+.date-chip.preview-day { border: 2px solid var(--ink); background: var(--card); }
+.date-chip .prev-tag { background: var(--ink); }
+.date-chip.preview-day.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.date-chip.preview-day.active .prev-tag { background: var(--red); }
+.date-chip.opening-day .dow::after, .date-chip.final-day .dow::after { content: none; }
+.date-chip.opening-day { box-shadow: none; }
