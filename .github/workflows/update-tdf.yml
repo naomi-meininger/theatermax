@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-updates
+  group: tdf
   cancel-in-progress: false
 
 jobs:
