@@ -37,11 +37,12 @@ const today = ny(new Date()), from = iso(today), to = iso(new Date(today.getTime
 const QTYS = [1, 2, 4];
 // Each show's far-out prices are refreshed one day a week (spread across the week); the first
 // run after this was added refreshes everyone once.
-// Far-out weeks only for shows that haven't opened yet (people book those well ahead);
+// Far-out weeks only for shows that haven't started performances yet (people book those well ahead);
 // open shows just get the next two weeks.
 const runs = (load("data/schedules.js", "TM_SCHEDULES") || {}).runs || {};
 const todayIso = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
-const extendToday = (slug) => { const r = runs[slug] || {}; return r.opening ? r.opening > todayIso : !!(r.previews && r.previews > todayIso); };
+// Only shows whose performances haven't started (not even previews).
+const extendToday = (slug) => { const r = runs[slug] || {}; const start = r.previews || r.opening; return !!start && start > todayIso; };
 const now = new Date().toISOString();
 const out = { status: "ok", updatedAt: now, lastAttemptAt: now, window: { from, to }, quantities: [1, 2, 4], ids: { ...(prev.ids || {}) }, shows: {} };
 let calls = 0, errors = 0;
