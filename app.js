@@ -504,8 +504,9 @@
     const name = show.title.replace(/\s*\((The Met|Encores!|NYCB)\)\s*/g, " ").trim();
     if (seller === "Box office") return show.tickets || "https://www.google.com/search?btnI=1&q=" + encodeURIComponent("" + name + " official tickets");
     if (show.tickets && /^(The Met|NYC Ballet|New York City Center)$/.test(seller)) return show.tickets;
-    // Telecharge show pages: telecharge.com/<Title-With-Dashes>-Tickets
-    if (seller === "Telecharge") return "https://www.telecharge.com/" + name.replace(/:\s.*$/, "").replace(/[()’'".,!?:]/g, "").replace(/&/g, "and").trim().replace(/\s+/g, "-") + "-Tickets";
+    // Telecharge's terms allow links to its home page only; deep links need written permission
+    // (request via affiliate@shubertticketing.com).
+    if (seller === "Telecharge") return "https://www.telecharge.com/";
     if (seller === "SeatGeek" || seller === "SeatGeek (official)") return "https://seatgeek.com/search?search=" + encodeURIComponent(name.replace(/:\s.*$/, ""));
     // Broadway Direct show pages use the same name slug as Broadway.com (broadwaydirect.com/show/wicked/).
     if (seller === "Broadway Direct" && show.bdcUrl && /broadway\.com\/shows\//.test(show.bdcUrl)) return "https://broadwaydirect.com/show/" + show.slug.replace(/-broadway$/, "") + "/";
@@ -1666,6 +1667,16 @@
 
   // ---------- router & events ----------
   let currentSlug = null;
+  // Telecharge's terms permit links to its home page only (deep links need written permission
+  // from affiliate@shubertticketing.com), so any Telecharge link, including rush and lottery
+  // links from data files, is pointed at the home page.
+  function homeOnlyLinks(root) {
+    root.querySelectorAll('a[href*="telecharge.com/"]').forEach((a) => {
+      try { const u = new URL(a.href); if (/(^|\.)telecharge\.com$/.test(u.hostname) && (u.pathname !== "/" || u.search)) a.href = "https://www.telecharge.com/"; } catch (e) {}
+    });
+  }
+  new MutationObserver(() => homeOnlyLinks(document.body)).observe(document.documentElement, { childList: true, subtree: true });
+
   function route() {
     const h = (location.hash || "#home").slice(1);
     if (h === "home" || h === "broadway" || h === "off-broadway" || h === "opera-ballet") state.f.scene = h === "broadway" ? "broadway" : h === "off-broadway" ? "off" : h === "opera-ballet" ? "arts" : "all";
