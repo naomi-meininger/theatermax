@@ -629,3 +629,8 @@ main { view-transition-name: page; }
 .date-chip.preview-day.active .prev-tag { background: var(--red); }
 .date-chip.opening-day .dow::after, .date-chip.final-day .dow::after { content: none; }
 .date-chip.opening-day { box-shadow: none; }
+/* first preview: light purple fill, purple outline and tag */
+.date-chip.preview-day { border: 2px solid #6b4fb0; background: #efe9fb; }
+.date-chip .prev-tag { background: #6b4fb0; }
+.date-chip.preview-day.active { background: #ddd0f5; border-color: #6b4fb0; color: var(--ink); }
+.date-chip.preview-day.active .prev-tag { background: #6b4fb0; }
