@@ -795,7 +795,7 @@
       result.push({ seller: "TDF", kind: exact ? "Member tickets" : "Member tickets · if offered", sec: null, row: null, price: exact || 60, fee: 0, url: tdf.url,
         member: true, chance: !exact, estimate: !exact,
         note: exact ? `TDF lists member tickets at ${tdf.memberPrice} · membership required`
-          : "TDF members pay $11–$60 when a show offers member tickets (members-only listings, so not guaranteed) · membership required; students, teachers, artists, retirees and others qualify" });
+          : "TDF members pay $11–$60 when a show offers member tickets (members-only listings, so not guaranteed) · membership required; students, teachers, artists, retirees, and others qualify" });
     }
     // TKTS: on today's board (TKTS Live) → a real same-day option; otherwise, if TDF says it's
     // often there or it was on a recent board, an "often at TKTS" possibility like lottery/rush.
@@ -970,14 +970,14 @@
         sc === "broadway" ? `
         <p class="eyebrow">41 theaters · 500+ seats each</p>
         <h1><em>Broadway</em></h1>
-        <p class="lede">Broadway's theaters sit in and around Times Square and seat 500 or more. Each show below compares its official seller, the box office, discount codes, TodayTix, Broadway.com, resale, TKTS, lottery and rush, so you can see the cheapest seat in every section.</p>` :
+        <p class="lede">Broadway's theaters sit in and around Times Square and seat 500 or more. Each show below compares its official seller, the box office, discount codes, TodayTix, Broadway.com, resale, TKTS, lottery, and rush, so you can see the cheapest seat in every section.</p>` :
         off ? `
         <p class="eyebrow">Smaller stages · bigger bargains</p>
         <h1>Off-<em>Broadway</em></h1>
         <p class="lede">Off-Broadway theaters seat 499 people or fewer, so you're closer to the stage and tickets usually cost less. Every show below gets the same price comparison as Broadway.</p>` : `
         <p class="eyebrow">Every seller · one search</p>
         <h1>Stop tab-hopping. <em>Get the best seat price.</em></h1>
-        <p class="lede">TheaterMax compares official sellers, discount codes, apps, resale, TKTS, memberships, lotteries and rush, so you see every price, date and seat in one place, with fees included.</p>`}
+        <p class="lede">TheaterMax compares official sellers, discount codes, apps, resale, TKTS, memberships, lotteries, and rush, so you see every price, date, and seat in one place, with fees included.</p>`}
         <div class="search-bar" role="search">
           <input id="q" type="search" placeholder="Search a show or theater…" value="${esc(state.homeQuery)}" aria-label="Search shows" />
           <select id="homeSort" aria-label="Sort shows">
@@ -1475,7 +1475,7 @@
 
         <section>
           <div class="offers-head">
-            ${perf.soldOut || !lowest(all, { noMember: false }) ? `<p class="sold-out-note">No tickets available for this performance right now. Seats can come back through resale or returns, so check again later, or try the lottery, rush, TKTS or the box office.</p>` : ""}<h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            ${perf.soldOut || !lowest(all, { noMember: false }) ? `<p class="sold-out-note">No tickets available for this performance right now. Seats can come back through resale or returns, so check again later, or try the lottery, rush, TKTS, or the box office.</p>` : ""}<h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>
