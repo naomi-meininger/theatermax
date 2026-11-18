@@ -1,0 +1,36 @@
+name: Update Broadway Direct prices
+
+# Twice daily: Broadway Direct prices for the next 2 weeks from its public AI Discovery API.
+on:
+  schedule:
+    - cron: "41 10,20 * * *"   # ≈5:41 AM and 3:41 PM New York
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: broadwaydirect
+  cancel-in-progress: false
+
+jobs:
+  broadwaydirect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch Broadway Direct prices
+        run: node scripts/update-broadwaydirect.mjs
+      - name: Commit if prices changed
+        run: |
+          if git diff --quiet -- data/broadwaydirect.js; then echo "No changes."; exit 0; fi
+          if [ "$(git diff -U0 -- data/broadwaydirect.js | grep '^[+-] ' | grep -v -E "updatedAt|calls" | wc -l)" = "0" ]; then
+            echo "Only timestamps changed — skipping commit."; exit 0
+          fi
+          git config user.name "theatermax-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/broadwaydirect.js
+          git commit -m "Update Broadway Direct prices ($(date -u +%Y-%m-%d))"
+          for i in 1 2 3 4 5; do git pull --rebase --autostash origin main && git push && break; sleep $((i*10)); done

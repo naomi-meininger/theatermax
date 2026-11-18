@@ -41,6 +41,11 @@
     const perfs = t.byQty ? t.byQty[q] : (q === 2 ? t.perfs : null);
     return perfs && perfs[perf.key] ? { ...perfs[perf.key], showUrl: t.url, qty: q } : null;
   };
+  // Broadway Direct: real prices from Broadway Direct's public AI Discovery API, twice a day.
+  // broadwaydirect.com/ai.txt allows agents to use its pricing and availability data; each
+  // price links to the performance's booking page (publicUrl), as its agent guide asks.
+  const BD = window.TM_BD || { shows: {} };
+  const bdFor = (show, perf) => { const b = BD.shows && BD.shows[show.slug]; return b && b.perfs && b.perfs[perf.key] ? { ...b.perfs[perf.key], showUrl: b.url } : null; };
   // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
   // Far-out weeks are loaded for 2 tickets only.
   const ttCovers = (show, day) => {
@@ -788,6 +793,21 @@
         sec, row: sec && tt.best && tt.best.sec === sec.id ? tt.best.row : null, price: p, fee: 0, url: sec ? url(sec) : tt.showUrl, live: "todaytix",
         note: `Cheapest ${tt.qty === 1 ? "single seat" : tt.qty + " seats together"}${sec ? " in this section" : ""}${state.qty === 3 ? " (TodayTix price for 4; 3 is usually the same or less)" : ""} · fees included${tt.high ? ` · prices up to ${money0(tt.high)}` : ""}` }));
     }
+    // Broadway Direct live prices: one row per section (cheapest listed seat). When Broadway Direct
+    // is the official seller these replace the official sample rows (and so feed the box office row).
+    const bd = bdFor(show, perf);
+    if (bd && bd.low != null) {
+      const official = show.official === "Broadway Direct";
+      result = result.filter((o) => o.seller !== "Broadway Direct" || o.code);
+      const secs = sectionsFor(show);
+      const rows = Object.entries(bd.secs || {}).map(([id, p]) => [secs.find((x) => x.id === id), p]).filter(([sec]) => sec);
+      (rows.length ? rows : [[null, bd.low]]).forEach(([sec, p]) => result.push({ seller: "Broadway Direct",
+        kind: official ? "Official · online" : "Official partner seller", sec, row: null, price: p, fee: 0, url: bd.url || bd.showUrl, live: "broadwaydirect",
+        tag: official ? "official" : undefined, officialRow: official || undefined,
+        note: `Cheapest seat Broadway Direct lists${sec ? " in this section" : ""}, as of this update · checkout fees may be added` }));
+    } else if (bd && bd.low == null && show.official === "Broadway Direct") {
+      result = result.filter((o) => o.seller !== "Broadway Direct" || o.code);
+    }
     // TDF member tickets: TDF's public pages give the member price range ($11–$60) but only members
     // can see which shows have tickets on a given night, so this is "if offered", never "Best deal".
     const tdf = TDF[show.slug];
@@ -1366,7 +1386,7 @@
           </div>` : `<div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
-            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" || o.live === "broadwaydirect" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>`}
