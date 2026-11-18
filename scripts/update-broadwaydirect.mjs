@@ -6,6 +6,7 @@
 //
 // For each show Broadway Direct sells: list performances in the next two weeks, read each one's
 // seat inventory, and keep the cheapest seat per section (mapped to our sections) and overall.
+// Prices are all-in: the seat map shows ticket + online fee (e.g. $225 + $21 = $246).
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import vm from "node:vm";
 
@@ -26,7 +27,7 @@ const sameShow = (a, b) => { const x = norm(a), y = norm(b); return x === y || (
 
 // Broadway Direct section names (ORCH, ORCH L, MEZZ C, FRONT MEZZ, REAR MEZZ, BALC, BOX A…) → our ids.
 const secId = (name) => { const n = String(name).toUpperCase();
-  if (/STAGE|ONSTAGE/.test(n)) return "stage"; if (/^R(EAR)?\s*MEZ/.test(n)) return "rmezz"; if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
+  if (/STAGE|ONSTAGE|TABLE|FLOOR/.test(n)) return "stage"; if (/^R(EAR)?\s*MEZ/.test(n)) return "rmezz"; if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
   if (/MEZ|DRESS|CIRCLE|TIER/.test(n)) return "mezz"; if (/ORCH|ORC|STALL|PARQ|PARTERRE|PIT/.test(n)) return "orch"; return null; };
 const to12 = (hh, mm) => `${hh % 12 || 12}:${mm} ${hh < 12 ? "AM" : "PM"}`;
 const ny = (d) => new Date(d.toLocaleString("en-US", { timeZone: "America/New_York" }));

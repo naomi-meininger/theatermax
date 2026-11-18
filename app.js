@@ -802,9 +802,9 @@
       const secs = sectionsFor(show);
       const rows = Object.entries(bd.secs || {}).map(([id, p]) => [secs.find((x) => x.id === id), p]).filter(([sec]) => sec);
       (rows.length ? rows : [[null, bd.low]]).forEach(([sec, p]) => result.push({ seller: "Broadway Direct",
-        kind: official ? "Official · online" : "Official partner seller", sec, row: null, price: p, fee: 0, url: bd.url || bd.showUrl, live: "broadwaydirect",
+        kind: official ? "Official · online" : "Official partner seller", sec, row: null, price: p, fee: 0, feesIncluded: true, url: bd.url || bd.showUrl, live: "broadwaydirect",
         tag: official ? "official" : undefined, officialRow: official || undefined,
-        note: `Cheapest seat Broadway Direct lists${sec ? " in this section" : ""}, as of this update · checkout fees may be added` }));
+        note: `Cheapest seat Broadway Direct lists${sec ? " in this section" : ""}, as of this update · fees included` }));
     } else if (bd && bd.low == null && show.official === "Broadway Direct") {
       result = result.filter((o) => o.seller !== "Broadway Direct" || o.code);
     }
@@ -854,10 +854,12 @@
     // bought in person), one per official row. Sometimes it also has seats not listed online.
     result = result.filter((o) => !o.boxOffice);
     result.filter((o) => o.officialRow).forEach((o) => result.push({
-      seller: "Box office", kind: "Official · in person, no fees", sec: o.sec, row: null,
+      seller: "Box office", kind: o.live === "broadwaydirect" ? "Official · in person, skips online fee" : "Official · in person, no fees", sec: o.sec, row: null,
       price: Math.round((o.feesIncluded ? o.price - o.fee : o.price) * 100) / 100, fee: 0,
       url: o.url, tag: "official", inPerson: true, boxOffice: true, sample: o.sample, live: o.live,
-      note: `${show.official === "Box office" ? "Official" : show.official} price without its online fees, bought at the ${show.theater || "theater"} box office · sometimes has seats that aren't listed online` }));
+      note: o.live === "broadwaydirect"
+        ? `Same seats as Broadway Direct, bought at the ${show.theater || "theater"} box office. Shown at Broadway Direct's online price; in person you skip its online fee (for example $21 on a $225 ticket), so it costs a little less · sometimes has seats that aren't listed online`
+        : `${show.official === "Box office" ? "Official" : show.official} price without its online fees, bought at the ${show.theater || "theater"} box office · sometimes has seats that aren't listed online` }));
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
     cache.set(ck, offers);
@@ -1386,7 +1388,7 @@
           </div>` : `<div class="price">
             <div class="total">${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
-            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" ? "all-in" : o.live === "broadwaycom" || o.live === "broadwaydirect" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" || o.live === "broadwaydirect" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>`}
@@ -1514,7 +1516,7 @@
             const inWin = ttCovers(show, perf.key.slice(0, 10));
             if (ttFor(show, perf)) return "";
             return `<p class="also-check">🎟 <a href="${esc(id.url)}" target="_blank" rel="noopener">${esc(show.title)} on TodayTix ↗</a> <span class="muted">${inWin ? `${ttQty() && !(TT.shows[show.slug] && (TT.shows[show.slug].byQty ? TT.shows[show.slug].byQty[ttQty()] : ttQty() === 2)) ? `TodayTix prices for ${ttQty() === 1 ? "1 ticket" : ttQty() + " tickets"} aren't loaded for this show yet.` : ttQty() ? `TodayTix had no ${ttQty() === 1 ? "single seat" : ttQty() + " seats together"} for this performance when we checked (${fmtNY(TT.updatedAt)}). It may have some now.` : "We only load TodayTix prices for up to 4 tickets. Check TodayTix for bigger groups."}` : "TodayTix prices for this date aren't loaded yet. We load the next two weeks, and a show's first two weeks if it starts later."}</span></p>`; })()}
-          <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF (not in the prices above yet for this show): ${tdfLinks(show)}`}</p>
+          <p class="also-check">${all.some((o) => o.seller === "TDF" || o.seller === "TKTS") ? "More on TDF: " + tdfLinks(show) : `TDF and the TKTS booths haven't listed this show recently. Check them: ${tdfLinks(show)}`}</p>
           <p class="also-check">Also check: <a href="https://apps.apple.com/us/app/theatr-app/id1580002886" target="_blank" rel="noopener">Theatr fan resale ↗</a> <span class="muted">(app-only, no public prices; resale capped at face value, plus Theatr fees)</span></p>
           <p class="muted" style="margin-top:-4px">${(() => { const n = offers.filter((o) => !o.sample).length, k = new Set(offers.filter((o) => !o.sample).map((o) => o.seller)).size; return `${n} ${n === 1 ? "price" : "prices"} from ${k} ${k === 1 ? "source" : "sources"}`; })()}${offers.some((o) => o.sample) ? ` · ${new Set(offers.filter((o) => o.sample).map((o) => o.seller)).size} more without live prices` : ""}${offers.some((o) => o.chance) ? " · lottery, rush, TDF and “often at TKTS” shown but never picked as “Best deal”, since they aren't guaranteed" : ""}</p>
           ${state.section === "all" && state.group === "all" ? bySectionTable(show, preGroup) : ""}
