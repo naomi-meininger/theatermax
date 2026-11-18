@@ -37,9 +37,11 @@ const today = ny(new Date()), from = iso(today), to = iso(new Date(today.getTime
 const QTYS = [1, 2, 4];
 // Each show's far-out prices are refreshed one day a week (spread across the week); the first
 // run after this was added refreshes everyone once.
-const dayNum = Math.floor(Date.now() / 864e5) % 7;
-const hashSlug = (slug) => [...slug].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
-const extendToday = (slug) => !(prev.shows && prev.shows[slug] && prev.shows[slug].farWindow) || hashSlug(slug) % 7 === dayNum;
+// Far-out weeks only for shows that haven't opened yet (people book those well ahead);
+// open shows just get the next two weeks.
+const runs = (load("data/schedules.js", "TM_SCHEDULES") || {}).runs || {};
+const todayIso = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+const extendToday = (slug) => { const r = runs[slug] || {}; return r.opening ? r.opening > todayIso : !!(r.previews && r.previews > todayIso); };
 const now = new Date().toISOString();
 const out = { status: "ok", updatedAt: now, lastAttemptAt: now, window: { from, to }, quantities: [1, 2, 4], ids: { ...(prev.ids || {}) }, shows: {} };
 let calls = 0, errors = 0;
@@ -77,7 +79,9 @@ try {
       const first = cals[s.slug] && cals[s.slug].from;
       if (first && first > to) { await ask(first, addDays(first, 6)); await ask(addDays(first, 7), addDays(first, 13)); }
       // Further out (weeks 3–12), party of 2 only, refreshed for each show once a week.
-      if (q === 2 && extendToday(s.slug)) for (let w = 2; w < 12; w++) { const a = addDays(from, w * 7); await ask(a, addDays(a, 6)); }
+      // Shows not open yet: weeks 3–12 (counted from their first performance if that's later), 2 tickets.
+      const farStart = first && first > to ? addDays(first, 14) : addDays(from, 14);
+      if (q === 2 && extendToday(s.slug)) for (let w = 0; w < 10; w++) { const a = addDays(farStart, w * 7); await ask(a, addDays(a, 6)); }
       const seenPerf = new Set();
       const perfs = {};
       for (const p of results) {
@@ -95,14 +99,9 @@ try {
       }
       const firstW = cals[s.slug] && cals[s.slug].from > to ? [[cals[s.slug].from, addDays(cals[s.slug].from, 13)]] : [];
       // Keep last week's far-out prices for days we didn't re-ask today.
-      const old = prev.shows && prev.shows[s.slug], ext = extendToday(s.slug);
-      const farTo = addDays(from, 83);
-      if (!ext && old && old.byQty && old.byQty[2] && old.farWindow) {
-        byQty[2] = byQty[2] || {};
-        for (const [k, v] of Object.entries(old.byQty[2])) if (k.slice(0, 10) > to && k.slice(0, 10) <= farTo && !byQty[2][k]) byQty[2][k] = v;
-      }
-      const farWindow = ext ? { from: addDays(to, 1), to: farTo, checked: from } : (old && old.farWindow) || null;
-      const windows = [[from, to], ...firstW, ...(farWindow ? [[farWindow.from > addDays(to, 1) ? farWindow.from : addDays(to, 1), farWindow.to]] : [])];
+      const ext = extendToday(s.slug);
+      const farWindow = ext ? { from: first && first > to ? addDays(first, 14) : addDays(to, 1), to: addDays(first && first > to ? first : from, 83), checked: from } : null;
+      const windows = [[from, to], ...firstW, ...(farWindow ? [[farWindow.from, farWindow.to]] : [])];
       if (Object.keys(byQty).length) out.shows[s.slug] = { id: id.id, url: id.url, perfs: byQty[2] || {}, byQty, windows, farWindow };
     } catch (e) {
       errors++; console.error(`${s.slug}: ${e.message}`);
