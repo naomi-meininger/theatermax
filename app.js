@@ -637,10 +637,10 @@
     // Between today and the calendar's first date there are no performances (the calendar only
     // starts at the next one), so those days are dark rather than guessed from a standard week.
     if (cal && k <= cal.to && (k >= cal.from || k >= dayKey(TODAY))) {
-      return (cal.days[k] || []).map(({ t, from, secs, ev }) => {
+      return (cal.days[k] || []).map(({ t, from, secs, ev, soldOut }) => {
         const mins = toMinutes(t), dow = dt.date.getDay();
         const kind = mins < 17 * 60 ? "mat" : (dow === 5 || dow === 6) ? "peak" : "eve";
-        return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, calSecs: secs || null, calEv: ev || null, special: keyDateLabel(show, dt.date) };
+        return { time: t, kind, mult: TIME_MULT[kind], dayOffset: dt.offset, key: `${k} ${t}`, calFrom: from, calSecs: secs || null, calEv: ev || null, soldOut: !!soldOut, special: keyDateLabel(show, dt.date) };
       }).concat(!(cal.days[k] || []).length && keyDateLabel(show, dt.date)
         ? [{ time: "7:00 PM", kind: "eve", mult: TIME_MULT.eve, dayOffset: dt.offset, key: k + " 7:00 PM", special: keyDateLabel(show, dt.date), approx: true }] : []);
     }
@@ -1424,7 +1424,7 @@
             const isFinal = show.closing && show.closing.precision === "day" && dt.date.getTime() === show.closing.date.getTime();
             const isFirstPreview = show.previews && show.previews.precision === "day" && !show.previews.assumed && !isOpening && dt.date.getTime() === show.previews.date.getTime();
             const cls = ["date-chip", isOpening ? "opening-day" : "", isFirstPreview ? "preview-day" : "", isFinal ? "final-day" : "", i === state.dateIdx ? "active" : "", lo && lo.total === cheapestVal ? "cheapest-day" : "", target && lo && lo.total <= target ? "alert-hit" : ""].join(" ");
-            return `<button class="${cls} ${holidayOn(dt.date) ? "holiday" : ""}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : holidayOn(dt.date) ? ` title="${holidayOn(dt.date).name}"` : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : isOpening ? `<div class="final-tag open-tag">🎉 Opening night</div>` : isFirstPreview ? `<div class="final-tag prev-tag">🎭 First preview</div>` : holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo">${lo ? money0(lo.total) : "—"}</div></button>`;
+            return `<button class="${cls} ${holidayOn(dt.date) ? "holiday" : ""}" data-date="${i}" aria-pressed="${i === state.dateIdx}"${isFinal ? ' title="Final performance"' : holidayOn(dt.date) ? ` title="${holidayOn(dt.date).name}"` : ""}>${isFinal ? `<div class="final-tag">Final show</div>` : isOpening ? `<div class="final-tag open-tag">🎉 Opening night</div>` : isFirstPreview ? `<div class="final-tag prev-tag">🎭 First preview</div>` : holidayOn(dt.date) ? `<div class="final-tag hol-tag">${holidayOn(dt.date).icon} ${holidayOn(dt.date).name}</div>` : ""}<div class="dow">${dt.offset === 0 ? "Today" : fmtDow(dt.date)}</div><div class="day">${dt.date.getDate() === 1 || i === 0 ? dt.date.toLocaleDateString("en-US", { month: "short" }) + " " : ""}${dt.date.getDate()}</div><div class="lo ${!lo && upcoming(dt).length && upcoming(dt).every((p) => p.soldOut) ? "sold-out" : ""}">${lo ? money0(lo.total) : upcoming(dt).length && upcoming(dt).every((p) => p.soldOut) ? "Sold out" : "—"}</div></button>`;
           }).join("")}
         </div>
         <div class="time-row">
@@ -1475,7 +1475,7 @@
 
         <section>
           <div class="offers-head">
-            <h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            ${perf.soldOut ? `<p class="sold-out-note">Broadway.com lists this performance as sold out. Try the lottery, rush, TKTS or resale below, or the box office for returns.</p>` : ""}<h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>

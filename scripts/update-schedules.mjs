@@ -92,7 +92,7 @@ export function parseSchedule(html) {
     const h = +m[5], time = `${h % 12 || 12}:${m[6]} ${h < 12 ? "AM" : "PM"}`;
     events[`${m[4]}-${m[2]}-${m[3]} ${time}`] = m[0];
   }
-  const re = /\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2}) ?(am|pm)(?: from \$([\d,]+(?:\.\d{2})?))?/gi;
+  const re = /\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2}), (\d{4}) (\d{1,2}):(\d{2}) ?(am|pm)(?: from \$([\d,]+(?:\.\d{2})?)| (sold out|soldout))?/gi;
   for (const m of t.matchAll(re)) {
     const day = `${m[4]}-${String(MONTHS[m[2]]).padStart(2, "0")}-${m[3].padStart(2, "0")}`;
     const time = `${+m[5]}:${m[6]} ${m[7].toUpperCase()}`;
@@ -100,6 +100,7 @@ export function parseSchedule(html) {
     if (list.some((p) => p.t === time)) continue;
     const perf = { t: time };
     if (m[8]) perf.from = +m[8].replace(/,/g, "");
+    if (m[9]) perf.soldOut = true;
     const ev = events[`${day} ${time}`]; if (ev) perf.ev = ev;
     list.push(perf);
   }
