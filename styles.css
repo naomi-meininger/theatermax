@@ -619,3 +619,4 @@ main { view-transition-name: page; }
 .date-chip .prev-tag { background: #6b4fb0; }
 .date-chip.opening-day.active { background: var(--red); }
 .date-chip.preview-day.active { background: #6b4fb0; border-color: #6b4fb0; }
+.date-chip:first-child .final-tag { left: 4px; transform: none; }
