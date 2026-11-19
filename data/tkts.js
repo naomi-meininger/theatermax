@@ -2,23 +2,14 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-19T00:21:38.509Z",
+ "checkedAt": "2026-11-19T00:36:43.154Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 07:08 PM",
+   "updated": "Wednesday, 18 November 2026 07:26 PM",
    "shows": [
-    {
-     "title": "Buena Vista Social Club",
-     "url": "https://www.tdf.org/shows/19730/buena-vista-social-club",
-     "tdfId": "19730",
-     "pct": 40,
-     "lo": 71,
-     "hi": 107,
-     "time": "7:30 PM"
-    },
     {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
@@ -29,33 +20,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Hadestown",
-     "url": "https://www.tdf.org/shows/17230/hadestown",
-     "tdfId": "17230",
-     "pct": 40,
-     "lo": 95,
-     "hi": 107,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Oh, Mary!",
-     "url": "https://www.tdf.org/shows/21288/oh-mary",
-     "tdfId": "21288",
-     "pct": 50,
-     "lo": 93,
-     "hi": 113,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Schmigadoon!",
-     "url": "https://www.tdf.org/shows/22904/schmigadoon",
-     "tdfId": "22904",
-     "pct": 40,
-     "lo": 107,
-     "hi": 118,
-     "time": "7:30 PM"
-    },
-    {
      "title": "The Imaginary Invalid",
      "url": "https://www.tdf.org/shows/23394/the-imaginary-invalid",
      "tdfId": "23394",
@@ -63,51 +27,6 @@ window.TM_TKTS = {
      "lo": 91,
      "hi": 94,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Lost Boys",
-     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
-     "tdfId": "22920",
-     "pct": 50,
-     "lo": 76,
-     "hi": 96,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 50,
-     "lo": 58,
-     "hi": 92,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Wanted",
-     "url": "https://www.tdf.org/shows/23169/wanted",
-     "tdfId": "23169",
-     "pct": 50,
-     "lo": 68,
-     "hi": 92,
-     "time": "7:30 PM"
-    }
-   ],
-   "day": "2026-11-18"
-  },
-  {
-   "booth": "times-square",
-   "kind": "off",
-   "status": "open",
-   "updated": "Wednesday, 18 November 2026 07:08 PM",
-   "shows": [
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 63,
-     "hi": 63,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-18"
@@ -116,7 +35,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 07:08 PM",
+   "updated": "Wednesday, 18 November 2026 07:26 PM",
    "shows": [
     {
      "title": "Just In Time",
@@ -152,7 +71,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 07:08 PM",
+   "updated": "Wednesday, 18 November 2026 07:26 PM",
    "shows": [
     {
      "title": "Amaze Magic",
