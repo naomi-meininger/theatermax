@@ -1,10 +1,9 @@
 name: Update Broadway Direct prices
 
-# Hourly: Broadway Direct prices from its public AI Discovery API. Each run re-reads only the
-# performances that are due: show day every hour, next 2 days every 12 hours, 3–14 days out every 3 days.
+# Twice daily: Broadway Direct prices for the next 2 weeks from its public AI Discovery API.
 on:
   schedule:
-    - cron: "17 * * * *"   # every hour at :17
+    - cron: "41 10,20 * * *"   # ≈5:41 AM and 3:41 PM New York
   workflow_dispatch:
 
 permissions:
