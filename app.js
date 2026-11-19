@@ -232,10 +232,10 @@
   // ---- cast changes: Playbill headlines (headline + link only), matched to our shows ----
   const CASTNEWS = (window.TM_CASTNEWS && window.TM_CASTNEWS.items) || [];
   const fmtNews = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  const castNewsFor = (show, days = 60) => { const since = new Date(TODAY.getTime() - days * 864e5).toISOString().slice(0, 10);
+  const castNewsFor = (show, days = 7) => { const since = new Date(TODAY.getTime() - days * 864e5).toISOString().slice(0, 10);
     return CASTNEWS.filter((n) => n.slug === show.slug && n.date >= since); };
   function castStrip(inScene) {
-    const since = new Date(TODAY.getTime() - 21 * 864e5).toISOString().slice(0, 10);
+    const since = new Date(TODAY.getTime() - 7 * 864e5).toISOString().slice(0, 10);
     const list = CASTNEWS.filter((n) => n.date >= since).map((n) => ({ n, s: SHOWS.find((x) => x.slug === n.slug) }))
       .filter(({ s }) => s && inScene(s)).slice(0, 10);
     if (!list.length) return "";

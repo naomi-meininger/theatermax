@@ -1,6 +1,6 @@
 // Cast change headlines from Playbill's public news RSS feed (playbill.com/article/playbill-rss-feeds).
 // The feed only carries the latest ~10 stories, so this runs every few hours and keeps what it has
-// seen for 90 days. We store only the headline, date, and link (never article text), matched to
+// seen for 7 days. We store only the headline, date, and link (never article text), matched to
 // shows on TheaterMax, and classify each one as someone joining or someone leaving.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import vm from "node:vm";
@@ -8,7 +8,7 @@ import vm from "node:vm";
 const OUT = "data/castnews.js";
 const FEEDS = [{ source: "Playbill", url: "https://playbill.com/rss/news" }];
 const UA = "TheaterMax/1.0 (+https://naomi-meininger.github.io/theatermax/)";
-const KEEP_DAYS = 90;
+const KEEP_DAYS = 7;
 
 const load = (file, name) => { if (!existsSync(file)) return null; const ctx = { window: {} }; vm.runInNewContext(readFileSync(file, "utf8"), ctx); return ctx.window[name]; };
 const prev = load(OUT, "TM_CASTNEWS") || { items: [] };
