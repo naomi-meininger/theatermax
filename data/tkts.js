@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-19T00:06:32.246Z",
+ "checkedAt": "2026-11-19T00:21:38.509Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:55 PM",
+   "updated": "Wednesday, 18 November 2026 07:08 PM",
    "shows": [
     {
      "title": "Buena Vista Social Club",
@@ -98,17 +98,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:55 PM",
+   "updated": "Wednesday, 18 November 2026 07:08 PM",
    "shows": [
-    {
-     "title": "Going Bacharach",
-     "url": "https://www.tdf.org/shows/23016/going-bacharach",
-     "tdfId": "23016",
-     "pct": 50,
-     "lo": 42,
-     "hi": 72,
-     "time": "7:30 PM"
-    },
     {
      "title": "Midnight",
      "url": "https://www.tdf.org/shows/23360/midnight",
@@ -116,15 +107,6 @@ window.TM_TKTS = {
      "pct": 50,
      "lo": 63,
      "hi": 63,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 86,
-     "hi": 86,
      "time": "7:30 PM"
     }
    ],
@@ -134,7 +116,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:55 PM",
+   "updated": "Wednesday, 18 November 2026 07:08 PM",
    "shows": [
     {
      "title": "Just In Time",
@@ -170,7 +152,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Wednesday, 18 November 2026 06:55 PM",
+   "updated": "Wednesday, 18 November 2026 07:08 PM",
    "shows": [
     {
      "title": "Amaze Magic",
