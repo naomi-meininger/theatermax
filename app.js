@@ -45,6 +45,9 @@
   // broadwaydirect.com/ai.txt allows agents to use its pricing and availability data; each
   // price links to the performance's booking page (publicUrl), as its agent guide asks.
   const BD = window.TM_BD || { shows: {} };
+  // Broadway Direct's API prices include its online fee, which it doesn't publish. Seen at checkout:
+  // $225 ticket + $21 online fee = $246, so the fee-free (box office) price ≈ price ÷ (246/225).
+  const BD_FEE_RATIO = 246 / 225;
   const bdFor = (show, perf) => { const b = BD.shows && BD.shows[show.slug]; return b && b.perfs && b.perfs[perf.key] ? { ...b.perfs[perf.key], showUrl: b.url } : null; };
   // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
   // Far-out weeks are loaded for 2 tickets only.
@@ -854,11 +857,12 @@
     // bought in person), one per official row. Sometimes it also has seats not listed online.
     result = result.filter((o) => !o.boxOffice);
     result.filter((o) => o.officialRow).forEach((o) => result.push({
-      seller: "Box office", kind: o.live === "broadwaydirect" ? "Official · in person, skips online fee" : "Official · in person, no fees", sec: o.sec, row: null,
-      price: Math.round((o.feesIncluded ? o.price - o.fee : o.price) * 100) / 100, fee: 0,
+      seller: "Box office", kind: "Official · in person, no fees", sec: o.sec, row: null,
+      price: o.live === "broadwaydirect" ? Math.round(o.price / BD_FEE_RATIO * 100) / 100 : Math.round((o.feesIncluded ? o.price - o.fee : o.price) * 100) / 100, fee: 0,
+      approx: o.live === "broadwaydirect" || undefined,
       url: o.url, tag: "official", inPerson: true, boxOffice: true, sample: o.sample, live: o.live,
       note: o.live === "broadwaydirect"
-        ? `Same seats as Broadway Direct, bought at the ${show.theater || "theater"} box office. Shown at Broadway Direct's online price; in person you skip its online fee (for example $21 on a $225 ticket), so it costs a little less · sometimes has seats that aren't listed online`
+        ? `Broadway Direct's price without its online fee, bought at the ${show.theater || "theater"} box office. Estimated: Broadway Direct doesn't publish its fees, so we take off about 8.5% (its fee was $21 on a $246 seat) · sometimes has seats that aren't listed online`
         : `${show.official === "Box office" ? "Official" : show.official} price without its online fees, bought at the ${show.theater || "theater"} box office · sometimes has seats that aren't listed online` }));
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
@@ -870,7 +874,7 @@
   function lowest(offers, opts = {}) {
     let best = null;
     offers.forEach((o) => {
-      if (o.chance || o.estimate || o.sample) return;
+      if (o.chance || o.estimate || o.sample || o.approx) return;
       if (opts.noMember && o.member) return;
       if (opts.section && opts.section !== "all" && (!o.sec || o.sec.id !== opts.section)) return;
       if (!best || o.total < best.total) best = o;
@@ -1357,7 +1361,7 @@
       // One card per seller: its other sections listed inside (filter by section to see them separately).
       const many = group && group.length > 1;
       const secList = many ? `<div class="sec-prices">${group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) =>
-        `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>
+        `<button class="sec-price ${g === o ? "low" : ""}" data-section="${g.sec.id}" title="Show only ${esc(g.sec.name)}"><span>${esc(g.sec.name)}</span><b>${g.approx ? "~" : ""}${money0((state.fees ? g.total : g.price) * state.qty)}</b></button>`).join("")}</div>
         ${show.theater ? `<div class="sec-views">📷 Seat views: ${[...new Map(group.slice().sort((a, b) => secRank(show, a.sec) - secRank(show, b.sec)).map((g) => { const v = g.sec.view ? { url: g.sec.view } : sectionView(show.theater, g.sec.id); return [v.url, `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(g.sec.name)}</a>`]; })).values()].join(" · ")}</div>` : ""}` : "";
       const off = o.sec && officialBySec[o.sec.id];
       const save = off && o !== off && !off.sample ? off.total - o.total : 0;
@@ -1371,7 +1375,7 @@
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
+              ${o.approx ? `<span class="badge sample" title="Broadway Direct doesn't publish its online fee, so this is an estimate">Estimated</span>` : o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
@@ -1386,9 +1390,9 @@
             <div class="breakdown">${o.seller === "TodayTix" ? "TodayTix prices load for the next two weeks (and a later show's first two). Check TodayTix for this date." : o.boxOffice ? "Same tickets as the official seller, without online fees. Ask at the box office." : `We don't get live prices from ${esc(o.seller)}. Check its site for this performance.`}</div>
             <div class="actions"><a class="btn ghost" href="${esc(o.url)}" target="_blank" rel="noopener">Check price →</a></div>
           </div>` : `<div class="price">
-            <div class="total">${money(shown * state.qty)}</div>
+            <div class="total">${o.approx ? "~" : ""}${money(shown * state.qty)}</div>
             ${state.qty > 1 ? `<div class="breakdown"><b>for ${state.qty} tickets</b> · ${money(shown)} each</div>` : ""}
-            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.live === "seatgeek" || o.live === "todaytix" || o.live === "broadwaydirect" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
+            <div class="breakdown">${o.chance && o.seller !== "TKTS" ? "price set by the program · any fee shown at checkout" : o.code && o.code.feesIncl ? "from · fees included" : o.approx ? "estimated · no online fee" : o.live === "seatgeek" || o.live === "todaytix" || o.live === "broadwaydirect" ? "all-in" : o.live === "broadwaycom" ? "as listed" : state.fees ? `${money(o.price)} + ${o.feeEstimated ? "~" : ""}${money(o.fee)} fees` : "before fees"} · each</div>
             ${save > 1 ? `<div class="save">Save ${money0(save * state.qty)} vs. the official site</div>` : ""}
             <div class="actions"><a class="btn ${isBest ? "" : "ghost"}" href="${esc(o.url)}" target="_blank" rel="noopener">${o.chance ? "Enter" : "View"} →</a></div>
           </div>`}
@@ -1530,7 +1534,7 @@
     const key = state.fees ? "total" : "price";
     const rows = sectionsFor(show).map((sec) => {
       // Real prices first: when a section has any, sample estimates don't compete with them.
-      const all = offers.filter((o) => !o.chance && !o.estimate && o.sec && o.sec.id === sec.id);
+      const all = offers.filter((o) => !o.chance && !o.estimate && !o.approx && o.sec && o.sec.id === sec.id);
       const real = all.filter((o) => !o.sample);
       const inSec = real.sort((a, b) => a[key] - b[key]);
       if (!inSec.length) return `<tr><th scope="row"><button class="linkish" data-section="${sec.id}">${sec.name}</button></th><td class="muted" colspan="4">Price not available right now</td></tr>`;
