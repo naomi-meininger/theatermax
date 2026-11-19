@@ -206,8 +206,8 @@
   function announcedOn(s) {
     if (s.status === "closed" || s.status === "playing") return null;
     const a = ANNOUNCED[s.slug], days = (iso) => (TODAY - new Date(iso + "T00:00:00")) / 864e5;
-    if (a && days(a.announced) <= 45) return { date: a.announced, note: a.note, source: a.source };
-    if (s.firstSeen && days(s.firstSeen) <= 30) return { date: s.firstSeen, note: null, source: null, listed: true };
+    if (a && days(a.announced) <= 7) return { date: a.announced, note: a.note, source: a.source };
+    if (s.firstSeen && days(s.firstSeen) <= 7) return { date: s.firstSeen, note: null, source: null, listed: true };
     return null;
   }
 
