@@ -229,6 +229,31 @@
   }
 
   // "📣 Recently announced" strip on the home / Broadway / Off-Broadway pages.
+  // ---- cast changes: Playbill headlines (headline + link only), matched to our shows ----
+  const CASTNEWS = (window.TM_CASTNEWS && window.TM_CASTNEWS.items) || [];
+  const fmtNews = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  const castNewsFor = (show, days = 60) => { const since = new Date(TODAY.getTime() - days * 864e5).toISOString().slice(0, 10);
+    return CASTNEWS.filter((n) => n.slug === show.slug && n.date >= since); };
+  function castStrip(inScene) {
+    const since = new Date(TODAY.getTime() - 21 * 864e5).toISOString().slice(0, 10);
+    const list = CASTNEWS.filter((n) => n.date >= since).map((n) => ({ n, s: SHOWS.find((x) => x.slug === n.slug) }))
+      .filter(({ s }) => s && inScene(s)).slice(0, 10);
+    if (!list.length) return "";
+    return `<section class="announced cast-news" aria-labelledby="cast-h">
+      <div class="announced-head"><h2 id="cast-h">🎭 Cast changes</h2><span class="muted">Headlines from Playbill</span></div>
+      <div class="announced-row">${list.map(({ n, s }) => `<div class="ann-card cast-card">
+          <span class="ann-when ${n.kind}">${n.kind === "leaving" ? "Leaving" : "Joining"} · ${fmtNews(n.date)}</span>
+          <a class="cast-show" href="#show-${s.slug}"><strong>${esc(s.title)}</strong></a>
+          <a class="cast-head" href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)} ↗</a>
+          <span class="muted">${esc(n.source)}</span></div>`).join("")}</div></section>`;
+  }
+  function castNewsBox(show) {
+    const list = castNewsFor(show);
+    if (!list.length) return "";
+    return `<div class="cast-news-box"><h3>🎭 Cast news</h3><ul>${list.map((n) => `<li><span class="ann-when ${n.kind}">${n.kind === "leaving" ? "Leaving" : "Joining"} · ${fmtNews(n.date)}</span>
+      <a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)} ↗</a> <span class="muted">${esc(n.source)}</span></li>`).join("")}</ul></div>`;
+  }
+
   function announcedStrip(inScene) {
     const list = SHOWS.filter((s) => inScene(s) && announcedOn(s))
       .sort((a, b) => announcedOn(b).date.localeCompare(announcedOn(a).date)).slice(0, 8);
@@ -1024,6 +1049,7 @@
       </section>
       ${thisWeekBanner((s) => sc === "all" || sceneKey(s) === sc)}
       ${announcedStrip((s) => sc === "all" || sceneKey(s) === sc)}
+      ${castStrip((s) => sc === "all" || sceneKey(s) === sc)}
       <div class="filters" id="filters"></div>
       <div class="section-head"><h2 id="grid-title"></h2><span class="muted" id="count"></span></div>
       <div class="grid" id="grid"></div>
@@ -1502,7 +1528,7 @@
 
         <section>
           <div class="offers-head">
-            ${perf.soldOut || !lowest(all, { noMember: false }) ? `<p class="sold-out-note">No tickets available for this performance right now. Seats can come back through resale or returns, so check again later, or try the lottery, rush, TKTS, or the box office.</p>` : ""}<h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
+            ${perf.soldOut || !lowest(all, { noMember: false }) ? `<p class="sold-out-note">No tickets available for this performance right now. Seats can come back through resale or returns, so check again later, or try the lottery, rush, TKTS, or the box office.</p>` : ""}<h2>${fmtLong(dateObj.date)} · ${perf.time}${perf.special ? " · " + perf.special : ""}${holidayOn(dateObj.date) ? ` · ${holidayOn(dateObj.date).icon} ${holidayOn(dateObj.date).name}` : ""}</h2><p class="understudy-line">🎭 Who's on that night? <a href="${esc(understudyUrl(show))}" target="_blank" rel="noopener">Understudy reports on understudies.org ↗</a> <span class="muted">(community-reported; usually posted the day of)</span></p>${castNewsBox(show)}${perf.approx ? `<p class="muted" style="margin-top:-6px">*Curtain time not confirmed for this special performance. Check with the seller.</p>` : ""}
             <select id="sort" aria-label="Sort offers">
               <option value="total" ${state.sort === "total" ? "selected" : ""}>Lowest price</option>
               <option value="section" ${state.sort === "section" ? "selected" : ""}>By section</option>

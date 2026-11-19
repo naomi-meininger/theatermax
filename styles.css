@@ -632,3 +632,14 @@ main { view-transition-name: page; }
 .date-chip.preview-day.active { background: #ddd0f5; }
 .date-chip .lo.sold-out { color: var(--red); font-size: 11px; font-weight: 800; }
 .sold-out-note { background: #fde8e6; border: 1px solid var(--red); color: var(--red); border-radius: 8px; padding: 8px 12px; font-weight: 600; font-size: 14px; margin: 0 0 10px; }
+
+/* Cast changes (Playbill headlines) */
+.cast-card { cursor: default; }
+.cast-card .cast-show { color: inherit; text-decoration: none; }
+.cast-card .cast-head { font-size: 14px; line-height: 1.35; color: var(--ink); }
+.ann-when.joining { color: #1f6b3a; }
+.ann-when.leaving { color: #b3261e; }
+.cast-news-box { margin: 10px 0 14px; padding: 12px 14px; border: 1px solid var(--line, #ddd); border-radius: var(--radius); background: #fff; }
+.cast-news-box h3 { margin: 0 0 6px; font-size: 15px; }
+.cast-news-box ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.cast-news-box li { display: grid; gap: 2px; font-size: 14px; }

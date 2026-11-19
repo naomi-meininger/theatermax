@@ -1,0 +1,36 @@
+name: Update cast news
+
+# Every 3 hours: cast change headlines from Playbill's news RSS feed (it only holds the latest ~10 stories).
+on:
+  schedule:
+    - cron: "23 */3 * * *"   # every 3 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: castnews
+  cancel-in-progress: false
+
+jobs:
+  castnews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch cast news
+        run: node scripts/update-castnews.mjs
+      - name: Commit if cast news changed
+        run: |
+          if git diff --quiet -- data/castnews.js; then echo "No changes."; exit 0; fi
+          if [ "$(git diff -U0 -- data/castnews.js | grep '^[+-] ' | grep -v -E 'updatedAt|lastAttemptAt' | wc -l)" = "0" ]; then
+            echo "Only timestamps changed — skipping commit."; exit 0
+          fi
+          git config user.name "theatermax-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/castnews.js
+          git commit -m "Update cast news ($(date -u +%Y-%m-%d))"
+          for i in 1 2 3 4 5; do git pull --rebase --autostash origin main && git push && break; sleep $((i*10)); done
