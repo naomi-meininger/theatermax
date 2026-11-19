@@ -682,7 +682,7 @@
     if (o.member) return "members";
     if (o.seller === "SeatGeek") return "resale";
     if (o.seller === "TodayTix" || o.seller === "Theatr") return "apps";
-    if (o.seller === "Broadway.com") return "sites";
+    if (o.seller === "Broadway.com" || (o.seller === "Broadway Direct" && o.tag !== "official")) return "sites";
     if (o.tag === "official") return "official";
     return "resale";
   }
@@ -805,7 +805,7 @@
       const secs = sectionsFor(show);
       const rows = Object.entries(bd.secs || {}).map(([id, p]) => [secs.find((x) => x.id === id), p]).filter(([sec]) => sec);
       (rows.length ? rows : [[null, bd.low]]).forEach(([sec, p]) => result.push({ seller: "Broadway Direct",
-        kind: official ? "Official · online" : "Official partner seller", sec, row: null, price: p, fee: 0, feesIncluded: true, url: bd.url || bd.showUrl, live: "broadwaydirect",
+        kind: official ? "Official · online" : `Ticket site · also sells this show (official seller: ${show.official})`, sec, row: null, price: p, fee: 0, feesIncluded: true, url: bd.url || bd.showUrl, live: "broadwaydirect",
         tag: official ? "official" : undefined, officialRow: official || undefined,
         note: `Cheapest seat Broadway Direct lists${sec ? " in this section" : ""}, as of this update · fees included` }));
     } else if (bd && bd.low == null && show.official === "Broadway Direct") {
