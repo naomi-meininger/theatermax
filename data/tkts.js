@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-19T22:06:36.810Z",
+ "checkedAt": "2026-11-19T22:21:40.316Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 04:51 PM",
+   "updated": "Thursday, 19 November 2026 05:12 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -269,7 +269,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 04:51 PM",
+   "updated": "Thursday, 19 November 2026 05:12 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -344,15 +344,6 @@ window.TM_TKTS = {
      "time": "7:00 PM"
     },
     {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 63,
-     "hi": 63,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -404,7 +395,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 04:51 PM",
+   "updated": "Thursday, 19 November 2026 05:12 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
