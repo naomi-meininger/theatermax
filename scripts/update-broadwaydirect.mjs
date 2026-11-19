@@ -27,7 +27,7 @@ const sameShow = (a, b) => { const x = norm(a), y = norm(b); return x === y || (
 
 // Broadway Direct section names (ORCH, ORCH L, MEZZ C, FRONT MEZZ, REAR MEZZ, BALC, BOX A…) → our ids.
 const secId = (name) => { const n = String(name).toUpperCase();
-  if (/STAGE|ONSTAGE|TABLE|FLOOR/.test(n)) return "stage"; if (/^R(EAR)?\s*MEZ/.test(n)) return "rmezz"; if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
+  if (/STAGE|ONSTAGE|TABLE|FLOOR|BANQ/.test(n)) return "stage"; if (/^R(EAR)?\s*MEZ/.test(n)) return "rmezz"; if (/BOX|LOGE/.test(n)) return "box"; if (/BALC|GALL/.test(n)) return "balc";
   if (/MEZ|DRESS|CIRCLE|TIER/.test(n)) return "mezz"; if (/ORCH|ORC|STALL|PARQ|PARTERRE|PIT/.test(n)) return "orch"; return null; };
 const to12 = (hh, mm) => `${hh % 12 || 12}:${mm} ${hh < 12 ? "AM" : "PM"}`;
 const ny = (d) => new Date(d.toLocaleString("en-US", { timeZone: "America/New_York" }));
