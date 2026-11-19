@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-19T23:06:48.423Z",
+ "checkedAt": "2026-11-19T23:51:55.732Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 05:12 PM",
+   "updated": "Thursday, 19 November 2026 06:40 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -71,15 +71,6 @@ window.TM_TKTS = {
      "pct": 40,
      "lo": 83,
      "hi": 107,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Harry Potter and the Cursed Child",
-     "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child",
-     "tdfId": "16274",
-     "pct": 40,
-     "lo": 88,
-     "hi": 109,
      "time": "7:00 PM"
     },
     {
@@ -269,17 +260,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 05:12 PM",
+   "updated": "Thursday, 19 November 2026 06:40 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 48,
-     "hi": 48,
-     "time": "7:00 PM"
-    },
     {
      "title": "Amaze Magic",
      "url": "https://www.tdf.org/shows/22653/amaze-magic",
@@ -290,24 +272,6 @@ window.TM_TKTS = {
      "time": "7:00 PM"
     },
     {
-     "title": "Christmas Spectacular w/ the Radio City Rockettes",
-     "url": "https://www.tdf.org/shows/10181/christmas-spectacular-w-the-radio-city-rockettes",
-     "tdfId": "10181",
-     "pct": 50,
-     "lo": 43,
-     "hi": 108,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Going Bacharach",
      "url": "https://www.tdf.org/shows/23016/going-bacharach",
      "tdfId": "23016",
@@ -315,15 +279,6 @@ window.TM_TKTS = {
      "lo": 42,
      "hi": 72,
      "time": "7:30 PM"
-    },
-    {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 90,
-     "time": "7:00 PM"
     },
     {
      "title": "Leave a Message After…THE BEEP",
@@ -351,15 +306,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 49,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "pct": 30,
-     "lo": 67,
-     "hi": 67,
-     "time": "7:00 PM"
     },
     {
      "title": "The Hope Theory",
@@ -395,7 +341,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 05:12 PM",
+   "updated": "Thursday, 19 November 2026 06:40 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
