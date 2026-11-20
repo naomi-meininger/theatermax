@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-20T00:07:16.384Z",
+ "checkedAt": "2026-11-20T00:22:19.814Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 06:59 PM",
+   "updated": "Thursday, 19 November 2026 07:10 PM",
    "shows": [
     {
      "title": "The Great Gatsby",
@@ -35,7 +35,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 06:59 PM",
+   "updated": "Thursday, 19 November 2026 07:10 PM",
    "shows": [
     {
      "title": "Perfect Crime",
@@ -53,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 06:59 PM",
+   "updated": "Thursday, 19 November 2026 07:10 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
