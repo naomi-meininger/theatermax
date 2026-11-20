@@ -58,8 +58,10 @@ export function parseShowInfo(html) {
   const t = text(html), info = {};
   // Theater name: the "Theater" block on Broadway.com show pages ("Learn more about the theater. <name>").
   // Prefer the link to the venue page (/venues/theaters/<slug>/), whose text is the theater's name.
-  const vl = [...html.matchAll(/href="[^"]*\/venues\/[a-z-]+\/[a-z0-9-]+\/?"[^>]*>\s*([^<]{3,90}?)\s*</gi)].map((m) => m[1].replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").trim())
-    .find((n) => /[A-Za-z]/.test(n) && !/^(view|see|learn|more|map|directions|venue|theaters?)\b/i.test(n));
+  // Skip the site menu's "Broadway Theaters" / "Off-Broadway Theaters" links (/venues/<scene>/theaters/).
+  const vl = [...html.matchAll(/href="[^"]*\/venues\/[a-z-]+\/([a-z0-9-]+)\/?"[^>]*>\s*([^<]{3,90}?)\s*</gi)]
+    .filter((m) => m[1] !== "theaters").map((m) => m[2].replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").trim())
+    .find((n) => /[A-Za-z]/.test(n) && !/^(view|see|learn|more|map|directions|venue|theaters?)\b/i.test(n) && !/\btheaters$/i.test(n));
   if (vl) { info.theater = vl; }
   const th = info.theater ? null : t.match(/Learn more about the theater\.?\s+([A-Z][^.\n]{3,80}?)(?=\s+(?:Hearing|Wheelchair|Accessib|Restroom|Address|\d{2,4}\s)|\s*$)/);
   if (th) info.theater = th[1].trim().replace(/\s+Entrance$/i, "");

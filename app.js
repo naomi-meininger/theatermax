@@ -384,7 +384,7 @@
   };
   // Shows sold by their producing company rather than the theater's usual seller.
   const OFFICIAL_BY_SHOW = { "the-visitors": "Second Stage" };
-  const INFO_THEATER = (slug) => (((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[slug] || {}).theater || null;
+  const INFO_THEATER = (slug) => { const t = (((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[slug] || {}).theater; return t && !/\btheaters$/i.test(t) ? t : null; };
   function officialFor(theater) {
     if (!theater) return "Box office";
     for (const [seller, list] of Object.entries(OFFICIAL_BY_THEATER)) if (list.some((n) => theater.startsWith(n))) return seller;
