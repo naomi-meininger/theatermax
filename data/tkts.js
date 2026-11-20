@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-20T22:01:20.341Z",
+ "checkedAt": "2026-11-20T23:01:31.557Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:55 PM",
+   "updated": "Friday, 20 November 2026 05:45 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -158,9 +158,9 @@ window.TM_TKTS = {
      "title": "Schmigadoon!",
      "url": "https://www.tdf.org/shows/22904/schmigadoon",
      "tdfId": "22904",
-     "pct": 40,
-     "lo": 107,
-     "hi": 107,
+     "pct": 50,
+     "lo": 76,
+     "hi": 91,
      "time": "7:00 PM"
     },
     {
@@ -251,7 +251,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:55 PM",
+   "updated": "Friday, 20 November 2026 05:45 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -413,7 +413,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:55 PM",
+   "updated": "Friday, 20 November 2026 05:45 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -683,7 +683,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:55 PM",
+   "updated": "Friday, 20 November 2026 05:45 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
