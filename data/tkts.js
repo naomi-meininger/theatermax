@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-20T21:46:16.487Z",
+ "checkedAt": "2026-11-20T22:01:20.341Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:18 PM",
+   "updated": "Friday, 20 November 2026 04:55 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -68,9 +68,9 @@ window.TM_TKTS = {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
-     "pct": 30,
-     "lo": 59,
-     "hi": 136,
+     "pct": 40,
+     "lo": 53,
+     "hi": 119,
      "time": "8:00 PM"
     },
     {
@@ -251,7 +251,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:18 PM",
+   "updated": "Friday, 20 November 2026 04:55 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -288,15 +288,6 @@ window.TM_TKTS = {
      "lo": 48,
      "hi": 108,
      "time": "7:00 PM"
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "6:00 PM"
     },
     {
      "title": "Drunk Christmas Carol",
@@ -422,7 +413,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:18 PM",
+   "updated": "Friday, 20 November 2026 04:55 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -521,6 +512,15 @@ window.TM_TKTS = {
      "pct": 50,
      "lo": 120,
      "hi": 150,
+     "time": "2:00 PM"
+    },
+    {
+     "title": "MJ The Musical",
+     "url": "https://www.tdf.org/shows/18033/mj-the-musical",
+     "tdfId": "18033",
+     "pct": 30,
+     "lo": 164,
+     "hi": 199,
      "time": "2:00 PM"
     },
     {
@@ -683,7 +683,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:18 PM",
+   "updated": "Friday, 20 November 2026 04:55 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -818,7 +818,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:16 PM",
+   "updated": "Friday, 20 November 2026 04:54 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -878,9 +878,9 @@ window.TM_TKTS = {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
-     "pct": 30,
-     "lo": 59,
-     "hi": 136,
+     "pct": 40,
+     "lo": 53,
+     "hi": 119,
      "time": "8:00 PM"
     },
     {
@@ -1061,7 +1061,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:16 PM",
+   "updated": "Friday, 20 November 2026 04:54 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -1160,7 +1160,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:16 PM",
+   "updated": "Friday, 20 November 2026 04:54 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -1259,6 +1259,15 @@ window.TM_TKTS = {
      "pct": 50,
      "lo": 120,
      "hi": 150,
+     "time": "2:00 PM"
+    },
+    {
+     "title": "MJ The Musical",
+     "url": "https://www.tdf.org/shows/18033/mj-the-musical",
+     "tdfId": "18033",
+     "pct": 30,
+     "lo": 164,
+     "hi": 199,
      "time": "2:00 PM"
     },
     {
@@ -1421,7 +1430,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 04:16 PM",
+   "updated": "Friday, 20 November 2026 04:54 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -1594,7 +1603,7 @@ window.TM_TKTS = {
   "18033": {
    "title": "MJ The Musical",
    "tdfId": "18033",
-   "last": "2026-11-19"
+   "last": "2026-11-20"
   },
   "18504": {
    "title": "Friends! The Musical Parody",
