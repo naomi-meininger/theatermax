@@ -65,6 +65,9 @@ export function parseShowInfo(html) {
   if (vl) { info.theater = vl; }
   const th = info.theater ? null : t.match(/Learn more about the theater\.?\s+([A-Z][^.\n]{3,80}?)(?=\s+(?:Hearing|Wheelchair|Accessib|Restroom|Address|\d{2,4}\s)|\s*$)/);
   if (th) info.theater = th[1].trim().replace(/\s+Entrance$/i, "");
+  // Drop page furniture that sometimes follows the name ("… Get Directions", "… Water Fountain Available on").
+  if (info.theater) { info.theater = info.theater.replace(/\s+(Get Directions|Water Fountain|Restrooms?|Elevator)\b.*$/i, "").trim();
+    if (/^(studio|stage|theaters?)$/i.test(info.theater)) delete info.theater; }
   const rt = t.match(/(?:Running Time|Run Time|Runtime)\s*:?\s*((?:\d+\s*(?:hours?|hrs?|h)\.?\s*(?:and\s*)?)?(?:\d+\s*(?:minutes?|mins?|m)\.?)?(?:[^.]{0,40}?(?:intermission|no intermission))?)/i);
   if (rt && /\d/.test(rt[1])) info.runtime = rt[1].replace(/\s+/g, " ").trim();
   const ad = t.match(/(\d{2,4}\s+(?:West|East|W\.?|E\.?)\s+\d{1,3}(?:st|nd|rd|th)\s+(?:Street|St\.?))/i) || t.match(/(\d{1,4}\s+(?:\d{1,2}(?:st|nd|rd|th)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:Avenue|Ave\.?|Street|St\.?|Place|Plaza))/);
