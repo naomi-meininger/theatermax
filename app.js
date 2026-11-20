@@ -46,11 +46,16 @@
   // price links to the performance's booking page (publicUrl), as its agent guide asks.
   const BD = window.TM_BD || { shows: {} };
   // Broadway Direct's API prices include its online fee, which it doesn't publish. Seen at checkout
-  // (The Lost Boys and Wicked, Nov 2026), it's a flat fee in steps by ticket price:
-  //   $49, $79 → $10.75 · $86 → $11.75 · $119, $125, $139 → $14 · $222, $225, $275, $299 → $21.
-  // The exact cut-offs between those are a guess ($80, $100, $200).
-  const BD_FEES = [[21, 200], [14, 100], [11.75, 80], [10.75, 0]];   // [fee, lowest ticket price it applies to]
-  const bdFee = (total) => { for (const [fee, from] of BD_FEES) if (total - fee >= from) return fee; return 10.75; };
+  // (The Lost Boys and Wicked, Nov 2026), ticket prices are whole dollars and the fee is a flat step:
+  //   $49, $79 → $10.75 · $86, $99 → $11.75 · $119, $125, $139 → $14 · $222, $225, $275, $299 → $21.
+  // So a total ending in .75 has a $10.75 or $11.75 fee, and one ending in .00 has $14 or $21.
+  // Cut-offs between steps are estimates: $80 (10.75 → 11.75) and $200 (14 → 21).
+  const bdFee = (total) => {
+    const cents = Math.round(total * 100) % 100;
+    if (cents === 75) return total - 11.75 >= 80 ? 11.75 : 10.75;
+    if (cents === 0) return total - 21 >= 200 ? 21 : 14;
+    return total - 21 >= 200 ? 21 : total - 14 >= 100 ? 14 : total - 11.75 >= 80 ? 11.75 : 10.75;
+  };
   const bdFor = (show, perf) => { const b = BD.shows && BD.shows[show.slug]; return b && b.perfs && b.perfs[perf.key] ? { ...b.perfs[perf.key], showUrl: b.url } : null; };
   // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
   // Far-out weeks are loaded for 2 tickets only.
