@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-20T00:22:19.814Z",
+ "checkedAt": "2026-11-20T00:37:23.275Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 07:10 PM",
+   "updated": "Thursday, 19 November 2026 07:24 PM",
    "shows": [
     {
      "title": "The Great Gatsby",
@@ -18,15 +18,6 @@ window.TM_TKTS = {
      "lo": 70,
      "hi": 90,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 50,
-     "lo": 58,
-     "hi": 92,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-19"
@@ -35,7 +26,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 07:10 PM",
+   "updated": "Thursday, 19 November 2026 07:24 PM",
    "shows": [
     {
      "title": "Perfect Crime",
@@ -53,7 +44,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Thursday, 19 November 2026 07:10 PM",
+   "updated": "Thursday, 19 November 2026 07:24 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
