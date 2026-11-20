@@ -45,10 +45,12 @@
   // broadwaydirect.com/ai.txt allows agents to use its pricing and availability data; each
   // price links to the performance's booking page (publicUrl), as its agent guide asks.
   const BD = window.TM_BD || { shows: {} };
-  // Broadway Direct's API prices include its online fee, which it doesn't publish. Checked on 7 seats
-  // (The Lost Boys, Nov 2026) it's a flat fee in steps: $49/$79 ticket → $10.75, $119/$139 → $14,
-  // $225/$275/$299 → $21. Exact cut-offs between those are a guess ($100 and $200 ticket price).
-  const bdFee = (total) => (total - 21 >= 200 ? 21 : total - 14 >= 100 ? 14 : 10.75);
+  // Broadway Direct's API prices include its online fee, which it doesn't publish. Seen at checkout
+  // (The Lost Boys and Wicked, Nov 2026), it's a flat fee in steps by ticket price:
+  //   $49, $79 → $10.75 · $86 → $11.75 · $119, $125, $139 → $14 · $222, $225, $275, $299 → $21.
+  // The exact cut-offs between those are a guess ($80, $100, $200).
+  const BD_FEES = [[21, 200], [14, 100], [11.75, 80], [10.75, 0]];   // [fee, lowest ticket price it applies to]
+  const bdFee = (total) => { for (const [fee, from] of BD_FEES) if (total - fee >= from) return fee; return 10.75; };
   const bdFor = (show, perf) => { const b = BD.shows && BD.shows[show.slug]; return b && b.perfs && b.perfs[perf.key] ? { ...b.perfs[perf.key], showUrl: b.url } : null; };
   // Dates TodayTix prices were loaded for: the next two weeks, plus a later show's first two weeks.
   // Far-out weeks are loaded for 2 tickets only.
@@ -888,7 +890,7 @@
       approx: o.live === "broadwaydirect" || undefined,
       url: o.url, tag: "official", inPerson: true, boxOffice: true, sample: o.sample, live: o.live,
       note: o.live === "broadwaydirect"
-        ? `Broadway Direct's price without its online fee, bought at the ${show.theater || "theater"} box office. Its fee is a flat $10.75, $14, or $21 depending on the ticket price; the exact cut-offs are our estimate · sometimes has seats that aren't listed online`
+        ? `Broadway Direct's price without its online fee, bought at the ${show.theater || "theater"} box office. Its fee is a flat $10.75, $11.75, $14, or $21 depending on the ticket price; the exact cut-offs are our estimate · sometimes has seats that aren't listed online`
         : `${show.official === "Box office" ? "Official" : show.official} price without its online fees, bought at the ${show.theater || "theater"} box office · sometimes has seats that aren't listed online` }));
     result.forEach((o) => { o.total = Math.round((o.price + o.fee) * 100) / 100; if (!o.live && !o.chance && !o.verified) o.sample = true; o.group = groupOf(o); });
     offers.length = 0; offers.push(...result);
