@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-20T23:16:35.416Z",
+ "checkedAt": "2026-11-20T23:46:44.632Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 05:45 PM",
+   "updated": "Friday, 20 November 2026 06:35 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -56,15 +56,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Downstate",
-     "url": "https://www.tdf.org/shows/23521/downstate",
-     "tdfId": "23521",
-     "pct": 50,
-     "lo": 92,
-     "hi": 102,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
@@ -80,15 +71,6 @@ window.TM_TKTS = {
      "pct": 30,
      "lo": 137,
      "hi": 151,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Harry Potter and the Cursed Child",
-     "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child",
-     "tdfId": "16274",
-     "pct": 40,
-     "lo": 98,
-     "hi": 115,
      "time": "7:00 PM"
     },
     {
@@ -251,17 +233,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 05:45 PM",
+   "updated": "Friday, 20 November 2026 06:35 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 48,
-     "hi": 48,
-     "time": "7:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -326,15 +299,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 90,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Leave a Message After…THE BEEP",
      "url": "https://www.tdf.org/shows/23607/leave-a-message-after-the-beep",
      "tdfId": "23607",
@@ -360,15 +324,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "pct": 30,
-     "lo": 67,
-     "hi": 67,
-     "time": "7:00 PM"
     },
     {
      "title": "The Hope Theory",
@@ -413,7 +368,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 05:45 PM",
+   "updated": "Friday, 20 November 2026 06:35 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -683,7 +638,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 05:45 PM",
+   "updated": "Friday, 20 November 2026 06:35 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
