@@ -2,12 +2,12 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T00:55:15.424Z",
+ "checkedAt": "2026-11-21T01:10:18.990Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
@@ -52,7 +52,7 @@ window.TM_TKTS = {
   {
    "booth": "times-square",
    "kind": "off",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
@@ -88,7 +88,7 @@ window.TM_TKTS = {
   {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
@@ -358,7 +358,7 @@ window.TM_TKTS = {
   {
    "booth": "times-square",
    "kind": "tomorrow-off",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
