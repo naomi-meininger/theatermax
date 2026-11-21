@@ -384,7 +384,7 @@
     Roundabout: ["American Airlines", "Studio 54", "Todd Haimes"],
     "Lincoln Center Theater": ["Vivian Beaumont", "Mitzi E. Newhouse", "Claire Tow"],
     "Manhattan Theatre Club": ["Samuel J. Friedman", "New York City Center Stage"],
-    "Second Stage": ["Hayes Theater", "Tony Kiser"],
+    "Second Stage": ["Hayes Theat", "Tony Kiser"],
     "New York City Center": ["New York City Center"],
     "The Met": ["Metropolitan Opera House"],
     "NYC Ballet": ["David H. Koch"],
@@ -736,7 +736,7 @@
 
     sectionsFor(show).forEach((sec) => {
       const p = face(sec); faces[sec.id] = p;
-      offers.push({ seller: show.official === "Box office" ? (show.theater ? `${show.theater} (official)` : "Theater's official site") : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
+      offers.push({ seller: show.official === "Box office" ? (show.theater ? `${show.theater} (official)` : "Official seller (theater not announced yet)") : show.official, kind: "Official · online, plus fees", sec, row: row(sec), price: p, fee: officialFee(p), url: showLink(show.official, show), tag: "official", officialRow: true });
     });
 
     // Discount codes: only VERIFIED codes from data/codes.js (never invented). Expired ones are skipped.
