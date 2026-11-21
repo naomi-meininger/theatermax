@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T00:16:50.489Z",
+ "checkedAt": "2026-11-21T00:40:11.954Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:04 PM",
+   "updated": "Friday, 20 November 2026 07:30 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -47,15 +47,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Operation Mincemeat",
-     "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
-     "tdfId": "22082",
-     "pct": 30,
-     "lo": 117,
-     "hi": 163,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Paranormal Activity",
      "url": "https://www.tdf.org/shows/23295/paranormal-activity",
      "tdfId": "23295",
@@ -63,24 +54,6 @@ window.TM_TKTS = {
      "lo": 106,
      "hi": 115,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 50,
-     "lo": 63,
-     "hi": 102,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Wanted",
-     "url": "https://www.tdf.org/shows/23169/wanted",
-     "tdfId": "23169",
-     "pct": 50,
-     "lo": 78,
-     "hi": 97,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-20"
@@ -89,7 +62,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:04 PM",
+   "updated": "Friday, 20 November 2026 07:30 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -101,24 +74,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "8:00 PM"
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "10:00 PM"
-    },
-    {
      "title": "Friends! The Musical Parody",
      "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
      "tdfId": "18504",
@@ -128,24 +83,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Going Bacharach",
-     "url": "https://www.tdf.org/shows/23016/going-bacharach",
-     "tdfId": "23016",
-     "pct": 50,
-     "lo": 42,
-     "hi": 87,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 53,
-     "hi": 53,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -153,24 +90,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 101,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Traitorz: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
-     "tdfId": "23594",
-     "pct": 50,
-     "lo": 59,
-     "hi": 59,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-20"
@@ -179,7 +98,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:04 PM",
+   "updated": "Friday, 20 November 2026 07:30 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -449,7 +368,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:04 PM",
+   "updated": "Friday, 20 November 2026 07:30 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
