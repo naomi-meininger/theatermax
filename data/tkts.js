@@ -2,20 +2,20 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T21:28:44.266Z",
+ "checkedAt": "2026-11-21T21:58:50.033Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:08 PM",
+   "updated": "Saturday, 21 November 2026 04:52 PM",
    "shows": [
     {
      "title": "& Juliet",
      "url": "https://www.tdf.org/shows/19001/and-juliet",
      "tdfId": "19001",
      "pct": 40,
-     "lo": 86,
+     "lo": 118,
      "hi": 147,
      "time": "8:00 PM"
     },
@@ -23,9 +23,9 @@ window.TM_TKTS = {
      "title": "Aladdin",
      "url": "https://www.tdf.org/shows/12819/aladdin",
      "tdfId": "12819",
-     "pct": 50,
+     "pct": 40,
      "lo": 89,
-     "hi": 89,
+     "hi": 104,
      "time": "7:30 PM"
     },
     {
@@ -233,7 +233,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:08 PM",
+   "updated": "Saturday, 21 November 2026 04:52 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -386,7 +386,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:08 PM",
+   "updated": "Saturday, 21 November 2026 04:52 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -593,7 +593,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:08 PM",
+   "updated": "Saturday, 21 November 2026 04:52 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
