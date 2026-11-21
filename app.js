@@ -74,7 +74,7 @@
   function tdfLinks(show) {
     const t = TDF[show.slug], a = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`;
     const TKTS = "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/";
-    if (!t) return a(TKTS, "TKTS Live (same-day booth)") + " · " + a("https://www.tdf.org/on-stage/show-finder/", "TDF member tickets");
+    if (!t) return a(TKTS, "TKTS Live (same-day, plus next-day matinees at Times Square)") + " · " + a("https://www.tdf.org/on-stage/show-finder/", "TDF member tickets");
     const tkts = t.tkts && t.tkts !== "N/a" ? ` (TDF says: ${esc(t.tkts.toLowerCase())} listed)` : "";
     const member = t.memberAvailable ? `TDF member tickets${t.memberPrice ? " " + esc(t.memberPrice) : ""}` : "TDF page (no member tickets right now)";
     return a(TKTS, "TKTS Live" + tkts) + " · " + a(t.url, member);
@@ -867,7 +867,7 @@
     const perfDay = perf.key.slice(0, 10), perfTime = perf.key.slice(11);
     const listings = boards.filter((b) => b.day === today && b.status === "open")
       .flatMap((b) => b.shows.filter((x) => tktsMatch(show, x) && x.lo != null && (!x.time || x.time === perfTime)
-        && perfDay === (/^tomorrow/.test(b.kind) ? tomorrow : today)).map((x) => ({ ...x, booth: BOOTH[b.booth] || b.booth, updated: b.updated })));
+        && perfDay === (/^tomorrow/.test(b.kind) ? tomorrow : today)).map((x) => ({ ...x, booth: BOOTH[b.booth] || b.booth, updated: b.updated, nextDay: /^tomorrow/.test(b.kind) })));
     if (listings.length) {
       const best = listings.slice().sort((a, b) => a.lo - b.lo)[0];
       const where = [...new Set(listings.map((x) => x.booth))].join(" & ");
@@ -877,14 +877,15 @@
         const closed = boards.some((b) => b.booth === id && b.day === today && b.status === "closed") && !l;
         return { name, price: l ? l.lo : null, pct: l ? l.pct : null, state: l ? "on" : closed ? "closed" : "off" };
       });
-      result.push({ seller: "TKTS", kind: `On today's board · ${where}`, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts", booths,
-        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · buy at the ${where} ${where.includes("&") ? "booths" : "booth"} while they last${(() => {
+      const nextDay = listings.every((x) => x.nextDay);
+      result.push({ seller: "TKTS", kind: nextDay ? `On today's board for tomorrow's matinee · ${where}` : `On today's board · ${where}`, nextDay, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts", booths,
+        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · ${nextDay ? `sold today for tomorrow's matinee, so buy at the ${where} booth before it closes tonight` : `buy at the ${where} ${where.includes("&") ? "booths" : "booth"} while they last`}${(() => {
           const closed = boards.filter((b) => b.day === today && b.status === "closed" && !listings.some((x) => x.booth === (BOOTH[b.booth] || b.booth))).map((b) => BOOTH[b.booth] || b.booth);
           return closed.length ? ` · the ${[...new Set(closed)].join(" & ")} booth has closed for today` : "";
         })()}` });
     } else if (box && (freq || boards.length || recentTkts(show))) {
       result.push({ seller: "TKTS", kind: "Same-day booth · often listed", sec: null, row: null, price: Math.round(box.price * 0.6), fee: 0, url: TKTS_URL, chance: true, estimate: true,
-        note: `${freq ? `TDF says this show is ${freq} at TKTS` : recentTkts(show) ? `Was on the TKTS board ${fmtRunDate({ date: new Date(recentTkts(show).last + "T12:00:00"), precision: "day" })}` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning` });
+        note: `${freq ? `TDF says this show is ${freq} at TKTS` : recentTkts(show) ? `Was on the TKTS board ${fmtRunDate({ date: new Date(recentTkts(show).last + "T12:00:00"), precision: "day" })}` : "Was on a recent TKTS board"} · if it's on the board that day, usually 20–50% off · price is our estimate · check TKTS Live that morning, or the evening before for a matinee (Times Square sells next-day matinees)` });
     }
     // Box office = the official seller's price minus its fees, always $0 fees (same tickets,
     // bought in person), one per official row. Sometimes it also has seats not listed online.
@@ -1409,7 +1410,7 @@
               ${o.member ? `<span class="badge">Members</span>` : ""}
               ${o.tag === "official" ? `<span class="badge green">Official</span>` : ""}
               ${o.verified ? `<span class="badge live">✓ Verified code</span>` : ""}
-              ${o.approx ? `<span class="badge sample" title="Broadway Direct doesn't publish its online fee, so this is an estimate">Estimated</span>` : o.live === "tkts" ? `<span class="badge live">● On today's TKTS board</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
+              ${o.approx ? `<span class="badge sample" title="Broadway Direct doesn't publish its online fee, so this is an estimate">Estimated</span>` : o.live === "tkts" ? `<span class="badge live">● ${o.nextDay ? "On TKTS today for this matinee" : "On today's TKTS board"}</span>` : o.live === "tdf" ? `<span class="badge live">From TDF</span>` : o.live ? `<span class="badge live">● Live price</span>` : o.sample ? `<span class="badge sample" title="We don't get live prices from this seller yet">No live price</span>` : ""}
             </div>
             <div class="kind">${esc(o.kind)}</div>
             ${o.code ? `<div class="code-box"><span class="code-label">Code</span><code>${esc(o.code.code)}</code><button class="copy-btn" data-copy="${esc(o.code.code)}">Copy</button> <a class="code-src" href="${esc(o.code.url)}" target="_blank" rel="noopener">${esc(o.code.source)} offer details ↗</a></div>` : ""}
