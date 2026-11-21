@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T21:58:50.033Z",
+ "checkedAt": "2026-11-21T22:13:53.923Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:52 PM",
+   "updated": "Saturday, 21 November 2026 04:56 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -233,7 +233,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:52 PM",
+   "updated": "Saturday, 21 November 2026 04:56 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -308,15 +308,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 43,
-     "hi": 43,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -386,7 +377,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:52 PM",
+   "updated": "Saturday, 21 November 2026 04:56 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -593,7 +584,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:52 PM",
+   "updated": "Saturday, 21 November 2026 04:56 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
