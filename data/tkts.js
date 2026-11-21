@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T23:14:10.826Z",
+ "checkedAt": "2026-11-21T23:43:45.974Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:01 PM",
+   "updated": "Saturday, 21 November 2026 06:32 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -185,9 +185,9 @@ window.TM_TKTS = {
      "title": "The Lost Boys",
      "url": "https://www.tdf.org/shows/22920/the-lost-boys",
      "tdfId": "22920",
-     "pct": 40,
-     "lo": 83,
-     "hi": 161,
+     "pct": 50,
+     "lo": 71,
+     "hi": 136,
      "time": "8:00 PM"
     },
     {
@@ -233,7 +233,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:01 PM",
+   "updated": "Saturday, 21 November 2026 06:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -308,15 +308,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Singfeld! A Musical About Nothing!",
-     "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing",
-     "tdfId": "19478",
-     "pct": 30,
-     "lo": 49,
-     "hi": 57,
-     "time": "6:30 PM"
-    },
-    {
      "title": "Slam Frank",
      "url": "https://www.tdf.org/shows/22731/slam-frank",
      "tdfId": "22731",
@@ -368,7 +359,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:01 PM",
+   "updated": "Saturday, 21 November 2026 06:32 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -584,7 +575,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:01 PM",
+   "updated": "Saturday, 21 November 2026 06:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
