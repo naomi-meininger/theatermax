@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T20:28:32.536Z",
+ "checkedAt": "2026-11-21T21:13:40.110Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -233,17 +233,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 38,
-     "hi": 38,
-     "time": "5:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -290,15 +281,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Gazillion Bubble Show",
-     "url": "https://www.tdf.org/shows/4427/gazillion-bubble-show",
-     "tdfId": "4427",
-     "pct": 50,
-     "lo": 53,
-     "hi": 53,
-     "time": "4:30 PM"
-    },
-    {
      "title": "Midnight",
      "url": "https://www.tdf.org/shows/23360/midnight",
      "tdfId": "23360",
@@ -324,15 +306,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "6:30 PM"
-    },
-    {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "pct": 20,
-     "lo": 67,
-     "hi": 67,
-     "time": "5:00 PM"
     },
     {
      "title": "Slam Frank",
@@ -368,7 +341,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -575,7 +548,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -647,7 +620,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -872,17 +845,8 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 38,
-     "hi": 38,
-     "time": "5:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -929,15 +893,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Gazillion Bubble Show",
-     "url": "https://www.tdf.org/shows/4427/gazillion-bubble-show",
-     "tdfId": "4427",
-     "pct": 50,
-     "lo": 53,
-     "hi": 53,
-     "time": "4:30 PM"
-    },
-    {
      "title": "Midnight",
      "url": "https://www.tdf.org/shows/23360/midnight",
      "tdfId": "23360",
@@ -963,15 +918,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "6:30 PM"
-    },
-    {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "pct": 20,
-     "lo": 67,
-     "hi": 67,
-     "time": "5:00 PM"
     },
     {
      "title": "Slam Frank",
@@ -1007,7 +953,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -1214,7 +1160,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:17 PM",
+   "updated": "Saturday, 21 November 2026 03:58 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
