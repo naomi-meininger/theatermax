@@ -59,7 +59,16 @@ export function parseShowInfo(html) {
   // Theater name: the "Theater" block on Broadway.com show pages ("Learn more about the theater. <name>").
   // Prefer the link to the venue page (/venues/theaters/<slug>/), whose text is the theater's name.
   // Skip the site menu's "Broadway Theaters" / "Off-Broadway Theaters" links (/venues/<scene>/theaters/).
-  const vl = [...html.matchAll(/href="[^"]*\/venues\/[a-z-]+\/([a-z0-9-]+)\/?"[^>]*>\s*([^<]{3,90}?)\s*</gi)]
+  // Best source: the page's schema.org TheaterEvent data, whose "location" is the venue
+  // ({"@type": "Place", "name": "Minetta Lane Theatre", …}). Take the most common name.
+  const ld = {};
+  for (const m of html.matchAll(/"location":\s*\{\s*"@type":\s*"Place",\s*"name":\s*"((?:[^"\\]|\\.)+)"/g)) {
+    let n; try { n = JSON.parse(`"${m[1]}"`); } catch { n = m[1]; }
+    n = n.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").trim(); if (n) ld[n] = (ld[n] || 0) + 1;
+  }
+  const ldName = Object.entries(ld).sort((a, b) => b[1] - a[1])[0];
+  if (ldName) info.theater = ldName[0];
+  const vl = info.theater ? null : [...html.matchAll(/href="[^"]*\/venues\/[a-z-]+\/([a-z0-9-]+)\/?"[^>]*>\s*([^<]{3,90}?)\s*</gi)]
     .filter((m) => m[1] !== "theaters").map((m) => m[2].replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").trim())
     .find((n) => /[A-Za-z]/.test(n) && !/^(view|see|learn|more|map|directions|venue|theaters?)\b/i.test(n) && !/\btheaters$/i.test(n));
   if (vl) { info.theater = vl; }

@@ -391,7 +391,7 @@
   };
   // Shows sold by their producing company rather than the theater's usual seller.
   const OFFICIAL_BY_SHOW = { "the-visitors": "Second Stage" };
-  const INFO_THEATER = (slug) => { const t = (((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[slug] || {}).theater; return t && !/\btheaters$|get directions|available on|^(studio|stage)$/i.test(t) ? t : null; };
+  const INFO_THEATER = (slug, title) => { const t = (((window.TM_SCHEDULES && window.TM_SCHEDULES.info) || {})[slug] || {}).theater; return t && !/\btheaters$|get directions|available on|^(studio|stage)$/i.test(t) && (!title || t.toLowerCase() !== String(title).toLowerCase()) ? t : null; };
   function officialFor(theater) {
     if (!theater) return "Box office";
     for (const [seller, list] of Object.entries(OFFICIAL_BY_THEATER)) if (list.some((n) => theater.startsWith(n))) return seller;
@@ -406,7 +406,7 @@
     return {
       slug: l.slug, title: l.title, bdcUrl: l.url, bdcFrom: l.fromPrice, ratingCount: l.ratingCount,
       onSale: l.fromPrice !== null,
-      theater: x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug) || null,
+      theater: x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug, l.title) || null,
       type: x.type || (PREVIEWS[l.slug] || {}).type || l.type || (PLAYS.has(l.slug) ? "Play" : null),
       blurb: (PREVIEWS[l.slug] || {}).blurb || l.blurb || null,
       critics: (PREVIEWS[l.slug] || {}).critics || null,
@@ -419,7 +419,7 @@
       basePrice: (l.fromPrice || 80) * 1.8,
       demand: Math.min(0.95, 0.25 + popularity * 0.5 + (1 - i / arr.length) * 0.15 + ((h % 100) / 100) * 0.1),
       // Official (primary) seller is set by who runs the theater — see OFFICIAL_BY_THEATER.
-      official: x.official || OFFICIAL_BY_SHOW[l.slug] || officialFor(x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug)),
+      official: x.official || OFFICIAL_BY_SHOW[l.slug] || officialFor(x.theater || THEATERS[l.slug] || l.theater || INFO_THEATER(l.slug, l.title)),
       colors: PALETTES[h % PALETTES.length],
       // Real deals from bwayrush when we have them; the old sample values only if that file is missing.
       deals: [...(RUSH ? ((RUSH.shows[l.slug] || {}).deals || []) : []),
