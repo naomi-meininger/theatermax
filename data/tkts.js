@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T00:40:11.954Z",
+ "checkedAt": "2026-11-21T00:55:15.424Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:30 PM",
+   "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -38,15 +38,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Just In Time",
-     "url": "https://www.tdf.org/shows/22112/just-in-time",
-     "tdfId": "22112",
-     "pct": 50,
-     "lo": 103,
-     "hi": 115,
-     "time": "8:00 PM"
-    },
-    {
      "title": "Paranormal Activity",
      "url": "https://www.tdf.org/shows/23295/paranormal-activity",
      "tdfId": "23295",
@@ -62,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:30 PM",
+   "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -98,7 +89,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:30 PM",
+   "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -368,7 +359,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 20 November 2026 07:30 PM",
+   "updated": "Friday, 20 November 2026 07:47 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
