@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T22:13:53.923Z",
+ "checkedAt": "2026-11-21T22:44:03.578Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:56 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -233,7 +233,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:56 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -272,39 +272,12 @@ window.TM_TKTS = {
      "time": "10:00 PM"
     },
     {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "pct": 50,
-     "lo": 38,
-     "hi": 58,
-     "time": "9:00 PM"
-    },
-    {
      "title": "Friends! The Musical Parody",
      "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
      "tdfId": "18504",
      "pct": 30,
      "lo": 49,
      "hi": 57,
-     "time": "8:30 PM"
-    },
-    {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 90,
      "time": "8:30 PM"
     },
     {
@@ -335,15 +308,6 @@ window.TM_TKTS = {
      "time": "9:00 PM"
     },
     {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 101,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
      "title": "The Play That Goes Wrong",
      "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
      "tdfId": "17222",
@@ -360,15 +324,6 @@ window.TM_TKTS = {
      "lo": 47,
      "hi": 47,
      "time": "7:00 PM"
-    },
-    {
-     "title": "Traitorz: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
-     "tdfId": "23594",
-     "pct": 50,
-     "lo": 59,
-     "hi": 59,
-     "time": "8:30 PM"
     }
    ],
    "day": "2026-11-21"
@@ -377,7 +332,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:56 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -488,6 +443,15 @@ window.TM_TKTS = {
      "time": "2:00 PM"
     },
     {
+     "title": "Paranormal Activity",
+     "url": "https://www.tdf.org/shows/23295/paranormal-activity",
+     "tdfId": "23295",
+     "pct": 40,
+     "lo": 105,
+     "hi": 105,
+     "time": "2:00 PM"
+    },
+    {
      "title": "Schmigadoon!",
      "url": "https://www.tdf.org/shows/22904/schmigadoon",
      "tdfId": "22904",
@@ -584,7 +548,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 04:56 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -656,14 +620,14 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:58 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "& Juliet",
      "url": "https://www.tdf.org/shows/19001/and-juliet",
      "tdfId": "19001",
      "pct": 40,
-     "lo": 86,
+     "lo": 118,
      "hi": 147,
      "time": "8:00 PM"
     },
@@ -671,9 +635,9 @@ window.TM_TKTS = {
      "title": "Aladdin",
      "url": "https://www.tdf.org/shows/12819/aladdin",
      "tdfId": "12819",
-     "pct": 50,
+     "pct": 40,
      "lo": 89,
-     "hi": 89,
+     "hi": 104,
      "time": "7:30 PM"
     },
     {
@@ -881,7 +845,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:58 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -927,15 +891,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:30 PM"
-    },
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 43,
-     "hi": 43,
-     "time": "7:30 PM"
     },
     {
      "title": "Perfect Crime",
@@ -989,7 +944,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:58 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -1100,6 +1055,15 @@ window.TM_TKTS = {
      "time": "2:00 PM"
     },
     {
+     "title": "Paranormal Activity",
+     "url": "https://www.tdf.org/shows/23295/paranormal-activity",
+     "tdfId": "23295",
+     "pct": 40,
+     "lo": 105,
+     "hi": 105,
+     "time": "2:00 PM"
+    },
+    {
      "title": "Schmigadoon!",
      "url": "https://www.tdf.org/shows/22904/schmigadoon",
      "tdfId": "22904",
@@ -1196,7 +1160,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 03:58 PM",
+   "updated": "Saturday, 21 November 2026 05:32 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
