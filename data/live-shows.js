@@ -2,35 +2,26 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-20T18:39:02.817Z",
-  "lastAttemptAt": "2026-11-20T18:39:02.817Z",
+  "updatedAt": "2026-11-21T04:59:59.513Z",
+  "lastAttemptAt": "2026-11-21T04:59:59.513Z",
   "count": 90,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-20T18:39:02.817Z",
-      "lastAttemptAt": "2026-11-20T18:39:02.817Z",
+      "updatedAt": "2026-11-21T04:59:59.513Z",
+      "lastAttemptAt": "2026-11-21T04:59:59.513Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-20T18:39:02.817Z",
-      "lastAttemptAt": "2026-11-20T18:39:02.817Z",
+      "updatedAt": "2026-11-21T04:59:59.513Z",
+      "lastAttemptAt": "2026-11-21T04:59:59.513Z",
       "count": 24
     }
   },
   "shows": [
-    {
-      "slug": "schmigadoon",
-      "title": "Schmigadoon!",
-      "url": "https://www.broadway.com/shows/schmigadoon/",
-      "fromPrice": 61.77,
-      "ratingCount": 238,
-      "scene": "broadway",
-      "firstSeen": null
-    },
     {
       "slug": "maybe-happy-ending",
       "title": "Maybe Happy Ending",
@@ -41,11 +32,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "hadestown",
-      "title": "Hadestown",
-      "url": "https://www.broadway.com/shows/hadestown/",
-      "fromPrice": 62.72,
-      "ratingCount": 675,
+      "slug": "schmigadoon",
+      "title": "Schmigadoon!",
+      "url": "https://www.broadway.com/shows/schmigadoon/",
+      "fromPrice": 61.77,
+      "ratingCount": 238,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -53,7 +44,7 @@ window.TM_LIVE = {
       "slug": "just-in-time",
       "title": "Just In Time",
       "url": "https://www.broadway.com/shows/just-in-time/",
-      "fromPrice": 75.14,
+      "fromPrice": 74.92,
       "ratingCount": 1094,
       "scene": "broadway",
       "firstSeen": null
@@ -64,6 +55,15 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
       "fromPrice": 59.67,
       "ratingCount": 396,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "hadestown",
+      "title": "Hadestown",
+      "url": "https://www.broadway.com/shows/hadestown/",
+      "fromPrice": 62.72,
+      "ratingCount": 675,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -152,7 +152,7 @@ window.TM_LIVE = {
       "slug": "aladdin-broadway",
       "title": "Aladdin",
       "url": "https://www.broadway.com/shows/aladdin-broadway/",
-      "fromPrice": 82.46,
+      "fromPrice": 77.04,
       "ratingCount": 667,
       "scene": "broadway",
       "firstSeen": null
@@ -191,13 +191,13 @@ window.TM_LIVE = {
       "fromPrice": 276.11,
       "ratingCount": 123,
       "scene": "off",
-      "firstSeen": "2026-11-20"
+      "firstSeen": "2026-11-21"
     },
     {
       "slug": "six",
       "title": "SIX: The Musical",
       "url": "https://www.broadway.com/shows/six/",
-      "fromPrice": 74.87,
+      "fromPrice": 88.32,
       "ratingCount": 431,
       "scene": "broadway",
       "firstSeen": null
@@ -215,7 +215,7 @@ window.TM_LIVE = {
       "slug": "the-lion-king",
       "title": "The Lion King",
       "url": "https://www.broadway.com/shows/the-lion-king/",
-      "fromPrice": 126.72,
+      "fromPrice": 130.56,
       "ratingCount": 675,
       "scene": "broadway",
       "firstSeen": null
@@ -296,7 +296,7 @@ window.TM_LIVE = {
       "slug": "much-ado-about-nothing",
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
-      "fromPrice": 102.26,
+      "fromPrice": 107.69,
       "ratingCount": 19,
       "scene": "broadway",
       "firstSeen": null
@@ -332,7 +332,7 @@ window.TM_LIVE = {
       "slug": "its-a-wonderful-life",
       "title": "It's a Wonderful Life: A Live Radio Play",
       "url": "https://www.broadway.com/shows/its-a-wonderful-life/",
-      "fromPrice": 80.56,
+      "fromPrice": 64.29,
       "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
@@ -476,7 +476,7 @@ window.TM_LIVE = {
       "slug": "the-imaginary-invalid",
       "title": "The Imaginary Invalid",
       "url": "https://www.broadway.com/shows/the-imaginary-invalid/",
-      "fromPrice": 145.69,
+      "fromPrice": 220.61,
       "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
@@ -626,24 +626,6 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "play-goes-wrong-beginning-february-11-2019",
-      "title": "The Play That Goes Wrong",
-      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
-      "fromPrice": 101.18,
-      "ratingCount": 369,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 11,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "little-shop-horrors",
       "title": "Little Shop of Horrors",
       "url": "https://www.broadway.com/shows/little-shop-horrors/",
@@ -658,6 +640,24 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
       "fromPrice": 65.36,
       "ratingCount": 126,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "play-goes-wrong-beginning-february-11-2019",
+      "title": "The Play That Goes Wrong",
+      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
+      "fromPrice": 101.18,
+      "ratingCount": 369,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 11,
       "scene": "off",
       "firstSeen": null
     },
@@ -755,7 +755,7 @@ window.TM_LIVE = {
       "slug": "perfect-crime",
       "title": "Perfect Crime",
       "url": "https://www.broadway.com/shows/perfect-crime/",
-      "fromPrice": 56.96,
+      "fromPrice": 54.4,
       "ratingCount": 30,
       "scene": "off",
       "firstSeen": null
