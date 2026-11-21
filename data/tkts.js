@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T22:44:03.578Z",
+ "checkedAt": "2026-11-21T22:59:07.389Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:47 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -68,9 +68,9 @@ window.TM_TKTS = {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
-     "pct": 40,
-     "lo": 77,
-     "hi": 131,
+     "pct": 50,
+     "lo": 66,
+     "hi": 111,
      "time": "8:00 PM"
     },
     {
@@ -191,6 +191,15 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
+     "title": "The Lost Boys",
+     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
+     "tdfId": "22920",
+     "pct": 40,
+     "lo": 83,
+     "hi": 161,
+     "time": "8:00 PM"
+    },
+    {
      "title": "The Outsiders",
      "url": "https://www.tdf.org/shows/19937/the-outsiders",
      "tdfId": "19937",
@@ -233,7 +242,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:47 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -243,15 +252,6 @@ window.TM_TKTS = {
      "lo": 51,
      "hi": 69,
      "time": "8:00 PM"
-    },
-    {
-     "title": "A Kidman Carol",
-     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
-     "tdfId": "23586",
-     "pct": 50,
-     "lo": 69,
-     "hi": 69,
-     "time": "5:00 PM"
     },
     {
      "title": "Amaze Magic",
@@ -272,6 +272,15 @@ window.TM_TKTS = {
      "time": "10:00 PM"
     },
     {
+     "title": "Drunk Christmas Carol",
+     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
+     "tdfId": "23582",
+     "pct": 50,
+     "lo": 38,
+     "hi": 58,
+     "time": "9:00 PM"
+    },
+    {
      "title": "Friends! The Musical Parody",
      "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
      "tdfId": "18504",
@@ -279,6 +288,24 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:30 PM"
+    },
+    {
+     "title": "Heated Rivalry: The Unauthorized Musical Parody",
+     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
+     "tdfId": "23194",
+     "pct": 30,
+     "lo": 48,
+     "hi": 90,
+     "time": "8:30 PM"
+    },
+    {
+     "title": "Leave a Message After…THE BEEP",
+     "url": "https://www.tdf.org/shows/23607/leave-a-message-after-the-beep",
+     "tdfId": "23607",
+     "pct": 30,
+     "lo": 28,
+     "hi": 42,
+     "time": "7:00 PM"
     },
     {
      "title": "Perfect Crime",
@@ -308,6 +335,15 @@ window.TM_TKTS = {
      "time": "9:00 PM"
     },
     {
+     "title": "The Hope Theory",
+     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
+     "tdfId": "23478",
+     "pct": 50,
+     "lo": 101,
+     "hi": 101,
+     "time": "7:30 PM"
+    },
+    {
      "title": "The Play That Goes Wrong",
      "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
      "tdfId": "17222",
@@ -324,6 +360,15 @@ window.TM_TKTS = {
      "lo": 47,
      "hi": 47,
      "time": "7:00 PM"
+    },
+    {
+     "title": "Traitorz: The Unauthorized Musical Parody",
+     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
+     "tdfId": "23594",
+     "pct": 50,
+     "lo": 59,
+     "hi": 59,
+     "time": "8:30 PM"
     }
    ],
    "day": "2026-11-21"
@@ -332,7 +377,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:47 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -548,7 +593,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:47 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -620,7 +665,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:43 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -680,9 +725,9 @@ window.TM_TKTS = {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
-     "pct": 40,
-     "lo": 77,
-     "hi": 131,
+     "pct": 50,
+     "lo": 66,
+     "hi": 111,
      "time": "8:00 PM"
     },
     {
@@ -803,6 +848,15 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
+     "title": "The Lost Boys",
+     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
+     "tdfId": "22920",
+     "pct": 40,
+     "lo": 83,
+     "hi": 161,
+     "time": "8:00 PM"
+    },
+    {
      "title": "The Outsiders",
      "url": "https://www.tdf.org/shows/19937/the-outsiders",
      "tdfId": "19937",
@@ -845,7 +899,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:43 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -855,15 +909,6 @@ window.TM_TKTS = {
      "lo": 51,
      "hi": 69,
      "time": "8:00 PM"
-    },
-    {
-     "title": "A Kidman Carol",
-     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
-     "tdfId": "23586",
-     "pct": 50,
-     "lo": 69,
-     "hi": 69,
-     "time": "5:00 PM"
     },
     {
      "title": "Amaze Magic",
@@ -944,7 +989,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:43 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -1160,7 +1205,7 @@ window.TM_TKTS = {
    "booth": "lincoln-center",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 05:32 PM",
+   "updated": "Saturday, 21 November 2026 05:43 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -1373,7 +1418,7 @@ window.TM_TKTS = {
   "22920": {
    "title": "The Lost Boys",
    "tdfId": "22920",
-   "last": "2026-11-20"
+   "last": "2026-11-21"
   },
   "23016": {
    "title": "Going Bacharach",
@@ -1483,7 +1528,7 @@ window.TM_TKTS = {
   "23607": {
    "title": "Leave a Message After…THE BEEP",
    "tdfId": "23607",
-   "last": "2026-11-20"
+   "last": "2026-11-21"
   },
   "23628": {
    "title": "Nutty Natty's Magic Puppet Show",
