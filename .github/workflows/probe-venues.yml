@@ -9,5 +9,5 @@ jobs:
           for s in masquerade play-goes-wrong-beginning-february-11-2019 little-shop-horrors jamie-allans-amaze imitation-of-life midnight a-ghost-in-your-ear a-kidman-carol seven-guitars gazillion-bubble-show magic-mike born-in-the-dirt a-history-of-paper playing-burton the-conversation; do
             curl -s -A "TheaterMaxBot/1.0 (+https://github.com/naomi-meininger/theatermax)" "https://www.broadway.com/shows/$s/" -o out/$s.html; sleep 2
           done
-      - uses: actions/upload-artifact@v4
-        with: { name: pages, path: out }
+      - run: |
+          cd out; for f in *.html; do echo "== $f $(wc -c <$f)"; grep -o 'href="[^"]*/venues/[^"]*"[^>]*>[^<]\{0,80\}' $f | sort -u | head -8; sed 's/<[^>]*>/ /g' $f | tr -s ' \n' ' ' | grep -o -i '.\{0,60\}\(learn more about the theater\|theatre\|theater\).\{0,120\}' | head -6; done
