@@ -879,7 +879,7 @@
       });
       const nextDay = listings.every((x) => x.nextDay);
       result.push({ seller: "TKTS", kind: nextDay ? `On today's board for tomorrow's matinee · ${where}` : `On today's board · ${where}`, nextDay, sec: null, row: null, price: best.lo, fee: 0, url: TKTS_URL, live: "tkts", booths,
-        note: `${best.pct ? best.pct + "% off · " : ""}${money0(best.lo)}–${money0(best.hi)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · ${nextDay ? `sold today for tomorrow's matinee, so buy at the ${where} booth before it closes tonight` : `buy at the ${where} ${where.includes("&") ? "booths" : "booth"} while they last`}${(() => {
+        note: `${best.pct ? best.pct + "% off · " : ""}${best.hi && best.hi !== best.lo ? `${money0(best.lo)}–${money0(best.hi)}` : money0(best.lo)} on the board (updated ${best.updated.replace(/^\w+, /, "")}) · ${nextDay ? `sold today for tomorrow's matinee, so buy at the ${where} booth before it closes tonight` : `buy at the ${where} ${where.includes("&") ? "booths" : "booth"} while they last`}${(() => {
           const closed = boards.filter((b) => b.day === today && b.status === "closed" && !listings.some((x) => x.booth === (BOOTH[b.booth] || b.booth))).map((b) => BOOTH[b.booth] || b.booth);
           return closed.length ? ` · the ${[...new Set(closed)].join(" & ")} booth has closed for today` : "";
         })()}` });
