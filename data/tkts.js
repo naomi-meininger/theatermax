@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T22:11:22.844Z",
+ "checkedAt": "2026-11-22T22:56:34.075Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 04:53 PM",
+   "updated": "Sunday, 22 November 2026 05:44 PM",
    "shows": [
     {
      "title": "Chicago",
@@ -65,15 +65,6 @@ window.TM_TKTS = {
      "time": "7:00 PM"
     },
     {
-     "title": "The Book of Mormon",
-     "url": "https://www.tdf.org/shows/8843/the-book-of-mormon",
-     "tdfId": "8843",
-     "pct": 30,
-     "lo": 87,
-     "hi": 143,
-     "time": "7:00 PM"
-    },
-    {
      "title": "The Rocky Horror Show",
      "url": "https://www.tdf.org/shows/22915/the-rocky-horror-show",
      "tdfId": "22915",
@@ -89,7 +80,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 04:53 PM",
+   "updated": "Sunday, 22 November 2026 05:44 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -134,7 +125,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 04:53 PM",
+   "updated": "Sunday, 22 November 2026 05:44 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
