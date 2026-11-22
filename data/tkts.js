@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-21T23:43:45.974Z",
+ "checkedAt": "2026-11-22T00:13:53.520Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:32 PM",
+   "updated": "Saturday, 21 November 2026 06:59 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -83,24 +83,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Its A Wonderful Life: A Live Radio Play",
-     "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play",
-     "tdfId": "23562",
-     "pct": 50,
-     "lo": 86,
-     "hi": 111,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Maybe Happy Ending",
-     "url": "https://www.tdf.org/shows/21710/maybe-happy-ending",
-     "tdfId": "21710",
-     "pct": 50,
-     "lo": 102,
-     "hi": 102,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Now You See Me Live",
      "url": "https://www.tdf.org/shows/23523/now-you-see-me-live",
      "tdfId": "23523",
@@ -144,33 +126,6 @@ window.TM_TKTS = {
      "lo": 65,
      "hi": 108,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Stranger Things: The First Shadow",
-     "url": "https://www.tdf.org/shows/21916/stranger-things-the-first-shadow",
-     "tdfId": "21916",
-     "pct": 50,
-     "lo": 67,
-     "hi": 101,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Book of Mormon",
-     "url": "https://www.tdf.org/shows/8843/the-book-of-mormon",
-     "tdfId": "8843",
-     "pct": 30,
-     "lo": 94,
-     "hi": 185,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Fantasticks",
-     "url": "https://www.tdf.org/shows/23326/the-fantasticks",
-     "tdfId": "23326",
-     "pct": 50,
-     "lo": 82,
-     "hi": 117,
-     "time": "7:00 PM"
     },
     {
      "title": "The Great Gatsby",
@@ -233,7 +188,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:32 PM",
+   "updated": "Saturday, 21 November 2026 06:59 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -290,15 +245,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Leave a Message After…THE BEEP",
-     "url": "https://www.tdf.org/shows/23607/leave-a-message-after-the-beep",
-     "tdfId": "23607",
-     "pct": 30,
-     "lo": 28,
-     "hi": 42,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -317,15 +263,6 @@ window.TM_TKTS = {
      "time": "9:00 PM"
     },
     {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 101,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
      "title": "The Play That Goes Wrong",
      "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
      "tdfId": "17222",
@@ -333,15 +270,6 @@ window.TM_TKTS = {
      "lo": 50,
      "hi": 71,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Visitors",
-     "url": "https://www.tdf.org/shows/23327/the-visitors",
-     "tdfId": "23327",
-     "pct": 50,
-     "lo": 47,
-     "hi": 47,
-     "time": "7:00 PM"
     },
     {
      "title": "Traitorz: The Unauthorized Musical Parody",
@@ -359,7 +287,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:32 PM",
+   "updated": "Saturday, 21 November 2026 06:59 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -575,7 +503,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:32 PM",
+   "updated": "Saturday, 21 November 2026 06:59 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
