@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T20:41:04.525Z",
+ "checkedAt": "2026-11-22T20:56:08.326Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:26 PM",
+   "updated": "Sunday, 22 November 2026 03:38 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -45,15 +45,6 @@ window.TM_TKTS = {
      "lo": 111,
      "hi": 111,
      "time": "6:30 PM"
-    },
-    {
-     "title": "Operation Mincemeat",
-     "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
-     "tdfId": "22082",
-     "pct": 30,
-     "lo": 138,
-     "hi": 138,
-     "time": "7:30 PM"
     },
     {
      "title": "Paranormal Activity",
@@ -107,7 +98,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:26 PM",
+   "updated": "Sunday, 22 November 2026 03:38 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -170,7 +161,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:26 PM",
+   "updated": "Sunday, 22 November 2026 03:38 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
