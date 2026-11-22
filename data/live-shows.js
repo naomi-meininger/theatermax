@@ -2,41 +2,32 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-21T17:36:52.242Z",
-  "lastAttemptAt": "2026-11-21T17:36:52.242Z",
+  "updatedAt": "2026-11-22T17:52:19.604Z",
+  "lastAttemptAt": "2026-11-22T17:52:19.604Z",
   "count": 90,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-21T17:36:52.242Z",
-      "lastAttemptAt": "2026-11-21T17:36:52.242Z",
+      "updatedAt": "2026-11-22T17:52:19.604Z",
+      "lastAttemptAt": "2026-11-22T17:52:19.604Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-21T17:36:52.242Z",
-      "lastAttemptAt": "2026-11-21T17:36:52.242Z",
+      "updatedAt": "2026-11-22T17:52:19.604Z",
+      "lastAttemptAt": "2026-11-22T17:52:19.604Z",
       "count": 24
     }
   },
   "shows": [
     {
-      "slug": "just-in-time",
-      "title": "Just In Time",
-      "url": "https://www.broadway.com/shows/just-in-time/",
-      "fromPrice": 74.92,
-      "ratingCount": 1095,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "hadestown",
-      "title": "Hadestown",
-      "url": "https://www.broadway.com/shows/hadestown/",
-      "fromPrice": 62.72,
-      "ratingCount": 675,
+      "slug": "the-lost-boys-a-new-musical",
+      "title": "The Lost Boys, A New Musical",
+      "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
+      "fromPrice": 59.67,
+      "ratingCount": 397,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -50,20 +41,29 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
+      "slug": "hadestown",
+      "title": "Hadestown",
+      "url": "https://www.broadway.com/shows/hadestown/",
+      "fromPrice": 62.72,
+      "ratingCount": 675,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "just-in-time",
+      "title": "Just In Time",
+      "url": "https://www.broadway.com/shows/just-in-time/",
+      "fromPrice": 75.14,
+      "ratingCount": 1095,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
       "slug": "maybe-happy-ending",
       "title": "Maybe Happy Ending",
       "url": "https://www.broadway.com/shows/maybe-happy-ending/",
       "fromPrice": 61.03,
       "ratingCount": 610,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-lost-boys-a-new-musical",
-      "title": "The Lost Boys, A New Musical",
-      "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
-      "fromPrice": 59.67,
-      "ratingCount": 397,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -134,7 +134,7 @@ window.TM_LIVE = {
       "slug": "wanted",
       "title": "Wanted",
       "url": "https://www.broadway.com/shows/wanted/",
-      "fromPrice": 54.52,
+      "fromPrice": 65.37,
       "ratingCount": 54,
       "scene": "broadway",
       "firstSeen": null
@@ -152,7 +152,7 @@ window.TM_LIVE = {
       "slug": "aladdin-broadway",
       "title": "Aladdin",
       "url": "https://www.broadway.com/shows/aladdin-broadway/",
-      "fromPrice": 77.04,
+      "fromPrice": 82.46,
       "ratingCount": 669,
       "scene": "broadway",
       "firstSeen": null
@@ -191,7 +191,7 @@ window.TM_LIVE = {
       "fromPrice": 276.11,
       "ratingCount": 126,
       "scene": "off",
-      "firstSeen": "2026-11-21"
+      "firstSeen": "2026-11-22"
     },
     {
       "slug": "six",
@@ -476,7 +476,7 @@ window.TM_LIVE = {
       "slug": "the-imaginary-invalid",
       "title": "The Imaginary Invalid",
       "url": "https://www.broadway.com/shows/the-imaginary-invalid/",
-      "fromPrice": 220.61,
+      "fromPrice": 248.36,
       "ratingCount": 7,
       "scene": "broadway",
       "firstSeen": null
@@ -575,7 +575,7 @@ window.TM_LIVE = {
       "slug": "gloria",
       "title": "Gloria",
       "url": "https://www.broadway.com/shows/gloria/",
-      "fromPrice": 63.72,
+      "fromPrice": 81.86,
       "ratingCount": null,
       "scene": "broadway",
       "firstSeen": null
@@ -626,24 +626,6 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "little-shop-horrors",
-      "title": "Little Shop of Horrors",
-      "url": "https://www.broadway.com/shows/little-shop-horrors/",
-      "fromPrice": 56.69,
-      "ratingCount": 245,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
-      "slug": "play-goes-wrong-beginning-february-11-2019",
-      "title": "The Play That Goes Wrong",
-      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
-      "fromPrice": 101.18,
-      "ratingCount": 369,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "the-heart",
       "title": "The Heart",
       "url": "https://www.broadway.com/shows/the-heart/",
@@ -658,6 +640,24 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
       "fromPrice": 65.36,
       "ratingCount": 126,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "little-shop-horrors",
+      "title": "Little Shop of Horrors",
+      "url": "https://www.broadway.com/shows/little-shop-horrors/",
+      "fromPrice": 56.69,
+      "ratingCount": 245,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "play-goes-wrong-beginning-february-11-2019",
+      "title": "The Play That Goes Wrong",
+      "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
+      "fromPrice": 101.18,
+      "ratingCount": 369,
       "scene": "off",
       "firstSeen": null
     },
@@ -728,7 +728,7 @@ window.TM_LIVE = {
       "slug": "the-conversation",
       "title": "The Conversation",
       "url": "https://www.broadway.com/shows/the-conversation/",
-      "fromPrice": 71.68,
+      "fromPrice": 83.2,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
