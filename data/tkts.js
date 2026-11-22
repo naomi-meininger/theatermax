@@ -2,295 +2,187 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T01:44:13.142Z",
+ "checkedAt": "2026-11-22T20:41:04.525Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
-   "status": "closed",
-   "updated": "Saturday, 21 November 2026 08:30 PM",
+   "status": "open",
+   "updated": "Sunday, 22 November 2026 03:26 PM",
    "shows": [
     {
      "title": "& Juliet",
      "url": "https://www.tdf.org/shows/19001/and-juliet",
      "tdfId": "19001",
-     "note": null
-    },
-    {
-     "title": "Aladdin",
-     "url": "https://www.tdf.org/shows/12819/aladdin",
-     "tdfId": "12819",
-     "note": null
-    },
-    {
-     "title": "Blue Man Group: A New Holiday Surprise",
-     "url": "https://www.tdf.org/shows/23551/blue-man-group-a-new-holiday-surprise",
-     "tdfId": "23551",
-     "note": null
-    },
-    {
-     "title": "Buena Vista Social Club",
-     "url": "https://www.tdf.org/shows/19730/buena-vista-social-club",
-     "tdfId": "19730",
-     "note": null
+     "pct": 40,
+     "lo": 86,
+     "hi": 147,
+     "time": "6:30 PM"
     },
     {
      "title": "Chicago",
      "url": "https://www.tdf.org/shows/1581/chicago",
      "tdfId": "1581",
-     "note": null
+     "pct": 30,
+     "lo": 81,
+     "hi": 115,
+     "time": "7:00 PM"
     },
     {
      "title": "Downstate",
      "url": "https://www.tdf.org/shows/23521/downstate",
      "tdfId": "23521",
-     "note": null
-    },
-    {
-     "title": "Galileo",
-     "url": "https://www.tdf.org/shows/23112/galileo",
-     "tdfId": "23112",
-     "note": null
-    },
-    {
-     "title": "Hadestown",
-     "url": "https://www.tdf.org/shows/17230/hadestown",
-     "tdfId": "17230",
-     "note": null
-    },
-    {
-     "title": "Here There Are Blueberries",
-     "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries",
-     "tdfId": "23494",
-     "note": null
+     "pct": 50,
+     "lo": 83,
+     "hi": 102,
+     "time": "6:30 PM"
     },
     {
      "title": "Its A Wonderful Life: A Live Radio Play",
      "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play",
      "tdfId": "23562",
-     "note": null
-    },
-    {
-     "title": "Just In Time",
-     "url": "https://www.tdf.org/shows/22112/just-in-time",
-     "tdfId": "22112",
-     "note": null
-    },
-    {
-     "title": "MJ The Musical",
-     "url": "https://www.tdf.org/shows/18033/mj-the-musical",
-     "tdfId": "18033",
-     "note": null
-    },
-    {
-     "title": "Maybe Happy Ending",
-     "url": "https://www.tdf.org/shows/21710/maybe-happy-ending",
-     "tdfId": "21710",
-     "note": null
-    },
-    {
-     "title": "Much Ado About Nothing",
-     "url": "https://www.tdf.org/shows/23297/much-ado-about-nothing",
-     "tdfId": "23297",
-     "note": null
-    },
-    {
-     "title": "Now You See Me Live",
-     "url": "https://www.tdf.org/shows/23523/now-you-see-me-live",
-     "tdfId": "23523",
-     "note": null
+     "pct": 50,
+     "lo": 111,
+     "hi": 111,
+     "time": "6:30 PM"
     },
     {
      "title": "Operation Mincemeat",
      "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
      "tdfId": "22082",
-     "note": null
+     "pct": 30,
+     "lo": 138,
+     "hi": 138,
+     "time": "7:30 PM"
     },
     {
      "title": "Paranormal Activity",
      "url": "https://www.tdf.org/shows/23295/paranormal-activity",
      "tdfId": "23295",
-     "note": null
-    },
-    {
-     "title": "Schmigadoon!",
-     "url": "https://www.tdf.org/shows/22904/schmigadoon",
-     "tdfId": "22904",
-     "note": null
+     "pct": 40,
+     "lo": 82,
+     "hi": 82,
+     "time": "7:30 PM"
     },
     {
      "title": "Six",
      "url": "https://www.tdf.org/shows/17685/six",
      "tdfId": "17685",
-     "note": null
+     "pct": 50,
+     "lo": 71,
+     "hi": 104,
+     "time": "7:00 PM"
     },
     {
      "title": "Stranger Things: The First Shadow",
      "url": "https://www.tdf.org/shows/21916/stranger-things-the-first-shadow",
      "tdfId": "21916",
-     "note": null
+     "pct": 50,
+     "lo": 67,
+     "hi": 101,
+     "time": "7:00 PM"
     },
     {
      "title": "The Book of Mormon",
      "url": "https://www.tdf.org/shows/8843/the-book-of-mormon",
      "tdfId": "8843",
-     "note": null
-    },
-    {
-     "title": "The Fantasticks",
-     "url": "https://www.tdf.org/shows/23326/the-fantasticks",
-     "tdfId": "23326",
-     "note": null
-    },
-    {
-     "title": "The Great Gatsby",
-     "url": "https://www.tdf.org/shows/21385/the-great-gatsby",
-     "tdfId": "21385",
-     "note": null
-    },
-    {
-     "title": "The Lost Boys",
-     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
-     "tdfId": "22920",
-     "note": null
-    },
-    {
-     "title": "The Outsiders",
-     "url": "https://www.tdf.org/shows/19937/the-outsiders",
-     "tdfId": "19937",
-     "note": null
+     "pct": 30,
+     "lo": 87,
+     "hi": 143,
+     "time": "7:00 PM"
     },
     {
      "title": "The Rocky Horror Show",
      "url": "https://www.tdf.org/shows/22915/the-rocky-horror-show",
      "tdfId": "22915",
-     "note": null
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "note": null
-    },
-    {
-     "title": "Wanted",
-     "url": "https://www.tdf.org/shows/23169/wanted",
-     "tdfId": "23169",
-     "note": null
+     "pct": 50,
+     "lo": 86,
+     "hi": 101,
+     "time": "7:00 PM"
     }
    ],
-   "day": "2026-11-21"
+   "day": "2026-11-22"
   },
   {
    "booth": "times-square",
    "kind": "off",
-   "status": "closed",
-   "updated": "Saturday, 21 November 2026 08:30 PM",
+   "status": "open",
+   "updated": "Sunday, 22 November 2026 03:26 PM",
    "shows": [
     {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "note": null
+     "title": "A Kidman Carol",
+     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
+     "tdfId": "23586",
+     "pct": 40,
+     "lo": 69,
+     "hi": 69,
+     "time": "5:00 PM"
     },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
      "tdfId": "23586",
-     "note": null
-    },
-    {
-     "title": "Amaze Magic",
-     "url": "https://www.tdf.org/shows/22653/amaze-magic",
-     "tdfId": "22653",
-     "note": null
+     "pct": 40,
+     "lo": 51,
+     "hi": 69,
+     "time": "8:00 PM"
     },
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
      "url": "https://www.tdf.org/shows/10181/christmas-spectacular-w-the-radio-city-rockettes",
      "tdfId": "10181",
-     "note": null
-    },
-    {
-     "title": "Drunk Christmas Carol",
-     "url": "https://www.tdf.org/shows/23582/drunk-christmas-carol",
-     "tdfId": "23582",
-     "note": null
-    },
-    {
-     "title": "Friends! The Musical Parody",
-     "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
-     "tdfId": "18504",
-     "note": null
-    },
-    {
-     "title": "Gazillion Bubble Show",
-     "url": "https://www.tdf.org/shows/4427/gazillion-bubble-show",
-     "tdfId": "4427",
-     "note": null
+     "pct": 50,
+     "lo": 38,
+     "hi": 98,
+     "time": "8:00 PM"
     },
     {
      "title": "Heated Rivalry: The Unauthorized Musical Parody",
      "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
      "tdfId": "23194",
-     "note": null
-    },
-    {
-     "title": "Leave a Message After…THE BEEP",
-     "url": "https://www.tdf.org/shows/23607/leave-a-message-after-the-beep",
-     "tdfId": "23607",
-     "note": null
-    },
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "note": null
+     "pct": 50,
+     "lo": 36,
+     "hi": 56,
+     "time": "5:30 PM"
     },
     {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
-     "note": null
-    },
-    {
-     "title": "Singfeld! A Musical About Nothing!",
-     "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing",
-     "tdfId": "19478",
-     "note": null
-    },
-    {
-     "title": "Slam Frank",
-     "url": "https://www.tdf.org/shows/22731/slam-frank",
-     "tdfId": "22731",
-     "note": null
-    },
-    {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "note": null
-    },
-    {
-     "title": "The Play That Goes Wrong",
-     "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
-     "tdfId": "17222",
-     "note": null
-    },
-    {
-     "title": "The Visitors",
-     "url": "https://www.tdf.org/shows/23327/the-visitors",
-     "tdfId": "23327",
-     "note": null
+     "pct": 30,
+     "lo": 49,
+     "hi": 57,
+     "time": "7:30 PM"
     },
     {
      "title": "Traitorz: The Unauthorized Musical Parody",
      "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
      "tdfId": "23594",
-     "note": null
+     "pct": 50,
+     "lo": 59,
+     "hi": 59,
+     "time": "6:30 PM"
     }
    ],
-   "day": "2026-11-21"
+   "day": "2026-11-22"
+  },
+  {
+   "booth": "times-square",
+   "kind": "tomorrow-off",
+   "status": "open",
+   "updated": "Sunday, 22 November 2026 03:26 PM",
+   "shows": [
+    {
+     "title": "Christmas Spectacular w/ the Radio City Rockettes",
+     "url": "https://www.tdf.org/shows/10181/christmas-spectacular-w-the-radio-city-rockettes",
+     "tdfId": "10181",
+     "pct": 50,
+     "lo": 38,
+     "hi": 98,
+     "time": "2:00 PM"
+    }
+   ],
+   "day": "2026-11-22"
   },
   {
    "booth": "lincoln-center",
@@ -555,12 +447,12 @@ window.TM_TKTS = {
   "1581": {
    "title": "Chicago",
    "tdfId": "1581",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "1681": {
    "title": "Perfect Crime",
    "tdfId": "1681",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "4427": {
    "title": "Gazillion Bubble Show",
@@ -575,12 +467,12 @@ window.TM_TKTS = {
   "8843": {
    "title": "The Book of Mormon",
    "tdfId": "8843",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "10181": {
    "title": "Christmas Spectacular w/ the Radio City Rockettes",
    "tdfId": "10181",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "12819": {
    "title": "Aladdin",
@@ -605,7 +497,7 @@ window.TM_TKTS = {
   "17685": {
    "title": "Six",
    "tdfId": "17685",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "18033": {
    "title": "MJ The Musical",
@@ -620,7 +512,7 @@ window.TM_TKTS = {
   "19001": {
    "title": "& Juliet",
    "tdfId": "19001",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "19478": {
    "title": "Singfeld! A Musical About Nothing!",
@@ -655,12 +547,12 @@ window.TM_TKTS = {
   "21916": {
    "title": "Stranger Things: The First Shadow",
    "tdfId": "21916",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "22082": {
    "title": "Operation Mincemeat",
    "tdfId": "22082",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "22112": {
    "title": "Just In Time",
@@ -690,7 +582,7 @@ window.TM_TKTS = {
   "22915": {
    "title": "The Rocky Horror Show",
    "tdfId": "22915",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "22920": {
    "title": "The Lost Boys",
@@ -715,12 +607,12 @@ window.TM_TKTS = {
   "23194": {
    "title": "Heated Rivalry: The Unauthorized Musical Parody",
    "tdfId": "23194",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23295": {
    "title": "Paranormal Activity",
    "tdfId": "23295",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23297": {
    "title": "Much Ado About Nothing",
@@ -770,7 +662,7 @@ window.TM_TKTS = {
   "23521": {
    "title": "Downstate",
    "tdfId": "23521",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23523": {
    "title": "Now You See Me Live",
@@ -785,7 +677,7 @@ window.TM_TKTS = {
   "23562": {
    "title": "Its A Wonderful Life: A Live Radio Play",
    "tdfId": "23562",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23582": {
    "title": "Drunk Christmas Carol",
@@ -795,12 +687,12 @@ window.TM_TKTS = {
   "23586": {
    "title": "A Kidman Carol",
    "tdfId": "23586",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23594": {
    "title": "Traitorz: The Unauthorized Musical Parody",
    "tdfId": "23594",
-   "last": "2026-11-21"
+   "last": "2026-11-22"
   },
   "23607": {
    "title": "Leave a Message After…THE BEEP",
