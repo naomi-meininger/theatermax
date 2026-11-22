@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T00:13:53.520Z",
+ "checkedAt": "2026-11-22T00:43:59.822Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:59 PM",
+   "updated": "Saturday, 21 November 2026 07:39 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -18,33 +18,6 @@ window.TM_TKTS = {
      "lo": 118,
      "hi": 147,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Aladdin",
-     "url": "https://www.tdf.org/shows/12819/aladdin",
-     "tdfId": "12819",
-     "pct": 40,
-     "lo": 89,
-     "hi": 104,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Blue Man Group: A New Holiday Surprise",
-     "url": "https://www.tdf.org/shows/23551/blue-man-group-a-new-holiday-surprise",
-     "tdfId": "23551",
-     "pct": 50,
-     "lo": 93,
-     "hi": 113,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Buena Vista Social Club",
-     "url": "https://www.tdf.org/shows/19730/buena-vista-social-club",
-     "tdfId": "19730",
-     "pct": 40,
-     "lo": 125,
-     "hi": 161,
-     "time": "7:30 PM"
     },
     {
      "title": "Chicago",
@@ -74,33 +47,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Hadestown",
-     "url": "https://www.tdf.org/shows/17230/hadestown",
-     "tdfId": "17230",
-     "pct": 30,
-     "lo": 186,
-     "hi": 186,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Now You See Me Live",
-     "url": "https://www.tdf.org/shows/23523/now-you-see-me-live",
-     "tdfId": "23523",
-     "pct": 30,
-     "lo": 70,
-     "hi": 150,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Operation Mincemeat",
-     "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
-     "tdfId": "22082",
-     "pct": 30,
-     "lo": 170,
-     "hi": 170,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Paranormal Activity",
      "url": "https://www.tdf.org/shows/23295/paranormal-activity",
      "tdfId": "23295",
@@ -108,15 +54,6 @@ window.TM_TKTS = {
      "lo": 88,
      "hi": 100,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Schmigadoon!",
-     "url": "https://www.tdf.org/shows/22904/schmigadoon",
-     "tdfId": "22904",
-     "pct": 40,
-     "lo": 107,
-     "hi": 178,
-     "time": "7:30 PM"
     },
     {
      "title": "Six",
@@ -188,7 +125,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:59 PM",
+   "updated": "Saturday, 21 November 2026 07:39 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -236,15 +173,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 90,
-     "time": "8:30 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -287,7 +215,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:59 PM",
+   "updated": "Saturday, 21 November 2026 07:39 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -503,7 +431,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Saturday, 21 November 2026 06:59 PM",
+   "updated": "Saturday, 21 November 2026 07:39 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
