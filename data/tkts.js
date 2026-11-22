@@ -2,23 +2,14 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T20:56:08.326Z",
+ "checkedAt": "2026-11-22T22:11:22.844Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:38 PM",
+   "updated": "Sunday, 22 November 2026 04:53 PM",
    "shows": [
-    {
-     "title": "& Juliet",
-     "url": "https://www.tdf.org/shows/19001/and-juliet",
-     "tdfId": "19001",
-     "pct": 40,
-     "lo": 86,
-     "hi": 147,
-     "time": "6:30 PM"
-    },
     {
      "title": "Chicago",
      "url": "https://www.tdf.org/shows/1581/chicago",
@@ -98,17 +89,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:38 PM",
+   "updated": "Sunday, 22 November 2026 04:53 PM",
    "shows": [
-    {
-     "title": "A Kidman Carol",
-     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
-     "tdfId": "23586",
-     "pct": 40,
-     "lo": 69,
-     "hi": 69,
-     "time": "5:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -126,15 +108,6 @@ window.TM_TKTS = {
      "lo": 38,
      "hi": 98,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 50,
-     "lo": 36,
-     "hi": 56,
-     "time": "5:30 PM"
     },
     {
      "title": "Perfect Crime",
@@ -161,7 +134,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 03:38 PM",
+   "updated": "Sunday, 22 November 2026 04:53 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
