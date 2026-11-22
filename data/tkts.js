@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T23:41:42.786Z",
+ "checkedAt": "2026-11-22T23:56:46.969Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 06:33 PM",
+   "updated": "Sunday, 22 November 2026 06:50 PM",
    "shows": [
     {
      "title": "Chicago",
@@ -20,39 +20,12 @@ window.TM_TKTS = {
      "time": "7:00 PM"
     },
     {
-     "title": "Paranormal Activity",
-     "url": "https://www.tdf.org/shows/23295/paranormal-activity",
-     "tdfId": "23295",
-     "pct": 40,
-     "lo": 82,
-     "hi": 82,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Six",
      "url": "https://www.tdf.org/shows/17685/six",
      "tdfId": "17685",
      "pct": 50,
      "lo": 71,
      "hi": 104,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Stranger Things: The First Shadow",
-     "url": "https://www.tdf.org/shows/21916/stranger-things-the-first-shadow",
-     "tdfId": "21916",
-     "pct": 50,
-     "lo": 67,
-     "hi": 101,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Rocky Horror Show",
-     "url": "https://www.tdf.org/shows/22915/the-rocky-horror-show",
-     "tdfId": "22915",
-     "pct": 50,
-     "lo": 86,
-     "hi": 101,
      "time": "7:00 PM"
     }
    ],
@@ -62,7 +35,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 06:33 PM",
+   "updated": "Sunday, 22 November 2026 06:50 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -98,7 +71,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 06:33 PM",
+   "updated": "Sunday, 22 November 2026 06:50 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
