@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-22T22:56:34.075Z",
+ "checkedAt": "2026-11-22T23:41:42.786Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 05:44 PM",
+   "updated": "Sunday, 22 November 2026 06:33 PM",
    "shows": [
     {
      "title": "Chicago",
@@ -18,24 +18,6 @@ window.TM_TKTS = {
      "lo": 81,
      "hi": 115,
      "time": "7:00 PM"
-    },
-    {
-     "title": "Downstate",
-     "url": "https://www.tdf.org/shows/23521/downstate",
-     "tdfId": "23521",
-     "pct": 50,
-     "lo": 83,
-     "hi": 102,
-     "time": "6:30 PM"
-    },
-    {
-     "title": "Its A Wonderful Life: A Live Radio Play",
-     "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play",
-     "tdfId": "23562",
-     "pct": 50,
-     "lo": 111,
-     "hi": 111,
-     "time": "6:30 PM"
     },
     {
      "title": "Paranormal Activity",
@@ -80,7 +62,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 05:44 PM",
+   "updated": "Sunday, 22 November 2026 06:33 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -108,15 +90,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "7:30 PM"
-    },
-    {
-     "title": "Traitorz: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
-     "tdfId": "23594",
-     "pct": 50,
-     "lo": 59,
-     "hi": 59,
-     "time": "6:30 PM"
     }
    ],
    "day": "2026-11-22"
@@ -125,7 +98,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Sunday, 22 November 2026 05:44 PM",
+   "updated": "Sunday, 22 November 2026 06:33 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
