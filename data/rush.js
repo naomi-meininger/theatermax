@@ -2,9 +2,9 @@
 window.TM_RUSH = {
  "source": "https://bwayrush.com/",
  "status": "ok",
- "weekOf": "11/16/26",
- "updatedAt": "2026-11-16T20:57:10.640Z",
- "lastAttemptAt": "2026-11-16T20:57:10.640Z",
+ "weekOf": "11/23/26",
+ "updatedAt": "2026-11-23T22:14:23.498Z",
+ "lastAttemptAt": "2026-11-23T22:14:23.498Z",
  "shows": {
   "860": {
    "title": "860",
@@ -354,60 +354,6 @@ window.TM_RUSH = {
      "channel": "Digital",
      "platform": "Telecharge",
      "price": 49
-    },
-    {
-     "label": "$10 student",
-     "url": "https://www.instagram.com/p/DesMZaWAW6c/?img_index=1",
-     "type": "student",
-     "channel": null,
-     "platform": "Box office",
-     "price": 10
-    }
-   ]
-  },
-  "the-imaginary-invalid": {
-   "title": "The Imaginary Invalid",
-   "theater": "Todd Haimes Theatre",
-   "deals": [
-    {
-     "label": "$40 in-person",
-     "url": "https://www.roundabouttheatre.org/shows/access-and-affordability/#:~:text=general%20rush",
-     "type": "rush",
-     "channel": "In-person",
-     "platform": "Roundabout",
-     "price": 40
-    },
-    {
-     "label": "$48 mobile",
-     "url": "https://www.todaytix.com/nyc/shows/44369-the-imaginary-invalid",
-     "type": "rush",
-     "channel": "Mobile",
-     "platform": "TodayTix",
-     "price": 48
-    },
-    {
-     "label": "50% off student",
-     "url": "https://www.roundabouttheatre.org/shows/access-and-affordability/#:~:text=student%20rush",
-     "type": "student",
-     "channel": null,
-     "platform": "Roundabout",
-     "price": null
-    },
-    {
-     "label": "$30 hiptix",
-     "url": "https://www.roundabouttheatre.org/get-tickets/hiptix/",
-     "type": "young",
-     "channel": null,
-     "platform": "Roundabout",
-     "price": 30
-    },
-    {
-     "label": "40% off military",
-     "url": "https://www.roundabouttheatre.org/shows/access-and-affordability/#:~:text=blue%20star",
-     "type": "special",
-     "channel": null,
-     "platform": "Roundabout",
-     "price": null
     }
    ]
   },
@@ -1054,6 +1000,11 @@ window.TM_RUSH = {
    "theater": "Lena Horne Theatre",
    "deals": []
   },
+  "birthright": {
+   "title": "Birthright",
+   "theater": "Hudson Theatre",
+   "deals": []
+  },
   "evita": {
    "title": "Evita",
    "theater": "Winter Garden Theatre",
@@ -1094,7 +1045,16 @@ window.TM_RUSH = {
   "gloria": {
    "title": "Gloria",
    "theater": "Hayes Theater",
-   "deals": []
+   "deals": [
+    {
+     "label": "$30 30 under 30",
+     "url": "https://2st.com/shows/gloria#calendar",
+     "type": "young",
+     "channel": null,
+     "platform": "Second Stage",
+     "price": 30
+    }
+   ]
   },
   "the-sound-of-music": {
    "title": "The Sound of Music",
@@ -1134,6 +1094,11 @@ window.TM_RUSH = {
   "lost-lear": {
    "title": "Lost Lear",
    "theater": "Booth Theatre",
+   "deals": []
+  },
+  "all-my-sons": {
+   "title": "All My Sons",
+   "theater": "August Wilson Theatre",
    "deals": []
   },
   "montauk": {
