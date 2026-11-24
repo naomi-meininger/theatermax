@@ -2,7 +2,7 @@
 window.TM_TDF = {
   "status": "ok",
   "source": "https://www.tdf.org/on-stage/show-finder/",
-  "updatedAt": "2026-11-17T19:27:21.251Z",
+  "updatedAt": "2026-11-24T20:57:08.465Z",
   "ids": {
     "860": "/shows/23349/860/",
     "lost-lear": "/shows/23651/lost-lear/",
@@ -32,7 +32,9 @@ window.TM_TDF = {
     "the-sound-of-music": "/shows/23369/the-sound-of-music/",
     "singfeld-a-musical-about-nothing": "/shows/19478/singfeld-a-musical-about-nothing/",
     "juliet": "/shows/19001/juliet/",
-    "the-conversation": "/shows/23344/the-conversation/"
+    "the-conversation": "/shows/23344/the-conversation/",
+    "birthright": "/shows/23210/birthright/",
+    "all-my-sons": "/shows/23655/all-my-sons/"
   },
   "shows": {
     "860": {
@@ -48,57 +50,18 @@ window.TM_TDF = {
       "tkts": "Occasionally",
       "fullPrice": "$99.00 - $321.00"
     },
-    "lost-lear": {
-      "url": "https://www.tdf.org/shows/23651/lost-lear/",
-      "title": "Lost Lear",
-      "venue": "Booth Theatre",
-      "previews": "2027-03-29",
-      "opening": "2027-04-23",
-      "closing": "2027-07-18",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "N/a",
-      "fullPrice": "$79.00 - $399.00"
-    },
-    "here-there-are-blueberries": {
-      "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries/",
-      "title": "Here There Are Blueberries",
+    "small-mouth-sounds-broadway": {
+      "url": "https://www.tdf.org/shows/23522/small-mouth-sounds/",
+      "title": "Small Mouth Sounds",
       "venue": "Ethel Barrymore Theatre",
-      "previews": "2026-11-02",
-      "opening": "2026-11-09",
-      "closing": "2027-01-10",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "Frequently",
-      "fullPrice": "$49.00 - $297.00"
-    },
-    "inter-alia": {
-      "url": "https://www.tdf.org/shows/23204/inter-alia/",
-      "title": "Inter Alia",
-      "venue": "Music Box Theatre",
-      "previews": "2026-11-11",
-      "opening": "2026-12-01",
-      "closing": "2027-02-21",
+      "previews": "2027-02-10",
+      "opening": "2027-03-11",
+      "closing": "2027-06-17",
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
       "tkts": "N/a",
-      "fullPrice": "$84.00 - $361.00"
-    },
-    "harry-potter-and-cursed-child-broadway": {
-      "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child/",
-      "title": "Harry Potter and the Cursed Child",
-      "venue": "Lyric Theatre",
-      "previews": null,
-      "opening": "2021-11-12",
-      "closing": null,
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "Frequently",
-      "fullPrice": "$59.00 - $524.00"
+      "fullPrice": "$176.00 - $599.00"
     },
     "a-few-good-men": {
       "url": "https://www.tdf.org/shows/23368/a-few-good-men/",
@@ -113,18 +76,31 @@ window.TM_TDF = {
       "tkts": "Rarely",
       "fullPrice": "$58.00 - $301.00"
     },
-    "gloria": {
-      "url": "https://www.tdf.org/shows/23329/gloria/",
-      "title": "Gloria",
-      "venue": "Hayes Theater",
-      "previews": "2027-03-17",
-      "opening": "2027-04-05",
+    "here-there-are-blueberries": {
+      "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries/",
+      "title": "Here There Are Blueberries",
+      "venue": "Ethel Barrymore Theatre",
+      "previews": "2026-11-02",
+      "opening": "2026-11-09",
+      "closing": "2027-01-10",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "Frequently",
+      "fullPrice": "$49.00 - $297.00"
+    },
+    "harry-potter-and-cursed-child-broadway": {
+      "url": "https://www.tdf.org/shows/16274/harry-potter-and-the-cursed-child/",
+      "title": "Harry Potter and the Cursed Child",
+      "venue": "Lyric Theatre",
+      "previews": null,
+      "opening": "2021-11-12",
       "closing": null,
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
-      "tkts": "N/a",
-      "fullPrice": null
+      "tkts": "Frequently",
+      "fullPrice": "$59.00 - $524.00"
     },
     "downstate": {
       "url": "https://www.tdf.org/shows/23521/downstate/",
@@ -138,6 +114,32 @@ window.TM_TDF = {
       "memberPrice": null,
       "tkts": "Frequently",
       "fullPrice": "$71.00 - $199.00"
+    },
+    "gloria": {
+      "url": "https://www.tdf.org/shows/23329/gloria/",
+      "title": "Gloria",
+      "venue": "Hayes Theater",
+      "previews": "2027-03-17",
+      "opening": "2027-04-05",
+      "closing": "2027-06-13",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$59.00 - $262.00"
+    },
+    "birthright": {
+      "url": "https://www.tdf.org/shows/23210/birthright/",
+      "title": "Birthright",
+      "venue": "Hudson Theatre",
+      "previews": "2027-02-23",
+      "opening": "2027-03-15",
+      "closing": "2027-07-11",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$73.92 - $312.48"
     },
     "awake-and-sing": {
       "url": "https://www.tdf.org/shows/23442/awake-and-sing/",
@@ -165,18 +167,18 @@ window.TM_TDF = {
       "tkts": "N/a",
       "fullPrice": "$69.00 - $299.00"
     },
-    "small-mouth-sounds-broadway": {
-      "url": "https://www.tdf.org/shows/23522/small-mouth-sounds/",
-      "title": "Small Mouth Sounds",
-      "venue": "Ethel Barrymore Theatre",
-      "previews": "2027-02-10",
-      "opening": "2027-03-11",
-      "closing": "2027-06-17",
+    "all-my-sons": {
+      "url": "https://www.tdf.org/shows/23655/all-my-sons/",
+      "title": "All My Sons",
+      "venue": "August Wilson Theatre",
+      "previews": "2027-03-30",
+      "opening": "2027-04-13",
+      "closing": "2027-06-27",
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
       "tkts": "N/a",
-      "fullPrice": "$119.00 - $599.00"
+      "fullPrice": "$84.00 - $614.88"
     },
     "blue-man-group-a-new-holiday-surprise": {
       "url": "https://www.tdf.org/shows/23551/blue-man-group-a-new-holiday-surprise/",
@@ -188,7 +190,7 @@ window.TM_TDF = {
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
-      "tkts": "Occasionally",
+      "tkts": "Frequently",
       "fullPrice": "$65.00 - $245.00"
     },
     "oh-mary": {
@@ -210,32 +212,19 @@ window.TM_TDF = {
       "venue": "Stephen Sondheim Theatre",
       "previews": "2027-03-03",
       "opening": "2027-03-23",
-      "closing": null,
+      "closing": "2027-06-12",
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
       "tkts": "N/a",
-      "fullPrice": null
-    },
-    "the-imaginary-invalid": {
-      "url": "https://www.tdf.org/shows/23394/the-imaginary-invalid/",
-      "title": "The Imaginary Invalid",
-      "venue": "Todd Haimes Theatre",
-      "previews": "2026-09-25",
-      "opening": "2026-10-22",
-      "closing": "2026-11-22",
-      "member": null,
-      "memberAvailable": false,
-      "memberPrice": null,
-      "tkts": "Frequently",
-      "fullPrice": "$68.00 - $269.00"
+      "fullPrice": "$159.00 - $749.00"
     },
     "its-a-wonderful-life": {
       "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play/",
       "title": "It’s A Wonderful Life: A Live Radio Play",
       "venue": "Broadhurst Theatre",
       "previews": "2026-11-04",
-      "opening": "2026-11-18",
+      "opening": "2026-11-23",
       "closing": "2027-01-03",
       "member": null,
       "memberAvailable": false,
@@ -373,6 +362,32 @@ window.TM_TDF = {
       "tkts": "Frequently",
       "fullPrice": "$69.00 - $345.00"
     },
+    "lost-lear": {
+      "url": "https://www.tdf.org/shows/23651/lost-lear/",
+      "title": "Lost Lear",
+      "venue": "Booth Theatre",
+      "previews": "2027-03-29",
+      "opening": "2027-04-23",
+      "closing": "2027-07-18",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$79.00 - $399.00"
+    },
+    "inter-alia": {
+      "url": "https://www.tdf.org/shows/23204/inter-alia/",
+      "title": "Inter Alia",
+      "venue": "Music Box Theatre",
+      "previews": "2026-11-11",
+      "opening": "2026-12-01",
+      "closing": "2027-02-21",
+      "member": null,
+      "memberAvailable": false,
+      "memberPrice": null,
+      "tkts": "N/a",
+      "fullPrice": "$84.00 - $361.00"
+    },
     "singfeld-a-musical-about-nothing": {
       "url": "https://www.tdf.org/shows/19478/singfeld-a-musical-about-nothing/",
       "title": "Singfeld: A Musical About Nothing!",
@@ -392,7 +407,7 @@ window.TM_TDF = {
       "venue": "Astor Place Theatre",
       "previews": "2026-11-17",
       "opening": "2026-12-07",
-      "closing": "2027-01-24",
+      "closing": "2027-01-10",
       "member": null,
       "memberAvailable": false,
       "memberPrice": null,
