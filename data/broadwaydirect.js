@@ -3,10 +3,10 @@
 // cheapest listed seat per section, per performance, next two weeks. Booking link = publicUrl.
 window.TM_BD = {
  "status": "ok",
- "updatedAt": "2026-11-23T22:14:02.144Z",
+ "updatedAt": "2026-11-24T20:52:46.444Z",
  "window": {
-  "from": "2026-11-23",
-  "to": "2026-12-06"
+  "from": "2026-11-24",
+  "to": "2026-12-07"
  },
  "series": {
   "233946": {
@@ -237,65 +237,61 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/860860?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 2:00 PM": {
-     "low": 84.75,
-     "seats": 137,
-     "secs": {
-      "mezz": 156.5,
-      "orch": 178,
-      "rmezz": 84.75
-     },
-     "raw": {
-      "FMEZC": 208,
-      "FMEZO": 156.5,
-      "ORCHC": 400.5,
-      "ORCHO": 178,
-      "RMEZZ": 84.75
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/860860/860-2219990?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-24 7:00 PM": {
      "low": 84.75,
-     "seats": 153,
+     "seats": 113,
      "secs": {
-      "orch": 400.5,
+      "mezz": 208,
+      "orch": 153,
       "rmezz": 84.75
      },
      "raw": {
+      "FMEZC": 208,
       "ORCHC": 500.5,
-      "ORCHO": 400.5,
+      "ORCHO": 153,
       "RMEZZ": 84.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/860860/860-2149581?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 120.75,
-     "seats": 211,
+     "seats": 205,
      "secs": {
       "mezz": 168,
-      "orch": 228,
+      "orch": 400.5,
       "rmezz": 120.75
      },
      "raw": {
       "FMEZO": 168,
-      "ORCHO": 228,
+      "ORCHO": 400.5,
       "RMEZZ": 120.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/860860/860-2149582?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 8:00 PM": {
      "low": 120.75,
-     "seats": 176,
+     "seats": 175,
      "secs": {
+      "mezz": 228,
+      "orch": 400.5,
       "rmezz": 120.75
      },
      "raw": {
+      "FMEZC": 228,
+      "ORCHO": 400.5,
       "RMEZZ": 120.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/860860/860-2149583?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 120.75,
-     "seats": 10,
+     "seats": 8,
      "secs": {
       "mezz": 168,
       "rmezz": 120.75
@@ -308,7 +304,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 120.75,
-     "seats": 201,
+     "seats": 190,
      "secs": {
       "mezz": 168,
       "orch": 500.5,
@@ -334,7 +330,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 84.75,
-     "seats": 46,
+     "seats": 41,
      "secs": {
       "rmezz": 84.75
      },
@@ -352,7 +348,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 84.75,
-     "seats": 21,
+     "seats": 16,
      "secs": {
       "mezz": 156.5,
       "rmezz": 84.75
@@ -365,7 +361,7 @@ window.TM_BD = {
     },
     "2026-12-04 8:00 PM": {
      "low": 120.75,
-     "seats": 132,
+     "seats": 114,
      "secs": {
       "mezz": 168,
       "orch": 500.5,
@@ -380,7 +376,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 120.75,
-     "seats": 5,
+     "seats": 3,
      "secs": {
       "mezz": 168,
       "rmezz": 120.75
@@ -393,7 +389,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 120.75,
-     "seats": 79,
+     "seats": 72,
      "secs": {
       "mezz": 168,
       "orch": 228,
@@ -430,47 +426,42 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843567?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 59.75,
-     "seats": 58,
+     "low": 110.75,
+     "seats": 11,
      "secs": {
-      "balc": 59.75,
-      "mezz": 69.75,
-      "orch": 69.75,
+      "mezz": 175,
+      "orch": 175,
       "rmezz": 110.75
      },
      "raw": {
-      "BALC BX L": 59.75,
-      "BALC BX R": 59.75,
-      "BALC R": 59.75,
       "MEZZ C": 195,
       "MEZZ L": 175,
-      "MEZZ R": 69.75,
-      "ORCH L": 69.75,
-      "ORCH R": 69.75,
-      "RMEZ L": 110.75,
+      "MEZZ R": 195,
+      "ORCH L": 175,
       "RMEZ R": 110.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843567/the-lost-boys-2121864?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 59.75,
-     "seats": 603,
+     "seats": 388,
      "secs": {
       "balc": 59.75,
-      "mezz": 69.75,
+      "mezz": 89.75,
       "orch": 69.75,
       "rmezz": 69.75
      },
      "raw": {
+      "BALC BX L": 59.75,
+      "BALC BX R": 59.75,
       "BALC C": 59.75,
       "BALC L": 59.75,
       "BALC R": 59.75,
-      "MEZZ C": 89.75,
-      "MEZZ L": 69.75,
-      "MEZZ R": 69.75,
+      "MEZZ C": 133,
+      "MEZZ L": 89.75,
+      "MEZZ R": 89.75,
       "ORCH L": 69.75,
-      "ORCH R": 69.75,
-      "RMEZ C": 69.75,
+      "ORCH R": 110.75,
       "RMEZ L": 69.75,
       "RMEZ R": 69.75
      },
@@ -478,10 +469,10 @@ window.TM_BD = {
     },
     "2026-11-25 7:30 PM": {
      "low": 59.75,
-     "seats": 528,
+     "seats": 446,
      "secs": {
       "balc": 59.75,
-      "mezz": 69.75,
+      "mezz": 89.75,
       "orch": 69.75,
       "rmezz": 79.75
      },
@@ -490,8 +481,8 @@ window.TM_BD = {
       "BALC L": 59.75,
       "BALC R": 59.75,
       "MEZZ C": 89.75,
-      "MEZZ L": 69.75,
-      "MEZZ R": 69.75,
+      "MEZZ L": 89.75,
+      "MEZZ R": 89.75,
       "ORCH L": 69.75,
       "ORCH R": 69.75,
       "RMEZ C": 79.75,
@@ -502,7 +493,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 69.75,
-     "seats": 540,
+     "seats": 535,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -513,7 +504,7 @@ window.TM_BD = {
       "BALC C": 69.75,
       "BALC L": 69.75,
       "BALC R": 69.75,
-      "MEZZ C": 175,
+      "MEZZ C": 195,
       "MEZZ L": 110.75,
       "MEZZ R": 69.75,
       "ORCH L": 69.75,
@@ -526,7 +517,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 69.75,
-     "seats": 604,
+     "seats": 595,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -550,7 +541,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 69.75,
-     "seats": 757,
+     "seats": 732,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -574,7 +565,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 69.75,
-     "seats": 835,
+     "seats": 797,
      "secs": {
       "balc": 69.75,
       "mezz": 69.75,
@@ -598,7 +589,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 59.75,
-     "seats": 855,
+     "seats": 837,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -622,7 +613,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 69.75,
-     "seats": 699,
+     "seats": 690,
      "secs": {
       "mezz": 69.75,
       "orch": 69.75,
@@ -642,7 +633,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 69.75,
-     "seats": 683,
+     "seats": 679,
      "secs": {
       "mezz": 69.75,
       "orch": 69.75,
@@ -662,7 +653,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 59.75,
-     "seats": 696,
+     "seats": 690,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -686,7 +677,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 59.75,
-     "seats": 695,
+     "seats": 685,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -709,7 +700,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 59.75,
-     "seats": 275,
+     "seats": 261,
      "secs": {
       "balc": 59.75,
       "mezz": 89.75,
@@ -732,7 +723,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 59.75,
-     "seats": 610,
+     "seats": 590,
      "secs": {
       "balc": 59.75,
       "mezz": 89.75,
@@ -756,7 +747,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 59.75,
-     "seats": 797,
+     "seats": 792,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -780,7 +771,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:30 PM": {
      "low": 59.75,
-     "seats": 1052,
+     "seats": 1023,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -809,43 +800,26 @@ window.TM_BD = {
    "name": "Stranger Things: The First Shadow",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/787264?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:00 PM": {
+    "2026-11-24 7:00 PM": {
      "low": 69,
-     "seats": 116,
+     "seats": 52,
      "secs": {
-      "mezz": 69,
+      "mezz": 99,
       "orch": 69
      },
      "raw": {
       "MEZZC": 99,
-      "MEZZL": 69,
-      "MEZZR": 69,
+      "MEZZL": 99,
+      "MEZZR": 99,
       "ORCHC": 99,
       "ORCHL": 69,
       "ORCHR": 99
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/787264/stranger-things-the-first-shadow-2044402?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-24 7:00 PM": {
-     "low": 69,
-     "seats": 318,
-     "secs": {
-      "mezz": 82.51,
-      "orch": 69
-     },
-     "raw": {
-      "MEZZC": 99,
-      "MEZZL": 82.51,
-      "MEZZR": 82.51,
-      "ORCHC": 82.51,
-      "ORCHL": 69,
-      "ORCHR": 69
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/787264/stranger-things-the-first-shadow-2044415?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:00 PM": {
      "low": 99.5,
-     "seats": 789,
+     "seats": 699,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -862,7 +836,7 @@ window.TM_BD = {
     },
     "2026-11-27 1:00 PM": {
      "low": 99.5,
-     "seats": 913,
+     "seats": 810,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -879,7 +853,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 99.5,
-     "seats": 894,
+     "seats": 788,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -896,7 +870,7 @@ window.TM_BD = {
     },
     "2026-11-28 1:00 PM": {
      "low": 99.5,
-     "seats": 975,
+     "seats": 897,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -913,7 +887,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 99.5,
-     "seats": 997,
+     "seats": 994,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -930,7 +904,7 @@ window.TM_BD = {
     },
     "2026-11-29 1:00 PM": {
      "low": 99.5,
-     "seats": 1204,
+     "seats": 1192,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -947,7 +921,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 69,
-     "seats": 1087,
+     "seats": 1059,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -964,7 +938,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 69,
-     "seats": 1183,
+     "seats": 1170,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -981,7 +955,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 69,
-     "seats": 998,
+     "seats": 987,
      "secs": {
       "mezz": 69,
       "orch": 69
@@ -998,7 +972,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 99.5,
-     "seats": 1067,
+     "seats": 1055,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -1015,7 +989,7 @@ window.TM_BD = {
     },
     "2026-12-05 1:00 PM": {
      "low": 99.5,
-     "seats": 713,
+     "seats": 699,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -1032,7 +1006,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:00 PM": {
      "low": 99.5,
-     "seats": 1007,
+     "seats": 1012,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -1049,7 +1023,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 99.5,
-     "seats": 1020,
+     "seats": 1014,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -1066,7 +1040,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:00 PM": {
      "low": 99.5,
-     "seats": 1228,
+     "seats": 1226,
      "secs": {
       "mezz": 99.5,
       "orch": 99.5
@@ -1096,22 +1070,20 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 163.5,
-     "seats": 209,
+     "seats": 52,
      "secs": {
-      "balc": 163.5,
       "mezz": 163.5,
-      "orch": 181.5
+      "orch": 195.5
      },
      "raw": {
-      "BALC": 163.5,
       "MEZZ": 163.5,
-      "ORCH": 181.5
+      "ORCH": 195.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/527646/aladdin-2121800?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 1:00 PM": {
      "low": 90.25,
-     "seats": 538,
+     "seats": 387,
      "secs": {
       "balc": 90.25,
       "box": 90.25,
@@ -1128,7 +1100,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 94.25,
-     "seats": 440,
+     "seats": 366,
      "secs": {
       "balc": 94.25,
       "box": 117.25,
@@ -1145,7 +1117,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 94.25,
-     "seats": 393,
+     "seats": 344,
      "secs": {
       "balc": 94.25,
       "mezz": 159.5,
@@ -1160,7 +1132,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 88.25,
-     "seats": 744,
+     "seats": 719,
      "secs": {
       "balc": 88.25,
       "box": 110.25,
@@ -1177,7 +1149,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 88.25,
-     "seats": 464,
+     "seats": 460,
      "secs": {
       "balc": 88.25,
       "box": 109.25,
@@ -1194,7 +1166,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 99.25,
-     "seats": 828,
+     "seats": 833,
      "secs": {
       "balc": 99.25,
       "box": 119.25,
@@ -1211,7 +1183,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 78.25,
-     "seats": 611,
+     "seats": 581,
      "secs": {
       "balc": 78.25,
       "mezz": 133.5,
@@ -1226,7 +1198,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 88.25,
-     "seats": 818,
+     "seats": 787,
      "secs": {
       "balc": 88.25,
       "box": 99.25,
@@ -1243,7 +1215,7 @@ window.TM_BD = {
     },
     "2026-12-02 1:00 PM": {
      "low": 68.25,
-     "seats": 26,
+     "seats": 25,
      "secs": {
       "balc": 88.25,
       "mezz": 68.25,
@@ -1258,7 +1230,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 88.25,
-     "seats": 681,
+     "seats": 648,
      "secs": {
       "balc": 88.25,
       "box": 99.25,
@@ -1275,7 +1247,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 83.25,
-     "seats": 420,
+     "seats": 409,
      "secs": {
       "balc": 83.25,
       "box": 121.25,
@@ -1292,7 +1264,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 99.25,
-     "seats": 352,
+     "seats": 338,
      "secs": {
       "balc": 99.25,
       "mezz": 235.5,
@@ -1307,7 +1279,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 104.25,
-     "seats": 780,
+     "seats": 772,
      "secs": {
       "balc": 104.25,
       "mezz": 143.5,
@@ -1322,7 +1294,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 99.25,
-     "seats": 751,
+     "seats": 735,
      "secs": {
       "balc": 99.25,
       "box": 124.5,
@@ -1339,16 +1311,14 @@ window.TM_BD = {
     },
     "2026-12-06 6:30 PM": {
      "low": 88.25,
-     "seats": 985,
+     "seats": 949,
      "secs": {
       "balc": 88.25,
-      "box": 111.25,
       "mezz": 88.25,
       "orch": 121.25
      },
      "raw": {
       "BALC": 88.25,
-      "BOX 12": 111.25,
       "MEZZ": 88.25,
       "ORCH": 121.25
      },
@@ -1368,28 +1338,25 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 101.25,
-     "seats": 242,
+     "low": 100.75,
+     "seats": 31,
      "secs": {
-      "mezz": 133,
-      "orch": 120.75,
-      "rmezz": 101.25
+      "mezz": 100.75,
+      "orch": 110.75,
+      "rmezz": 111.25
      },
      "raw": {
-      "FMEZZ": 153,
-      "FMEZZC": 133,
-      "FMEZZO": 133,
+      "FMEZZ": 100.75,
+      "FMEZZC": 175,
       "ORCHC": 153,
-      "ORCHO": 120.75,
-      "RMEZZ": 101.25,
-      "RMEZZC": 121.25,
-      "RMEZZO": 101.25
+      "ORCHO": 110.75,
+      "RMEZZO": 111.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089913?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:00 PM": {
      "low": 90.25,
-     "seats": 354,
+     "seats": 308,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -1408,47 +1375,46 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089919?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-26 7:00 PM": {
-     "low": 111.25,
-     "seats": 110,
+     "low": 121.25,
+     "seats": 50,
      "secs": {
-      "mezz": 153,
-      "orch": 163,
-      "rmezz": 111.25
+      "mezz": 163,
+      "orch": 175,
+      "rmezz": 121.25
      },
      "raw": {
-      "FMEZZ": 153,
+      "FMEZZ": 163,
       "FMEZZC": 175,
       "FMEZZO": 163,
       "ORCHC": 185,
-      "ORCHO": 163,
-      "RMEZZC": 121.25,
-      "RMEZZO": 111.25
+      "ORCHO": 175,
+      "RMEZZO": 121.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089914?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 2:30 PM": {
      "low": 70.25,
-     "seats": 174,
+     "seats": 131,
      "secs": {
-      "mezz": 153,
-      "orch": 153,
+      "mezz": 163,
+      "orch": 110.75,
       "rmezz": 70.25
      },
      "raw": {
-      "FMEZZ": 153,
+      "FMEZZ": 163,
       "FMEZZC": 163,
-      "FMEZZO": 153,
+      "FMEZZO": 163,
       "ORCHC": 153,
-      "ORCHO": 153,
+      "ORCHO": 110.75,
       "RMEZZ": 70.25,
       "RMEZZC": 121.25,
-      "RMEZZO": 90.25
+      "RMEZZO": 121.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089918?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 8:00 PM": {
      "low": 90.25,
-     "seats": 190,
+     "seats": 173,
      "secs": {
       "mezz": 133,
       "orch": 120.75,
@@ -1467,48 +1433,34 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089915?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:30 PM": {
-     "low": 80.25,
-     "seats": 275,
+     "low": 90.25,
+     "seats": 284,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
-      "rmezz": 80.25
+      "rmezz": 90.25
      },
      "raw": {
       "FMEZZ": 100.75,
       "FMEZZC": 133,
       "FMEZZO": 100.75,
-      "ORCHC": 153,
+      "ORCHC": 120.75,
       "ORCHO": 110.75,
-      "RMEZZ": 80.25,
       "RMEZZC": 90.25,
       "RMEZZO": 90.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089916?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
-     "low": 101.25,
-     "seats": 413,
-     "secs": {
-      "mezz": 133,
-      "orch": 110.75,
-      "rmezz": 101.25
-     },
-     "raw": {
-      "FMEZZ": 153,
-      "FMEZZC": 133,
-      "FMEZZO": 133,
-      "ORCHC": 185,
-      "ORCHO": 110.75,
-      "RMEZZ": 101.25,
-      "RMEZZC": 111.25,
-      "RMEZZO": 101.25
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089917?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-30 7:00 PM": {
      "low": 90.25,
-     "seats": 536,
+     "seats": 554,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -1548,27 +1500,66 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 80.25,
-     "seats": 306,
+     "seats": 318,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
       "rmezz": 80.25
      },
      "raw": {
-      "FMEZZ": 100.75,
+      "FMEZZ": 153,
       "FMEZZC": 133,
       "FMEZZO": 100.75,
       "ORCHC": 163,
       "ORCHO": 100.75,
       "RMEZZ": 80.25,
       "RMEZZC": 101.25,
-      "RMEZZO": 90.25
+      "RMEZZO": 101.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089926?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-04 8:00 PM": {
+     "low": 100.75,
+     "seats": 209,
+     "secs": {
+      "mezz": 100.75,
+      "orch": 110.75,
+      "rmezz": 101.25
+     },
+     "raw": {
+      "FMEZZ": 153,
+      "FMEZZC": 133,
+      "FMEZZO": 100.75,
+      "ORCHC": 175,
+      "ORCHO": 110.75,
+      "RMEZZ": 101.25,
+      "RMEZZC": 101.25,
+      "RMEZZO": 101.25
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089929?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-05 2:30 PM": {
+     "low": 110.75,
+     "seats": 131,
+     "secs": {
+      "mezz": 133,
+      "orch": 110.75,
+      "rmezz": 121.25
+     },
+     "raw": {
+      "FMEZZ": 153,
+      "FMEZZC": 133,
+      "FMEZZO": 163,
+      "ORCHC": 153,
+      "ORCHO": 110.75,
+      "RMEZZC": 121.25,
+      "RMEZZO": 121.25
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089932?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-05 8:00 PM": {
      "low": 80.25,
-     "seats": 183,
+     "seats": 217,
      "secs": {
       "mezz": 100.75,
       "orch": 110.75,
@@ -1584,50 +1575,11 @@ window.TM_BD = {
       "RMEZZC": 101.25,
       "RMEZZO": 101.25
      },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089929?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-12-05 2:30 PM": {
-     "low": 100.75,
-     "seats": 150,
-     "secs": {
-      "mezz": 100.75,
-      "orch": 100.75,
-      "rmezz": 121.25
-     },
-     "raw": {
-      "FMEZZ": 100.75,
-      "FMEZZC": 133,
-      "FMEZZO": 153,
-      "ORCHC": 153,
-      "ORCHO": 100.75,
-      "RMEZZC": 121.25,
-      "RMEZZO": 121.25
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089932?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-12-05 8:00 PM": {
-     "low": 80.25,
-     "seats": 228,
-     "secs": {
-      "mezz": 100.75,
-      "orch": 110.75,
-      "rmezz": 80.25
-     },
-     "raw": {
-      "FMEZZ": 100.75,
-      "FMEZZC": 133,
-      "FMEZZO": 100.75,
-      "ORCHC": 175,
-      "ORCHO": 110.75,
-      "RMEZZ": 80.25,
-      "RMEZZC": 101.25,
-      "RMEZZO": 90.25
-     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089935?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-06 2:00 PM": {
      "low": 80.25,
-     "seats": 415,
+     "seats": 395,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -1647,7 +1599,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:00 PM": {
      "low": 90.25,
-     "seats": 548,
+     "seats": 543,
      "secs": {
       "mezz": 100.75,
       "orch": 100.75,
@@ -1664,6 +1616,26 @@ window.TM_BD = {
       "RMEZZO": 90.25
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089941?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 70.25,
+     "seats": 416,
+     "secs": {
+      "mezz": 100.75,
+      "orch": 110.75,
+      "rmezz": 70.25
+     },
+     "raw": {
+      "FMEZZ": 100.75,
+      "FMEZZC": 133,
+      "FMEZZO": 100.75,
+      "ORCHC": 163,
+      "ORCHO": 110.75,
+      "RMEZZ": 70.25,
+      "RMEZZC": 101.25,
+      "RMEZZO": 90.25
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/357893/chicago-2089921?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -1673,32 +1645,30 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 89.75,
-     "seats": 166,
+     "low": 143,
+     "seats": 70,
      "secs": {
-      "mezz": 89.75,
-      "orch": 110.75
+      "mezz": 163,
+      "orch": 143
      },
      "raw": {
       "MEZZC": 163,
-      "MEZZO": 95.75,
-      "MEZZPV": 89.75,
-      "ORCHC": 205,
-      "ORCHO": 163,
-      "ORCHPV": 110.75
+      "MEZZO": 185,
+      "ORCHC": 230,
+      "ORCHO": 143
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097437?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 89.75,
-     "seats": 286,
+     "seats": 171,
      "secs": {
-      "mezz": 100.75,
+      "mezz": 143,
       "orch": 89.75
      },
      "raw": {
       "MEZZC": 163,
-      "MEZZO": 100.75,
+      "MEZZO": 143,
       "ORCHC": 163,
       "ORCHO": 133,
       "ORCHPV": 89.75
@@ -1706,16 +1676,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097438?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
-     "low": 89.75,
-     "seats": 327,
+     "low": 143,
+     "seats": 283,
      "secs": {
-      "mezz": 89.75,
+      "mezz": 143,
       "orch": 163
      },
      "raw": {
       "MEZZC": 163,
       "MEZZO": 143,
-      "MEZZPV": 89.75,
       "ORCHC": 205,
       "ORCHO": 163
      },
@@ -1723,7 +1692,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 89.75,
-     "seats": 302,
+     "seats": 291,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1733,14 +1702,14 @@ window.TM_BD = {
       "MEZZO": 185,
       "MEZZPV": 89.75,
       "ORCHC": 205,
-      "ORCHO": 163,
+      "ORCHO": 143,
       "ORCHPV": 110.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/283628/buena-vista-social-club-2097440?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 7:30 PM": {
      "low": 89.75,
-     "seats": 349,
+     "seats": 331,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1757,7 +1726,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 89.75,
-     "seats": 377,
+     "seats": 359,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1774,7 +1743,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 89.75,
-     "seats": 432,
+     "seats": 400,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1791,7 +1760,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 89.75,
-     "seats": 346,
+     "seats": 316,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -1808,7 +1777,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 59.75,
-     "seats": 288,
+     "seats": 266,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1825,7 +1794,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 69.75,
-     "seats": 242,
+     "seats": 240,
      "secs": {
       "mezz": 69.75,
       "orch": 89.75
@@ -1842,7 +1811,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:30 PM": {
      "low": 59.75,
-     "seats": 440,
+     "seats": 427,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1859,7 +1828,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 59.75,
-     "seats": 342,
+     "seats": 320,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1876,7 +1845,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 59.75,
-     "seats": 410,
+     "seats": 404,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -1893,7 +1862,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 79.75,
-     "seats": 208,
+     "seats": 199,
      "secs": {
       "mezz": 100.75,
       "orch": 79.75
@@ -1909,7 +1878,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 69.75,
-     "seats": 273,
+     "seats": 264,
      "secs": {
       "mezz": 69.75,
       "orch": 79.75
@@ -1949,37 +1918,42 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 156.5,
+     "seats": 12,
+     "secs": {
+      "orch": 156.5
+     },
+     "raw": {
+      "ORCHC": 301,
+      "ORCHO": 156.5
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048308?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": 105.75,
-     "seats": 152,
-     "secs": {
-      "mezz": 105.75,
-      "orch": 126.5
-     },
-     "raw": {
-      "MEZZ": 105.75,
-      "MEZZC": 231,
-      "MEZZO": 114.25,
-      "ORCHC": 168,
-      "ORCHO": 126.5
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048309?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 7:30 PM": {
      "low": 95.75,
-     "seats": 131,
+     "seats": 103,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
      },
      "raw": {
       "MEZZ": 95.75,
+      "MEZZC": 231,
+      "MEZZO": 168,
+      "ORCHC": 168,
+      "ORCHO": 136.5
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048309?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 7:30 PM": {
+     "low": 114.25,
+     "seats": 87,
+     "secs": {
+      "mezz": 114.25,
+      "orch": 136.5
+     },
+     "raw": {
+      "MEZZ": 126.5,
       "MEZZC": 241,
       "MEZZO": 114.25,
       "ORCHC": 211,
@@ -1989,39 +1963,39 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 105.75,
-     "seats": 132,
+     "seats": 116,
      "secs": {
       "mezz": 105.75,
       "orch": 136.5
      },
      "raw": {
       "MEZZ": 105.75,
-      "MEZZC": 261,
+      "MEZZC": 241,
       "MEZZO": 201,
-      "ORCHC": 261,
+      "ORCHC": 211,
       "ORCHO": 136.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048311?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 7:30 PM": {
-     "low": 168,
-     "seats": 103,
+     "low": 136.5,
+     "seats": 108,
      "secs": {
-      "mezz": 198,
-      "orch": 168
+      "mezz": 178,
+      "orch": 136.5
      },
      "raw": {
-      "MEZZ": 198,
+      "MEZZ": 178,
       "MEZZC": 271,
       "MEZZO": 251,
-      "ORCHC": 291,
-      "ORCHO": 168
+      "ORCHC": 271,
+      "ORCHO": 136.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843688/the-outsiders-2048312?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 95.75,
-     "seats": 192,
+     "seats": 177,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
@@ -2037,7 +2011,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 105.75,
-     "seats": 259,
+     "seats": 235,
      "secs": {
       "mezz": 105.75,
       "orch": 156.5
@@ -2053,7 +2027,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 95.75,
-     "seats": 218,
+     "seats": 209,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
@@ -2069,7 +2043,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 95.75,
-     "seats": 486,
+     "seats": 483,
      "secs": {
       "mezz": 95.75,
       "orch": 126.5
@@ -2085,7 +2059,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 105.75,
-     "seats": 69,
+     "seats": 60,
      "secs": {
       "mezz": 105.75,
       "orch": 168
@@ -2116,7 +2090,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 136.5,
-     "seats": 205,
+     "seats": 195,
      "secs": {
       "mezz": 136.5,
       "orch": 136.5
@@ -2132,7 +2106,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 105.75,
-     "seats": 346,
+     "seats": 345,
      "secs": {
       "mezz": 105.75,
       "orch": 136.5
@@ -2148,7 +2122,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 95.75,
-     "seats": 244,
+     "seats": 224,
      "secs": {
       "mezz": 95.75,
       "orch": 156.5
@@ -2164,7 +2138,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 95.75,
-     "seats": 240,
+     "seats": 224,
      "secs": {
       "mezz": 95.75,
       "orch": 136.5
@@ -2180,7 +2154,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 105.75,
-     "seats": 423,
+     "seats": 409,
      "secs": {
       "mezz": 105.75,
       "orch": 156.5
@@ -2201,51 +2175,9 @@ window.TM_BD = {
    "name": "Inter Alia",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:30 PM": {
-     "low": 153,
-     "seats": 5,
-     "secs": {
-      "orch": 153
-     },
-     "raw": {
-      "ORCHC": 175,
-      "ORCHO": 153
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105939?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-24 7:30 PM": {
      "low": 95.75,
-     "seats": 81,
-     "secs": {
-      "mezz": 95.75,
-      "orch": 153
-     },
-     "raw": {
-      "MEZZC": 95.75,
-      "MEZZO": 120.75,
-      "ORCHC": 153,
-      "ORCHO": 153
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105940?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 1:00 PM": {
-     "low": 64.75,
-     "seats": 280,
-     "secs": {
-      "mezz": 64.75,
-      "orch": 153
-     },
-     "raw": {
-      "MEZZC": 95.75,
-      "MEZZO": 64.75,
-      "ORCHC": 153,
-      "ORCHO": 153
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105941?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 7:30 PM": {
-     "low": 95.75,
-     "seats": 201,
+     "seats": 21,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2253,21 +2185,59 @@ window.TM_BD = {
      "raw": {
       "MEZZC": 95.75,
       "MEZZO": 95.75,
+      "ORCHC": 175,
+      "ORCHO": 153
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105940?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 1:00 PM": {
+     "low": 64.75,
+     "seats": 132,
+     "secs": {
+      "mezz": 64.75,
+      "orch": 153
+     },
+     "raw": {
+      "MEZZC": 120.75,
+      "MEZZO": 64.75,
+      "ORCHC": 153,
+      "ORCHO": 153
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105941?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 7:30 PM": {
+     "low": 120.75,
+     "seats": 101,
+     "secs": {
+      "mezz": 120.75,
+      "orch": 153
+     },
+     "raw": {
+      "MEZZC": 120.75,
+      "MEZZO": 120.75,
       "ORCHC": 153,
       "ORCHO": 153
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105942?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 7:30 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 95.75,
+     "seats": 82,
+     "secs": {
+      "mezz": 95.75,
+      "orch": 153
+     },
+     "raw": {
+      "MEZZC": 95.75,
+      "MEZZO": 95.75,
+      "ORCHC": 175,
+      "ORCHO": 153
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105943?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 1:00 PM": {
      "low": 95.75,
-     "seats": 260,
+     "seats": 302,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2281,15 +2251,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/468372/inter-alia-2105944?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 7:30 PM": {
-     "low": 64.75,
-     "seats": 199,
+     "low": 95.75,
+     "seats": 189,
      "secs": {
-      "mezz": 64.75,
+      "mezz": 95.75,
       "orch": 153
      },
      "raw": {
       "MEZZC": 95.75,
-      "MEZZO": 64.75,
+      "MEZZO": 95.75,
       "ORCHC": 153,
       "ORCHO": 153
      },
@@ -2297,7 +2267,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 95.75,
-     "seats": 229,
+     "seats": 223,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2312,7 +2282,7 @@ window.TM_BD = {
     },
     "2026-11-30 7:00 PM": {
      "low": 95.75,
-     "seats": 200,
+     "seats": 196,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2327,7 +2297,7 @@ window.TM_BD = {
     },
     "2026-12-03 1:00 PM": {
      "low": 95.75,
-     "seats": 176,
+     "seats": 177,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2342,7 +2312,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 95.75,
-     "seats": 133,
+     "seats": 131,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2372,7 +2342,7 @@ window.TM_BD = {
     },
     "2026-12-05 1:00 PM": {
      "low": 95.75,
-     "seats": 202,
+     "seats": 200,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2387,7 +2357,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:00 PM": {
      "low": 95.75,
-     "seats": 201,
+     "seats": 196,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2402,7 +2372,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 95.75,
-     "seats": 162,
+     "seats": 158,
      "secs": {
       "mezz": 95.75,
       "orch": 153
@@ -2424,39 +2394,39 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:30 PM": {
      "low": 105.75,
-     "seats": 107,
+     "seats": 29,
      "secs": {
-      "balc": 105.75,
       "mezz": 105.75,
       "orch": 156
      },
      "raw": {
-      "BALC": 105.75,
       "MEZZC": 105.75,
       "MEZZO": 105.75,
-      "ORCHC": 156
+      "ORCHC": 156,
+      "ORCHO": 178
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271501?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 74.75,
-     "seats": 156,
+     "seats": 125,
      "secs": {
       "balc": 74.75,
       "mezz": 105.75,
-      "orch": 178
+      "orch": 156
      },
      "raw": {
       "BALC": 74.75,
       "MEZZC": 105.75,
       "MEZZO": 105.75,
-      "ORCHC": 178
+      "ORCHC": 156,
+      "ORCHO": 156
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271502?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
      "low": 64.75,
-     "seats": 118,
+     "seats": 95,
      "secs": {
       "balc": 64.75,
       "mezz": 105.75,
@@ -2472,16 +2442,16 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 64.75,
-     "seats": 251,
+     "seats": 241,
      "secs": {
       "balc": 64.75,
-      "mezz": 105.75,
+      "mezz": 114.75,
       "orch": 178
      },
      "raw": {
       "BALC": 64.75,
       "MEZZC": 114.75,
-      "MEZZO": 105.75,
+      "MEZZO": 114.75,
       "ORCHC": 178,
       "ORCHO": 178
      },
@@ -2489,24 +2459,41 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 64.75,
-     "seats": 204,
+     "seats": 237,
      "secs": {
       "balc": 64.75,
-      "mezz": 114.75,
-      "orch": 105.75
+      "mezz": 105.75,
+      "orch": 178
      },
      "raw": {
       "BALC": 64.75,
       "MEZZC": 114.75,
-      "MEZZO": 114.75,
+      "MEZZO": 105.75,
       "ORCHC": 178,
-      "ORCHO": 105.75
+      "ORCHO": 178
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271505?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 74.75,
-     "seats": 104,
+     "seats": 181,
+     "secs": {
+      "balc": 74.75,
+      "mezz": 105.75,
+      "orch": 105.75
+     },
+     "raw": {
+      "BALC": 74.75,
+      "MEZZC": 178,
+      "MEZZO": 105.75,
+      "ORCHC": 178,
+      "ORCHO": 105.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271506?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-28 8:00 PM": {
+     "low": 74.75,
+     "seats": 276,
      "secs": {
       "balc": 74.75,
       "mezz": 105.75,
@@ -2514,41 +2501,24 @@ window.TM_BD = {
      },
      "raw": {
       "BALC": 74.75,
-      "MEZZC": 178,
-      "MEZZO": 105.75,
-      "ORCHC": 178,
-      "ORCHO": 178
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271506?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-28 8:00 PM": {
-     "low": 64.75,
-     "seats": 211,
-     "secs": {
-      "balc": 64.75,
-      "mezz": 105.75,
-      "orch": 178
-     },
-     "raw": {
-      "BALC": 64.75,
       "MEZZC": 114.75,
       "MEZZO": 105.75,
       "ORCHC": 178,
-      "ORCHO": 178
+      "ORCHO": 198
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271507?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
-     "low": 168,
-     "seats": 19,
+     "low": 114.75,
+     "seats": 22,
      "secs": {
-      "mezz": 258,
-      "orch": 168
+      "mezz": 114.75,
+      "orch": 350.5
      },
      "raw": {
-      "MEZZO": 258,
-      "ORCHC": 198,
-      "ORCHO": 168
+      "MEZZO": 114.75,
+      "ORCHC": 350.5,
+      "ORCHO": 350.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/896787/two-strangers-carry-a-cake-across-new-york-2271508?trafficSource=agentic&trafficChannel=api"
     }
@@ -2566,39 +2536,33 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/629234?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 56.75,
-     "seats": 95,
+     "low": 60.75,
+     "seats": 5,
      "secs": {
-      "balc": 56.75,
-      "mezz": 64.75,
+      "balc": 60.75,
       "orch": 95.75
      },
      "raw": {
-      "BALCC": 105.75,
-      "BALCO": 56.75,
+      "BALCO": 114.25,
       "BALCPV": 60.75,
-      "MEZZO": 105.75,
-      "MEZZPV": 64.75,
-      "ORCHO": 156.5,
-      "ORCHPV": 95.75
+      "ORCHO": 95.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/629234/maybe-happy-ending-2154515?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 60.75,
-     "seats": 341,
+     "seats": 280,
      "secs": {
       "balc": 60.75,
-      "mezz": 84.75,
+      "mezz": 95.75,
       "orch": 95.75
      },
      "raw": {
       "BALCC": 95.75,
       "BALCO": 64.75,
-      "BALCO.": 105.75,
       "BALCPV": 60.75,
       "MEZZC": 178,
-      "MEZZO": 84.75,
+      "MEZZO": 95.75,
       "ORCHC": 136.5,
       "ORCHO": 95.75,
       "ORCHPV": 95.75
@@ -2607,7 +2571,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 60.75,
-     "seats": 235,
+     "seats": 205,
      "secs": {
       "balc": 60.75,
       "mezz": 114.25,
@@ -2615,7 +2579,7 @@ window.TM_BD = {
      },
      "raw": {
       "BALCC": 105.75,
-      "BALCO": 64.75,
+      "BALCO": 84.75,
       "BALCPV": 60.75,
       "MEZZC": 198,
       "MEZZO": 114.25,
@@ -2627,7 +2591,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 60.75,
-     "seats": 134,
+     "seats": 128,
      "secs": {
       "balc": 60.75,
       "mezz": 114.25,
@@ -2647,10 +2611,10 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 60.75,
-     "seats": 230,
+     "seats": 198,
      "secs": {
       "balc": 60.75,
-      "mezz": 64.75,
+      "mezz": 114.25,
       "orch": 95.75
      },
      "raw": {
@@ -2659,7 +2623,6 @@ window.TM_BD = {
       "BALCPV": 60.75,
       "MEZZC": 146.5,
       "MEZZO": 114.25,
-      "MEZZPV": 64.75,
       "ORCHC": 156.5,
       "ORCHO": 156.5,
       "ORCHPV": 95.75
@@ -2668,7 +2631,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 60.75,
-     "seats": 261,
+     "seats": 274,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2678,7 +2641,7 @@ window.TM_BD = {
       "BALCC": 74.75,
       "BALCO": 74.75,
       "BALCPV": 60.75,
-      "MEZZC": 146.5,
+      "MEZZC": 198,
       "MEZZO": 114.25,
       "MEZZPV": 64.75,
       "ORCHC": 208,
@@ -2689,7 +2652,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 60.75,
-     "seats": 329,
+     "seats": 295,
      "secs": {
       "balc": 60.75,
       "mezz": 64.75,
@@ -2711,7 +2674,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 56.75,
-     "seats": 401,
+     "seats": 391,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2733,7 +2696,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 56.75,
-     "seats": 541,
+     "seats": 533,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2755,7 +2718,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 56.75,
-     "seats": 443,
+     "seats": 532,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2766,7 +2729,7 @@ window.TM_BD = {
       "BALCO": 56.75,
       "BALCO.": 105.75,
       "BALCPV": 60.75,
-      "MEZZC": 198,
+      "MEZZC": 126.5,
       "MEZZO": 95.75,
       "MEZZPV": 64.75,
       "ORCHC": 95.75,
@@ -2777,7 +2740,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 56.75,
-     "seats": 547,
+     "seats": 538,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2799,7 +2762,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 56.75,
-     "seats": 529,
+     "seats": 521,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2821,7 +2784,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 56.75,
-     "seats": 403,
+     "seats": 395,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2843,7 +2806,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 56.75,
-     "seats": 198,
+     "seats": 188,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2858,14 +2821,14 @@ window.TM_BD = {
       "MEZZO": 95.75,
       "MEZZPV": 64.75,
       "ORCHC": 208,
-      "ORCHO": 105.75,
+      "ORCHO": 156.5,
       "ORCHPV": 95.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/629234/maybe-happy-ending-2154528?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 7:00 PM": {
      "low": 56.75,
-     "seats": 363,
+     "seats": 349,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2877,7 +2840,7 @@ window.TM_BD = {
       "BALCO.": 74.75,
       "BALCPV": 60.75,
       "MEZZC": 146.5,
-      "MEZZO": 84.75,
+      "MEZZO": 95.75,
       "MEZZPV": 64.75,
       "ORCHC": 156.5,
       "ORCHO": 95.75,
@@ -2887,7 +2850,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 56.75,
-     "seats": 469,
+     "seats": 451,
      "secs": {
       "balc": 56.75,
       "mezz": 64.75,
@@ -2915,15 +2878,15 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/487296?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 59.75,
-     "seats": 543,
+     "low": 79.75,
+     "seats": 362,
      "secs": {
-      "mezz": 59.75,
+      "mezz": 79.75,
       "orch": 100.75
      },
      "raw": {
       "MEZZC": 79.75,
-      "MEZZO": 59.75,
+      "MEZZO": 79.75,
       "ORCHC": 110.75,
       "ORCHO": 100.75
      },
@@ -2931,7 +2894,7 @@ window.TM_BD = {
     },
     "2026-11-25 1:00 PM": {
      "low": 79.75,
-     "seats": 733,
+     "seats": 717,
      "secs": {
       "mezz": 79.75,
       "orch": 100.75
@@ -2946,7 +2909,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 79.75,
-     "seats": 702,
+     "seats": 670,
      "secs": {
       "mezz": 79.75,
       "orch": 100.75
@@ -2961,7 +2924,7 @@ window.TM_BD = {
     },
     "2026-11-27 1:00 PM": {
      "low": 69.75,
-     "seats": 613,
+     "seats": 606,
      "secs": {
       "mezz": 69.75,
       "orch": 110.75
@@ -2976,7 +2939,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 89.75,
-     "seats": 593,
+     "seats": 571,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -2991,7 +2954,7 @@ window.TM_BD = {
     },
     "2026-11-28 1:00 PM": {
      "low": 69.75,
-     "seats": 607,
+     "seats": 569,
      "secs": {
       "mezz": 69.75,
       "orch": 110.75
@@ -3006,7 +2969,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:00 PM": {
      "low": 89.75,
-     "seats": 739,
+     "seats": 733,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75
@@ -3021,7 +2984,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 69.75,
-     "seats": 597,
+     "seats": 588,
      "secs": {
       "mezz": 69.75,
       "orch": 110.75
@@ -3036,7 +2999,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 59.75,
-     "seats": 652,
+     "seats": 630,
      "secs": {
       "mezz": 59.75,
       "orch": 100.75
@@ -3050,15 +3013,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/487296/its-a-wonderful-life-2303077?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 7:00 PM": {
-     "low": 59.75,
-     "seats": 538,
+     "low": 79.75,
+     "seats": 518,
      "secs": {
-      "mezz": 59.75,
+      "mezz": 79.75,
       "orch": 100.75
      },
      "raw": {
-      "MEZZC": 79.75,
-      "MEZZO": 59.75,
+      "MEZZC": 133,
+      "MEZZO": 79.75,
       "ORCHC": 133,
       "ORCHO": 100.75
      },
@@ -3066,7 +3029,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 59.75,
-     "seats": 761,
+     "seats": 747,
      "secs": {
       "mezz": 59.75,
       "orch": 100.75
@@ -3081,7 +3044,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 69.75,
-     "seats": 641,
+     "seats": 625,
      "secs": {
       "mezz": 69.75,
       "orch": 110.75
@@ -3096,7 +3059,7 @@ window.TM_BD = {
     },
     "2026-12-05 1:00 PM": {
      "low": 110.75,
-     "seats": 386,
+     "seats": 378,
      "secs": {
       "mezz": 110.75,
       "orch": 153
@@ -3111,7 +3074,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:00 PM": {
      "low": 69.75,
-     "seats": 598,
+     "seats": 575,
      "secs": {
       "mezz": 69.75,
       "orch": 110.75
@@ -3126,7 +3089,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 143,
-     "seats": 343,
+     "seats": 338,
      "secs": {
       "mezz": 143,
       "orch": 153
@@ -3141,7 +3104,7 @@ window.TM_BD = {
     },
     "2026-12-06 6:30 PM": {
      "low": 59.75,
-     "seats": 670,
+     "seats": 663,
      "secs": {
       "mezz": 59.75,
       "orch": 100.75
@@ -3169,7 +3132,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 60.75,
-     "seats": 173,
+     "seats": 110,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3186,7 +3149,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 60.75,
-     "seats": 544,
+     "seats": 339,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3203,7 +3166,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:30 PM": {
      "low": 60.75,
-     "seats": 409,
+     "seats": 307,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3220,7 +3183,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 64.75,
-     "seats": 329,
+     "seats": 369,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3230,14 +3193,14 @@ window.TM_BD = {
       "BALC": 64.75,
       "MEZZC": 136.5,
       "MEZZO": 95.75,
-      "ORCHC": 224,
+      "ORCHC": 198,
       "ORCHO": 136.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/926833/wanted-2151812?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 8:00 PM": {
      "low": 64.75,
-     "seats": 447,
+     "seats": 472,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3254,7 +3217,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 64.75,
-     "seats": 289,
+     "seats": 261,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3263,7 +3226,7 @@ window.TM_BD = {
      "raw": {
       "BALC": 64.75,
       "MEZZC": 95.75,
-      "MEZZO": 95.75,
+      "MEZZO": 136.5,
       "ORCHC": 198,
       "ORCHO": 114.25
      },
@@ -3271,7 +3234,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 64.75,
-     "seats": 571,
+     "seats": 561,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3288,7 +3251,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 64.75,
-     "seats": 520,
+     "seats": 504,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3305,7 +3268,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 60.75,
-     "seats": 478,
+     "seats": 476,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3322,24 +3285,24 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 60.75,
-     "seats": 188,
+     "seats": 179,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
-      "orch": 146.5
+      "orch": 178
      },
      "raw": {
       "BALC": 60.75,
       "MEZZC": 84.75,
       "MEZZO": 84.75,
       "ORCHC": 178,
-      "ORCHO": 146.5
+      "ORCHO": 178
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/926833/wanted-2151820?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 7:30 PM": {
      "low": 60.75,
-     "seats": 437,
+     "seats": 427,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3356,7 +3319,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 60.75,
-     "seats": 439,
+     "seats": 438,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3373,7 +3336,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:30 PM": {
      "low": 60.75,
-     "seats": 377,
+     "seats": 419,
      "secs": {
       "balc": 60.75,
       "mezz": 84.75,
@@ -3390,7 +3353,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 64.75,
-     "seats": 174,
+     "seats": 167,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3407,7 +3370,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 64.75,
-     "seats": 506,
+     "seats": 494,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3424,7 +3387,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 64.75,
-     "seats": 444,
+     "seats": 417,
      "secs": {
       "balc": 64.75,
       "mezz": 95.75,
@@ -3447,25 +3410,15 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 8:00 PM": {
-     "low": 59.75,
-     "seats": 191,
-     "secs": {
-      "balc": 59.75,
-      "mezz": 66.75,
-      "orch": 95.75
-     },
-     "raw": {
-      "BALC": 59.75,
-      "MEZZC": 110.75,
-      "MEZZO": 66.75,
-      "ORCHC": 110.75,
-      "ORCHO": 95.75
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127846?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 8:00 PM": {
      "low": 59.75,
-     "seats": 414,
+     "seats": 398,
      "secs": {
       "balc": 59.75,
       "mezz": 66.75,
@@ -3482,24 +3435,24 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 59.75,
-     "seats": 262,
+     "seats": 199,
      "secs": {
       "balc": 59.75,
       "mezz": 73.75,
-      "orch": 80.75
+      "orch": 110.75
      },
      "raw": {
       "BALC": 59.75,
       "MEZZC": 89.75,
       "MEZZO": 73.75,
       "ORCHC": 153,
-      "ORCHO": 80.75
+      "ORCHO": 110.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127931?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 8:00 PM": {
      "low": 59.75,
-     "seats": 364,
+     "seats": 398,
      "secs": {
       "balc": 59.75,
       "mezz": 73.75,
@@ -3516,7 +3469,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 59.75,
-     "seats": 242,
+     "seats": 218,
      "secs": {
       "balc": 59.75,
       "mezz": 73.75,
@@ -3533,7 +3486,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 59.75,
-     "seats": 406,
+     "seats": 390,
      "secs": {
       "balc": 59.75,
       "mezz": 73.75,
@@ -3543,14 +3496,14 @@ window.TM_BD = {
       "BALC": 59.75,
       "MEZZC": 89.75,
       "MEZZO": 73.75,
-      "ORCHC": 153,
+      "ORCHC": 175,
       "ORCHO": 80.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127959?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
      "low": 46.75,
-     "seats": 658,
+     "seats": 665,
      "secs": {
       "balc": 46.75,
       "mezz": 59.75,
@@ -3567,7 +3520,7 @@ window.TM_BD = {
     },
     "2026-12-01 8:00 PM": {
      "low": 59.75,
-     "seats": 500,
+     "seats": 467,
      "secs": {
       "balc": 59.75,
       "mezz": 66.75,
@@ -3577,14 +3530,14 @@ window.TM_BD = {
       "BALC": 59.75,
       "MEZZC": 69.75,
       "MEZZO": 66.75,
-      "ORCHC": 143,
+      "ORCHC": 185,
       "ORCHO": 73.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127847?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 2:00 PM": {
      "low": 59.75,
-     "seats": 71,
+     "seats": 80,
      "secs": {
       "balc": 59.75,
       "mezz": 69.75,
@@ -3594,14 +3547,31 @@ window.TM_BD = {
       "BALC": 59.75,
       "MEZZC": 69.75,
       "MEZZO": 79.75,
-      "ORCHC": 215,
+      "ORCHC": 133,
       "ORCHO": 95.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127819?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 8:00 PM": {
      "low": 59.75,
-     "seats": 403,
+     "seats": 386,
+     "secs": {
+      "balc": 59.75,
+      "mezz": 66.75,
+      "orch": 100.75
+     },
+     "raw": {
+      "BALC": 59.75,
+      "MEZZC": 69.75,
+      "MEZZO": 66.75,
+      "ORCHC": 143,
+      "ORCHO": 100.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127876?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-03 8:00 PM": {
+     "low": 59.75,
+     "seats": 429,
      "secs": {
       "balc": 59.75,
       "mezz": 66.75,
@@ -3614,28 +3584,11 @@ window.TM_BD = {
       "ORCHC": 143,
       "ORCHO": 73.75
      },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127876?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-12-03 8:00 PM": {
-     "low": 59.75,
-     "seats": 430,
-     "secs": {
-      "balc": 59.75,
-      "mezz": 66.75,
-      "orch": 73.75
-     },
-     "raw": {
-      "BALC": 59.75,
-      "MEZZC": 69.75,
-      "MEZZO": 66.75,
-      "ORCHC": 163,
-      "ORCHO": 73.75
-     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127898?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-04 8:00 PM": {
      "low": 69.75,
-     "seats": 263,
+     "seats": 303,
      "secs": {
       "balc": 69.75,
       "mezz": 73.75,
@@ -3645,14 +3598,14 @@ window.TM_BD = {
       "BALC": 69.75,
       "MEZZC": 89.75,
       "MEZZO": 73.75,
-      "ORCHC": 320,
+      "ORCHC": 153,
       "ORCHO": 109.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127930?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 2:00 PM": {
      "low": 52.75,
-     "seats": 575,
+     "seats": 565,
      "secs": {
       "balc": 52.75,
       "mezz": 59.75,
@@ -3660,7 +3613,7 @@ window.TM_BD = {
      },
      "raw": {
       "BALC": 52.75,
-      "MEZZC": 59.75,
+      "MEZZC": 79.75,
       "MEZZO": 59.75,
       "ORCHC": 126,
       "ORCHO": 95.75
@@ -3669,7 +3622,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 66.75,
-     "seats": 327,
+     "seats": 340,
      "secs": {
       "balc": 66.75,
       "mezz": 73.75,
@@ -3679,7 +3632,7 @@ window.TM_BD = {
       "BALC": 66.75,
       "MEZZC": 133,
       "MEZZO": 73.75,
-      "ORCHC": 320,
+      "ORCHC": 153,
       "ORCHO": 110.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/425453/galileo-2127986?trafficSource=agentic&trafficChannel=api"
@@ -3691,62 +3644,69 @@ window.TM_BD = {
    "name": "The Great Gatsby",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:00 PM": {
-     "low": 349.5,
-     "seats": 1,
+    "2026-11-24 7:00 PM": {
+     "low": 119.25,
+     "seats": 67,
      "secs": {
-      "orch": 349.5
+      "mezz": 173.5,
+      "orch": 119.25
      },
      "raw": {
-      "ORCHC": 349.5
+      "FMEZC": 213.5,
+      "FMEZO": 173.5,
+      "ORCHC": 173.5,
+      "ORCHO": 119.25
      },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092550?trafficSource=agentic&trafficChannel=api"
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092597?trafficSource=agentic&trafficChannel=api"
     },
-    "2026-11-24 7:00 PM": {
-     "low": 89.75,
-     "seats": 236,
+    "2026-11-25 2:00 PM": {
+     "low": 58.75,
+     "seats": 192,
+     "secs": {
+      "mezz": 110.75,
+      "orch": 88.75,
+      "rmezz": 58.75
+     },
+     "raw": {
+      "FMEZC": 110.75,
+      "FMEZO": 110.75,
+      "ORCHC": 110.75,
+      "ORCHO": 88.75,
+      "RMEZZ": 58.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092551?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 8:00 PM": {
+     "low": 119.25,
+     "seats": 158,
      "secs": {
       "mezz": 173.5,
       "orch": 119.25,
-      "rmezz": 89.75
+      "rmezz": 193.5
      },
      "raw": {
       "FMEZC": 173.5,
       "FMEZO": 173.5,
       "ORCHC": 141.5,
       "ORCHO": 119.25,
-      "RMEZZ": 89.75
+      "RMEZZ": 193.5
      },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092597?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 2:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092551?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 8:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092552?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 7:00 PM": {
-     "low": 110.75,
-     "seats": 169,
+     "low": 89.75,
+     "seats": 148,
      "secs": {
-      "mezz": 213.5,
-      "orch": 141.5,
-      "rmezz": 110.75
+      "mezz": 247,
+      "orch": 110.75,
+      "rmezz": 89.75
      },
      "raw": {
-      "FMEZC": 247,
-      "FMEZO": 213.5,
-      "ORCHC": 247,
-      "ORCHO": 141.5,
-      "RMEZZ": 110.75
+      "FMEZC": 399.5,
+      "FMEZO": 247,
+      "ORCHC": 141.5,
+      "ORCHO": 110.75,
+      "RMEZZ": 89.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092553?trafficSource=agentic&trafficChannel=api"
     },
@@ -3754,39 +3714,29 @@ window.TM_BD = {
      "low": 89.75,
      "seats": 435,
      "secs": {
-      "mezz": 193.5,
-      "orch": 141.5,
+      "mezz": 141.5,
+      "orch": 110.75,
       "rmezz": 89.75
      },
      "raw": {
-      "FMEZC": 247,
-      "FMEZO": 193.5,
-      "ORCHC": 297,
-      "ORCHO": 141.5,
+      "FMEZC": 213.5,
+      "FMEZO": 141.5,
+      "ORCHC": 183.5,
+      "ORCHO": 110.75,
       "RMEZZ": 89.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092554?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
-     "low": 79.75,
-     "seats": 453,
-     "secs": {
-      "mezz": 151.5,
-      "orch": 110.75,
-      "rmezz": 79.75
-     },
-     "raw": {
-      "FMEZC": 193,
-      "FMEZO": 151.5,
-      "ORCHC": 110.75,
-      "ORCHO": 110.75,
-      "RMEZZ": 79.75
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092555?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
      "low": 58.75,
-     "seats": 597,
+     "seats": 549,
      "secs": {
       "mezz": 119.25,
       "orch": 88.75,
@@ -3803,7 +3753,7 @@ window.TM_BD = {
     },
     "2026-11-30 7:00 PM": {
      "low": 58.75,
-     "seats": 672,
+     "seats": 651,
      "secs": {
       "mezz": 141.5,
       "orch": 88.75,
@@ -3819,25 +3769,25 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092557?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 7:00 PM": {
-     "low": 58.75,
-     "seats": 604,
+     "low": 88.75,
+     "seats": 582,
      "secs": {
       "mezz": 131.5,
       "orch": 88.75,
-      "rmezz": 58.75
+      "rmezz": 110.75
      },
      "raw": {
       "FMEZC": 161.5,
       "FMEZO": 131.5,
       "ORCHC": 131.5,
       "ORCHO": 88.75,
-      "RMEZZ": 58.75
+      "RMEZZ": 110.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092560?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-03 2:00 PM": {
      "low": 89.75,
-     "seats": 268,
+     "seats": 256,
      "secs": {
       "mezz": 151.5,
       "orch": 89.75,
@@ -3854,7 +3804,7 @@ window.TM_BD = {
     },
     "2026-12-03 8:00 PM": {
      "low": 58.75,
-     "seats": 552,
+     "seats": 529,
      "secs": {
       "mezz": 131.5,
       "orch": 88.75,
@@ -3871,7 +3821,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 89.75,
-     "seats": 342,
+     "seats": 330,
      "secs": {
       "mezz": 141.5,
       "orch": 100.75,
@@ -3888,7 +3838,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 141.5,
-     "seats": 355,
+     "seats": 348,
      "secs": {
       "mezz": 228,
       "orch": 193.5,
@@ -3905,7 +3855,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 141.5,
-     "seats": 379,
+     "seats": 365,
      "secs": {
       "mezz": 228,
       "orch": 193.5,
@@ -3922,7 +3872,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 141.5,
-     "seats": 419,
+     "seats": 415,
      "secs": {
       "mezz": 228,
       "orch": 193.5,
@@ -3936,6 +3886,23 @@ window.TM_BD = {
       "RMEZZ": 141.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092578?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 89.75,
+     "seats": 553,
+     "secs": {
+      "mezz": 141.5,
+      "orch": 100.75,
+      "rmezz": 89.75
+     },
+     "raw": {
+      "FMEZC": 183.5,
+      "FMEZO": 141.5,
+      "ORCHC": 173.5,
+      "ORCHO": 100.75,
+      "RMEZZ": 89.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/843473/the-great-gatsby-2092558?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -3945,23 +3912,22 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/369678?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 126.5,
-     "seats": 149,
+     "low": 95.75,
+     "seats": 38,
      "secs": {
-      "mezz": 146.5,
-      "orch": 126.5
+      "mezz": 95.75,
+      "orch": 198
      },
      "raw": {
-      "MEZZC": 198,
-      "MEZZO": 146.5,
-      "ORCHC": 126.5,
-      "ORCHO": 198
+      "MEZZC": 146.5,
+      "MEZZO": 95.75,
+      "ORCHC": 198
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/369678/downstate-2275604?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 126.5,
-     "seats": 239,
+     "seats": 182,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -3976,7 +3942,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 126.5,
-     "seats": 254,
+     "seats": 201,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -3991,7 +3957,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 126.5,
-     "seats": 274,
+     "seats": 168,
      "secs": {
       "mezz": 126.5,
       "orch": 126.5
@@ -4006,7 +3972,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 126.5,
-     "seats": 245,
+     "seats": 160,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4021,7 +3987,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 126.5,
-     "seats": 261,
+     "seats": 170,
      "secs": {
       "mezz": 126.5,
       "orch": 126.5
@@ -4036,7 +4002,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 126.5,
-     "seats": 239,
+     "seats": 148,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4051,7 +4017,7 @@ window.TM_BD = {
     },
     "2026-11-30 7:00 PM": {
      "low": 126.5,
-     "seats": 258,
+     "seats": 147,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4066,7 +4032,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 126.5,
-     "seats": 268,
+     "seats": 173,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4081,7 +4047,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 126.5,
-     "seats": 268,
+     "seats": 171,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4096,7 +4062,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 126.5,
-     "seats": 274,
+     "seats": 172,
      "secs": {
       "mezz": 126.5,
       "orch": 126.5
@@ -4111,7 +4077,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 126.5,
-     "seats": 273,
+     "seats": 175,
      "secs": {
       "mezz": 146.5,
       "orch": 126.5
@@ -4126,7 +4092,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 126.5,
-     "seats": 286,
+     "seats": 189,
      "secs": {
       "mezz": 126.5,
       "orch": 126.5
@@ -4141,7 +4107,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 95.75,
-     "seats": 277,
+     "seats": 176,
      "secs": {
       "mezz": 146.5,
       "orch": 95.75
@@ -4156,7 +4122,7 @@ window.TM_BD = {
     },
     "2026-12-06 6:30 PM": {
      "low": 126.5,
-     "seats": 294,
+     "seats": 190,
      "secs": {
       "mezz": 126.5,
       "orch": 126.5
@@ -4168,6 +4134,21 @@ window.TM_BD = {
       "ORCHO": 126.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/369678/downstate-2275632?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 126.5,
+     "seats": 171,
+     "secs": {
+      "mezz": 146.5,
+      "orch": 126.5
+     },
+     "raw": {
+      "MEZZC": 146.5,
+      "MEZZO": 146.5,
+      "ORCHC": 126.5,
+      "ORCHO": 146.5
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/369678/downstate-2275612?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -4183,38 +4164,34 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/682423?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 143,
-     "seats": 37,
+     "low": 230,
+     "seats": 1,
      "secs": {
-      "mezz": 143,
-      "orch": 185
+      "orch": 230
      },
      "raw": {
-      "MEZZC": 163,
-      "MEZZO": 143,
-      "ORCHC": 185,
-      "ORCHO": 185
+      "ORCHC": 230
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/682423/much-ado-about-nothing-2116356?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": 95.75,
-     "seats": 258,
+     "low": 133,
+     "seats": 146,
      "secs": {
       "mezz": 133,
-      "orch": 95.75
+      "orch": 133
      },
      "raw": {
       "MEZZC": 133,
       "MEZZO": 153,
       "ORCHC": 133,
-      "ORCHO": 95.75
+      "ORCHO": 133
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/682423/much-ado-about-nothing-2116357?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
      "low": 133,
-     "seats": 170,
+     "seats": 88,
      "secs": {
       "mezz": 133,
       "orch": 133
@@ -4229,7 +4206,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 153,
-     "seats": 497,
+     "seats": 406,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4244,7 +4221,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 153,
-     "seats": 447,
+     "seats": 384,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4259,7 +4236,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 153,
-     "seats": 386,
+     "seats": 371,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4274,7 +4251,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 153,
-     "seats": 513,
+     "seats": 501,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4289,7 +4266,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 143,
-     "seats": 360,
+     "seats": 339,
      "secs": {
       "mezz": 153,
       "orch": 143
@@ -4304,7 +4281,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 153,
-     "seats": 224,
+     "seats": 204,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4319,7 +4296,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 110.75,
-     "seats": 255,
+     "seats": 244,
      "secs": {
       "mezz": 110.75,
       "orch": 133
@@ -4334,21 +4311,22 @@ window.TM_BD = {
     },
     "2026-12-02 7:30 PM": {
      "low": 153,
-     "seats": 96,
+     "seats": 197,
      "secs": {
-      "mezz": 350.5,
+      "mezz": 153,
       "orch": 153
      },
      "raw": {
-      "MEZZO": 350.5,
-      "ORCHC": 350.5,
+      "MEZZC": 175,
+      "MEZZO": 153,
+      "ORCHC": 185,
       "ORCHO": 153
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/682423/much-ado-about-nothing-2116366?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-03 7:00 PM": {
      "low": 153,
-     "seats": 84,
+     "seats": 170,
      "secs": {
       "mezz": 153,
       "orch": 163
@@ -4356,14 +4334,14 @@ window.TM_BD = {
      "raw": {
       "MEZZC": 195,
       "MEZZO": 153,
-      "ORCHC": 372.5,
+      "ORCHC": 215,
       "ORCHO": 163
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/682423/much-ado-about-nothing-2116367?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-04 7:00 PM": {
      "low": 153,
-     "seats": 45,
+     "seats": 37,
      "secs": {
       "mezz": 153,
       "orch": 195
@@ -4378,7 +4356,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 175,
-     "seats": 186,
+     "seats": 175,
      "secs": {
       "mezz": 175,
       "orch": 175
@@ -4393,7 +4371,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 153,
-     "seats": 181,
+     "seats": 170,
      "secs": {
       "mezz": 153,
       "orch": 195
@@ -4408,7 +4386,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 175,
-     "seats": 149,
+     "seats": 145,
      "secs": {
       "mezz": 175,
       "orch": 215
@@ -4436,14 +4414,14 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 111.75,
-     "seats": 200,
+     "seats": 82,
      "secs": {
-      "mezz": 188.5,
+      "mezz": 233,
       "orch": 148,
       "rmezz": 111.75
      },
      "raw": {
-      "FMEZZ": 188.5,
+      "FMEZZ": 233,
       "ORCHC": 233,
       "ORCHO": 148,
       "RMEZPV": 111.75,
@@ -4452,25 +4430,15 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/673728/operation-mincemeat-2048516?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": 111.75,
-     "seats": 287,
-     "secs": {
-      "mezz": 188.5,
-      "orch": 148,
-      "rmezz": 111.75
-     },
-     "raw": {
-      "FMEZZ": 188.5,
-      "ORCHC": 178.5,
-      "ORCHO": 148,
-      "RMEZPV": 111.75,
-      "RMEZZ": 114.25
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/673728/operation-mincemeat-2048517?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
      "low": 111.75,
-     "seats": 287,
+     "seats": 260,
      "secs": {
       "mezz": 248,
       "orch": 148,
@@ -4487,7 +4455,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 111.75,
-     "seats": 68,
+     "seats": 58,
      "secs": {
       "mezz": 178.5,
       "orch": 138,
@@ -4504,14 +4472,14 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 111.75,
-     "seats": 75,
+     "seats": 64,
      "secs": {
-      "mezz": 248,
+      "mezz": 298,
       "orch": 138,
       "rmezz": 111.75
      },
      "raw": {
-      "FMEZZ": 248,
+      "FMEZZ": 298,
       "ORCHC": 178.5,
       "ORCHO": 138,
       "RMEZPV": 111.75,
@@ -4521,7 +4489,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 101.75,
-     "seats": 178,
+     "seats": 165,
      "secs": {
       "mezz": 178.5,
       "orch": 138,
@@ -4538,7 +4506,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 101.75,
-     "seats": 259,
+     "seats": 256,
      "secs": {
       "mezz": 178.5,
       "orch": 138,
@@ -4555,7 +4523,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 101.75,
-     "seats": 347,
+     "seats": 333,
      "secs": {
       "mezz": 178.5,
       "orch": 138,
@@ -4572,7 +4540,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 60.75,
-     "seats": 269,
+     "seats": 263,
      "secs": {
       "mezz": 136.5,
       "orch": 74.75,
@@ -4589,7 +4557,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 60.75,
-     "seats": 214,
+     "seats": 210,
      "secs": {
       "mezz": 136.5,
       "orch": 74.75,
@@ -4606,7 +4574,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 60.75,
-     "seats": 257,
+     "seats": 252,
      "secs": {
       "mezz": 136.5,
       "orch": 74.75,
@@ -4623,7 +4591,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:30 PM": {
      "low": 60.75,
-     "seats": 105,
+     "seats": 97,
      "secs": {
       "mezz": 178,
       "orch": 95.75,
@@ -4640,7 +4608,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 70.75,
-     "seats": 112,
+     "seats": 105,
      "secs": {
       "mezz": 208,
       "orch": 105.75,
@@ -4657,7 +4625,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 91.75,
-     "seats": 298,
+     "seats": 286,
      "secs": {
       "mezz": 168.5,
       "orch": 128,
@@ -4674,7 +4642,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 70.75,
-     "seats": 356,
+     "seats": 355,
      "secs": {
       "mezz": 146.5,
       "orch": 105.75,
@@ -4691,7 +4659,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:30 PM": {
      "low": 70.75,
-     "seats": 465,
+     "seats": 457,
      "secs": {
       "mezz": 146.5,
       "orch": 105.75,
@@ -4714,18 +4682,43 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:30 PM": {
-     "low": 234,
-     "seats": 13,
+     "low": 326.5,
+     "seats": 4,
      "secs": {
-      "orch": 234
+      "orch": 326.5
      },
      "raw": {
-      "ORCHC": 326.5,
-      "ORCHO": 234
+      "ORCHC": 326.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033238?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 3:00 PM": {
+     "low": 274,
+     "seats": 31,
+     "secs": {
+      "orch": 274
+     },
+     "raw": {
+      "ORCHC": 274,
+      "ORCHO": 274
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033239?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 7:30 PM": {
+     "low": 168.5,
+     "seats": 40,
+     "secs": {
+      "mezz": 168.5,
+      "orch": 225
+     },
+     "raw": {
+      "MEZZO": 168.5,
+      "ORCHC": 326.5,
+      "ORCHO": 225
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033240?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-27 5:00 PM": {
      "low": 178.5,
      "seats": 71,
      "secs": {
@@ -4733,16 +4726,16 @@ window.TM_BD = {
       "orch": 234
      },
      "raw": {
-      "MEZZC": 178.5,
+      "MEZZC": 244,
       "MEZZO": 178.5,
       "ORCHC": 274,
       "ORCHO": 234
      },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033239?trafficSource=agentic&trafficChannel=api"
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033241?trafficSource=agentic&trafficChannel=api"
     },
-    "2026-11-25 7:30 PM": {
+    "2026-11-27 8:30 PM": {
      "low": 178.5,
-     "seats": 62,
+     "seats": 97,
      "secs": {
       "mezz": 178.5,
       "orch": 234
@@ -4750,56 +4743,36 @@ window.TM_BD = {
      "raw": {
       "MEZZC": 178.5,
       "MEZZO": 178.5,
-      "ORCHC": 400.5,
+      "ORCHC": 274,
       "ORCHO": 234
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033240?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-27 5:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033241?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-27 8:30 PM": {
-     "low": 326.5,
-     "seats": 79,
-     "secs": {
-      "orch": 326.5
-     },
-     "raw": {
-      "ORCHC": 326.5,
-      "ORCHO": 500.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033242?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 5:00 PM": {
-     "low": 234,
-     "seats": 80,
+     "low": 178.5,
+     "seats": 114,
      "secs": {
-      "mezz": 274,
+      "mezz": 178.5,
       "orch": 234
      },
      "raw": {
-      "MEZZC": 274,
+      "MEZZC": 178.5,
+      "MEZZO": 178.5,
       "ORCHC": 274,
       "ORCHO": 234
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033284?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:30 PM": {
-     "low": 115.75,
-     "seats": 40,
+     "low": 178.5,
+     "seats": 60,
      "secs": {
-      "balc": 115.75,
-      "mezz": 244,
+      "mezz": 178.5,
       "orch": 225
      },
      "raw": {
-      "BALC": 115.75,
-      "MEZZC": 244,
-      "MEZZO": 244,
+      "MEZZC": 178.5,
+      "MEZZO": 178.5,
       "ORCHC": 274,
       "ORCHO": 225
      },
@@ -4807,7 +4780,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 225,
-     "seats": 58,
+     "seats": 55,
      "secs": {
       "mezz": 244,
       "orch": 225
@@ -4822,7 +4795,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:30 PM": {
      "low": 115.75,
-     "seats": 66,
+     "seats": 59,
      "secs": {
       "balc": 115.75,
       "mezz": 274,
@@ -4838,7 +4811,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:30 PM": {
      "low": 115.75,
-     "seats": 63,
+     "seats": 52,
      "secs": {
       "balc": 115.75,
       "mezz": 244,
@@ -4855,7 +4828,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:30 PM": {
      "low": 234,
-     "seats": 13,
+     "seats": 11,
      "secs": {
       "orch": 234
      },
@@ -4866,32 +4839,32 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033250?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-04 7:30 PM": {
-     "low": 274,
-     "seats": 13,
+     "low": 603,
+     "seats": 12,
      "secs": {
-      "orch": 274
+      "orch": 603
      },
      "raw": {
-      "ORCHC": 274,
+      "ORCHC": 603,
       "ORCHO": 603
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033253?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 5:00 PM": {
-     "low": 326.5,
-     "seats": 8,
+     "low": 603,
+     "seats": 5,
      "secs": {
-      "orch": 326.5
+      "orch": 603
      },
      "raw": {
-      "ORCHC": 326.5,
+      "ORCHC": 603,
       "ORCHO": 603
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033256?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 8:30 PM": {
      "low": 234,
-     "seats": 23,
+     "seats": 17,
      "secs": {
       "orch": 234
      },
@@ -4915,16 +4888,15 @@ window.TM_BD = {
     },
     "2026-12-06 6:30 PM": {
      "low": 274,
-     "seats": 65,
+     "seats": 58,
      "secs": {
       "mezz": 274,
-      "orch": 274
+      "orch": 326.5
      },
      "raw": {
-      "MEZZC": 274,
       "MEZZO": 274,
-      "ORCHC": 274,
-      "ORCHO": 274
+      "ORCHC": 326.5,
+      "ORCHO": 440.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/646279/oh-mary-2033265?trafficSource=agentic&trafficChannel=api"
     }
@@ -4935,41 +4907,9 @@ window.TM_BD = {
    "name": "Here There Are Blueberries",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-24 2:00 PM": {
-     "low": 59.75,
-     "seats": 66,
-     "secs": {
-      "mezz": 89.75,
-      "orch": 89.75,
-      "rmezz": 59.75
-     },
-     "raw": {
-      "FMEZZ": 89.75,
-      "ORCHC": 133,
-      "ORCHO": 89.75,
-      "RMEZZ": 59.75
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2247981?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-24 7:00 PM": {
-     "low": 50.75,
-     "seats": 49,
-     "secs": {
-      "mezz": 110.75,
-      "orch": 110.75,
-      "rmezz": 50.75
-     },
-     "raw": {
-      "FMEZZ": 110.75,
-      "ORCHC": 195,
-      "ORCHO": 110.75,
-      "RMEZZ": 50.75
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2247983?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-25 2:00 PM": {
      "low": 50.75,
-     "seats": 162,
+     "seats": 119,
      "secs": {
       "mezz": 89.75,
       "orch": 89.75,
@@ -4985,7 +4925,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 50.75,
-     "seats": 164,
+     "seats": 113,
      "secs": {
       "mezz": 89.75,
       "orch": 89.75,
@@ -5001,7 +4941,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 59.75,
-     "seats": 111,
+     "seats": 138,
      "secs": {
       "mezz": 89.75,
       "orch": 89.75,
@@ -5017,23 +4957,23 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 59.75,
-     "seats": 79,
+     "seats": 63,
      "secs": {
       "mezz": 89.75,
-      "orch": 153,
+      "orch": 175,
       "rmezz": 59.75
      },
      "raw": {
       "FMEZZ": 89.75,
       "ORCHC": 175,
-      "ORCHO": 153,
+      "ORCHO": 175,
       "RMEZZ": 59.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2247989?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 7:00 PM": {
      "low": 59.75,
-     "seats": 157,
+     "seats": 127,
      "secs": {
       "mezz": 110.75,
       "orch": 89.75,
@@ -5049,7 +4989,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 69.75,
-     "seats": 33,
+     "seats": 28,
      "secs": {
       "mezz": 110.75,
       "orch": 133,
@@ -5065,7 +5005,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 69.75,
-     "seats": 10,
+     "seats": 6,
      "secs": {
       "mezz": 175,
       "orch": 175,
@@ -5073,7 +5013,6 @@ window.TM_BD = {
      },
      "raw": {
       "FMEZZ": 175,
-      "ORCHC": 215,
       "ORCHO": 175,
       "RMEZZ": 69.75
      },
@@ -5081,21 +5020,20 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 175,
-     "seats": 5,
+     "seats": 4,
      "secs": {
       "mezz": 175,
-      "orch": 175
+      "orch": 372.5
      },
      "raw": {
       "FMEZZ": 175,
-      "ORCHC": 372.5,
-      "ORCHO": 175
+      "ORCHC": 372.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2248002?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-03 7:00 PM": {
      "low": 89.75,
-     "seats": 45,
+     "seats": 43,
      "secs": {
       "mezz": 175,
       "orch": 175,
@@ -5111,7 +5049,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 50.75,
-     "seats": 298,
+     "seats": 288,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75,
@@ -5143,7 +5081,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:00 PM": {
      "low": 50.75,
-     "seats": 241,
+     "seats": 236,
      "secs": {
       "mezz": 89.75,
       "orch": 110.75,
@@ -5172,6 +5110,22 @@ window.TM_BD = {
       "RMEZZ": 69.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2247998?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 69.75,
+     "seats": 128,
+     "secs": {
+      "mezz": 215,
+      "orch": 175,
+      "rmezz": 69.75
+     },
+     "raw": {
+      "FMEZZ": 215,
+      "ORCHC": 320,
+      "ORCHO": 175,
+      "RMEZZ": 69.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/437384/here-there-are-blueberries-2248004?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -5187,23 +5141,20 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/587846?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 136.5,
-     "seats": 117,
+     "low": 178,
+     "seats": 42,
      "secs": {
-      "stage": 278,
-      "orch": 136.5
+      "orch": 178
      },
      "raw": {
-      "FLOOR": 278,
-      "ORCH": 136.5,
-      "ORCH.": 136.5,
-      "TABLE": 298
+      "ORCH": 178,
+      "ORCH.": 208
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/587846/just-in-time-2210267?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 136.5,
-     "seats": 117,
+     "seats": 111,
      "secs": {
       "stage": 258,
       "orch": 136.5
@@ -5219,7 +5170,7 @@ window.TM_BD = {
     },
     "2026-11-25 8:00 PM": {
      "low": 95.75,
-     "seats": 190,
+     "seats": 172,
      "secs": {
       "stage": 258,
       "orch": 95.75
@@ -5235,7 +5186,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 136.5,
-     "seats": 200,
+     "seats": 194,
      "secs": {
       "stage": 258,
       "orch": 136.5
@@ -5251,7 +5202,7 @@ window.TM_BD = {
     },
     "2026-11-27 8:00 PM": {
      "low": 95.75,
-     "seats": 176,
+     "seats": 166,
      "secs": {
       "stage": 258,
       "orch": 95.75
@@ -5261,7 +5212,7 @@ window.TM_BD = {
       "FLOOR": 258,
       "ORCH": 95.75,
       "ORCH.": 136.5,
-      "TABLE": 350.5
+      "TABLE": 298
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/587846/just-in-time-2210271?trafficSource=agentic&trafficChannel=api"
     },
@@ -5283,7 +5234,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 95.75,
-     "seats": 184,
+     "seats": 169,
      "secs": {
       "stage": 258,
       "orch": 95.75
@@ -5299,7 +5250,7 @@ window.TM_BD = {
     },
     "2026-11-29 2:00 PM": {
      "low": 95.75,
-     "seats": 170,
+     "seats": 167,
      "secs": {
       "stage": 258,
       "orch": 95.75
@@ -5314,13 +5265,13 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 84.75,
-     "seats": 165,
+     "seats": 149,
      "secs": {
       "stage": 278,
       "orch": 84.75
      },
      "raw": {
-      "BANQTE": 500.5,
+      "BANQTE": 400.5,
       "FLOOR": 278,
       "ORCH": 84.75,
       "ORCH.": 126.5,
@@ -5330,7 +5281,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 126.5,
-     "seats": 118,
+     "seats": 122,
      "secs": {
       "stage": 278,
       "orch": 126.5
@@ -5346,7 +5297,7 @@ window.TM_BD = {
     },
     "2026-12-03 1:00 PM": {
      "low": 84.75,
-     "seats": 188,
+     "seats": 186,
      "secs": {
       "stage": 278,
       "orch": 84.75
@@ -5362,7 +5313,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 114.25,
-     "seats": 165,
+     "seats": 162,
      "secs": {
       "stage": 278,
       "orch": 114.25
@@ -5378,7 +5329,7 @@ window.TM_BD = {
     },
     "2026-12-04 8:00 PM": {
      "low": 84.75,
-     "seats": 120,
+     "seats": 114,
      "secs": {
       "stage": 278,
       "orch": 84.75
@@ -5394,7 +5345,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 126.5,
-     "seats": 124,
+     "seats": 122,
      "secs": {
       "stage": 278,
       "orch": 126.5
@@ -5409,16 +5360,16 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/587846/just-in-time-2210290?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 8:00 PM": {
-     "low": 126.5,
-     "seats": 120,
+     "low": 156,
+     "seats": 115,
      "secs": {
       "stage": 278,
-      "orch": 126.5
+      "orch": 156
      },
      "raw": {
       "BANQTE": 603,
       "FLOOR": 278,
-      "ORCH": 126.5,
+      "ORCH": 156,
       "ORCH.": 156,
       "TABLE": 603
      },
@@ -5426,7 +5377,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 156,
-     "seats": 121,
+     "seats": 115,
      "secs": {
       "stage": 278,
       "orch": 156
@@ -5448,19 +5399,15 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 422.5,
-     "seats": 2,
-     "secs": {
-      "orch": 422.5
-     },
-     "raw": {
-      "ORCHC": 422.5
-     },
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181409?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 215,
-     "seats": 46,
+     "seats": 36,
      "secs": {
       "box": 215,
       "orch": 215
@@ -5474,7 +5421,7 @@ window.TM_BD = {
     },
     "2026-11-25 8:00 PM": {
      "low": 215,
-     "seats": 50,
+     "seats": 30,
      "secs": {
       "box": 215,
       "orch": 215
@@ -5488,7 +5435,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 215,
-     "seats": 45,
+     "seats": 36,
      "secs": {
       "box": 215,
       "orch": 215
@@ -5508,67 +5455,67 @@ window.TM_BD = {
      },
      "raw": {
       "ORCHC": 215,
-      "ORCHO": 320
+      "ORCHO": 215
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181445?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 215,
-     "seats": 38,
+     "seats": 27,
      "secs": {
       "box": 320,
       "orch": 215
      },
      "raw": {
       "LOGEC": 320,
-      "ORCHC": 215,
-      "ORCHO": 320
+      "ORCHC": 422.5,
+      "ORCHO": 215
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181454?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
-     "low": 320,
-     "seats": 31,
+     "low": 215,
+     "seats": 32,
      "secs": {
-      "orch": 320
+      "orch": 215
      },
      "raw": {
-      "ORCHC": 320,
-      "ORCHO": 320
+      "ORCHC": 215,
+      "ORCHO": 215
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181463?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
      "low": 215,
-     "seats": 33,
+     "seats": 26,
      "secs": {
       "box": 215,
       "orch": 215
      },
      "raw": {
       "LOGEC": 215,
-      "ORCHC": 422.5,
+      "ORCHC": 215,
       "ORCHO": 215
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181472?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-01 7:00 PM": {
      "low": 215,
-     "seats": 44,
+     "seats": 32,
      "secs": {
       "box": 320,
       "orch": 215
      },
      "raw": {
       "LOGEC": 320,
-      "ORCHC": 215,
+      "ORCHC": 320,
       "ORCHO": 215
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181410?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 2:00 PM": {
      "low": 215,
-     "seats": 32,
+     "seats": 24,
      "secs": {
       "box": 215,
       "orch": 215
@@ -5582,7 +5529,7 @@ window.TM_BD = {
     },
     "2026-12-02 8:00 PM": {
      "low": 215,
-     "seats": 37,
+     "seats": 28,
      "secs": {
       "box": 320,
       "orch": 215
@@ -5596,7 +5543,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 215,
-     "seats": 62,
+     "seats": 58,
      "secs": {
       "box": 320,
       "orch": 215
@@ -5610,7 +5557,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 215,
-     "seats": 29,
+     "seats": 23,
      "secs": {
       "box": 320,
       "orch": 215
@@ -5636,7 +5583,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 320,
-     "seats": 4,
+     "seats": 3,
      "secs": {
       "orch": 320
      },
@@ -5647,16 +5594,16 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181464?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-06 3:00 PM": {
-     "low": 215,
-     "seats": 23,
+     "low": 320,
+     "seats": 15,
      "secs": {
       "box": 320,
-      "orch": 215
+      "orch": 320
      },
      "raw": {
       "LOGEC": 320,
       "ORCHC": 320,
-      "ORCHO": 215
+      "ORCHO": 320
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/233946/a-few-good-men-2181473?trafficSource=agentic&trafficChannel=api"
     }
@@ -5681,7 +5628,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 59,
-     "seats": 660,
+     "seats": 547,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5703,7 +5650,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 59,
-     "seats": 658,
+     "seats": 468,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5725,7 +5672,7 @@ window.TM_BD = {
     },
     "2026-11-27 3:00 PM": {
      "low": 59,
-     "seats": 676,
+     "seats": 656,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5747,7 +5694,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 59,
-     "seats": 968,
+     "seats": 947,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5769,7 +5716,7 @@ window.TM_BD = {
     },
     "2026-11-28 11:00 AM": {
      "low": 59,
-     "seats": 798,
+     "seats": 813,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5813,7 +5760,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 59,
-     "seats": 987,
+     "seats": 998,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5835,7 +5782,7 @@ window.TM_BD = {
     },
     "2026-11-29 11:00 AM": {
      "low": 59,
-     "seats": 881,
+     "seats": 879,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5857,7 +5804,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 59,
-     "seats": 878,
+     "seats": 876,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5879,7 +5826,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 59,
-     "seats": 1286,
+     "seats": 1179,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5901,7 +5848,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 59,
-     "seats": 1267,
+     "seats": 1262,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5923,7 +5870,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 59,
-     "seats": 1183,
+     "seats": 1172,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -5967,7 +5914,7 @@ window.TM_BD = {
     },
     "2026-12-05 3:00 PM": {
      "low": 59,
-     "seats": 889,
+     "seats": 886,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -6011,7 +5958,7 @@ window.TM_BD = {
     },
     "2026-12-06 11:00 AM": {
      "low": 59,
-     "seats": 1007,
+     "seats": 999,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -6033,7 +5980,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 59,
-     "seats": 1051,
+     "seats": 1027,
      "secs": {
       "mezz": 59,
       "orch": 59,
@@ -6062,7 +6009,7 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 97.75,
-     "seats": 248,
+     "seats": 86,
      "secs": {
       "mezz": 97.75,
       "orch": 143
@@ -6076,23 +6023,23 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/724644/schmigadoon-2105720?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": 56.93,
-     "seats": 490,
+     "low": 72.91,
+     "seats": 313,
      "secs": {
       "mezz": 72.91,
-      "orch": 56.93
+      "orch": 84.15
      },
      "raw": {
       "MEZZ": 72.91,
       "ORCH C": 130.3,
       "ORCH L": 84.15,
-      "ORCH R": 56.93
+      "ORCH R": 84.15
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/724644/schmigadoon-2105745?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:30 PM": {
      "low": 85.13,
-     "seats": 433,
+     "seats": 369,
      "secs": {
       "mezz": 85.13,
       "orch": 85.13
@@ -6107,7 +6054,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 100.75,
-     "seats": 234,
+     "seats": 252,
      "secs": {
       "mezz": 100.75,
       "orch": 175
@@ -6122,7 +6069,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 76.75,
-     "seats": 312,
+     "seats": 321,
      "secs": {
       "mezz": 97.75,
       "orch": 76.75
@@ -6137,7 +6084,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 72.91,
-     "seats": 439,
+     "seats": 425,
      "secs": {
       "mezz": 72.91,
       "orch": 72.91
@@ -6152,7 +6099,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 84.15,
-     "seats": 441,
+     "seats": 419,
      "secs": {
       "mezz": 92.71,
       "orch": 84.15
@@ -6167,7 +6114,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 76.75,
-     "seats": 604,
+     "seats": 588,
      "secs": {
       "mezz": 76.75,
       "orch": 97.75
@@ -6182,7 +6129,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 56.93,
-     "seats": 764,
+     "seats": 562,
      "secs": {
       "mezz": 56.93,
       "orch": 56.93
@@ -6197,7 +6144,7 @@ window.TM_BD = {
     },
     "2026-12-02 2:00 PM": {
      "low": 56.93,
-     "seats": 523,
+     "seats": 515,
      "secs": {
       "mezz": 56.93,
       "orch": 56.93
@@ -6212,7 +6159,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:30 PM": {
      "low": 56.93,
-     "seats": 603,
+     "seats": 596,
      "secs": {
       "mezz": 56.93,
       "orch": 56.93
@@ -6227,7 +6174,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 56.93,
-     "seats": 625,
+     "seats": 618,
      "secs": {
       "mezz": 56.93,
       "orch": 56.93
@@ -6242,7 +6189,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 69.75,
-     "seats": 433,
+     "seats": 429,
      "secs": {
       "mezz": 69.75,
       "orch": 69.75
@@ -6257,7 +6204,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 79.75,
-     "seats": 139,
+     "seats": 131,
      "secs": {
       "mezz": 79.75,
       "orch": 175
@@ -6272,7 +6219,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 79.75,
-     "seats": 307,
+     "seats": 300,
      "secs": {
       "mezz": 79.75,
       "orch": 79.75
@@ -6287,7 +6234,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 63.51,
-     "seats": 493,
+     "seats": 452,
      "secs": {
       "mezz": 63.51,
       "orch": 63.51
@@ -6309,20 +6256,20 @@ window.TM_BD = {
    "perfs": {
     "2026-11-24 7:00 PM": {
      "low": 259,
-     "seats": 11,
+     "seats": 5,
      "secs": {
-      "mezz": 350,
+      "mezz": 399,
       "orch": 259
      },
      "raw": {
-      "FMEZZ": 350,
+      "FMEZZ": 399,
       "ORCH": 259
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916852?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 1:00 PM": {
      "low": 259,
-     "seats": 81,
+     "seats": 62,
      "secs": {
       "mezz": 259,
       "orch": 259
@@ -6336,21 +6283,21 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 199,
-     "seats": 32,
+     "seats": 24,
      "secs": {
       "mezz": 199,
-      "orch": 259
+      "orch": 279
      },
      "raw": {
       "FMEZZ": 350,
       "MEZZ": 199,
-      "ORCH": 259
+      "ORCH": 279
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916904?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 1:00 PM": {
      "low": 199,
-     "seats": 83,
+     "seats": 76,
      "secs": {
       "mezz": 199,
       "orch": 259
@@ -6364,35 +6311,35 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 199,
-     "seats": 87,
+     "seats": 85,
      "secs": {
       "mezz": 199,
-      "orch": 199
+      "orch": 259
      },
      "raw": {
       "FMEZZ": 279,
       "MEZZ": 199,
-      "ORCH": 199
+      "ORCH": 259
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916958?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 2:00 PM": {
      "low": 199,
-     "seats": 129,
+     "seats": 158,
      "secs": {
       "mezz": 199,
-      "orch": 199
+      "orch": 259
      },
      "raw": {
       "FMEZZ": 299,
       "MEZZ": 199,
-      "ORCH": 199
+      "ORCH": 259
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916991?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
      "low": 199,
-     "seats": 154,
+     "seats": 158,
      "secs": {
       "mezz": 199,
       "orch": 259
@@ -6406,7 +6353,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 199,
-     "seats": 265,
+     "seats": 246,
      "secs": {
       "mezz": 199,
       "orch": 199
@@ -6420,7 +6367,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 149,
-     "seats": 338,
+     "seats": 372,
      "secs": {
       "mezz": 149,
       "orch": 169
@@ -6434,21 +6381,21 @@ window.TM_BD = {
     },
     "2026-12-02 1:00 PM": {
      "low": 149,
-     "seats": 300,
+     "seats": 413,
      "secs": {
-      "mezz": 169,
+      "mezz": 149,
       "orch": 149
      },
      "raw": {
       "FMEZZ": 239,
-      "MEZZ": 169,
+      "MEZZ": 149,
       "ORCH": 149
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916897?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-02 7:00 PM": {
      "low": 149,
-     "seats": 217,
+     "seats": 228,
      "secs": {
       "mezz": 169,
       "orch": 149
@@ -6489,22 +6436,22 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916959?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 2:00 PM": {
-     "low": 149,
-     "seats": 44,
+     "low": 169,
+     "seats": 41,
      "secs": {
       "mezz": 169,
-      "orch": 149
+      "orch": 169
      },
      "raw": {
       "FMEZZ": 239,
       "MEZZ": 169,
-      "ORCH": 149
+      "ORCH": 169
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/658436/mj-1916992?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 8:00 PM": {
      "low": 149,
-     "seats": 43,
+     "seats": 39,
      "secs": {
       "mezz": 149,
       "orch": 149
@@ -6518,7 +6465,7 @@ window.TM_BD = {
     },
     "2026-12-06 3:00 PM": {
      "low": 149,
-     "seats": 91,
+     "seats": 89,
      "secs": {
       "mezz": 149,
       "orch": 209
@@ -6537,16 +6484,9 @@ window.TM_BD = {
    "name": "SIX",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211749?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-24 7:00 PM": {
      "low": 89.75,
-     "seats": 143,
+     "seats": 34,
      "secs": {
       "mezz": 89.75,
       "orch": 129
@@ -6559,22 +6499,22 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211754?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
-     "low": 79.75,
-     "seats": 309,
+     "low": 99,
+     "seats": 267,
      "secs": {
       "mezz": 99,
-      "orch": 79.75
+      "orch": 133
      },
      "raw": {
       "FMEZZ": 153,
       "MEZZ": 99,
-      "ORCH": 79.75
+      "ORCH": 133
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211738?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:00 PM": {
      "low": 79.75,
-     "seats": 451,
+     "seats": 429,
      "secs": {
       "mezz": 79.75,
       "orch": 89
@@ -6588,7 +6528,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 110.75,
-     "seats": 373,
+     "seats": 427,
      "secs": {
       "mezz": 110.75,
       "orch": 143
@@ -6602,7 +6542,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 110.75,
-     "seats": 419,
+     "seats": 453,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75
@@ -6616,7 +6556,7 @@ window.TM_BD = {
     },
     "2026-11-28 3:00 PM": {
      "low": 110.75,
-     "seats": 337,
+     "seats": 316,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75
@@ -6630,7 +6570,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 110.75,
-     "seats": 595,
+     "seats": 589,
      "secs": {
       "mezz": 110.75,
       "orch": 110.75
@@ -6644,7 +6584,7 @@ window.TM_BD = {
     },
     "2026-11-30 7:00 PM": {
      "low": 79.75,
-     "seats": 650,
+     "seats": 646,
      "secs": {
       "mezz": 79.75,
       "orch": 99
@@ -6658,7 +6598,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 79.75,
-     "seats": 607,
+     "seats": 616,
      "secs": {
       "mezz": 79.75,
       "orch": 79.75
@@ -6672,7 +6612,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 79.75,
-     "seats": 507,
+     "seats": 524,
      "secs": {
       "mezz": 79.75,
       "orch": 79.75
@@ -6686,7 +6626,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 79.75,
-     "seats": 343,
+     "seats": 350,
      "secs": {
       "mezz": 89.75,
       "orch": 79.75
@@ -6699,22 +6639,22 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211759?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 3:00 PM": {
-     "low": 120.75,
-     "seats": 56,
+     "low": 143,
+     "seats": 52,
      "secs": {
-      "mezz": 120.75,
+      "mezz": 143,
       "orch": 175
      },
      "raw": {
       "FMEZZ": 215,
-      "MEZZ": 120.75,
+      "MEZZ": 143,
       "ORCH": 175
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211762?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 8:00 PM": {
      "low": 89.75,
-     "seats": 283,
+     "seats": 294,
      "secs": {
       "mezz": 110.75,
       "orch": 89.75
@@ -6728,7 +6668,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 89.75,
-     "seats": 255,
+     "seats": 268,
      "secs": {
       "mezz": 110.75,
       "orch": 89.75
@@ -6753,6 +6693,20 @@ window.TM_BD = {
       "ORCH": 79.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211771?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 79.75,
+     "seats": 589,
+     "secs": {
+      "mezz": 79.75,
+      "orch": 79.75
+     },
+     "raw": {
+      "FMEZZ": 163,
+      "MEZZ": 79.75,
+      "ORCH": 79.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/719897/six-new-york-ny-2211751?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -6768,21 +6722,21 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/546654?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 215,
-     "seats": 137,
+     "low": 240,
+     "seats": 50,
      "secs": {
-      "mezz": 215,
+      "mezz": 280,
       "orch": 240
      },
      "raw": {
-      "MEZZ": 215,
+      "MEZZ": 280,
       "ORCH": 240
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/546654/the-lion-king-new-york-ny-2109984?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 2:00 PM": {
      "low": 195,
-     "seats": 234,
+     "seats": 176,
      "secs": {
       "mezz": 195,
       "orch": 250
@@ -6795,7 +6749,7 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 191,
-     "seats": 279,
+     "seats": 183,
      "secs": {
       "mezz": 191,
       "orch": 215
@@ -6808,7 +6762,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 205,
-     "seats": 250,
+     "seats": 228,
      "secs": {
       "mezz": 205,
       "orch": 240
@@ -6821,7 +6775,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:30 PM": {
      "low": 201,
-     "seats": 559,
+     "seats": 525,
      "secs": {
       "mezz": 201,
       "orch": 230
@@ -6834,7 +6788,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 175,
-     "seats": 411,
+     "seats": 396,
      "secs": {
       "mezz": 175,
       "orch": 215
@@ -6847,7 +6801,7 @@ window.TM_BD = {
     },
     "2026-11-28 7:30 PM": {
      "low": 185,
-     "seats": 610,
+     "seats": 594,
      "secs": {
       "mezz": 185,
       "orch": 215
@@ -6860,7 +6814,7 @@ window.TM_BD = {
     },
     "2026-11-29 3:00 PM": {
      "low": 149,
-     "seats": 308,
+     "seats": 237,
      "secs": {
       "mezz": 149,
       "orch": 163
@@ -6873,7 +6827,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 153,
-     "seats": 533,
+     "seats": 508,
      "secs": {
       "mezz": 153,
       "orch": 173
@@ -6886,7 +6840,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 139,
-     "seats": 584,
+     "seats": 573,
      "secs": {
       "mezz": 139,
       "orch": 181
@@ -6899,7 +6853,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 149,
-     "seats": 334,
+     "seats": 309,
      "secs": {
       "mezz": 149,
       "orch": 171
@@ -6912,7 +6866,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 207,
-     "seats": 255,
+     "seats": 252,
      "secs": {
       "mezz": 207,
       "orch": 242
@@ -6925,7 +6879,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 314,
-     "seats": 329,
+     "seats": 325,
      "secs": {
       "mezz": 314,
       "orch": 351.5
@@ -6938,7 +6892,7 @@ window.TM_BD = {
     },
     "2026-12-05 7:30 PM": {
      "low": 171,
-     "seats": 518,
+     "seats": 495,
      "secs": {
       "mezz": 171,
       "orch": 201
@@ -6951,7 +6905,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 171,
-     "seats": 765,
+     "seats": 763,
      "secs": {
       "mezz": 171,
       "orch": 201
@@ -6964,7 +6918,7 @@ window.TM_BD = {
     },
     "2026-12-06 6:30 PM": {
      "low": 183,
-     "seats": 758,
+     "seats": 757,
      "secs": {
       "mezz": 183,
       "orch": 201
@@ -6982,87 +6936,66 @@ window.TM_BD = {
    "name": "Hamilton",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:00 PM": {
-     "low": 625,
-     "seats": 3,
-     "secs": {
-      "orch": 625
-     },
-     "raw": {
-      "ORCH": 625
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1734451?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-24 7:00 PM": {
-     "low": 270,
-     "seats": 50,
+     "low": 422.5,
+     "seats": 12,
      "secs": {
-      "box": 320,
       "mezz": 422.5,
-      "orch": 320,
-      "rmezz": 270
+      "orch": 422.5
      },
      "raw": {
-      "BOX B": 320,
-      "BOX C": 320,
-      "BOX D": 320,
-      "BOX E": 320,
-      "BOX G": 320,
       "FMEZZ": 422.5,
-      "ORCH": 320,
-      "RMEZZ": 270
+      "ORCH": 422.5
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1742618?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 1:00 PM": {
-     "low": 270,
-     "seats": 156,
+     "low": 249,
+     "seats": 158,
      "secs": {
-      "box": 320,
+      "box": 269,
       "mezz": 320,
-      "orch": 299,
-      "rmezz": 270
+      "orch": 249,
+      "rmezz": 269
      },
      "raw": {
-      "BOX A": 320,
-      "BOX C": 320,
-      "BOX D": 320,
-      "BOX E": 320,
-      "BOX F": 320,
-      "BOX G": 320,
-      "BOX H": 320,
+      "BOX C": 269,
+      "BOX E": 269,
+      "BOX F": 269,
+      "BOX G": 269,
+      "BOX H": 269,
       "FMEZZ": 320,
-      "ORCH": 299,
-      "RMEZZ": 270
+      "ORCH": 249,
+      "RMEZZ": 269
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1743121?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 7:00 PM": {
-     "low": 270,
-     "seats": 189,
+     "low": 249,
+     "seats": 148,
      "secs": {
-      "box": 320,
+      "box": 269,
       "mezz": 320,
-      "orch": 299,
-      "rmezz": 270
+      "orch": 249,
+      "rmezz": 269
      },
      "raw": {
-      "BOX A": 320,
-      "BOX C": 320,
-      "BOX D": 320,
-      "BOX E": 320,
-      "BOX F": 320,
-      "BOX G": 320,
-      "BOX H": 320,
+      "BOX A": 269,
+      "BOX C": 269,
+      "BOX D": 269,
+      "BOX E": 269,
+      "BOX F": 269,
+      "BOX G": 269,
+      "BOX H": 269,
       "FMEZZ": 320,
-      "ORCH": 299,
-      "RMEZZ": 270
+      "ORCH": 249,
+      "RMEZZ": 269
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1742668?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 1:00 PM": {
      "low": 270,
-     "seats": 76,
+     "seats": 69,
      "secs": {
       "box": 320,
       "mezz": 422.5,
@@ -7079,29 +7012,29 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1734541?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 7:00 PM": {
-     "low": 270,
-     "seats": 77,
+     "low": 320,
+     "seats": 70,
      "secs": {
       "box": 320,
       "mezz": 320,
       "orch": 320,
-      "rmezz": 270
+      "rmezz": 320
      },
      "raw": {
       "BOX C": 320,
       "FMEZZ": 320,
       "ORCH": 320,
-      "RMEZZ": 270
+      "RMEZZ": 320
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1734535?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 1:00 PM": {
      "low": 270,
-     "seats": 185,
+     "seats": 180,
      "secs": {
       "box": 320,
       "mezz": 422.5,
-      "orch": 299,
+      "orch": 270,
       "rmezz": 270
      },
      "raw": {
@@ -7111,20 +7044,19 @@ window.TM_BD = {
       "BOX E": 320,
       "BOX F": 320,
       "BOX G": 320,
-      "BOX H": 320,
       "FMEZZ": 422.5,
-      "ORCH": 299,
+      "ORCH": 270,
       "RMEZZ": 270
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1737714?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 7:00 PM": {
      "low": 270,
-     "seats": 163,
+     "seats": 164,
      "secs": {
       "box": 320,
       "mezz": 320,
-      "orch": 299,
+      "orch": 270,
       "rmezz": 270
      },
      "raw": {
@@ -7135,14 +7067,14 @@ window.TM_BD = {
       "BOX G": 320,
       "BOX H": 320,
       "FMEZZ": 320,
-      "ORCH": 299,
+      "ORCH": 270,
       "RMEZZ": 270
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1738689?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-01 7:00 PM": {
      "low": 230,
-     "seats": 106,
+     "seats": 101,
      "secs": {
       "box": 250,
       "mezz": 300,
@@ -7163,7 +7095,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 230,
-     "seats": 152,
+     "seats": 141,
      "secs": {
       "box": 250,
       "mezz": 300,
@@ -7182,7 +7114,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 472.5,
-     "seats": 15,
+     "seats": 13,
      "secs": {
       "mezz": 472.5,
       "orch": 472.5
@@ -7194,13 +7126,12 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1743170?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-04 7:00 PM": {
-     "low": 270,
-     "seats": 25,
+     "low": 320,
+     "seats": 22,
      "secs": {
       "box": 320,
       "mezz": 422.5,
-      "orch": 320,
-      "rmezz": 270
+      "orch": 320
      },
      "raw": {
       "BOX A": 320,
@@ -7209,14 +7140,13 @@ window.TM_BD = {
       "BOX G": 320,
       "BOX H": 320,
       "FMEZZ": 422.5,
-      "ORCH": 320,
-      "RMEZZ": 270
+      "ORCH": 320
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/426458/hamilton-ny-1734536?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 1:00 PM": {
      "low": 320,
-     "seats": 56,
+     "seats": 47,
      "secs": {
       "box": 320,
       "mezz": 422.5,
@@ -7255,7 +7185,7 @@ window.TM_BD = {
     },
     "2026-12-06 1:00 PM": {
      "low": 320,
-     "seats": 142,
+     "seats": 132,
      "secs": {
       "box": 320,
       "mezz": 320,
@@ -7275,7 +7205,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:00 PM": {
      "low": 195,
-     "seats": 125,
+     "seats": 102,
      "secs": {
       "box": 250,
       "mezz": 250,
@@ -7298,17 +7228,17 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/942533?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-24 7:00 PM": {
-     "low": 110.75,
-     "seats": 177,
+     "low": 129,
+     "seats": 30,
      "secs": {
-      "mezz": 110.75,
+      "mezz": 129,
       "orch": 129,
       "rmezz": 129
      },
      "raw": {
-      "FMEZZ": 110.75,
-      "MMEZZ": 139,
-      "ORCH": 139,
+      "FMEZZ": 129,
+      "MMEZZ": 129,
+      "ORCH": 129,
       "ORCHST": 129,
       "RMEZZ": 129
      },
@@ -7316,7 +7246,7 @@ window.TM_BD = {
     },
     "2026-11-25 2:00 PM": {
      "low": 139,
-     "seats": 150,
+     "seats": 121,
      "secs": {
       "mezz": 139,
       "orch": 139,
@@ -7332,24 +7262,24 @@ window.TM_BD = {
     },
     "2026-11-25 7:00 PM": {
      "low": 129,
-     "seats": 260,
+     "seats": 239,
      "secs": {
       "mezz": 129,
-      "orch": 129,
-      "rmezz": 139
+      "orch": 139,
+      "rmezz": 129
      },
      "raw": {
-      "FMEZZ": 129,
-      "MMEZZ": 139,
+      "FMEZZ": 149,
+      "MMEZZ": 129,
       "ORCH": 171,
-      "ORCHST": 129,
-      "RMEZZ": 139
+      "ORCHST": 139,
+      "RMEZZ": 129
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/942533/wicked-ny-1845640?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 2:00 PM": {
      "low": 97.75,
-     "seats": 496,
+     "seats": 560,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7357,8 +7287,8 @@ window.TM_BD = {
      },
      "raw": {
       "FMEZZ": 97.75,
-      "MMEZZ": 116.75,
-      "ORCH": 159,
+      "MMEZZ": 97.75,
+      "ORCH": 149,
       "ORCHST": 97.75,
       "RMEZZ": 97.75
      },
@@ -7366,7 +7296,7 @@ window.TM_BD = {
     },
     "2026-11-27 7:00 PM": {
      "low": 97.75,
-     "seats": 472,
+     "seats": 522,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7383,7 +7313,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 97.75,
-     "seats": 476,
+     "seats": 475,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7400,24 +7330,24 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 97.75,
-     "seats": 514,
+     "seats": 510,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
-      "rmezz": 129
+      "rmezz": 97.75
      },
      "raw": {
       "FMEZZ": 97.75,
-      "MMEZZ": 129,
+      "MMEZZ": 97.75,
       "ORCH": 149,
       "ORCHST": 97.75,
-      "RMEZZ": 129
+      "RMEZZ": 97.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/942533/wicked-ny-1845755?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-29 3:00 PM": {
      "low": 97.75,
-     "seats": 609,
+     "seats": 606,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7434,7 +7364,7 @@ window.TM_BD = {
     },
     "2026-12-01 7:00 PM": {
      "low": 97.75,
-     "seats": 581,
+     "seats": 552,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7442,7 +7372,7 @@ window.TM_BD = {
      },
      "raw": {
       "FMEZZ": 97.75,
-      "MMEZZ": 110.75,
+      "MMEZZ": 97.75,
       "ORCH": 139,
       "ORCHST": 97.75,
       "RMEZZ": 110.75
@@ -7451,7 +7381,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 97.75,
-     "seats": 619,
+     "seats": 676,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7459,7 +7389,7 @@ window.TM_BD = {
      },
      "raw": {
       "FMEZZ": 97.75,
-      "MMEZZ": 110.75,
+      "MMEZZ": 97.75,
       "ORCH": 139,
       "ORCHST": 97.75,
       "RMEZZ": 97.75
@@ -7468,7 +7398,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 97.75,
-     "seats": 477,
+     "seats": 560,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7485,7 +7415,7 @@ window.TM_BD = {
     },
     "2026-12-04 7:00 PM": {
      "low": 97.75,
-     "seats": 357,
+     "seats": 363,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7502,7 +7432,7 @@ window.TM_BD = {
     },
     "2026-12-05 2:00 PM": {
      "low": 97.75,
-     "seats": 183,
+     "seats": 172,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7519,7 +7449,7 @@ window.TM_BD = {
     },
     "2026-12-05 8:00 PM": {
      "low": 97.75,
-     "seats": 470,
+     "seats": 454,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7536,7 +7466,7 @@ window.TM_BD = {
     },
     "2026-12-06 2:00 PM": {
      "low": 97.75,
-     "seats": 531,
+     "seats": 514,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7553,7 +7483,7 @@ window.TM_BD = {
     },
     "2026-12-06 7:00 PM": {
      "low": 97.75,
-     "seats": 471,
+     "seats": 458,
      "secs": {
       "mezz": 97.75,
       "orch": 97.75,
@@ -7575,56 +7505,9 @@ window.TM_BD = {
    "name": "A Kidman Carol",
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362?trafficSource=agentic&trafficChannel=api",
    "perfs": {
-    "2026-11-23 7:00 PM": {
-     "low": 49.75,
-     "seats": 47,
-     "secs": {
-      "mezz": 49.75,
-      "orch": 49.75
-     },
-     "raw": {
-      "MEZZF": 110.75,
-      "MEZZL": 49.75,
-      "MEZZR": 49.75,
-      "ORCHC": 49.75
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335499?trafficSource=agentic&trafficChannel=api"
-    },
     "2026-11-24 7:00 PM": {
      "low": 49.75,
-     "seats": 105,
-     "secs": {
-      "mezz": 49.75,
-      "orch": 49.75
-     },
-     "raw": {
-      "MEZZF": 110.75,
-      "MEZZL": 49.75,
-      "MEZZR": 49.75,
-      "ORCHC": 49.75
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335500?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 5:00 PM": {
-     "low": 49.75,
-     "seats": 172,
-     "secs": {
-      "mezz": 49.75,
-      "orch": 49.75
-     },
-     "raw": {
-      "MEZZF": 110.75,
-      "MEZZL": 49.75,
-      "MEZZR": 49.75,
-      "ORCHC": 79.75,
-      "ORCHL": 49.75,
-      "ORCHR": 49.75
-     },
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335501?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-25 8:00 PM": {
-     "low": 49.75,
-     "seats": 241,
+     "seats": 112,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7634,14 +7517,48 @@ window.TM_BD = {
       "MEZZL": 49.75,
       "MEZZR": 49.75,
       "ORCHC": 49.75,
-      "ORCHL": 79.75,
+      "ORCHL": 49.75,
+      "ORCHR": 49.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335500?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 5:00 PM": {
+     "low": 49.75,
+     "seats": 164,
+     "secs": {
+      "mezz": 49.75,
+      "orch": 49.75
+     },
+     "raw": {
+      "MEZZF": 110.75,
+      "MEZZL": 49.75,
+      "MEZZR": 49.75,
+      "ORCHC": 49.75,
+      "ORCHL": 49.75,
+      "ORCHR": 49.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335501?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-25 8:00 PM": {
+     "low": 49.75,
+     "seats": 215,
+     "secs": {
+      "mezz": 49.75,
+      "orch": 49.75
+     },
+     "raw": {
+      "MEZZF": 110.75,
+      "MEZZL": 49.75,
+      "MEZZR": 49.75,
+      "ORCHC": 49.75,
+      "ORCHL": 49.75,
       "ORCHR": 49.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335502?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-27 5:00 PM": {
      "low": 49.75,
-     "seats": 204,
+     "seats": 209,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7658,7 +7575,7 @@ window.TM_BD = {
     },
     "2026-11-27 8:00 PM": {
      "low": 49.75,
-     "seats": 238,
+     "seats": 256,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7675,7 +7592,7 @@ window.TM_BD = {
     },
     "2026-11-28 5:00 PM": {
      "low": 49.75,
-     "seats": 174,
+     "seats": 216,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7684,7 +7601,7 @@ window.TM_BD = {
       "MEZZF": 110.75,
       "MEZZL": 49.75,
       "MEZZR": 49.75,
-      "ORCHC": 79.75,
+      "ORCHC": 49.75,
       "ORCHL": 49.75,
       "ORCHR": 49.75
      },
@@ -7692,7 +7609,7 @@ window.TM_BD = {
     },
     "2026-11-28 8:00 PM": {
      "low": 49.75,
-     "seats": 204,
+     "seats": 251,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7709,7 +7626,7 @@ window.TM_BD = {
     },
     "2026-11-29 5:00 PM": {
      "low": 49.75,
-     "seats": 141,
+     "seats": 159,
      "secs": {
       "mezz": 49.75,
       "orch": 49.75
@@ -7726,7 +7643,7 @@ window.TM_BD = {
     },
     "2026-12-02 7:00 PM": {
      "low": 59.75,
-     "seats": 233,
+     "seats": 231,
      "secs": {
       "mezz": 59.75,
       "orch": 59.75
@@ -7743,7 +7660,7 @@ window.TM_BD = {
     },
     "2026-12-03 7:00 PM": {
      "low": 59.75,
-     "seats": 198,
+     "seats": 195,
      "secs": {
       "mezz": 59.75,
       "orch": 79.75
@@ -7828,7 +7745,7 @@ window.TM_BD = {
     },
     "2026-12-06 5:00 PM": {
      "low": 69.75,
-     "seats": 282,
+     "seats": 278,
      "secs": {
       "mezz": 69.75,
       "orch": 69.75
@@ -7842,6 +7759,23 @@ window.TM_BD = {
       "ORCHR": 89.75
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335514?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-12-07 7:00 PM": {
+     "low": 59.75,
+     "seats": 230,
+     "secs": {
+      "mezz": 59.75,
+      "orch": 59.75
+     },
+     "raw": {
+      "MEZZF": 120.75,
+      "MEZZL": 59.75,
+      "MEZZR": 59.75,
+      "ORCHC": 100.75,
+      "ORCHL": 59.75,
+      "ORCHR": 79.75
+     },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/254362/a-kidman-carol-2335515?trafficSource=agentic&trafficChannel=api"
     }
    }
   },
@@ -7851,19 +7785,19 @@ window.TM_BD = {
    "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364?trafficSource=agentic&trafficChannel=api",
    "perfs": {
     "2026-11-25 2:00 PM": {
-     "low": 215,
-     "seats": 9,
+     "low": 163,
+     "seats": 5,
      "secs": {
-      "orch": 215
+      "orch": 163
      },
      "raw": {
-      "ORCH10": 215
+      "ORCH10": 163
      },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222924?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-25 8:00 PM": {
      "low": 163,
-     "seats": 8,
+     "seats": 1,
      "secs": {
       "orch": 163
      },
@@ -7874,7 +7808,7 @@ window.TM_BD = {
     },
     "2026-11-27 2:00 PM": {
      "low": 163,
-     "seats": 13,
+     "seats": 8,
      "secs": {
       "orch": 163
      },
@@ -7885,7 +7819,7 @@ window.TM_BD = {
     },
     "2026-11-27 8:00 PM": {
      "low": 163,
-     "seats": 26,
+     "seats": 28,
      "secs": {
       "orch": 163
      },
@@ -7896,7 +7830,7 @@ window.TM_BD = {
     },
     "2026-11-28 2:00 PM": {
      "low": 163,
-     "seats": 28,
+     "seats": 20,
      "secs": {
       "orch": 163
      },
@@ -7906,21 +7840,21 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222926?trafficSource=agentic&trafficChannel=api"
     },
     "2026-11-28 8:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
-     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222927?trafficSource=agentic&trafficChannel=api"
-    },
-    "2026-11-29 3:00 PM": {
      "low": 163,
-     "seats": 1,
+     "seats": 20,
      "secs": {
       "orch": 163
      },
      "raw": {
       "ORCH10": 163
      },
+     "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222927?trafficSource=agentic&trafficChannel=api"
+    },
+    "2026-11-29 3:00 PM": {
+     "low": null,
+     "seats": 0,
+     "secs": {},
+     "raw": {},
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222930?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-01 7:00 PM": {
@@ -7966,10 +7900,14 @@ window.TM_BD = {
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222936?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-05 8:00 PM": {
-     "low": null,
-     "seats": 0,
-     "secs": {},
-     "raw": {},
+     "low": 163,
+     "seats": 2,
+     "secs": {
+      "orch": 163
+     },
+     "raw": {
+      "ORCH10": 163
+     },
      "url": "https://tickets.broadwaydirect.com/shop/tickets/series/738364/august-wilsons-seven-guitars-2222937?trafficSource=agentic&trafficChannel=api"
     },
     "2026-12-06 3:00 PM": {
@@ -7988,5 +7926,5 @@ window.TM_BD = {
    "perfs": {}
   }
  },
- "calls": 506
+ "calls": 504
 };
