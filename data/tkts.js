@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-25T23:17:26.812Z",
+ "checkedAt": "2026-11-25T23:32:30.482Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 05:19 PM",
+   "updated": "Wednesday, 25 November 2026 06:19 PM",
    "shows": [
     {
      "title": "Aladdin",
@@ -203,9 +203,9 @@ window.TM_TKTS = {
      "title": "The Outsiders",
      "url": "https://www.tdf.org/shows/19937/the-outsiders",
      "tdfId": "19937",
-     "pct": 40,
-     "lo": 122,
-     "hi": 191,
+     "pct": 50,
+     "lo": 104,
+     "hi": 161,
      "time": "7:30 PM"
     },
     {
@@ -242,7 +242,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 05:19 PM",
+   "updated": "Wednesday, 25 November 2026 06:19 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
