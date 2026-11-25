@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-25T00:12:16.452Z",
+ "checkedAt": "2026-11-25T00:42:22.523Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Tuesday, 24 November 2026 06:59 PM",
+   "updated": "Tuesday, 24 November 2026 07:33 PM",
    "shows": [
     {
      "title": "Galileo",
@@ -18,24 +18,6 @@ window.TM_TKTS = {
      "lo": 71,
      "hi": 91,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Inter Alia",
-     "url": "https://www.tdf.org/shows/23204/inter-alia",
-     "tdfId": "23204",
-     "pct": 50,
-     "lo": 81,
-     "hi": 91,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 50,
-     "lo": 58,
-     "hi": 92,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-24"
@@ -44,7 +26,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Tuesday, 24 November 2026 06:59 PM",
+   "updated": "Tuesday, 24 November 2026 07:33 PM",
    "shows": [
     {
      "title": "Christmas Spectacular w/ the Radio City Rockettes",
@@ -56,33 +38,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Friends! The Musical Parody",
-     "url": "https://www.tdf.org/shows/18504/friends-the-musical-parody",
-     "tdfId": "18504",
-     "pct": 30,
-     "lo": 49,
-     "hi": 57,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Midnight",
-     "url": "https://www.tdf.org/shows/23360/midnight",
-     "tdfId": "23360",
-     "pct": 50,
-     "lo": 63,
-     "hi": 78,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Our Sinatra, a Musical Celebration",
-     "url": "https://www.tdf.org/shows/23469/our-sinatra-a-musical-celebration",
-     "tdfId": "23469",
-     "pct": 50,
-     "lo": 42,
-     "hi": 72,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -90,15 +45,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 86,
-     "hi": 86,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-24"
@@ -107,7 +53,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Tuesday, 24 November 2026 06:59 PM",
+   "updated": "Tuesday, 24 November 2026 07:33 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -296,7 +242,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Tuesday, 24 November 2026 06:59 PM",
+   "updated": "Tuesday, 24 November 2026 07:33 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
