@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-25T01:12:28.073Z",
+ "checkedAt": "2026-11-25T01:27:32.179Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "closed",
-   "updated": "Tuesday, 24 November 2026 07:58 PM",
+   "updated": "Tuesday, 24 November 2026 08:09 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -179,7 +179,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "closed",
-   "updated": "Tuesday, 24 November 2026 07:58 PM",
+   "updated": "Tuesday, 24 November 2026 08:09 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
