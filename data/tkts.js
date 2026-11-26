@@ -2,23 +2,14 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-26T00:02:36.632Z",
+ "checkedAt": "2026-11-26T00:32:42.189Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 06:55 PM",
+   "updated": "Wednesday, 25 November 2026 07:27 PM",
    "shows": [
-    {
-     "title": "Buena Vista Social Club",
-     "url": "https://www.tdf.org/shows/19730/buena-vista-social-club",
-     "tdfId": "19730",
-     "pct": 40,
-     "lo": 71,
-     "hi": 113,
-     "time": "7:30 PM"
-    },
     {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
@@ -27,24 +18,6 @@ window.TM_TKTS = {
      "lo": 76,
      "hi": 96,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Hadestown",
-     "url": "https://www.tdf.org/shows/17230/hadestown",
-     "tdfId": "17230",
-     "pct": 20,
-     "lo": 170,
-     "hi": 170,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Inter Alia",
-     "url": "https://www.tdf.org/shows/23204/inter-alia",
-     "tdfId": "23204",
-     "pct": 50,
-     "lo": 66,
-     "hi": 91,
-     "time": "7:30 PM"
     },
     {
      "title": "Just In Time",
@@ -56,24 +29,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Operation Mincemeat",
-     "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
-     "tdfId": "22082",
-     "pct": 40,
-     "lo": 102,
-     "hi": 150,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Schmigadoon!",
-     "url": "https://www.tdf.org/shows/22904/schmigadoon",
-     "tdfId": "22904",
-     "pct": 40,
-     "lo": 101,
-     "hi": 124,
-     "time": "7:30 PM"
-    },
-    {
      "title": "The Great Gatsby",
      "url": "https://www.tdf.org/shows/21385/the-great-gatsby",
      "tdfId": "21385",
@@ -81,42 +36,6 @@ window.TM_TKTS = {
      "lo": 110,
      "hi": 149,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Lost Boys",
-     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
-     "tdfId": "22920",
-     "pct": 50,
-     "lo": 101,
-     "hi": 124,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "The Outsiders",
-     "url": "https://www.tdf.org/shows/19937/the-outsiders",
-     "tdfId": "19937",
-     "pct": 50,
-     "lo": 104,
-     "hi": 161,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 40,
-     "lo": 68,
-     "hi": 108,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Wanted",
-     "url": "https://www.tdf.org/shows/23169/wanted",
-     "tdfId": "23169",
-     "pct": 50,
-     "lo": 68,
-     "hi": 92,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-25"
@@ -125,7 +44,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 06:55 PM",
+   "updated": "Wednesday, 25 November 2026 07:27 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
