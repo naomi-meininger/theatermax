@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-26T00:32:42.189Z",
+ "checkedAt": "2026-11-26T00:47:46.144Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 07:27 PM",
+   "updated": "Wednesday, 25 November 2026 07:29 PM",
    "shows": [
     {
      "title": "Galileo",
@@ -44,7 +44,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Wednesday, 25 November 2026 07:27 PM",
+   "updated": "Wednesday, 25 November 2026 07:29 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -53,15 +53,6 @@ window.TM_TKTS = {
      "pct": 40,
      "lo": 41,
      "hi": 69,
-     "time": "8:00 PM"
-    },
-    {
-     "title": "Traitorz: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
-     "tdfId": "23594",
-     "pct": 50,
-     "lo": 59,
-     "hi": 59,
      "time": "8:00 PM"
     }
    ],
