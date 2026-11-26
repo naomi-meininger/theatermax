@@ -2,50 +2,32 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-25T19:58:20.532Z",
-  "lastAttemptAt": "2026-11-25T19:58:20.532Z",
+  "updatedAt": "2026-11-26T19:42:09.455Z",
+  "lastAttemptAt": "2026-11-26T19:42:09.455Z",
   "count": 91,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-25T19:58:20.532Z",
-      "lastAttemptAt": "2026-11-25T19:58:20.532Z",
+      "updatedAt": "2026-11-26T19:42:09.455Z",
+      "lastAttemptAt": "2026-11-26T19:42:09.455Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-25T19:58:20.532Z",
-      "lastAttemptAt": "2026-11-25T19:58:20.532Z",
+      "updatedAt": "2026-11-26T19:42:09.455Z",
+      "lastAttemptAt": "2026-11-26T19:42:09.455Z",
       "count": 25
     }
   },
   "shows": [
-    {
-      "slug": "hadestown",
-      "title": "Hadestown",
-      "url": "https://www.broadway.com/shows/hadestown/",
-      "fromPrice": 62.72,
-      "ratingCount": 675,
-      "scene": "broadway",
-      "firstSeen": null
-    },
     {
       "slug": "mj",
       "title": "MJ",
       "url": "https://www.broadway.com/shows/mj/",
       "fromPrice": 70.25,
       "ratingCount": 1329,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "aladdin-broadway",
-      "title": "Aladdin",
-      "url": "https://www.broadway.com/shows/aladdin-broadway/",
-      "fromPrice": 82.46,
-      "ratingCount": 671,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -64,6 +46,24 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
       "fromPrice": 59.67,
       "ratingCount": 402,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "hadestown",
+      "title": "Hadestown",
+      "url": "https://www.broadway.com/shows/hadestown/",
+      "fromPrice": 62.72,
+      "ratingCount": 676,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "aladdin-broadway",
+      "title": "Aladdin",
+      "url": "https://www.broadway.com/shows/aladdin-broadway/",
+      "fromPrice": 82.46,
+      "ratingCount": 671,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -126,7 +126,7 @@ window.TM_LIVE = {
       "title": "Chicago",
       "url": "https://www.broadway.com/shows/chicago/",
       "fromPrice": 81.1,
-      "ratingCount": 659,
+      "ratingCount": 660,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -164,7 +164,7 @@ window.TM_LIVE = {
       "fromPrice": 276.11,
       "ratingCount": 131,
       "scene": "off",
-      "firstSeen": "2026-11-25"
+      "firstSeen": "2026-11-26"
     },
     {
       "slug": "six",
@@ -189,7 +189,7 @@ window.TM_LIVE = {
       "title": "Buena Vista Social Club",
       "url": "https://www.broadway.com/shows/buena-vista-social-club/",
       "fromPrice": 64.29,
-      "ratingCount": 1196,
+      "ratingCount": 1197,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -269,7 +269,7 @@ window.TM_LIVE = {
       "slug": "much-ado-about-nothing",
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
-      "fromPrice": 107.69,
+      "fromPrice": 90.33,
       "ratingCount": 34,
       "scene": "broadway",
       "firstSeen": null
@@ -279,7 +279,7 @@ window.TM_LIVE = {
       "title": "Other Desert Cities",
       "url": "https://www.broadway.com/shows/other-desert-cities/",
       "fromPrice": 234.49,
-      "ratingCount": 92,
+      "ratingCount": 93,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -297,7 +297,7 @@ window.TM_LIVE = {
       "title": "Paranormal Activity: A New Story Live on Broadway",
       "url": "https://www.broadway.com/shows/paranormal-activity/",
       "fromPrice": 58.88,
-      "ratingCount": 108,
+      "ratingCount": 109,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -350,7 +350,7 @@ window.TM_LIVE = {
       "slug": "a-few-good-men",
       "title": "A Few Good Men",
       "url": "https://www.broadway.com/shows/a-few-good-men/",
-      "fromPrice": 248.36,
+      "fromPrice": 137.36,
       "ratingCount": 32,
       "scene": "broadway",
       "firstSeen": null
@@ -458,7 +458,7 @@ window.TM_LIVE = {
       "slug": "two-strangers-carry-a-cake-across-new-york",
       "title": "Two Strangers (Carry a Cake Across New York)",
       "url": "https://www.broadway.com/shows/two-strangers-carry-a-cake-across-new-york/",
-      "fromPrice": 74.92,
+      "fromPrice": 85.99,
       "ratingCount": 330,
       "scene": "broadway",
       "firstSeen": null
@@ -503,7 +503,7 @@ window.TM_LIVE = {
       "slug": "the-comedy-about-spies",
       "title": "The Comedy About Spies",
       "url": "https://www.broadway.com/shows/the-comedy-about-spies/",
-      "fromPrice": 85.99,
+      "fromPrice": 65.37,
       "ratingCount": null,
       "scene": "broadway",
       "firstSeen": "2026-11-24"
@@ -626,15 +626,6 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 12,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "little-shop-horrors",
       "title": "Little Shop of Horrors",
       "url": "https://www.broadway.com/shows/little-shop-horrors/",
@@ -644,11 +635,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "jamie-allans-amaze",
-      "title": "Amaze Magic",
-      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
-      "fromPrice": 65.36,
-      "ratingCount": 126,
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 83.25,
+      "ratingCount": 12,
       "scene": "off",
       "firstSeen": null
     },
@@ -658,6 +649,15 @@ window.TM_LIVE = {
       "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
       "fromPrice": 101.18,
       "ratingCount": 372,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "jamie-allans-amaze",
+      "title": "Amaze Magic",
+      "url": "https://www.broadway.com/shows/jamie-allans-amaze/",
+      "fromPrice": 65.36,
+      "ratingCount": 126,
       "scene": "off",
       "firstSeen": null
     },
@@ -674,7 +674,7 @@ window.TM_LIVE = {
       "slug": "midnight",
       "title": "Midnight",
       "url": "https://www.broadway.com/shows/midnight/",
-      "fromPrice": 89.24,
+      "fromPrice": 100.09,
       "ratingCount": 30,
       "scene": "off",
       "firstSeen": null
@@ -737,7 +737,7 @@ window.TM_LIVE = {
       "slug": "the-visitors",
       "title": "The Visitors",
       "url": "https://www.broadway.com/shows/the-visitors/",
-      "fromPrice": 88.8,
+      "fromPrice": 102.68,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
