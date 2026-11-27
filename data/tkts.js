@@ -2,31 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-26T22:55:54.039Z",
+ "checkedAt": "2026-11-27T00:41:14.650Z",
  "boards": [
-  {
-   "booth": "times-square",
-   "kind": "off",
-   "status": "open",
-   "updated": "Thursday, 26 November 2026 03:36 PM",
-   "shows": [
-    {
-     "title": "Going Bacharach",
-     "url": "https://www.tdf.org/shows/23016/going-bacharach",
-     "tdfId": "23016",
-     "pct": 50,
-     "lo": 57,
-     "hi": 87,
-     "time": "7:30 PM"
-    }
-   ],
-   "day": "2026-11-26"
-  },
   {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Thursday, 26 November 2026 03:36 PM",
+   "updated": "Thursday, 26 November 2026 07:34 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -206,7 +188,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Thursday, 26 November 2026 03:36 PM",
+   "updated": "Thursday, 26 November 2026 07:34 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
