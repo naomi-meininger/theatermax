@@ -2,7 +2,7 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-27T22:53:51.243Z",
+ "checkedAt": "2026-11-27T23:08:54.863Z",
  "boards": [
   {
    "booth": "times-square",
@@ -745,7 +745,7 @@ window.TM_TKTS = {
   {
    "booth": "lincoln-center",
    "kind": "broadway",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 27 November 2026 03:53 PM",
    "shows": [
     {
@@ -988,7 +988,7 @@ window.TM_TKTS = {
   {
    "booth": "lincoln-center",
    "kind": "off",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 27 November 2026 03:53 PM",
    "shows": [
     {
@@ -1060,7 +1060,7 @@ window.TM_TKTS = {
   {
    "booth": "lincoln-center",
    "kind": "tomorrow-broadway",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 27 November 2026 03:53 PM",
    "shows": [
     {
@@ -1321,7 +1321,7 @@ window.TM_TKTS = {
   {
    "booth": "lincoln-center",
    "kind": "tomorrow-off",
-   "status": "open",
+   "status": "closed",
    "updated": "Friday, 27 November 2026 03:53 PM",
    "shows": [
     {
