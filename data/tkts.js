@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-27T01:11:21.272Z",
+ "checkedAt": "2026-11-27T01:26:25.073Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "closed",
-   "updated": "Thursday, 26 November 2026 08:00 PM",
+   "updated": "Thursday, 26 November 2026 08:17 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -131,7 +131,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "closed",
-   "updated": "Thursday, 26 November 2026 08:00 PM",
+   "updated": "Thursday, 26 November 2026 08:17 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
