@@ -2,131 +2,32 @@
 // Shows currently listed on Broadway.com (titles, links, lowest "from" price, rating count).
 window.TM_LIVE = {
   "status": "ok",
-  "updatedAt": "2026-11-26T19:42:09.455Z",
-  "lastAttemptAt": "2026-11-26T19:42:09.455Z",
+  "updatedAt": "2026-11-27T19:30:16.898Z",
+  "lastAttemptAt": "2026-11-27T19:30:16.898Z",
   "count": 91,
   "categories": {
     "broadway": {
       "source": "https://www.broadway.com/shows/tickets/?category=broadway&view_all=true",
       "status": "ok",
-      "updatedAt": "2026-11-26T19:42:09.455Z",
-      "lastAttemptAt": "2026-11-26T19:42:09.455Z",
+      "updatedAt": "2026-11-27T19:30:16.898Z",
+      "lastAttemptAt": "2026-11-27T19:30:16.898Z",
       "count": 67
     },
     "off": {
       "source": "https://www.broadway.com/shows/tickets/?category=off-broadway",
       "status": "ok",
-      "updatedAt": "2026-11-26T19:42:09.455Z",
-      "lastAttemptAt": "2026-11-26T19:42:09.455Z",
+      "updatedAt": "2026-11-27T19:30:16.898Z",
+      "lastAttemptAt": "2026-11-27T19:30:16.898Z",
       "count": 25
     }
   },
   "shows": [
     {
-      "slug": "mj",
-      "title": "MJ",
-      "url": "https://www.broadway.com/shows/mj/",
-      "fromPrice": 70.25,
-      "ratingCount": 1329,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-lion-king",
-      "title": "The Lion King",
-      "url": "https://www.broadway.com/shows/the-lion-king/",
-      "fromPrice": 143.36,
-      "ratingCount": 677,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-lost-boys-a-new-musical",
-      "title": "The Lost Boys, A New Musical",
-      "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
-      "fromPrice": 59.67,
-      "ratingCount": 402,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "hadestown",
-      "title": "Hadestown",
-      "url": "https://www.broadway.com/shows/hadestown/",
-      "fromPrice": 62.72,
-      "ratingCount": 676,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "aladdin-broadway",
-      "title": "Aladdin",
-      "url": "https://www.broadway.com/shows/aladdin-broadway/",
-      "fromPrice": 82.46,
-      "ratingCount": 671,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "just-in-time",
-      "title": "Just In Time",
-      "url": "https://www.broadway.com/shows/just-in-time/",
-      "fromPrice": 75.14,
-      "ratingCount": 1100,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "maybe-happy-ending",
-      "title": "Maybe Happy Ending",
-      "url": "https://www.broadway.com/shows/maybe-happy-ending/",
-      "fromPrice": 61.03,
-      "ratingCount": 617,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "schmigadoon",
-      "title": "Schmigadoon!",
-      "url": "https://www.broadway.com/shows/schmigadoon/",
-      "fromPrice": 61.77,
-      "ratingCount": 247,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-rocky-horror-show",
-      "title": "The Rocky Horror Show",
-      "url": "https://www.broadway.com/shows/the-rocky-horror-show/",
-      "fromPrice": 62.54,
-      "ratingCount": 252,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "stranger-things-the-first-shadow",
-      "title": "Stranger Things: The First Shadow",
-      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
-      "fromPrice": 74.87,
-      "ratingCount": 769,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "book-mormon",
-      "title": "The Book of Mormon",
-      "url": "https://www.broadway.com/shows/book-mormon/",
-      "fromPrice": 75.52,
-      "ratingCount": 510,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "chicago",
-      "title": "Chicago",
-      "url": "https://www.broadway.com/shows/chicago/",
-      "fromPrice": 81.1,
-      "ratingCount": 660,
+      "slug": "the-outsiders",
+      "title": "The Outsiders",
+      "url": "https://www.broadway.com/shows/the-outsiders/",
+      "fromPrice": 88.16,
+      "ratingCount": 904,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -140,11 +41,20 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "wanted",
-      "title": "Wanted",
-      "url": "https://www.broadway.com/shows/wanted/",
-      "fromPrice": 65.37,
-      "ratingCount": 58,
+      "slug": "galileo",
+      "title": "Galileo",
+      "url": "https://www.broadway.com/shows/galileo/",
+      "fromPrice": 50.18,
+      "ratingCount": 9,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "maybe-happy-ending",
+      "title": "Maybe Happy Ending",
+      "url": "https://www.broadway.com/shows/maybe-happy-ending/",
+      "fromPrice": 61.03,
+      "ratingCount": 617,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -158,56 +68,11 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "masquerade",
-      "title": "Masquerade",
-      "url": "https://www.broadway.com/shows/masquerade/",
-      "fromPrice": 276.11,
-      "ratingCount": 131,
-      "scene": "off",
-      "firstSeen": "2026-11-26"
-    },
-    {
-      "slug": "six",
-      "title": "SIX: The Musical",
-      "url": "https://www.broadway.com/shows/six/",
-      "fromPrice": 88.32,
-      "ratingCount": 431,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "operation-mincemeat",
-      "title": "Operation Mincemeat: A New Musical",
-      "url": "https://www.broadway.com/shows/operation-mincemeat/",
-      "fromPrice": 65.37,
-      "ratingCount": 699,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "buena-vista-social-club",
-      "title": "Buena Vista Social Club",
-      "url": "https://www.broadway.com/shows/buena-vista-social-club/",
-      "fromPrice": 64.29,
-      "ratingCount": 1197,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "galileo",
-      "title": "Galileo",
-      "url": "https://www.broadway.com/shows/galileo/",
-      "fromPrice": 50.18,
-      "ratingCount": 9,
-      "scene": "broadway",
-      "firstSeen": null
-    },
-    {
-      "slug": "the-great-gatsby",
-      "title": "The Great Gatsby",
-      "url": "https://www.broadway.com/shows/the-great-gatsby/",
-      "fromPrice": 63.2,
-      "ratingCount": 1053,
+      "slug": "hamilton-broadway",
+      "title": "Hamilton",
+      "url": "https://www.broadway.com/shows/hamilton-broadway/",
+      "fromPrice": 126.72,
+      "ratingCount": 734,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -221,20 +86,155 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "hamilton-broadway",
-      "title": "Hamilton",
-      "url": "https://www.broadway.com/shows/hamilton-broadway/",
-      "fromPrice": 126.72,
-      "ratingCount": 734,
+      "slug": "the-great-gatsby",
+      "title": "The Great Gatsby",
+      "url": "https://www.broadway.com/shows/the-great-gatsby/",
+      "fromPrice": 63.2,
+      "ratingCount": 1053,
       "scene": "broadway",
       "firstSeen": null
     },
     {
-      "slug": "the-outsiders",
-      "title": "The Outsiders",
-      "url": "https://www.broadway.com/shows/the-outsiders/",
-      "fromPrice": 88.16,
-      "ratingCount": 904,
+      "slug": "buena-vista-social-club",
+      "title": "Buena Vista Social Club",
+      "url": "https://www.broadway.com/shows/buena-vista-social-club/",
+      "fromPrice": 64.29,
+      "ratingCount": 1197,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "operation-mincemeat",
+      "title": "Operation Mincemeat: A New Musical",
+      "url": "https://www.broadway.com/shows/operation-mincemeat/",
+      "fromPrice": 65.37,
+      "ratingCount": 699,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "six",
+      "title": "SIX: The Musical",
+      "url": "https://www.broadway.com/shows/six/",
+      "fromPrice": 88.32,
+      "ratingCount": 431,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "masquerade",
+      "title": "Masquerade",
+      "url": "https://www.broadway.com/shows/masquerade/",
+      "fromPrice": 276.11,
+      "ratingCount": 131,
+      "scene": "off",
+      "firstSeen": "2026-11-27"
+    },
+    {
+      "slug": "wanted",
+      "title": "Wanted",
+      "url": "https://www.broadway.com/shows/wanted/",
+      "fromPrice": 65.37,
+      "ratingCount": 58,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "chicago",
+      "title": "Chicago",
+      "url": "https://www.broadway.com/shows/chicago/",
+      "fromPrice": 81.1,
+      "ratingCount": 660,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "book-mormon",
+      "title": "The Book of Mormon",
+      "url": "https://www.broadway.com/shows/book-mormon/",
+      "fromPrice": 75.52,
+      "ratingCount": 510,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "stranger-things-the-first-shadow",
+      "title": "Stranger Things: The First Shadow",
+      "url": "https://www.broadway.com/shows/stranger-things-the-first-shadow/",
+      "fromPrice": 74.87,
+      "ratingCount": 769,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-rocky-horror-show",
+      "title": "The Rocky Horror Show",
+      "url": "https://www.broadway.com/shows/the-rocky-horror-show/",
+      "fromPrice": 62.54,
+      "ratingCount": 252,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "schmigadoon",
+      "title": "Schmigadoon!",
+      "url": "https://www.broadway.com/shows/schmigadoon/",
+      "fromPrice": 61.77,
+      "ratingCount": 247,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "just-in-time",
+      "title": "Just In Time",
+      "url": "https://www.broadway.com/shows/just-in-time/",
+      "fromPrice": 75.14,
+      "ratingCount": 1100,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-lion-king",
+      "title": "The Lion King",
+      "url": "https://www.broadway.com/shows/the-lion-king/",
+      "fromPrice": 143.36,
+      "ratingCount": 677,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "aladdin-broadway",
+      "title": "Aladdin",
+      "url": "https://www.broadway.com/shows/aladdin-broadway/",
+      "fromPrice": 82.46,
+      "ratingCount": 671,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "hadestown",
+      "title": "Hadestown",
+      "url": "https://www.broadway.com/shows/hadestown/",
+      "fromPrice": 62.72,
+      "ratingCount": 676,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-lost-boys-a-new-musical",
+      "title": "The Lost Boys, A New Musical",
+      "url": "https://www.broadway.com/shows/the-lost-boys-a-new-musical/",
+      "fromPrice": 59.67,
+      "ratingCount": 402,
+      "scene": "broadway",
+      "firstSeen": null
+    },
+    {
+      "slug": "mj",
+      "title": "MJ",
+      "url": "https://www.broadway.com/shows/mj/",
+      "fromPrice": 70.25,
+      "ratingCount": 1329,
       "scene": "broadway",
       "firstSeen": null
     },
@@ -269,7 +269,7 @@ window.TM_LIVE = {
       "slug": "much-ado-about-nothing",
       "title": "Much Ado About Nothing",
       "url": "https://www.broadway.com/shows/much-ado-about-nothing/",
-      "fromPrice": 90.33,
+      "fromPrice": 126.72,
       "ratingCount": 34,
       "scene": "broadway",
       "firstSeen": null
@@ -350,7 +350,7 @@ window.TM_LIVE = {
       "slug": "a-few-good-men",
       "title": "A Few Good Men",
       "url": "https://www.broadway.com/shows/a-few-good-men/",
-      "fromPrice": 137.36,
+      "fromPrice": 206.74,
       "ratingCount": 32,
       "scene": "broadway",
       "firstSeen": null
@@ -635,20 +635,20 @@ window.TM_LIVE = {
       "firstSeen": null
     },
     {
-      "slug": "the-heart",
-      "title": "The Heart",
-      "url": "https://www.broadway.com/shows/the-heart/",
-      "fromPrice": 83.25,
-      "ratingCount": 12,
-      "scene": "off",
-      "firstSeen": null
-    },
-    {
       "slug": "play-goes-wrong-beginning-february-11-2019",
       "title": "The Play That Goes Wrong",
       "url": "https://www.broadway.com/shows/play-goes-wrong-beginning-february-11-2019/",
       "fromPrice": 101.18,
       "ratingCount": 372,
+      "scene": "off",
+      "firstSeen": null
+    },
+    {
+      "slug": "the-heart",
+      "title": "The Heart",
+      "url": "https://www.broadway.com/shows/the-heart/",
+      "fromPrice": 90.19,
+      "ratingCount": 12,
       "scene": "off",
       "firstSeen": null
     },
@@ -665,7 +665,7 @@ window.TM_LIVE = {
       "slug": "imitation-of-life",
       "title": "Imitation of Life",
       "url": "https://www.broadway.com/shows/imitation-of-life/",
-      "fromPrice": 102.68,
+      "fromPrice": 90.19,
       "ratingCount": null,
       "scene": "off",
       "firstSeen": null
@@ -674,7 +674,7 @@ window.TM_LIVE = {
       "slug": "midnight",
       "title": "Midnight",
       "url": "https://www.broadway.com/shows/midnight/",
-      "fromPrice": 100.09,
+      "fromPrice": 89.24,
       "ratingCount": 30,
       "scene": "off",
       "firstSeen": null
