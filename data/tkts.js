@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-27T22:38:47.280Z",
+ "checkedAt": "2026-11-27T22:53:51.243Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 04:17 PM",
+   "updated": "Friday, 27 November 2026 05:39 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -81,6 +81,15 @@ window.TM_TKTS = {
      "lo": 186,
      "hi": 186,
      "time": "7:30 PM"
+    },
+    {
+     "title": "Here There Are Blueberries",
+     "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries",
+     "tdfId": "23494",
+     "pct": 50,
+     "lo": 91,
+     "hi": 91,
+     "time": "7:00 PM"
     },
     {
      "title": "Inter Alia",
@@ -260,7 +269,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 04:17 PM",
+   "updated": "Friday, 27 November 2026 05:39 PM",
    "shows": [
     {
      "title": "A Ghost in Your Ear",
@@ -377,7 +386,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 04:17 PM",
+   "updated": "Friday, 27 November 2026 05:39 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -638,7 +647,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 04:17 PM",
+   "updated": "Friday, 27 November 2026 05:39 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
