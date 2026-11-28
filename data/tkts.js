@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-28T00:24:14.324Z",
+ "checkedAt": "2026-11-28T00:54:20.177Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:15 PM",
+   "updated": "Friday, 27 November 2026 07:38 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -18,33 +18,6 @@ window.TM_TKTS = {
      "lo": 86,
      "hi": 141,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Aladdin",
-     "url": "https://www.tdf.org/shows/12819/aladdin",
-     "tdfId": "12819",
-     "pct": 40,
-     "lo": 95,
-     "hi": 95,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Blue Man Group: A New Holiday Surprise",
-     "url": "https://www.tdf.org/shows/23551/blue-man-group-a-new-holiday-surprise",
-     "tdfId": "23551",
-     "pct": 50,
-     "lo": 69,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Buena Vista Social Club",
-     "url": "https://www.tdf.org/shows/19730/buena-vista-social-club",
-     "tdfId": "19730",
-     "pct": 40,
-     "lo": 125,
-     "hi": 125,
-     "time": "7:30 PM"
     },
     {
      "title": "Chicago",
@@ -65,24 +38,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Hadestown",
-     "url": "https://www.tdf.org/shows/17230/hadestown",
-     "tdfId": "17230",
-     "pct": 30,
-     "lo": 186,
-     "hi": 186,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Inter Alia",
-     "url": "https://www.tdf.org/shows/23204/inter-alia",
-     "tdfId": "23204",
-     "pct": 50,
-     "lo": 66,
-     "hi": 91,
-     "time": "7:30 PM"
-    },
-    {
      "title": "Just In Time",
      "url": "https://www.tdf.org/shows/22112/just-in-time",
      "tdfId": "22112",
@@ -90,69 +45,6 @@ window.TM_TKTS = {
      "lo": 108,
      "hi": 108,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Much Ado About Nothing",
-     "url": "https://www.tdf.org/shows/23297/much-ado-about-nothing",
-     "tdfId": "23297",
-     "pct": 50,
-     "lo": 86,
-     "hi": 126,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Now You See Me Live",
-     "url": "https://www.tdf.org/shows/23523/now-you-see-me-live",
-     "tdfId": "23523",
-     "pct": 40,
-     "lo": 73,
-     "hi": 130,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Operation Mincemeat",
-     "url": "https://www.tdf.org/shows/22082/operation-mincemeat",
-     "tdfId": "22082",
-     "pct": 40,
-     "lo": 177,
-     "hi": 177,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Schmigadoon!",
-     "url": "https://www.tdf.org/shows/22904/schmigadoon",
-     "tdfId": "22904",
-     "pct": 50,
-     "lo": 125,
-     "hi": 199,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "The Lost Boys",
-     "url": "https://www.tdf.org/shows/22920/the-lost-boys",
-     "tdfId": "22920",
-     "pct": 50,
-     "lo": 81,
-     "hi": 124,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "The Outsiders",
-     "url": "https://www.tdf.org/shows/19937/the-outsiders",
-     "tdfId": "19937",
-     "pct": 50,
-     "lo": 186,
-     "hi": 186,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Two Strangers Carry a Cake Across NY",
-     "url": "https://www.tdf.org/shows/22756/two-strangers-carry-a-cake-across-ny",
-     "tdfId": "22756",
-     "pct": 40,
-     "lo": 68,
-     "hi": 120,
-     "time": "7:30 PM"
     },
     {
      "title": "Wanted",
@@ -170,7 +62,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:15 PM",
+   "updated": "Friday, 27 November 2026 07:38 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -200,15 +92,6 @@ window.TM_TKTS = {
      "time": "8:30 PM"
     },
     {
-     "title": "Going Bacharach",
-     "url": "https://www.tdf.org/shows/23016/going-bacharach",
-     "tdfId": "23016",
-     "pct": 40,
-     "lo": 49,
-     "hi": 103,
-     "time": "8:00 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -216,24 +99,6 @@ window.TM_TKTS = {
      "lo": 49,
      "hi": 57,
      "time": "8:00 PM"
-    },
-    {
-     "title": "The Hope Theory",
-     "url": "https://www.tdf.org/shows/23478/the-hope-theory",
-     "tdfId": "23478",
-     "pct": 50,
-     "lo": 101,
-     "hi": 101,
-     "time": "7:30 PM"
-    },
-    {
-     "title": "Traitorz: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
-     "tdfId": "23594",
-     "pct": 50,
-     "lo": 59,
-     "hi": 59,
-     "time": "7:30 PM"
     }
    ],
    "day": "2026-11-27"
@@ -242,7 +107,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:15 PM",
+   "updated": "Friday, 27 November 2026 07:38 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -503,7 +368,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:15 PM",
+   "updated": "Friday, 27 November 2026 07:38 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
