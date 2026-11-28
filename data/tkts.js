@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-28T00:09:10.789Z",
+ "checkedAt": "2026-11-28T00:24:14.324Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:00 PM",
+   "updated": "Friday, 27 November 2026 07:15 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -119,15 +119,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Paranormal Activity",
-     "url": "https://www.tdf.org/shows/23295/paranormal-activity",
-     "tdfId": "23295",
-     "pct": 40,
-     "lo": 88,
-     "hi": 115,
-     "time": "8:00 PM"
-    },
-    {
      "title": "Schmigadoon!",
      "url": "https://www.tdf.org/shows/22904/schmigadoon",
      "tdfId": "22904",
@@ -179,7 +170,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:00 PM",
+   "updated": "Friday, 27 November 2026 07:15 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
@@ -251,7 +242,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:00 PM",
+   "updated": "Friday, 27 November 2026 07:15 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -512,7 +503,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 07:00 PM",
+   "updated": "Friday, 27 November 2026 07:15 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
