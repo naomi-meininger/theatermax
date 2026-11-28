@@ -2,13 +2,13 @@
 window.TM_TKTS = {
  "status": "ok",
  "source": "https://www.tdf.org/discount-ticket-programs/tkts-by-tdf/tkts-live/",
- "checkedAt": "2026-11-27T23:23:59.339Z",
+ "checkedAt": "2026-11-28T00:09:10.789Z",
  "boards": [
   {
    "booth": "times-square",
    "kind": "broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 05:39 PM",
+   "updated": "Friday, 27 November 2026 07:00 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -56,15 +56,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Downstate",
-     "url": "https://www.tdf.org/shows/23521/downstate",
-     "tdfId": "23521",
-     "pct": 50,
-     "lo": 83,
-     "hi": 102,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Galileo",
      "url": "https://www.tdf.org/shows/23112/galileo",
      "tdfId": "23112",
@@ -83,15 +74,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Here There Are Blueberries",
-     "url": "https://www.tdf.org/shows/23494/here-there-are-blueberries",
-     "tdfId": "23494",
-     "pct": 50,
-     "lo": 91,
-     "hi": 91,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Inter Alia",
      "url": "https://www.tdf.org/shows/23204/inter-alia",
      "tdfId": "23204",
@@ -101,15 +83,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Its A Wonderful Life: A Live Radio Play",
-     "url": "https://www.tdf.org/shows/23562/its-a-wonderful-life-a-live-radio-play",
-     "tdfId": "23562",
-     "pct": 50,
-     "lo": 96,
-     "hi": 96,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Just In Time",
      "url": "https://www.tdf.org/shows/22112/just-in-time",
      "tdfId": "22112",
@@ -117,15 +90,6 @@ window.TM_TKTS = {
      "lo": 108,
      "hi": 108,
      "time": "8:00 PM"
-    },
-    {
-     "title": "Maybe Happy Ending",
-     "url": "https://www.tdf.org/shows/21710/maybe-happy-ending",
-     "tdfId": "21710",
-     "pct": 50,
-     "lo": 107,
-     "hi": 115,
-     "time": "7:00 PM"
     },
     {
      "title": "Much Ado About Nothing",
@@ -173,51 +137,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "Six",
-     "url": "https://www.tdf.org/shows/17685/six",
-     "tdfId": "17685",
-     "pct": 50,
-     "lo": 81,
-     "hi": 126,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Stranger Things: The First Shadow",
-     "url": "https://www.tdf.org/shows/21916/stranger-things-the-first-shadow",
-     "tdfId": "21916",
-     "pct": 50,
-     "lo": 101,
-     "hi": 151,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Book of Mormon",
-     "url": "https://www.tdf.org/shows/8843/the-book-of-mormon",
-     "tdfId": "8843",
-     "pct": 30,
-     "lo": 115,
-     "hi": 171,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Fantasticks",
-     "url": "https://www.tdf.org/shows/23326/the-fantasticks",
-     "tdfId": "23326",
-     "pct": 50,
-     "lo": 52,
-     "hi": 117,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "The Great Gatsby",
-     "url": "https://www.tdf.org/shows/21385/the-great-gatsby",
-     "tdfId": "21385",
-     "pct": 50,
-     "lo": 164,
-     "hi": 164,
-     "time": "7:00 PM"
-    },
-    {
      "title": "The Lost Boys",
      "url": "https://www.tdf.org/shows/22920/the-lost-boys",
      "tdfId": "22920",
@@ -234,15 +153,6 @@ window.TM_TKTS = {
      "lo": 186,
      "hi": 186,
      "time": "7:30 PM"
-    },
-    {
-     "title": "The Rocky Horror Show",
-     "url": "https://www.tdf.org/shows/22915/the-rocky-horror-show",
-     "tdfId": "22915",
-     "pct": 50,
-     "lo": 61,
-     "hi": 101,
-     "time": "7:00 PM"
     },
     {
      "title": "Two Strangers Carry a Cake Across NY",
@@ -269,26 +179,8 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 05:39 PM",
+   "updated": "Friday, 27 November 2026 07:00 PM",
    "shows": [
-    {
-     "title": "A Ghost in Your Ear",
-     "url": "https://www.tdf.org/shows/23452/a-ghost-in-your-ear",
-     "tdfId": "23452",
-     "pct": 50,
-     "lo": 38,
-     "hi": 38,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "A Kidman Carol",
-     "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
-     "tdfId": "23586",
-     "pct": 40,
-     "lo": 33,
-     "hi": 69,
-     "time": "5:00 PM"
-    },
     {
      "title": "A Kidman Carol",
      "url": "https://www.tdf.org/shows/23586/a-kidman-carol",
@@ -326,24 +218,6 @@ window.TM_TKTS = {
      "time": "8:00 PM"
     },
     {
-     "title": "Heated Rivalry: The Unauthorized Musical Parody",
-     "url": "https://www.tdf.org/shows/23194/heated-rivalry-the-unauthorized-musical-parody",
-     "tdfId": "23194",
-     "pct": 30,
-     "lo": 48,
-     "hi": 76,
-     "time": "7:00 PM"
-    },
-    {
-     "title": "Our Sinatra, a Musical Celebration",
-     "url": "https://www.tdf.org/shows/23469/our-sinatra-a-musical-celebration",
-     "tdfId": "23469",
-     "pct": 50,
-     "lo": 42,
-     "hi": 87,
-     "time": "5:00 PM"
-    },
-    {
      "title": "Perfect Crime",
      "url": "https://www.tdf.org/shows/1681/perfect-crime",
      "tdfId": "1681",
@@ -362,15 +236,6 @@ window.TM_TKTS = {
      "time": "7:30 PM"
     },
     {
-     "title": "The Play That Goes Wrong",
-     "url": "https://www.tdf.org/shows/17222/the-play-that-goes-wrong",
-     "tdfId": "17222",
-     "pct": 50,
-     "lo": 71,
-     "hi": 71,
-     "time": "7:00 PM"
-    },
-    {
      "title": "Traitorz: The Unauthorized Musical Parody",
      "url": "https://www.tdf.org/shows/23594/traitorz-the-unauthorized-musical-parody",
      "tdfId": "23594",
@@ -386,7 +251,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-broadway",
    "status": "open",
-   "updated": "Friday, 27 November 2026 05:39 PM",
+   "updated": "Friday, 27 November 2026 07:00 PM",
    "shows": [
     {
      "title": "& Juliet",
@@ -647,7 +512,7 @@ window.TM_TKTS = {
    "booth": "times-square",
    "kind": "tomorrow-off",
    "status": "open",
-   "updated": "Friday, 27 November 2026 05:39 PM",
+   "updated": "Friday, 27 November 2026 07:00 PM",
    "shows": [
     {
      "title": "A Kidman Carol",
